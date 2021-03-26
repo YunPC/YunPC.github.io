@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>입국심사</title>
+    <url>/2021/03/09/%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%80%E1%85%AE%E1%86%A8%E1%84%89%E1%85%B5%E1%86%B7%E1%84%89%E1%85%A1/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>입국 심사관들이 승객들을 심사하는데 걸리는 가장 최소 시간을 구하는 문제이다. <a href="https://programmers.co.kr/learn/courses/30/lessons/43238">문제 링크</a></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Immigration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 입국심사</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">int</span>[] times = &#123;<span class="number">7</span>, <span class="number">10</span>&#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(times);</span><br><span class="line">        System.out.println(BinarySearch(times, n, times[times.length-<span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">int</span>[] times, <span class="keyword">int</span> n, <span class="keyword">long</span> max)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> l = <span class="number">1</span>, r = max * n;</span><br><span class="line">        <span class="keyword">long</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> ans = Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(isPassed(times, n, mid))</span><br><span class="line">            &#123;</span><br><span class="line">                ans = Math.min(ans, mid);</span><br><span class="line">                r = mid-<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                l = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPassed</span><span class="params">(<span class="keyword">int</span>[] times, <span class="keyword">int</span> n, <span class="keyword">long</span> mid)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> amount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; times.length; i++)</span><br><span class="line">            amount +=  mid / times[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(amount &gt;= n)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>전체 코드는 다음과 같다.</p>
+<p>일단 심사하는데 걸리는 시간을 정렬한다. 이 문제를 해결하기 위한 큰 그림은 이분탐색을 활용하는 것이다. 이분탐색의 mid를 걸리는 최대 시간으로 가정한다. 그리고 이 최대시간을 적용했을 때 모든 승객들을 심사할 수 있는지 검사한다. 만약 모든 승객을 검사할 수 있다면 midr값을 줄이고, 아니라면 mid값을 늘린다.</p>
+<p>이분 탐색에서 초기 <code>l</code>값은 1로 <code>r</code>값은 가장 오래 걸리는 심사기간에 n을 곱한다. 그 뒤로는 <code>isPassed</code>함수를 통해 모든 승객을 심할 수 있는지 검사하고 만약 검사할 수 있다면, 정답을 더 작은 쪽으로 업데이트하고 <code>r</code>값을 <code>mid+1</code>로 업데이트한다.</p>
+<p>그렇지 않다면 <code>mid</code>값이 더 커져야 한다는 의미이므로 <code>l</code>을 <code>mid+1</code>로 업데이트한다.</p>
+<p><code>isPassed</code>를 검사하는 방법은 들어온 <code>mid</code>값에 대해 심사위원의 시간을 나눠서 검사를 할 수 있는 사람의 수를 전부 더해본다. 만약 이 값이 <code>n</code>을 넘는다면, <code>true</code>를 반환하고, 그렇지 않으면 <code>false</code>를 반환한다.</p>
+<p><code>times</code>의 길이를 <code>m</code>이라 하고, <code>times</code>에서 가장 큰 값을 <code>x</code>라 한다면, 최종 시간복잡도는 <span class="math display">\[O(mlognx)\]</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/immigration.png" width="290" height="230">
+</center>
+<p><br></p>
+<p>처음 풀이를 틀려서 다른 사람의 풀이를 참고했는데, 이게 전형적인 이분탐색 문제라고 해서 알아보지 못한 내 자신이 원망스러웠다. 학교 수업 때 이러한 유형을 풀어본 적이 있기 때문이다. 보통 엄청 큰 수가 나오고 최소 또는 최대를 구하라는 문제가 이분탐색의 유형에 해당된다고 한다. 앞으로는 잘 기억해두어야 겠다.</p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level3</category>
+      </categories>
+  </entry>
+</search>
