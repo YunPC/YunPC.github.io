@@ -24,22 +24,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="문제정의  자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수 중에 가장 작은 사용횟수를 출력해야 한다. 문제풀이  전체 코드는 다음과 같다. 123456789101112131415161718192021222324252627282930313233343536public clas">
+<meta name="description" content="문제정의  LZW압축을 구현하는 문제이다. 압축 알고리즘에 대한 상세한 설명은 아래 링크에서 확인하고 오길 바란다. 문제 링크 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031323334353637383940414243import java.util.ArrayList;impo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="N으로 표현">
-<meta property="og:url" content="http://yunpc.github.io/2021/02/09/N%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%91%E1%85%AD%E1%84%92%E1%85%A7%E1%86%AB/index.html">
+<meta property="og:title" content="압축">
+<meta property="og:url" content="http://yunpc.github.io/2021/02/03/%E1%84%8B%E1%85%A1%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%A8/index.html">
 <meta property="og:site_name" content="Rabbit blog">
-<meta property="og:description" content="문제정의  자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수 중에 가장 작은 사용횟수를 출력해야 한다. 문제풀이  전체 코드는 다음과 같다. 123456789101112131415161718192021222324252627282930313233343536public clas">
+<meta property="og:description" content="문제정의  LZW압축을 구현하는 문제이다. 압축 알고리즘에 대한 상세한 설명은 아래 링크에서 확인하고 오길 바란다. 문제 링크 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031323334353637383940414243import java.util.ArrayList;impo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yunpc.github.io/images/programmers/N_express.png">
-<meta property="article:published_time" content="2021-02-09T07:42:00.000Z">
-<meta property="article:modified_time" content="2021-03-31T02:28:22.448Z">
+<meta property="og:image" content="http://yunpc.github.io/images/programmers/compress.png">
+<meta property="article:published_time" content="2021-02-03T05:50:00.000Z">
+<meta property="article:modified_time" content="2021-03-31T04:59:18.671Z">
 <meta property="article:author" content="YunPC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/N_express.png">
+<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/compress.png">
 
 
-<link rel="canonical" href="http://yunpc.github.io/2021/02/09/N%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%91%E1%85%AD%E1%84%92%E1%85%A7%E1%86%AB/">
+<link rel="canonical" href="http://yunpc.github.io/2021/02/03/%E1%84%8B%E1%85%A1%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%A8/">
 
 
 <script class="page-configurations">
@@ -51,7 +51,7 @@
     lang   : 'en'
   };
 </script>
-<title>N으로 표현 | Rabbit blog</title>
+<title>압축 | Rabbit blog</title>
   
 
 
@@ -256,7 +256,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/09/N%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20%E1%84%91%E1%85%AD%E1%84%92%E1%85%A7%E1%86%AB/">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/03/%E1%84%8B%E1%85%A1%E1%86%B8%E1%84%8E%E1%85%AE%E1%86%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -269,7 +269,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          N으로 표현
+          압축
         </h1>
 
         <div class="post-meta-container">
@@ -280,14 +280,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-02-09 16:42:00" itemprop="dateCreated datePublished" datetime="2021-02-09T16:42:00+09:00">2021-02-09</time>
+      <time title="Created: 2021-02-03 14:50:00" itemprop="dateCreated datePublished" datetime="2021-02-03T14:50:00+09:00">2021-02-03</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-31 11:28:22" itemprop="dateModified" datetime="2021-03-31T11:28:22+09:00">2021-03-31</time>
+        <time title="Modified: 2021-03-31 13:59:18" itemprop="dateModified" datetime="2021-03-31T13:59:18+09:00">2021-03-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -303,7 +303,7 @@
         </span>
           , 
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
         </span>
     </span>
 
@@ -319,19 +319,19 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="문제정의">문제정의</h2>
 <hr />
-<p>자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수 중에 가장 작은 사용횟수를 출력해야 한다.</p>
+<p>LZW압축을 구현하는 문제이다. 압축 알고리즘에 대한 상세한 설명은 아래 링크에서 확인하고 오길 바란다.</p>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/17684">문제 링크</a></p>
 <h2 id="문제풀이">문제풀이</h2>
 <hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NExpress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 n으로 표현</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> answer = -<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>, number = <span class="number">17</span>;</span><br><span class="line"></span><br><span class="line">        ReturnMin(<span class="number">0</span>, <span class="number">0</span>, number, N);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnMin</span><span class="params">(<span class="keyword">int</span> res, <span class="keyword">int</span> cnt, <span class="keyword">int</span> number, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = N;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">8</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(res == number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer == -<span class="number">1</span> || answer &gt; cnt)</span><br><span class="line">                answer = cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnMin(res+temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res-temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res*temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res/temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line"></span><br><span class="line">                temp = temp*<span class="number">10</span>+N;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다른 사람의 코드를 찾아서 쓴 코드이다. 필자도 dfs로 풀 생각을 하였는데 <code>temp</code>부분에서 실수를 했다. 가령 1111+1111는 2222가 나와야 하는데 필자는 1111+1111을 계산하지 않고 끝내버리는 오류가 있었기 때문이다. 문제점을 알았으니 다행이다. 일단 코드 설명을 해보면 <code>res</code>는 현재까지 계산한 값을 의미하고 <code>cnt</code>는 사용횟수이다. <code>number</code>는 만들고자 하는 값이다.</p>
-<p>재귀의 종료 조건은 사용횟수가 8을 넘어가면 답이 없는 것이므로 <code>answer</code>에 -1을 한다. 다른 경우는 8번안에 숫자가 만들어진다면 <code>answer</code>가 -1이거나 <code>cnt</code>보다 <code>answer</code>가 큰 경우 답을 <code>cnt</code>로 한다. 그것도 아니라면 사칙연산을 추가로 진행해야 한다. 사용할 수 있는 횟수만큼 <code>N</code>을 뒤에 붙여가며 더해간다. 예를들면 5를 4번쓸 수 있으면 [5,55,555,5555]로 사칙연산을 하는 것이다.</p>
-<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 \(O(4^8)\)이므로 \(O(1)\)로 나타낼 수 있다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Compress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 압축</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String msg = <span class="string">&quot;KAKAO&quot;</span>;</span><br><span class="line">        ArrayList&lt;Integer&gt; answer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++)</span><br><span class="line">            map.put(String.valueOf((<span class="keyword">char</span>)(<span class="string">&#x27;A&#x27;</span>+i)), i+<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> w = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(c &lt;= msg.length())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> value = map.getOrDefault(msg.substring(w,c), <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">while</span>(value != <span class="number">0</span>)</span><br><span class="line">            &#123;      </span><br><span class="line">                c++;</span><br><span class="line">                <span class="keyword">if</span>(c &gt; msg.length())</span><br><span class="line">                &#123;</span><br><span class="line">                    flag = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>; </span><br><span class="line">                &#125;</span><br><span class="line">                   </span><br><span class="line">                value = map.getOrDefault(msg.substring(w,c), <span class="number">0</span>);</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            answer.add(map.get(msg.substring(w, c-<span class="number">1</span>)));</span><br><span class="line">            <span class="keyword">if</span>(flag)</span><br><span class="line">                c--;</span><br><span class="line">            map.put(msg.substring(w, c), map.size()+<span class="number">1</span>);</span><br><span class="line">            w = c-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(flag)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 사전을 map으로 구현하였다. 일단 A부터 Z까지 기본 단어를 만들어 놓는다. 그리고 w에서 c까지의 문자열을 반복해서 본다. c의 값을 늘려가며 처음으로 map에 없는 단어가 나올 경우 맵에 해당 문자열을 저장하고 바로 직전 반복의 문자열은 색인 값을 반환한다. 그리고 w에 다음 위치인 c-1을 집어넣으면 되는 단순한 알고리즘이다. 하지만 이 반복은 c가 메시지의 길이에 달했을 때 배열범위에 문제가 생기므로 이에 대한 처리를 따로 해야한다. flag와 관련된 부분이 그 부분이다.</p>
+<p>최종 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
 <h2 id="테스트">테스트</h2>
 <p><br></p>
 <center>
-<img src="/images/programmers/N_express.png" width="290" height="320">
+<img src="/images/programmers/compress.png" width="290" height="510">
 </center>
 <p><br></p>
-<p>동적계획법으로 푸는 방법을 몰라서 재귀를 사용하였는데, 이런 경우 대게 테스트 케이스가 커서 골치 아픈 경우가 많다. 하지만 이 문제는 8이라는 제한 횟수가 있어서 그런지 시간 초과가 나는 일은 없었다. 재귀함수를 짤 때 종료조건에 대해 꼼꼼히 생각해봐야겠다.</p>
+<p>flag관련된 함수를 없앨 수 있는지 고민해봐야겠다. 깔끔하지 않다.</p>
 
     </div>
 
@@ -345,13 +345,10 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/08/%E1%84%8E%E1%85%AE%E1%84%89%E1%85%A5%E1%86%A8%20%E1%84%90%E1%85%B3%E1%84%85%E1%85%A2%E1%84%91%E1%85%B5%E1%86%A8/" rel="prev" title="추석 트래픽">
-                  <i class="fa fa-chevron-left"></i> 추석 트래픽
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/09/2xn%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%85%E1%85%B5%E1%86%BC/" rel="next" title="2xn 타일링">
-                  2xn 타일링 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/02/03/%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%86%E1%85%A7%E1%86%BC%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%A7%E1%86%AF/" rel="next" title="파일명 정렬">
+                  파일명 정렬 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
