@@ -24,22 +24,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="문제정의  2xn 타일링 가로 길이가 2이고 세로의 길이가 1인 직사각형 모양의 타일이 있다. 이 타일로 2*n바닥을 덮을 수 있는 경우의 수를 구하는 문제이다. 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031public class Tiling2 &amp;#123;    &#x2F;&#x2F;프로">
+<meta name="description" content="문제정의  삼각형의 꼭대기부터 바닥까지 가는 경로 중에서 경로의 합이 가장 큰 것을 찾는 문제이다. 아래쪽으로 갈 때는 자신의 바로 왼쪽 아래나 오른쪽 아래로만 이동할 수 있다. 문제풀이  전체 코드는 다음과 같다. 1234567891011121314151617181920212223242526272829303132333435363738public class">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2xn Tiling">
-<meta property="og:url" content="http://yunpc.github.io/2021/02/09/2xn%20Tiling/index.html">
+<meta property="og:title" content="정수 삼각형">
+<meta property="og:url" content="http://yunpc.github.io/2021/02/25/Integer-Triangle/index.html">
 <meta property="og:site_name" content="Rabbit blog">
-<meta property="og:description" content="문제정의  2xn 타일링 가로 길이가 2이고 세로의 길이가 1인 직사각형 모양의 타일이 있다. 이 타일로 2*n바닥을 덮을 수 있는 경우의 수를 구하는 문제이다. 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031public class Tiling2 &amp;#123;    &#x2F;&#x2F;프로">
+<meta property="og:description" content="문제정의  삼각형의 꼭대기부터 바닥까지 가는 경로 중에서 경로의 합이 가장 큰 것을 찾는 문제이다. 아래쪽으로 갈 때는 자신의 바로 왼쪽 아래나 오른쪽 아래로만 이동할 수 있다. 문제풀이  전체 코드는 다음과 같다. 1234567891011121314151617181920212223242526272829303132333435363738public class">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yunpc.github.io/images/programmers/tiling.png">
-<meta property="article:published_time" content="2021-02-09T08:29:00.000Z">
-<meta property="article:modified_time" content="2021-04-01T02:16:08.060Z">
+<meta property="og:image" content="http://yunpc.github.io/images/programmers/integer_triangle.png">
+<meta property="article:published_time" content="2021-02-25T07:55:00.000Z">
+<meta property="article:modified_time" content="2021-04-01T08:10:48.441Z">
 <meta property="article:author" content="YunPC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/tiling.png">
+<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/integer_triangle.png">
 
 
-<link rel="canonical" href="http://yunpc.github.io/2021/02/09/2xn%20Tiling/">
+<link rel="canonical" href="http://yunpc.github.io/2021/02/25/Integer-Triangle/">
 
 
 <script class="page-configurations">
@@ -51,7 +51,7 @@
     lang   : 'en'
   };
 </script>
-<title>2xn Tiling | Rabbit blog</title>
+<title>정수 삼각형 | Rabbit blog</title>
   
 
 
@@ -188,7 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98"><span class="nav-number">1.</span> <span class="nav-text">문제정의</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xn-%ED%83%80%EC%9D%BC%EB%A7%81"><span class="nav-number">1.1.</span> <span class="nav-text">2xn 타일링</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4"><span class="nav-number">2.</span> <span class="nav-text">문제풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="nav-number">3.</span> <span class="nav-text">테스트</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98"><span class="nav-number">1.</span> <span class="nav-text">문제정의</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4"><span class="nav-number">2.</span> <span class="nav-text">문제풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="nav-number">3.</span> <span class="nav-text">테스트</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/09/2xn%20Tiling/">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/25/Integer-Triangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -269,7 +269,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2xn Tiling
+          정수 삼각형
         </h1>
 
         <div class="post-meta-container">
@@ -280,14 +280,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-02-09 17:29:00" itemprop="dateCreated datePublished" datetime="2021-02-09T17:29:00+09:00">2021-02-09</time>
+      <time title="Created: 2021-02-25 16:55:00" itemprop="dateCreated datePublished" datetime="2021-02-25T16:55:00+09:00">2021-02-25</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 11:16:08" itemprop="dateModified" datetime="2021-04-01T11:16:08+09:00">2021-04-01</time>
+        <time title="Modified: 2021-04-01 17:10:48" itemprop="dateModified" datetime="2021-04-01T17:10:48+09:00">2021-04-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -319,20 +319,20 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="문제정의">문제정의</h2>
 <hr />
-<h3 id="xn-타일링">2xn 타일링</h3>
-<p>가로 길이가 2이고 세로의 길이가 1인 직사각형 모양의 타일이 있다. 이 타일로 2*n바닥을 덮을 수 있는 경우의 수를 구하는 문제이다.</p>
+<p>삼각형의 꼭대기부터 바닥까지 가는 경로 중에서 경로의 합이 가장 큰 것을 찾는 문제이다. 아래쪽으로 갈 때는 자신의 바로 왼쪽 아래나 오른쪽 아래로만 이동할 수 있다.</p>
 <h2 id="문제풀이">문제풀이</h2>
 <hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tiling2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 Level3 2xn 타일링</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] cache;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">4</span>;</span><br><span class="line">        cache = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span> answer = ReturnAnswer(n, <span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnAnswer</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(w == n)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(w &gt; n)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(cache[w] != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> cache[w];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">            res = ReturnAnswer(n,w+<span class="number">1</span>) % <span class="number">1000_000_007</span>;</span><br><span class="line">            res += ReturnAnswer(n, w+<span class="number">2</span>) % <span class="number">1000_000_007</span>;</span><br><span class="line">            cache[w] = res%<span class="number">1000_000_007</span>;</span><br><span class="line">            <span class="keyword">return</span> cache[w];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 생각해보면 세로길이2를 채울 수 있는 경우의 수는 2가지 밖에 없다. 하나는 세로로 하나의 타일이 쌓인 경우이고, 나머지 하나는 가로로 두개의 타일이 쌓인 경우이다. 첫번째 경우에는 가로로 1증가하고, 두번째 경우는 가로가 2증가한다. 이 두가지 경우를 계속 시도해보는 코드를 짜면 된다.</p>
-<p><code>ReturnAnswer</code>함수를 살펴보자. <code>n</code>은 주어진 가로 길이이고 <code>w</code>는 현재 가로 길이다. 만약 이 가로 길이에 도달하면 1을 반환하고 그렇지 않으면 0을 반환한다. 여기서 연산의 반복을 줄이기 위해 캐시도 사용한다. 만약 해당 길이에 이미 구해놓은 값이 있으면 그 값을 사용한다.</p>
-<p>새로 계산해야 하는 경우 길이를 1늘린 것과 2늘린 값을 가져와서 나머지 연산을 한다. 이 둘은 더하는 과정에서도 값이 1,000,000,007을 넘는 경우가 있으므로 캐시에 값을 넣을 때도 나머지 연산을 한 뒤 값을 반환한다.</p>
-<p>시간 복잡도는 <span class="math inline">\(O(log2^n)\)</span>이다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTriangle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 정수 삼각형</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] triangle = &#123;</span><br><span class="line">            &#123;<span class="number">7</span>&#125;,</span><br><span class="line">            &#123;<span class="number">3</span>,<span class="number">8</span>&#125;,</span><br><span class="line">            &#123;<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">4</span>&#125;,</span><br><span class="line">            &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] sum = <span class="keyword">new</span> <span class="keyword">int</span>[triangle.length][triangle.length];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">2</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(triangle.length == <span class="number">1</span>)</span><br><span class="line">            System.out.println(triangle[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">        </span><br><span class="line">        sum[<span class="number">0</span>][<span class="number">0</span>] = triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; triangle.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i][<span class="number">0</span>] = triangle[i][<span class="number">0</span>] + sum[i-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">            sum[i][len-<span class="number">1</span>] = triangle[i][len-<span class="number">1</span>] + sum[i-<span class="number">1</span>][len-<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; len-<span class="number">1</span>; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> max = Math.max(sum[i-<span class="number">1</span>][j-<span class="number">1</span>], sum[i-<span class="number">1</span>][j]);</span><br><span class="line">                sum[i][j] = max + triangle[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        len--;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            answer = Math.max(answer, sum[triangle.length-<span class="number">1</span>][i]);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 아이디어는 이렇다. 삼각형의 밑변을 길이로 하여 2차원 배열을 생성한다. 그리고 여기에 해당 위치에 오기까지의 합 중 가장 큰 것을 넣을 것이다. 필자는 이를 sum이라 하였다. sum[0][0]은 맨 꼭대기이므로 triangle[0][0]을 넣는다. 꼭대기에서 갈 수 있는 곳은 3과 8이다. 3의 위치에서 최대값은 3+7=10, 8위치에서 합의 최대는 7+8=15이다. 3번째 줄로 내려가보자. 8은 3의 위치에서 내려올 수 밖에 없으므로 최대값은 10+8=18이다. 1의 경우 2번째 줄의 3과 8에서 둘 다 내려올 수 있다. 이 문제는 최대를 찾는 문제이므로 10과 15중 15를 선택하여 15+1=16을 기록하면 된다.</p>
+<p>이런식으로 sum을 채워나가고 가장 아래층의 수 중 가장 큰 수를 찾으면 된다. 이를 코드로 그대로 구현하였다. sum을 정사각형으로 선언했기 때문에 각 층에 있는 숫자의 개수를 len으로 알려주었다. 가장 꼭대기를 채워넣고 그 아래부터는 for문의 영향을 받는다. 각 층에서 맨 왼쪽과 오른쪽 원소는 내려오는 경로가 하나밖에 없기 때문에 이는 따로 처리한다. 이를 제외한 원소는 위층의 왼쪽 대각선과 오른쪽 대각선의 sum값을 비교 한뒤 큰 값을 취한다. 각 층에서의 연산이 끝나면 len을 증가한다.</p>
+<p>반복이 끝나면 맨 아래층의 원소에서 최대값을 찾아 반환한다.</p>
+<p>연산 횟수는 삼각형의 밑변을 n이라 할 때, <span class="math inline">\(n^2 \over 2\)</span>이므로, 최종 시간복잡도는 <span class="math inline">\(O(n^2)\)</span>이다.</p>
 <h2 id="테스트">테스트</h2>
 <p><br></p>
 <center>
-<img src="/images/programmers/tiling.png" width="345" height="560">
+<img src="/images/programmers/integer_triangle.png" width="290" height="500">
 </center>
 <p><br></p>
+<p>다이나믹 프로그래밍에 약한 편이다. 이건 기초문제라 쉽게 해결했지만, 이 유형에 좀 더 익숙해져야겠다.</p>
 
     </div>
 
@@ -346,13 +346,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/09/Express%20N/" rel="prev" title="Express in N">
-                  <i class="fa fa-chevron-left"></i> Express in N
+                <a href="/2021/02/24/Key-and-Lock/" rel="prev" title="자물쇠와 열쇠">
+                  <i class="fa fa-chevron-left"></i> 자물쇠와 열쇠
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/22/Pop%20Ballon/" rel="next" title="Pop Ballon">
-                  Pop Ballon <i class="fa fa-chevron-right"></i>
+                <a href="/2021/03/02/Connect-Island/" rel="next" title="섬 연결하기">
+                  섬 연결하기 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
