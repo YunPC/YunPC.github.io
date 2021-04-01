@@ -24,23 +24,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="문제정의  최대한 많은 overlap을 하나로 묶을 때, 나오는 집합의 크기를 구하는 문제이다. 상세한 설명은 아래에 계속하겠다. 문제 링크 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849import java">
+<meta name="description" content="문제정의  LZW압축을 구현하는 문제이다. 압축 알고리즘에 대한 상세한 설명은 아래 링크에서 확인하고 오길 바란다. 문제 링크 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031323334353637383940414243import java.util.ArrayList;impo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="단속카메라">
-<meta property="og:url" content="http://yunpc.github.io/2021/03/04/%E1%84%83%E1%85%A1%E1%86%AB%E1%84%89%E1%85%A9%E1%86%A8%20%E1%84%8F%E1%85%A1%E1%84%86%E1%85%A6%E1%84%85%E1%85%A1/index.html">
+<meta property="og:title" content="압축">
+<meta property="og:url" content="http://yunpc.github.io/2021/02/03/Compress/index.html">
 <meta property="og:site_name" content="Rabbit blog">
-<meta property="og:description" content="문제정의  최대한 많은 overlap을 하나로 묶을 때, 나오는 집합의 크기를 구하는 문제이다. 상세한 설명은 아래에 계속하겠다. 문제 링크 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849import java">
+<meta property="og:description" content="문제정의  LZW압축을 구현하는 문제이다. 압축 알고리즘에 대한 상세한 설명은 아래 링크에서 확인하고 오길 바란다. 문제 링크 문제풀이  전체 코드는 다음과 같다. 12345678910111213141516171819202122232425262728293031323334353637383940414243import java.util.ArrayList;impo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yunpc.github.io/images/programmers/cam.jpeg">
-<meta property="og:image" content="http://yunpc.github.io/images/programmers/camera.png">
-<meta property="article:published_time" content="2021-03-04T07:44:00.000Z">
-<meta property="article:modified_time" content="2021-03-31T02:06:18.538Z">
+<meta property="og:image" content="http://yunpc.github.io/images/programmers/compress.png">
+<meta property="article:published_time" content="2021-02-03T05:50:00.000Z">
+<meta property="article:modified_time" content="2021-03-31T04:59:18.671Z">
 <meta property="article:author" content="YunPC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/cam.jpeg">
+<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/compress.png">
 
 
-<link rel="canonical" href="http://yunpc.github.io/2021/03/04/%E1%84%83%E1%85%A1%E1%86%AB%E1%84%89%E1%85%A9%E1%86%A8%20%E1%84%8F%E1%85%A1%E1%84%86%E1%85%A6%E1%84%85%E1%85%A1/">
+<link rel="canonical" href="http://yunpc.github.io/2021/02/03/Compress/">
 
 
 <script class="page-configurations">
@@ -52,7 +51,7 @@
     lang   : 'en'
   };
 </script>
-<title>단속카메라 | Rabbit blog</title>
+<title>압축 | Rabbit blog</title>
   
 
 
@@ -257,7 +256,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/04/%E1%84%83%E1%85%A1%E1%86%AB%E1%84%89%E1%85%A9%E1%86%A8%20%E1%84%8F%E1%85%A1%E1%84%86%E1%85%A6%E1%84%85%E1%85%A1/">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/03/Compress/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -270,7 +269,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          단속카메라
+          압축
         </h1>
 
         <div class="post-meta-container">
@@ -281,14 +280,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-03-04 16:44:00" itemprop="dateCreated datePublished" datetime="2021-03-04T16:44:00+09:00">2021-03-04</time>
+      <time title="Created: 2021-02-03 14:50:00" itemprop="dateCreated datePublished" datetime="2021-02-03T14:50:00+09:00">2021-02-03</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-31 11:06:18" itemprop="dateModified" datetime="2021-03-31T11:06:18+09:00">2021-03-31</time>
+        <time title="Modified: 2021-03-31 13:59:18" itemprop="dateModified" datetime="2021-03-31T13:59:18+09:00">2021-03-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,7 +303,7 @@
         </span>
           , 
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
         </span>
     </span>
 
@@ -320,27 +319,19 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="문제정의">문제정의</h2>
 <hr />
-<p>최대한 많은 overlap을 하나로 묶을 때, 나오는 집합의 크기를 구하는 문제이다. 상세한 설명은 아래에 계속하겠다. <a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42884">문제 링크</a></p>
+<p>LZW압축을 구현하는 문제이다. 압축 알고리즘에 대한 상세한 설명은 아래 링크에서 확인하고 오길 바란다.</p>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/17684">문제 링크</a></p>
 <h2 id="문제풀이">문제풀이</h2>
 <hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Section</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Section</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s;</span><br><span class="line">    <span class="keyword">int</span> e;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Section</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.s = s;</span><br><span class="line">        <span class="keyword">this</span>.e = e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Section sec)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.s - sec.s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpeedTrap</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 level3 단속카메라</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] routes = &#123;</span><br><span class="line">            &#123;-<span class="number">20</span>, <span class="number">15</span>&#125;,</span><br><span class="line">            &#123;-<span class="number">14</span>, -<span class="number">5</span>&#125;,</span><br><span class="line">            &#123;-<span class="number">18</span>, -<span class="number">13</span>&#125;,</span><br><span class="line">            &#123;-<span class="number">5</span>, -<span class="number">3</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        PriorityQueue&lt;Section&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; routes.length; i++)</span><br><span class="line">            pq.add(<span class="keyword">new</span> Section(routes[i][<span class="number">0</span>], routes[i][<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cam_cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!pq.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> end = pq.peek().e;</span><br><span class="line">            <span class="keyword">while</span>(!pq.isEmpty() &amp;&amp; pq.peek().s &lt;= end)</span><br><span class="line">            &#123;</span><br><span class="line">                end = pq.peek().e &lt; end ? pq.peek().e : end;</span><br><span class="line">                pq.poll();</span><br><span class="line">            &#125;</span><br><span class="line">            cam_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(cam_cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 알고리즘의 이해를 돕기 위해 아래의 그림을 보자</p>
-<p><br></p>
-<center>
-<img src="/images/programmers/cam.jpeg" width="1184" height="431">
-</center>
-<p><br></p>
-<p>프로그래머스에서 주어진 구간을 수평선 상에 표시하였다. 최소한의 카메라를 설치해야한다는 것은 최대한 차가 많이 다닐 것 같은 길목에 카메라를 놓아야 한다는 것이다. 그 말은 구간이 최대한 많이 겹치는 쪽에 카메라를 놓으면 된다는 것이다.</p>
-<p>이를 구현하기 위해서 <code>Section</code>클래스를 선언하였다. 구간의 처음과 끝을 저장해두며, 정렬을 할 때 구간의 시작점을 기준으로 정렬한다.</p>
-<p>우선순위 큐를 선언하여 Section을 집어넣는다. 이 큐에서 하나씩 빼면서 최대한 겹칠 수 있는 구간들을 묶을 것이다. 일단 <code>end</code>를 큐의 첫원소의 도착구간으로 설정한다. 그리고 <code>end</code>보다 출발점이 작은 구간은 무조건 겹치므로 이들을 팝한다. 이 때, 팝한 것들 중에 기존 <code>end</code>보다 작은 종료구간이 있다면 그 값으로 대체한다.</p>
-<p>이 반복이 마치면 더 이상 겹치는 구간이 없다는 의미이므로 하나로 묶는 작업이 끝난 것이다. 카메라를 설치한다는 의미로 <code>cam_cnt</code>를 1가한다.</p>
-<p>우선순위 큐를 사용하였기 때문에 구간의 개수를 n이라 하였을 때, 최종 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Compress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 압축</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String msg = <span class="string">&quot;KAKAO&quot;</span>;</span><br><span class="line">        ArrayList&lt;Integer&gt; answer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++)</span><br><span class="line">            map.put(String.valueOf((<span class="keyword">char</span>)(<span class="string">&#x27;A&#x27;</span>+i)), i+<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> w = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(c &lt;= msg.length())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> value = map.getOrDefault(msg.substring(w,c), <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">while</span>(value != <span class="number">0</span>)</span><br><span class="line">            &#123;      </span><br><span class="line">                c++;</span><br><span class="line">                <span class="keyword">if</span>(c &gt; msg.length())</span><br><span class="line">                &#123;</span><br><span class="line">                    flag = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>; </span><br><span class="line">                &#125;</span><br><span class="line">                   </span><br><span class="line">                value = map.getOrDefault(msg.substring(w,c), <span class="number">0</span>);</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            answer.add(map.get(msg.substring(w, c-<span class="number">1</span>)));</span><br><span class="line">            <span class="keyword">if</span>(flag)</span><br><span class="line">                c--;</span><br><span class="line">            map.put(msg.substring(w, c), map.size()+<span class="number">1</span>);</span><br><span class="line">            w = c-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(flag)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 사전을 map으로 구현하였다. 일단 A부터 Z까지 기본 단어를 만들어 놓는다. 그리고 w에서 c까지의 문자열을 반복해서 본다. c의 값을 늘려가며 처음으로 map에 없는 단어가 나올 경우 맵에 해당 문자열을 저장하고 바로 직전 반복의 문자열은 색인 값을 반환한다. 그리고 w에 다음 위치인 c-1을 집어넣으면 되는 단순한 알고리즘이다. 하지만 이 반복은 c가 메시지의 길이에 달했을 때 배열범위에 문제가 생기므로 이에 대한 처리를 따로 해야한다. flag와 관련된 부분이 그 부분이다.</p>
+<p>최종 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
 <h2 id="테스트">테스트</h2>
 <p><br></p>
 <center>
-<img src="/images/programmers/camera.png" width="290" height="130">
+<img src="/images/programmers/compress.png" width="290" height="510">
 </center>
 <p><br></p>
-<p>학교 수업에서 해봤던 문제라 수월하게 풀 수 있었다. 앞으로 나만의 코테 데이터베이스를 더 쌓아나가야지.</p>
+<p>flag관련된 함수를 없앨 수 있는지 고민해봐야겠다. 깔끔하지 않다.</p>
 
     </div>
 
@@ -354,13 +345,10 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/04/%E1%84%83%E1%85%B5%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%20%E1%84%8F%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%86%AF%E1%84%85%E1%85%A5/" rel="prev" title="디스크 컨트롤러">
-                  <i class="fa fa-chevron-left"></i> 디스크 컨트롤러
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/05/%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%8B%E1%85%AE%E1%84%89%E1%85%A5%E1%86%AB%E1%84%89%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%B1%E1%84%8F%E1%85%B2/" rel="next" title="이중우선순위큐">
-                  이중우선순위큐 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/02/03/Sort%20FileName/" rel="next" title="파일명 정렬">
+                  파일명 정렬 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
