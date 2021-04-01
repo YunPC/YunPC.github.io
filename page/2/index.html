@@ -195,14 +195,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -482,7 +482,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:10:02" itemprop="dateModified" datetime="2021-04-01T17:10:02+09:00">2021-04-01</time>
+        <time title="Modified: 2021-04-01 17:52:06" itemprop="dateModified" datetime="2021-04-01T17:52:06+09:00">2021-04-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -520,7 +520,7 @@
 <hr />
 <p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NExpress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 n으로 표현</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> answer = -<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>, number = <span class="number">17</span>;</span><br><span class="line"></span><br><span class="line">        ReturnMin(<span class="number">0</span>, <span class="number">0</span>, number, N);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnMin</span><span class="params">(<span class="keyword">int</span> res, <span class="keyword">int</span> cnt, <span class="keyword">int</span> number, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = N;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">8</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(res == number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer == -<span class="number">1</span> || answer &gt; cnt)</span><br><span class="line">                answer = cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnMin(res+temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res-temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res*temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res/temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line"></span><br><span class="line">                temp = temp*<span class="number">10</span>+N;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다른 사람의 코드를 찾아서 쓴 코드이다. 필자도 dfs로 풀 생각을 하였는데 <code>temp</code>부분에서 실수를 했다. 가령 1111+1111는 2222가 나와야 하는데 필자는 1111+1111을 계산하지 않고 끝내버리는 오류가 있었기 때문이다. 문제점을 알았으니 다행이다. 일단 코드 설명을 해보면 <code>res</code>는 현재까지 계산한 값을 의미하고 <code>cnt</code>는 사용횟수이다. <code>number</code>는 만들고자 하는 값이다.</p>
 <p>재귀의 종료 조건은 사용횟수가 8을 넘어가면 답이 없는 것이므로 <code>answer</code>에 -1을 한다. 다른 경우는 8번안에 숫자가 만들어진다면 <code>answer</code>가 -1이거나 <code>cnt</code>보다 <code>answer</code>가 큰 경우 답을 <code>cnt</code>로 한다. 그것도 아니라면 사칙연산을 추가로 진행해야 한다. 사용할 수 있는 횟수만큼 <code>N</code>을 뒤에 붙여가며 더해간다. 예를들면 5를 4번쓸 수 있으면 [5,55,555,5555]로 사칙연산을 하는 것이다.</p>
-<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 \(O(4^8)\)이므로 \(O(1)\)로 나타낼 수 있다.</p>
+<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 <span class="math inline">\(O(4^8)\)</span>이므로 <span class="math inline">\(O(1)\)</span>로 나타낼 수 있다.</p>
 <h2 id="테스트">테스트</h2>
 <p><br></p>
 <center>
@@ -959,8 +959,327 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/03/That-Song/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/03/That-Song/" class="post-title-link" itemprop="url">방금그곡</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-03 13:47:00" itemprop="dateCreated datePublished" datetime="2021-02-03T13:47:00+09:00">2021-02-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:58:42" itemprop="dateModified" datetime="2021-04-01T17:58:42+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>네오가 기억하는 계이름과 음악의 계이름 재생시간이 주어질 때, 네오가 들은 곡을 알아내는 문제이다. 음악의 길이보다 재생기간이 길면 반복하여 재생하는 것이고, 짧다면 중간에 끊어진 것이라고 봐야한다. 만약 네오가 기억하는 계이름을 가지고 있는 곡이 여러 개라면 재생 시간이 긴 것을 우선으로 하고, 재생 시간도 같은 경우 먼저 들어온 곡을 반환한다.</p>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/17683#qna">문제 링크</a></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreviousSong</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 Level2 방금그곡</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String[] musicinfos = &#123;</span><br><span class="line">            <span class="string">&quot;12:00,12:05,HI,ABC#ABC&quot;</span>,</span><br><span class="line">            <span class="string">&quot;13:00,13:05,WORLD,ABCDEF&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">        String m = <span class="string">&quot;ABC&quot;</span>;</span><br><span class="line">        String answer = <span class="string">&quot;(None)&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> last_time = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(String info : musicinfos)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            String[] info_arr = info.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            String[] start_t = info_arr[<span class="number">0</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">            String[] end_t = info_arr[<span class="number">1</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> start_m = Integer.parseInt(start_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(start_t[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> end_m = Integer.parseInt(end_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(end_t[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> duration = end_m - start_m;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            String[] split_by_pound_arr = info_arr[<span class="number">3</span>].split(<span class="string">&quot;#&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> code_cnt = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(String pound_str : split_by_pound_arr)</span><br><span class="line">            &#123;</span><br><span class="line">                String[] codes = pound_str.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span>(String code : codes)</span><br><span class="line">                    code_cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            code_cnt--;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> repeat = duration/code_cnt;</span><br><span class="line">            <span class="keyword">int</span> song_end = duration%code_cnt;</span><br><span class="line">            String song = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; repeat; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                song += info_arr[<span class="number">3</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">char</span>[] song_arr = info_arr[<span class="number">3</span>].toCharArray();</span><br><span class="line">            <span class="keyword">int</span> song_idx = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; song_arr.length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(song_idx == song_end)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                buff.append(song_arr[i]);</span><br><span class="line">                <span class="keyword">if</span>((i &lt; song_arr.length-<span class="number">1</span>) &amp;&amp; (song_arr[i+<span class="number">1</span>] == <span class="string">&#x27;#&#x27;</span>))</span><br><span class="line">                    buff.append(song_arr[++i]);</span><br><span class="line">                song += buff.toString();</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                song_idx++;   </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> idx = song.indexOf(m);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>((last_time &lt; duration) &amp;&amp; (idx != -<span class="number">1</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span>(idx != -<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(song.length() &gt; idx+m.length())</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(song.charAt(idx+m.length()) == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            idx = song.indexOf(m, idx+m.length());</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; </span><br><span class="line">                    idx = song.indexOf(m, idx+m.length());</span><br><span class="line">                    answer = info_arr[<span class="number">2</span>];</span><br><span class="line">                    last_time = duration;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 곡을 찾아내기 위해 크게 3가지 과정을 거칠 것이다. 1. 재생 시간을 계산한다. 2. 곡을 재생 시간만큼 만든다. 3. 네오가 기억하는 음과 비교하여 그 곡이 맞는지 확인한다.</p>
+<p>우선 1번과정부터 살펴보자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String[] info_arr = info.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">String[] start_t = info_arr[<span class="number">0</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">String[] end_t = info_arr[<span class="number">1</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> start_m = Integer.parseInt(start_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(start_t[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">int</span> end_m = Integer.parseInt(end_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(end_t[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">int</span> duration = end_m - start_m;</span><br></pre></td></tr></table></figure>
+<p>재생 시간을 계산하는 방법은 쉽다 모두 분 단위로 변환한 뒤, 종료시각에서 재생시각을 빼면 된다.</p>
+<p>2번과정으로 넘어가보자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">String[] split_by_pound_arr = info_arr[<span class="number">3</span>].split(<span class="string">&quot;#&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> code_cnt = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(String pound_str : split_by_pound_arr)</span><br><span class="line">&#123;</span><br><span class="line">    String[] codes = pound_str.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(String code : codes)</span><br><span class="line">        code_cnt++;</span><br><span class="line">&#125;</span><br><span class="line">code_cnt--;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> repeat = duration/code_cnt;</span><br><span class="line"><span class="keyword">int</span> song_end = duration%code_cnt;</span><br><span class="line">String song = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; repeat; i++)</span><br><span class="line">&#123;</span><br><span class="line">    song += info_arr[<span class="number">3</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span>[] song_arr = info_arr[<span class="number">3</span>].toCharArray();</span><br><span class="line"><span class="keyword">int</span> song_idx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; song_arr.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(song_idx == song_end)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    buff.append(song_arr[i]);</span><br><span class="line">    <span class="keyword">if</span>((i &lt; song_arr.length-<span class="number">1</span>) &amp;&amp; (song_arr[i+<span class="number">1</span>] == <span class="string">&#x27;#&#x27;</span>))</span><br><span class="line">        buff.append(song_arr[++i]);</span><br><span class="line">    song += buff.toString();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    song_idx++;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>곡을 재생시간만큼 만들기 위해서 #에 대한 처리가 필요하다. 일단 #을 제외하면 전체 계이름 개수를 알 수 있다. #을 기준으로 문자열을 쪼갠 뒤, 전체 계이름 개수를 구한다. 그리고 repeat와 song_end를 구한다. repeat는 전체 노래가 몇 번 반복하는지 알려주는 변수이다. 나누기 연산을 통해 구할 수 있다. song_end는 중간에서 노래가 멈출 경우 몇번째 음에서 멈추는지 알려주는 변수이다. 이는 나머지 연산을 통해 구할 수 있다.</p>
+<p>repeat수 만큼 전체 문자열을 song에 더해주고 두번째 for문은 song_idx가 song_end에 도달할 때까지 #을 고려하여 song에 계이름을 더해준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> idx = song.indexOf(m);</span><br><span class="line">            </span><br><span class="line"><span class="keyword">if</span>((last_time &lt; duration) &amp;&amp; (idx != -<span class="number">1</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(idx != -<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(song.length() &gt; idx+m.length())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(song.charAt(idx+m.length()) == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                idx = song.indexOf(m, idx+m.length());</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        idx = song.indexOf(m, idx+m.length());</span><br><span class="line">        answer = info_arr[<span class="number">2</span>];</span><br><span class="line">        last_time = duration;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이제 만든 노래를 비교해보면 된다. 여태까지 제일 길었떤 재생 시간을 저장한 last_time이 duration보다 작고, 네오가 기억한 음이 포함되어 있다면 if문 안으로 들어간다. 이 때, 처리해주지 못하는 케이스가 있는데 맨 마지막에 #이 붙는 경우이다. 이 경우 indexOf로 찾은 값에 m의 길이를 더해 #이 있으면 불일치로 간주하면 된다. 네오의 음과 일치하는 구절이 여러 곳일 수 있기 때문에 idx는 루프를 돌 때 마다 업데이트한다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/previous_song.png" width="290" height="530">
+</center>
+<p><br> categories: [Problem Solving, Programmers, Level2]</p>
+<p>#을 처리하는 것에서 많이 헤맸는데, 다른 사람들의 풀이를 보니 C#같은 문자열을 c로 바꾸어 문제를 간단하게 풀었다. 나도 그런 아이디어가 나도록 훈련해야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/02/Candidate-Key/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/02/Candidate-Key/" class="post-title-link" itemprop="url">후보키</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-02 14:30:00" itemprop="dateCreated datePublished" datetime="2021-02-02T14:30:00+09:00">2021-02-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:54:09" itemprop="dateModified" datetime="2021-04-01T17:54:09+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>릴레이션이 주어질 때, 후보키가 될 수 있는 경우의 수를 구하는 문제이다. 후보키에 대한 자세한 설명은 문제 원문에 주어졌으니 참고하길 바란다.</p>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42890#qna">문제 링크</a></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CandidateKey</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 후보키</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[][] table;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> answer;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;String&gt; keys = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[][] relation = &#123;</span><br><span class="line">            &#123;<span class="string">&quot;b&quot;</span>,<span class="string">&quot;2&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;b&quot;</span>,<span class="string">&quot;2&quot;</span>,<span class="string">&quot;7&quot;</span>,<span class="string">&quot;1&quot;</span>,<span class="string">&quot;b&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;1&quot;</span>,<span class="string">&quot;0&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;8&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;7&quot;</span>,<span class="string">&quot;5&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;9&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;3&quot;</span>,<span class="string">&quot;0&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="string">&quot;f&quot;</span>,<span class="string">&quot;9&quot;</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        answer = <span class="number">0</span>;</span><br><span class="line">        table = <span class="keyword">new</span> String[relation.length][relation[<span class="number">0</span>].length];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; relation.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; relation[<span class="number">0</span>].length; j++)</span><br><span class="line">                table[i][j] = relation[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">1</span>;</span><br><span class="line">        String idx = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>(k &lt;= relation[<span class="number">0</span>].length)</span><br><span class="line">            ReturnIndex(<span class="number">0</span>, k++, idx, -<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnIndex</span><span class="params">(<span class="keyword">int</span> size, <span class="keyword">int</span> k, String idx, <span class="keyword">int</span> start_idx)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(size == k)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; table.length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                String[] arr = idx.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">                StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                <span class="keyword">for</span>(String s : arr)</span><br><span class="line">                &#123;</span><br><span class="line">                    buff.append(table[i][Integer.parseInt(s)]);</span><br><span class="line">                    buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(map.getOrDefault(buff.toString(), <span class="number">0</span>) != <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    map.clear();</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                map.put(buff.toString(), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(String s : keys)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">char</span>[] key = s.toCharArray();</span><br><span class="line">                <span class="keyword">char</span>[] idx_arr = idx.toCharArray();</span><br><span class="line">                Arrays.sort(key);</span><br><span class="line">                Arrays.sort(idx_arr);</span><br><span class="line">                <span class="keyword">int</span> k_i = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; idx_arr.length; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(key[k_i] == idx_arr[i])</span><br><span class="line">                    &#123;</span><br><span class="line">                        k_i++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(k_i == key.length)</span><br><span class="line">                        <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            answer++;</span><br><span class="line">            keys.add(idx);</span><br><span class="line">            map.clear();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = start_idx+<span class="number">1</span>; i &lt; table[<span class="number">0</span>].length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnIndex(size+<span class="number">1</span>, k, idx+String.valueOf(i), i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 긴 편인데 과정을 살펴보면 후보키가 될 수 있는 모든 조합을 만들어보고 검사하는 것이다. 원소의 개수가 k개인 부분집합을 검사해주는 함수를 만들어서 k를 1부터 행의 갯수만큼 돌려보면 모든 경우의 수를 다 볼 수 있다. 메인쪽은 간단하기 때문에 함수만 보도록하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnIndex</span><span class="params">(<span class="keyword">int</span> size, <span class="keyword">int</span> k, String idx, <span class="keyword">int</span> start_idx)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size == k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; table.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = idx.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span>(String s : arr)</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(table[i][Integer.parseInt(s)]);</span><br><span class="line">                buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(map.getOrDefault(buff.toString(), <span class="number">0</span>) != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                map.clear();</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(buff.toString(), <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(String s : keys)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span>[] key = s.toCharArray();</span><br><span class="line">            <span class="keyword">char</span>[] idx_arr = idx.toCharArray();</span><br><span class="line">            <span class="keyword">int</span> k_i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; idx_arr.length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(key[k_i] == idx_arr[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    k_i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(k_i == key.length)</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        answer++;</span><br><span class="line">        keys.add(idx);</span><br><span class="line">        map.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start_idx+<span class="number">1</span>; i &lt; table[<span class="number">0</span>].length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ReturnIndex(size+<span class="number">1</span>, k, idx+String.valueOf(i), i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>매개변수에 대해 설명을 하자면 size는 현재 집합에 들어가있는 원소의 개수, k는 만들고자 하는 부분집합의 크기이다. idx는 부분집합에 들어가있는 원소를 나타낸다. 가령 1,2행으로 만들고자 한다면 idx에는 "12"가 들어가있다. start_idx는 이제부터 집어넣을 행을 나타낸다. 중복을 없애기 위해 strat_idx를 넣었다고 보면 된다.</p>
+<p>종료조건을 먼저 생각해보자 size가 k가 되면 일단 튜플을 고유하게 분류할 수 있는지 봐야한다. 이를 위해 map을 활용하였다. idx에 있는 행번호를 가져와 map의 키를 생성한다. 이 예제에서 만약 idx가 "12"라면 "b 2", "b 2", "1 0", "7 5","3 0"으로 만들어질 것이다. 키를 만들 때 공백을 넣어주는데 이유가 있다. 수학11점과 과학1점, 과학11점과 수학1점은 다르기 때문이다. 숫자만 합하면 111이지만 다른 정보이기 때문에 다른 키 값으로 간주된다.</p>
+<p>키를 만들 때마다 맵에서 똑같은 키 값이 존재하는 지 확인한다. 만약 똑같은 키값이 있다면 1이 반환되므로 이때는 맵을 클리어한 뒤 바로 함수를 종료한다.</p>
+<p>맵에서 중복되지 않으면 고유성을 통과했으니 이제 유일성을 확인할 차례이다. 이 부분에서 꽤나 골머리를 앓았는데 contains를 쓰면 틀린다는 사실을 몰랐기 때문이다. "abcd"에서 "ad"는 부분집합이지만 contains로는 이를 판별할 수 없다. 그래서 이를 위한 처리를 해야한다. 두 문자열을 문자배열로 바꾼 뒤, 이미 있는 키들의 부분집합 관계인지 하나하나 확인하는 코드를 짰다. 만약 key가 idx의 부분집합이라면, k_i가 key의 크기가 될 것이고 이 때 바로 함수를 종료한다.</p>
+<p>유일성도 통과가 되었다면, 정답을 1증가하고 키값에 idx를 추가한다. 맵도 전부 지워준다.</p>
+<p>만약 사이즈를 만족하지 못했다면 원소를 더 넣어봐야 하므로 start_idx+1부터 행의 끝까지 함수를 재호출한다.</p>
+<p>최종시간복잡도는 행의 길이를 n이라 했을 때 모든 부분집합을 따져보므로 <span class="math inline">\(O(n^n)\)</span>이다. 살인적인 시간복잡도지만 테스트케이스 크기가 크지 않다는 것에 주목하자.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/candidate_key.png" width="290" height="530">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/01/Open-Chat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/01/Open-Chat/" class="post-title-link" itemprop="url">오픈채팅방</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-01 15:12:00" itemprop="dateCreated datePublished" datetime="2021-02-01T15:12:00+09:00">2021-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:58:30" itemprop="dateModified" datetime="2021-04-01T17:58:30+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>오픈채팅방에 사람들이 들어왔다 나가는 관리자 창을 작성하는 프로그램을 만드는 문제이다. 닉네임간에 중복을 허용하며, 이름을 바꾸면 바꾼 시점부터가 아니라 모든 시점의 닉네임이 변경된다. 유저들은 uid로 구분한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OpenChatting</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 오픈채팅방</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String[] record = &#123;</span><br><span class="line">            <span class="string">&quot;Enter uid1234 Muzi&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Enter uid4567 Prodo&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Leave uid1234&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Enter uid1234 Prodo&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Change uid4567 Ryan&quot;</span>&#125;;</span><br><span class="line">        ArrayList&lt;String&gt; answer = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">     </span><br><span class="line">        <span class="keyword">for</span>(String s : record)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!arr[<span class="number">0</span>].equals(<span class="string">&quot;Leave&quot;</span>))</span><br><span class="line">                map.put(arr[<span class="number">1</span>], arr[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span>(String s : record)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            </span><br><span class="line">            StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">if</span>(!arr[<span class="number">0</span>].equals(<span class="string">&quot;Change&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(map.get(arr[<span class="number">1</span>]));</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">if</span>(arr[<span class="number">0</span>].equals(<span class="string">&quot;Enter&quot;</span>))</span><br><span class="line">                    buff.append(<span class="string">&quot;님이 들어왔습니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(arr[<span class="number">0</span>].equals(<span class="string">&quot;Leave&quot;</span>))</span><br><span class="line">                    buff.append(<span class="string">&quot;님이 나갔습니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">                answer.add(buff.toString());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 문제에서 원하는 것은 최종 단톡방의 관리창이기 때문에 중간에 몇 번을 바꾸었든 최종적으로 바꾼 닉네임만 가지고 있으면 된다. 필자는 map을 활용하여 문제를 풀고자 한다. map의 키는 uid이며, 값은 닉네임이다. 배열을 순회하며 Enter나 Change가 들어오면 맵에 값을 추가한다. 이미 있는 값이면 최근 값으로 업데이트한다.</p>
+<p>이 과정을 끝내면 각 uid마다 최종 닉네임이 무엇인지 알 수 있다. 이제 이를 활용하여 문제에서 원하는 형식으로 답을 내면 된다. 들어오고 나간다는 문자에 따라 적절한 형식을 버퍼에 삽입하고 이를 어레이리스트에 삽입한다.</p>
+<p>최종시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/open_chatting.png" width="290" height="500">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

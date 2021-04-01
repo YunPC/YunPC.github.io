@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yunpc.github.io/images/programmers/N_express.png">
 <meta property="article:published_time" content="2021-02-09T07:42:00.000Z">
-<meta property="article:modified_time" content="2021-04-01T08:10:02.434Z">
+<meta property="article:modified_time" content="2021-04-01T08:52:06.135Z">
 <meta property="article:author" content="YunPC">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yunpc.github.io/images/programmers/N_express.png">
@@ -202,14 +202,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -287,7 +287,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:10:02" itemprop="dateModified" datetime="2021-04-01T17:10:02+09:00">2021-04-01</time>
+        <time title="Modified: 2021-04-01 17:52:06" itemprop="dateModified" datetime="2021-04-01T17:52:06+09:00">2021-04-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -325,7 +325,7 @@
 <hr />
 <p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NExpress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 n으로 표현</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> answer = -<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>, number = <span class="number">17</span>;</span><br><span class="line"></span><br><span class="line">        ReturnMin(<span class="number">0</span>, <span class="number">0</span>, number, N);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnMin</span><span class="params">(<span class="keyword">int</span> res, <span class="keyword">int</span> cnt, <span class="keyword">int</span> number, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = N;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">8</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(res == number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer == -<span class="number">1</span> || answer &gt; cnt)</span><br><span class="line">                answer = cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnMin(res+temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res-temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res*temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res/temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line"></span><br><span class="line">                temp = temp*<span class="number">10</span>+N;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다른 사람의 코드를 찾아서 쓴 코드이다. 필자도 dfs로 풀 생각을 하였는데 <code>temp</code>부분에서 실수를 했다. 가령 1111+1111는 2222가 나와야 하는데 필자는 1111+1111을 계산하지 않고 끝내버리는 오류가 있었기 때문이다. 문제점을 알았으니 다행이다. 일단 코드 설명을 해보면 <code>res</code>는 현재까지 계산한 값을 의미하고 <code>cnt</code>는 사용횟수이다. <code>number</code>는 만들고자 하는 값이다.</p>
 <p>재귀의 종료 조건은 사용횟수가 8을 넘어가면 답이 없는 것이므로 <code>answer</code>에 -1을 한다. 다른 경우는 8번안에 숫자가 만들어진다면 <code>answer</code>가 -1이거나 <code>cnt</code>보다 <code>answer</code>가 큰 경우 답을 <code>cnt</code>로 한다. 그것도 아니라면 사칙연산을 추가로 진행해야 한다. 사용할 수 있는 횟수만큼 <code>N</code>을 뒤에 붙여가며 더해간다. 예를들면 5를 4번쓸 수 있으면 [5,55,555,5555]로 사칙연산을 하는 것이다.</p>
-<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 \(O(4^8)\)이므로 \(O(1)\)로 나타낼 수 있다.</p>
+<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 <span class="math inline">\(O(4^8)\)</span>이므로 <span class="math inline">\(O(1)\)</span>로 나타낼 수 있다.</p>
 <h2 id="테스트">테스트</h2>
 <p><br></p>
 <center>
