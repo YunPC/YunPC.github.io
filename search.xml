@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>124 나라의 숫자</title>
-    <url>/2020/12/31/124Contry-Num/</url>
-    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
-<hr />
-<p>10진법을 1,2,4에 존재하는 나라의 규칙에 따라 새로 나타내는 문제이다. 규칙을 찾아내는 것이 관건인데, 필자는 다른 사람들이랑 다른 관점으로 풀었다(코드 길이는 훨씬 길다).</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Country124Num</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 124 나라의 숫자</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">6</span>;</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> r = n % <span class="number">3</span>;</span><br><span class="line">            n/=<span class="number">3</span>;</span><br><span class="line">            buff.append(String.valueOf(r));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] arr = buff.reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = arr.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> p = i;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;=<span class="number">0</span>; j--)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(arr[j] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        p = j;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(p != i)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k = p; k &lt; i; k++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">int</span> pre_num = Integer.parseInt(String.valueOf(arr[k]));</span><br><span class="line">                        <span class="keyword">char</span> pre_char = Character.forDigit(pre_num-<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">                        arr[k] = pre_char;</span><br><span class="line">                        </span><br><span class="line">                        <span class="keyword">int</span> aft_num = Integer.parseInt(String.valueOf(arr[k+<span class="number">1</span>]));</span><br><span class="line">                        <span class="keyword">char</span> aft_char = Character.forDigit(aft_num+<span class="number">3</span>, <span class="number">10</span>);</span><br><span class="line">                        arr[k+<span class="number">1</span>] = aft_char;</span><br><span class="line">                        </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start_idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                start_idx = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start_idx; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">                arr[i] = <span class="string">&#x27;4&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String answer = <span class="keyword">new</span> String(arr);</span><br><span class="line">        answer = answer.substring(start_idx, arr.length);</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 부분부분 따라가보자. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> r = n % <span class="number">3</span>;</span><br><span class="line">    n/=<span class="number">3</span>;</span><br><span class="line">    buff.append(String.valueOf(r));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span>[] arr = buff.reverse().toString().toCharArray();</span><br></pre></td></tr></table></figure> 일단 정상적인 3진법으로 만든다. 기본적으로 이 문제는 3진법의 응용문제이다. 왜냐하면 사용하는 숫자가 총 3개이기 때문이다. 이를 대응관계로 보면 3진법의 수는 {0, 1, 2}인데, 이 문제의 경우 {4, 1, 2}로 대응된다. 그러면 3진법으로 바꿔서 4,1,2로만 바꾸면 되지 않느냐 할 수 있는데 그럴 수 없다. 3의 배수가 아닌 수는 앞서 말했던 방법이 통한다. 하지만 6을 예시로 들어보자 6의 경우 3진법으로 바꾸면 20이다. 이를 대응 관계에 비춰 바꿔보면 24이지만, 정답은 14이다. 0이 존재하지 않기 때문에 이를 처리하기 위한 방법이 필요하다. 실은 이 부분에서 꽤 고생을했는데 필자가 생각한 방법은 이렇다. 1. 3진수로 바꾼 배열을 뒤에서부터 보면서 0이 있는지 확인한다. 2. 0이 있으면 앞에서부터 빌려올 수 있는 수가 있는지 확인한다. 3. 빌려올 수 있는 수가 있다면 빌려온다. 이 때 내려받는 수는 10진법에선 10이지만, 지금은 3진법이므로 3이 되겠다. 4. 3을 빌려준 수는 1 깎인다. 5. 0을 다 없애고 나면 3인 수를 4로 바꿔준다.</p>
-<p>이해를 돕기 위해 그림을 첨부한다.</p>
-<center>
-<img src="/images/programmers/124country_picture.jpeg" width="414" height="660">
-</center>
-<p>초등학생 때 했던 10진수 빼기를 생각하면 된다.</p>
-<p>이 부분에서 시간복잡도는 3으로 나눴을 때의 자릿수만큼이므로 <span class="math inline">\(O(log3(n))\)</span>이다.</p>
-<p>말이 길었는데 이것만 이해하면 나머지는 코드만 읽으면 된다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = arr.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> p = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;=<span class="number">0</span>; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                p = j;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p != i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = p; k &lt; i; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> pre_num = Integer.parseInt(String.valueOf(arr[k]));</span><br><span class="line">                <span class="keyword">char</span> pre_char = Character.forDigit(pre_num-<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">                arr[k] = pre_char;</span><br><span class="line">                        </span><br><span class="line">                <span class="keyword">int</span> aft_num = Integer.parseInt(String.valueOf(arr[k+<span class="number">1</span>]));</span><br><span class="line">                <span class="keyword">char</span> aft_char = Character.forDigit(aft_num+<span class="number">3</span>, <span class="number">10</span>);</span><br><span class="line">                arr[k+<span class="number">1</span>] = aft_char;</span><br><span class="line">                        </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 3진수로 바꾼 수에서 뒤에서부터 보면서 0이 있는지 확인한다. 만약 0이 있다면, 자신의 앞에 있는 수에서 3을 빌릴 수 있는지 확인한다. 3을 빌릴 수 있는 숫자가 발견되면, 그 인덱스를 기억해 놨다가. 빌리고 빼는 것을 반복한다. 위 코드에서 보이는 k를 iterator로 쓰는 for문이 바로 그 부분이다(3,4번과정). 이 분의 시간 복잡도는 <span class="math inline">\(O(log3(n))\)</span>인데, 해봤자 <span class="math inline">\(2log3(n)\)</span>이기 때문이다. 앞쪽에서 빌리면 해당수와 앞쪽 사이에는 0이 절대로 존재할 수 없기 때문인데, 혹시 더 이해가 안간다면 이메일을 통해 언제든지 질문하기를 바란다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        start_idx = i;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">            </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = start_idx; i &lt; arr.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">        arr[i] = <span class="string">&#x27;4&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 거의 다왔다. 4,5과정을 거쳐도 코드적으로 해결해야하는 것이 있는데 자릿수가 있다. 아까 그림을 보면 알 수 있듯이 원래 9의 자릿수는 3자리였지만 변환 후의 자릿수는 2자릿수로 문자열을 편집해줄 필요가 있다. 앞에서 부터 0이 안나오는 인덱스를 저장해두어 나중에 substring으로 잘라준다. 그리고 3을 4로 치환한다(5번과정). 이 부분도 시간복잡도는 <span class="math inline">\(O(log3(n))\)</span>이다.</p>
-<p>따라서 최종 시간복잡도는 <span class="math inline">\(O(log3(n))\)</span> 이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/124_country.png" width="350" height="500">
-</center>
-<p><br></p>
-<p>60줄을 넘었는데 다른 풀이는 고작 10줄안에 끝나서 절망했다. 하지만 할 수 있는건 계속 문제를 풀어나가는 수 밖에 없다. n에 나머지 연산을 해주고 나눌 때 3의 배수이면 -1을 해줬는데, 자릿수를 올리지 않기 위해서 그랬다고 하지만, 경험적으로 풀어봐야 이해할듯 말듯하고, 원리에 대해 명쾌하게 설명해주는 블로그가 없어서 아쉬웠다. 이 부분은 좀 더 고민해보고 이 포스트에 보충해서 쓰도록 하겠다.</p>
-]]></content>
-      <categories>
-        <category>Problem Solving</category>
-        <category>Programmers</category>
-        <category>Level2</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2xn 타일링</title>
     <url>/2021/02/09/2xn-Tiling/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -182,6 +151,60 @@
       </categories>
   </entry>
   <entry>
+    <title>124 나라의 숫자</title>
+    <url>/2020/12/31/124Contry-Num/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>10진법을 1,2,4에 존재하는 나라의 규칙에 따라 새로 나타내는 문제이다. 규칙을 찾아내는 것이 관건인데, 필자는 다른 사람들이랑 다른 관점으로 풀었다(코드 길이는 훨씬 길다).</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Country124Num</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 124 나라의 숫자</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">6</span>;</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> r = n % <span class="number">3</span>;</span><br><span class="line">            n/=<span class="number">3</span>;</span><br><span class="line">            buff.append(String.valueOf(r));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] arr = buff.reverse().toString().toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = arr.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> p = i;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;=<span class="number">0</span>; j--)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(arr[j] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        p = j;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(p != i)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k = p; k &lt; i; k++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">int</span> pre_num = Integer.parseInt(String.valueOf(arr[k]));</span><br><span class="line">                        <span class="keyword">char</span> pre_char = Character.forDigit(pre_num-<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">                        arr[k] = pre_char;</span><br><span class="line">                        </span><br><span class="line">                        <span class="keyword">int</span> aft_num = Integer.parseInt(String.valueOf(arr[k+<span class="number">1</span>]));</span><br><span class="line">                        <span class="keyword">char</span> aft_char = Character.forDigit(aft_num+<span class="number">3</span>, <span class="number">10</span>);</span><br><span class="line">                        arr[k+<span class="number">1</span>] = aft_char;</span><br><span class="line">                        </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start_idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                start_idx = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = start_idx; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">                arr[i] = <span class="string">&#x27;4&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String answer = <span class="keyword">new</span> String(arr);</span><br><span class="line">        answer = answer.substring(start_idx, arr.length);</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 부분부분 따라가보자. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> r = n % <span class="number">3</span>;</span><br><span class="line">    n/=<span class="number">3</span>;</span><br><span class="line">    buff.append(String.valueOf(r));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span>[] arr = buff.reverse().toString().toCharArray();</span><br></pre></td></tr></table></figure> 일단 정상적인 3진법으로 만든다. 기본적으로 이 문제는 3진법의 응용문제이다. 왜냐하면 사용하는 숫자가 총 3개이기 때문이다. 이를 대응관계로 보면 3진법의 수는 {0, 1, 2}인데, 이 문제의 경우 {4, 1, 2}로 대응된다. 그러면 3진법으로 바꿔서 4,1,2로만 바꾸면 되지 않느냐 할 수 있는데 그럴 수 없다. 3의 배수가 아닌 수는 앞서 말했던 방법이 통한다. 하지만 6을 예시로 들어보자 6의 경우 3진법으로 바꾸면 20이다. 이를 대응 관계에 비춰 바꿔보면 24이지만, 정답은 14이다. 0이 존재하지 않기 때문에 이를 처리하기 위한 방법이 필요하다. 실은 이 부분에서 꽤 고생을했는데 필자가 생각한 방법은 이렇다. 1. 3진수로 바꾼 배열을 뒤에서부터 보면서 0이 있는지 확인한다. 2. 0이 있으면 앞에서부터 빌려올 수 있는 수가 있는지 확인한다. 3. 빌려올 수 있는 수가 있다면 빌려온다. 이 때 내려받는 수는 10진법에선 10이지만, 지금은 3진법이므로 3이 되겠다. 4. 3을 빌려준 수는 1 깎인다. 5. 0을 다 없애고 나면 3인 수를 4로 바꿔준다.</p>
+<p>이해를 돕기 위해 그림을 첨부한다.</p>
+<center>
+<img src="/images/programmers/124country_picture.jpeg" width="414" height="660">
+</center>
+<p>초등학생 때 했던 10진수 빼기를 생각하면 된다.</p>
+<p>이 부분에서 시간복잡도는 3으로 나눴을 때의 자릿수만큼이므로 <span class="math inline">\(O(log3(n))\)</span>이다.</p>
+<p>말이 길었는데 이것만 이해하면 나머지는 코드만 읽으면 된다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = arr.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> p = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;=<span class="number">0</span>; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                p = j;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p != i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = p; k &lt; i; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> pre_num = Integer.parseInt(String.valueOf(arr[k]));</span><br><span class="line">                <span class="keyword">char</span> pre_char = Character.forDigit(pre_num-<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">                arr[k] = pre_char;</span><br><span class="line">                        </span><br><span class="line">                <span class="keyword">int</span> aft_num = Integer.parseInt(String.valueOf(arr[k+<span class="number">1</span>]));</span><br><span class="line">                <span class="keyword">char</span> aft_char = Character.forDigit(aft_num+<span class="number">3</span>, <span class="number">10</span>);</span><br><span class="line">                arr[k+<span class="number">1</span>] = aft_char;</span><br><span class="line">                        </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 3진수로 바꾼 수에서 뒤에서부터 보면서 0이 있는지 확인한다. 만약 0이 있다면, 자신의 앞에 있는 수에서 3을 빌릴 수 있는지 확인한다. 3을 빌릴 수 있는 숫자가 발견되면, 그 인덱스를 기억해 놨다가. 빌리고 빼는 것을 반복한다. 위 코드에서 보이는 k를 iterator로 쓰는 for문이 바로 그 부분이다(3,4번과정). 이 분의 시간 복잡도는 <span class="math inline">\(O(log3(n))\)</span>인데, 해봤자 <span class="math inline">\(2log3(n)\)</span>이기 때문이다. 앞쪽에서 빌리면 해당수와 앞쪽 사이에는 0이 절대로 존재할 수 없기 때문인데, 혹시 더 이해가 안간다면 이메일을 통해 언제든지 질문하기를 바란다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] != <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        start_idx = i;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">            </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = start_idx; i &lt; arr.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">        arr[i] = <span class="string">&#x27;4&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 거의 다왔다. 4,5과정을 거쳐도 코드적으로 해결해야하는 것이 있는데 자릿수가 있다. 아까 그림을 보면 알 수 있듯이 원래 9의 자릿수는 3자리였지만 변환 후의 자릿수는 2자릿수로 문자열을 편집해줄 필요가 있다. 앞에서 부터 0이 안나오는 인덱스를 저장해두어 나중에 substring으로 잘라준다. 그리고 3을 4로 치환한다(5번과정). 이 부분도 시간복잡도는 <span class="math inline">\(O(log3(n))\)</span>이다.</p>
+<p>따라서 최종 시간복잡도는 <span class="math inline">\(O(log3(n))\)</span> 이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/124_country.png" width="350" height="500">
+</center>
+<p><br></p>
+<p>60줄을 넘었는데 다른 풀이는 고작 10줄안에 끝나서 절망했다. 하지만 할 수 있는건 계속 문제를 풀어나가는 수 밖에 없다. n에 나머지 연산을 해주고 나눌 때 3의 배수이면 -1을 해줬는데, 자릿수를 올리지 않기 위해서 그랬다고 하지만, 경험적으로 풀어봐야 이해할듯 말듯하고, 원리에 대해 명쾌하게 설명해주는 블로그가 없어서 아쉬웠다. 이 부분은 좀 더 고민해보고 이 포스트에 보충해서 쓰도록 하겠다.</p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level2</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>문자열 내림차순으로 배치하기</title>
+    <url>/2020/12/28/Arrange-String-Descending/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>주어진 문자열을 내림차순으로 정렬하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">strDesOrder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;Zbcdefg&quot;</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = <span class="keyword">new</span> <span class="keyword">char</span>[s.length()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i] = s.charAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(arr);</span><br><span class="line">        String answer = <span class="keyword">new</span> StringBuilder(<span class="keyword">new</span> String(arr)).reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 문자열을 char[]로 쪼개어 정렬한 뒤, 역순으로 정렬하였다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/str_des_order.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>자바메소드 중 toCharArray()라는 메소드가 있었다. 앞으론 그 메소드를 활용하여 풀어야겠다.</p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
     <title>정수 내림차순으로 배치하기</title>
     <url>/2020/12/29/Arrange-Integer-Descending/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -219,6 +242,29 @@
 <img src="/images/programmers/get_average.png" width="350" height="500">
 </center>
 <p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>문자열 다루기 기본</title>
+    <url>/2020/12/28/Basic-String/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>주어진 문자열이 특정 조건을 만족하는지 확인하는 문제이다. 문자열은 4또는 6의 길이를 갖고 있어야하며, 전부 숫자로 이루어져 있어야한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HandleStr</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;a234&quot;</span>;</span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">4</span> || s.length() == <span class="number">6</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            answer = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">                <span class="keyword">int</span> ascii = (<span class="keyword">int</span>)c;</span><br><span class="line">                <span class="keyword">if</span>(c &gt; <span class="number">57</span> || c &lt; <span class="number">48</span>)</span><br><span class="line">                    answer = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 첫번째로 문자열의 길이가 4또는 6을 만족하는지 확인한다. 길이를 만족하면 true로 답을 바꾼다. 그 다음 조건으로 모든 문자열의 문자가 숫자인지 아스키코드로 확인한다. 만약 만족하지 않는 문자가 존재한다면 answer를 false로 바꾼다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/handle_str_basic.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>다른 사람의 풀이를 보니 NumberFormatException을 활용하여 문제를 푼 사람이 있었다. 문자열을 int로 파싱하는데 에러가 나면 answer를 false로 바꾸는 것이다.</p>
 ]]></content>
       <categories>
         <category>Problem Solving</category>
@@ -265,6 +311,29 @@
 <img src="/images/programmers/blind_phone_num.png" width="350" height="500">
 </center>
 <p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>문자열 내 마음대로 정렬하기</title>
+    <url>/2020/12/28/Arrange-String-Me/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>새로운 기준으로 문자열을 정렬하는 문제이다. 문자열의 n번째 문자를 기준으로 정렬하되, 같은 문자라면 전체 문자에서 사전 중 빠른 문자를 우선으로 한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortString</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String[] strings = &#123;<span class="string">&quot;abce&quot;</span>, <span class="string">&quot;abcd&quot;</span>, <span class="string">&quot;cdx&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span></span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(o1.charAt(n) &gt; o2.charAt(n))</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(o1.charAt(n) &lt; o2.charAt(n))</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 문제 그대로 comparator를 정의하여 sort했다. 최종적으로 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/sort_str_my.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>필자와 같이 비교하는 연산을 새로 정의하여 쓸 수도 있지만, 다른 사람 풀이 중에 흥미로운 게 있어서 여기에 적어둔다. 문자열 배열에 n번째 문자를 단어의 맨 앞에 추가하여 저장한다. 그리고 이를 정렬하면 따로 비교자를 정의하지 않고도 정렬을 할 수 있다.</p>
 ]]></content>
       <categories>
         <category>Problem Solving</category>
@@ -327,6 +396,31 @@
       </categories>
   </entry>
   <entry>
+    <title>시저 암호</title>
+    <url>/2020/12/29/Ciser-Code/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>시저 암호를 프로그래밍하는 문제이다. 시저 암호를 만드는 방법은 문자열을 아스키코드로 n만큼 미뤄서 만들면 된다. 가령 abc가 있고 2가 주어진다면 cde이런식으로 만들 수 있다. 문제에서 알파벳에 대해서만 만들고 공백은 건들지 말라 했으므로, 알파벳에 대해서만 처리를 해주면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CaesarCode</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 시저 암호</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;AB&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        StringBuffer buff = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> ascii = (<span class="keyword">int</span>) c;</span><br><span class="line">            <span class="keyword">if</span>(ascii &gt;= <span class="number">65</span> &amp;&amp; ascii &lt;= <span class="number">90</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ascii += n;</span><br><span class="line">                <span class="keyword">if</span>(ascii &gt; <span class="number">90</span>)</span><br><span class="line">                    ascii -= <span class="number">26</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ascii &gt;= <span class="number">97</span> &amp;&amp; ascii &lt;= <span class="number">122</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ascii += n;</span><br><span class="line">                <span class="keyword">if</span>(ascii &gt; <span class="number">122</span>)</span><br><span class="line">                    ascii -= <span class="number">26</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            buff.append(String.valueOf((<span class="keyword">char</span>) ascii));</span><br><span class="line">        &#125;</span><br><span class="line">        String answer = buff.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 문자열을 문자로 하나씩 뜯어서 본다. 만약 대문자라면 90을 넘어갈 경우 대문자 A로 돌아가야 한다. 따라서 첫번째 if문을 보면 대문자에 속할 경우 n을 더하고 Z의 아스키코드를 넘아가면 A로 돌아가게 하였다. 두번째 if문도 똑같은 원리로 하면 된다. 공백의 경우 아스키코드를 늘릴 필요가 없으므로 그대로 추가하면 된다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/ceasar_code.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>필자의 경우 26을 빼주는 식으로 했는데 조금 다르게 풀 수도 있다. 주어진 문자가 소문자인지 대문자인지 판별한 후에(자바에는 친절하게 이 메소드를 제공한다.) 만약 소문자라면</p>
+<p>((c - 'a')+n)%26 + 'a'</p>
+<p>이런식으로 구할 수도 있다.</p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
     <title>후보키</title>
     <url>/2021/02/02/Candidate-Key/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -358,6 +452,28 @@
       </categories>
   </entry>
   <entry>
+    <title>콜라츠 추측</title>
+    <url>/2020/12/30/Colatz-Guess/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>콜라츠 추측을 몇 번 반복해야 1이 나오는지 계산하는 문제이다. 짝수인 경우 2로 나누고, 홀수인 경우 3을 곱하고 1을 더한다. 500번을 계산해도 1이 안된다면 -1을 반환한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollatzGuess</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 콜라스 추측</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> ll = num;</span><br><span class="line">        <span class="keyword">while</span>(cnt &lt;= <span class="number">500</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ll == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ll % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">                ll /= <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ll = ll*<span class="number">3</span>+<span class="number">1</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">500</span>)</span><br><span class="line">            answer = cnt;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        System.out.print(answer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 문제에서 제시한대로 코드를 짜면 된다. cnt를 0으로 초기화하고, 짝수면 나누기, 홀수면 곱하기 더하기 연산을 하면된다. 중요한 부분은 int를 쓰지 않고 long을 쓴 것을 볼 수 있는데, 이유는 곱하기 연산을 하면서 int값을 초과할 수 있기 때문이다. 필자는 이것 때문에 한번 틀렸었다. 이 문제 정의에서 이 알고리즘의 시간복잡도는 <span class="math inline">\(O(1)\)</span>이다. 왜냐하면 500이라는 횟수가 최대 실행 횟수이기 때문이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/collatz_guess.png" width="350" height="500">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
     <title>카펫</title>
     <url>/2021/01/15/Carpet/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -378,28 +494,6 @@
         <category>Problem Solving</category>
         <category>Programmers</category>
         <category>Level2</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>콜라츠 추측</title>
-    <url>/2020/12/30/Colatz-Guess/</url>
-    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
-<hr />
-<p>콜라츠 추측을 몇 번 반복해야 1이 나오는지 계산하는 문제이다. 짝수인 경우 2로 나누고, 홀수인 경우 3을 곱하고 1을 더한다. 500번을 계산해도 1이 안된다면 -1을 반환한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollatzGuess</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 콜라스 추측</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> ll = num;</span><br><span class="line">        <span class="keyword">while</span>(cnt &lt;= <span class="number">500</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ll == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ll % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">                ll /= <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ll = ll*<span class="number">3</span>+<span class="number">1</span>;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">500</span>)</span><br><span class="line">            answer = cnt;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        System.out.print(answer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 문제에서 제시한대로 코드를 짜면 된다. cnt를 0으로 초기화하고, 짝수면 나누기, 홀수면 곱하기 더하기 연산을 하면된다. 중요한 부분은 int를 쓰지 않고 long을 쓴 것을 볼 수 있는데, 이유는 곱하기 연산을 하면서 int값을 초과할 수 있기 때문이다. 필자는 이것 때문에 한번 틀렸었다. 이 문제 정의에서 이 알고리즘의 시간복잡도는 <span class="math inline">\(O(1)\)</span>이다. 왜냐하면 500이라는 횟수가 최대 실행 횟수이기 때문이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/collatz_guess.png" width="350" height="500">
-</center>
-<p><br></p>
-]]></content>
-      <categories>
-        <category>Problem Solving</category>
-        <category>Programmers</category>
-        <category>Level1</category>
       </categories>
   </entry>
   <entry>
@@ -460,6 +554,29 @@
       </categories>
   </entry>
   <entry>
+    <title>올바른 괄호</title>
+    <url>/2021/01/19/Correct-Bracket/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>열린괄호와 닫힌괄호로 이루어진 문자열이 올바른 괄호식인지 확인하는 문제이다. 올바른 괄호식이란 열린 괄호와 닫힌 괄호의 수가 동일해야 하며, 열렸으면 반드시 닫혀야한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorrectBracket</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 올바른 괄호</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;()()&quot;</span>;</span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> open = <span class="number">0</span>, close = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">                open++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                close++;</span><br><span class="line">            <span class="keyword">if</span>(open &lt; close)</span><br><span class="line">            &#123;</span><br><span class="line">                answer = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(open != close)</span><br><span class="line">            answer = <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 열린괄호의 개수를 저장할 변수 open과 닫힌 괄호의 개수를 저장할 변수 close를 선언한다. 이들의 수를 세나가며 만약 close가 open보다 많아지는 경우면 모든 열린괄호가 짝지어지는 것이 아니므로 false를 반환한다. 반복문을 탈출했어도 열린괄호가 닫힌 괄호보다 많은 경우가 있으므로 이를 체크하기 위해 둘의 수가 동일한지 확인한다.</p>
+<p>최종 시간복잡도는 문자열의 길이를 n이라 할 때, <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/correct_bracket.png" width="290" height="530">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level2</category>
+      </categories>
+  </entry>
+  <entry>
     <title>단속 카메라</title>
     <url>/2021/03/04/Control-Camera/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -490,29 +607,6 @@
         <category>Problem Solving</category>
         <category>Programmers</category>
         <category>Level3</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>올바른 괄호</title>
-    <url>/2021/01/19/Correct-Bracket/</url>
-    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
-<hr />
-<p>열린괄호와 닫힌괄호로 이루어진 문자열이 올바른 괄호식인지 확인하는 문제이다. 올바른 괄호식이란 열린 괄호와 닫힌 괄호의 수가 동일해야 하며, 열렸으면 반드시 닫혀야한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorrectBracket</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 올바른 괄호</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;()()&quot;</span>;</span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> open = <span class="number">0</span>, close = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">                open++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                close++;</span><br><span class="line">            <span class="keyword">if</span>(open &lt; close)</span><br><span class="line">            &#123;</span><br><span class="line">                answer = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(open != close)</span><br><span class="line">            answer = <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 열린괄호의 개수를 저장할 변수 open과 닫힌 괄호의 개수를 저장할 변수 close를 선언한다. 이들의 수를 세나가며 만약 close가 open보다 많아지는 경우면 모든 열린괄호가 짝지어지는 것이 아니므로 false를 반환한다. 반복문을 탈출했어도 열린괄호가 닫힌 괄호보다 많은 경우가 있으므로 이를 체크하기 위해 둘의 수가 동일한지 확인한다.</p>
-<p>최종 시간복잡도는 문자열의 길이를 n이라 할 때, <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/correct_bracket.png" width="290" height="530">
-</center>
-<p><br></p>
-]]></content>
-      <categories>
-        <category>Problem Solving</category>
-        <category>Programmers</category>
-        <category>Level2</category>
       </categories>
   </entry>
   <entry>
@@ -596,6 +690,28 @@
       </categories>
   </entry>
   <entry>
+    <title>내적</title>
+    <url>/2020/12/29/Dot-Product/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>배열 a와 b가 주어질 때 내적을 구하는 문제이다. 내적은 같은 인덱스로 둘을 짝지어 곱한 뒤, 전부 합산하면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DotProduct</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 내적</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] b = &#123;-<span class="number">3</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; i++)</span><br><span class="line">            answer += a[i]*b[i];</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> a와 b의 길이는 같으므로 둘 중 하나를 기준으로 배열을 순회하며 a와 b값을 곱해 더해나간다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/dot_product.png" width="400" height="300">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
     <title>이중우선순위큐</title>
     <url>/2021/03/05/Double-Priority-Queue/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -673,6 +789,29 @@
       </categories>
   </entry>
   <entry>
+    <title>숫자의 표현</title>
+    <url>/2021/01/20/Express-Num/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>한 자연수에 대해 연속한 자연수의 합으로 나타낼 수 있는 경우의 수를 구하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExpressNum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 숫자의 표현</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">15</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> add = <span class="number">1</span>, sub = <span class="number">1</span>, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(add &lt;= n)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += add++;</span><br><span class="line">            <span class="keyword">while</span>(sum &gt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= sub;</span><br><span class="line">                sub++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sum == n)</span><br><span class="line">                answer++;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 자칫 경우의 수가 많아 보일 수 있지만 생각해보면 연속한 숫자라는 것이 도움이 된다. 1부터 차례대로 더해가며 n에 딱 맞을 경우 answer를 늘려주면 되고, 만약 n을 초과했다면 뒤에서부터 작아지거나 같아질 때까지 빼주면 된다.</p>
+<p>최종 시간복잡도는 숫자를 빼고 더하는 최대 횟수가 2n이므로 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/express_num.png" width="290" height="530">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level2</category>
+      </categories>
+  </entry>
+  <entry>
     <title>N으로 표현</title>
     <url>/2021/02/09/Express-N/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -696,29 +835,6 @@
         <category>Problem Solving</category>
         <category>Programmers</category>
         <category>Level3</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>숫자의 표현</title>
-    <url>/2021/01/20/Express-Num/</url>
-    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
-<hr />
-<p>한 자연수에 대해 연속한 자연수의 합으로 나타낼 수 있는 경우의 수를 구하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExpressNum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 숫자의 표현</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">15</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> add = <span class="number">1</span>, sub = <span class="number">1</span>, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(add &lt;= n)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += add++;</span><br><span class="line">            <span class="keyword">while</span>(sum &gt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= sub;</span><br><span class="line">                sub++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sum == n)</span><br><span class="line">                answer++;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 자칫 경우의 수가 많아 보일 수 있지만 생각해보면 연속한 숫자라는 것이 도움이 된다. 1부터 차례대로 더해가며 n에 딱 맞을 경우 answer를 늘려주면 되고, 만약 n을 초과했다면 뒤에서부터 작아지거나 같아질 때까지 빼주면 된다.</p>
-<p>최종 시간복잡도는 숫자를 빼고 더하는 최대 횟수가 2n이므로 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/express_num.png" width="290" height="530">
-</center>
-<p><br></p>
-]]></content>
-      <categories>
-        <category>Problem Solving</category>
-        <category>Programmers</category>
-        <category>Level2</category>
       </categories>
   </entry>
   <entry>
@@ -776,6 +892,50 @@
         <category>Problem Solving</category>
         <category>Programmers</category>
         <category>Level3</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>서울에서 김서방 찾기</title>
+    <url>/2020/12/28/Find-Kim-In-Seoul/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>'김서방은 ?에 있다.'라는 형식으로 출력하면 된다. 여기서 ?는 배열에서 "Kim"이 있는 위치이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeoulKim</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String[] seoul = &#123;<span class="string">&quot;Jane&quot;</span>, <span class="string">&quot;Kim&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> idx = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; seoul.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(seoul[i].equals(<span class="string">&quot;Kim&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                idx = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        StringBuffer buff = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        buff.append(<span class="string">&quot;김서방은 &quot;</span>);</span><br><span class="line">        buff.append(Integer.toString(idx));</span><br><span class="line">        buff.append(<span class="string">&quot;에 있다&quot;</span>);</span><br><span class="line">        String answer = buff.toString();</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 배열을 순회하면서 "Kim"이 있는 위치를 찾는다. Kim을 찾는 순간 더 이상 배열을 탐색할 필요가 없으므로 break문을 통해 탈출하고 정답을 출력한다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/seoul_kim.png" width="400" height="300">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>소수 찾기</title>
+    <url>/2020/12/28/Find-Prim-Num/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>최대 자연수 값 n이 주어질 때 [1,n]에서 소수가 몇 개 있는지 출력하는 문제이다. 필자의 경우 첫번째 시도를 시간초과로 틀렸다. 그래서 질문하기를 보니 에라토테네스의 체(어떤 사람을 이걸 에라이체라고 하더라)를 활용하면 풀 수 있다고 했다. 이용했더니 한번에 풀림! 에라토테네스의 체는 큰 수가 소수가 맞는지 아닌지에 대한 판별을 할 때 유용하다고 한다. 간단히 설명을 하자면 25가 소수인지 알고 싶을 때, 2~24까지 전부 나눠보는 것이 아니라 그의 제곱근인 5를 2~5로 나눠보면 된다는 것이다. 왜 제곱근까지 나눠보면 되냐면 우리가 어떠한 수를 나눌 때 몫이 생긴다. 이 몫이 그 수의 제곱근이하이기 때문이라고 한다(더 자세히 알고 싶은 사람은 검색해보자.). 아무튼 이 원리를 이용하고 효율성 검사까지 모두 통과하였다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrimeNum</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> add = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            add = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= Math.sqrt(i); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i%j==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    add = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(add)</span><br><span class="line">                answer++;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 1은 소수가 아니므로 2부터 n까지 i가 소수인지 검토하는 프로그램을 짰다. 원래 두번째 for문에서 i-1까지 나눠보는 걸로 하였는데, 에라토테네스의 체로 제곱근까지 나눠본다. 이때 등호를 넣어준 이유는 제곱근이 자연수로 딱 떨어지는 경우가 있기 때문이다. 가령 4가 소수인지 판별하기 위해선 2까지 해당하는 약수가 있는지 봐야한다. 소수판별은 위와 같이 가능하다. 소수 판별을 한다는 것을 저장하기 위해 add라는 플래그를 세워두었다. 만약 약수가 하나라도 존재하면 add는 false가 되어 answer++문을 넘어간다. 총 시간복잡도는 <span class="math inline">\(O(n\sqrt{n})\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/find_prime_num.png" width="400" height="300">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
       </categories>
   </entry>
   <entry>
@@ -971,6 +1131,31 @@
       </categories>
   </entry>
   <entry>
+    <title>JadenCase 문자열 만들기</title>
+    <url>/2021/01/21/JadenCase-String/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>영어 문자열이 주어질 때 공백을 기준으로 첫문자만 대문자로 만드는 프로그램을 작성하는 문제이다. 만약 첫문자가 영어가 아니라면 이어지는 문자들은 모두 소문자로 한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JadenCase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 JadenCase 문자열 만들기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;   s  ab &quot;</span>;</span><br><span class="line">        String[] words = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.equals(<span class="string">&quot;&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;   </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(str.charAt(<span class="number">0</span>) &lt; <span class="number">65</span> || str.charAt(<span class="number">0</span>) &gt; <span class="number">123</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(str.toLowerCase());   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(str.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase());</span><br><span class="line">                buff.append(str.substring(<span class="number">1</span>).toLowerCase());</span><br><span class="line">            &#125;</span><br><span class="line">            buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt; buff.length())</span><br><span class="line">            buff.delete(buff.length()-<span class="number">1</span>, buff.length());</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s.length() &gt; buff.length())</span><br><span class="line">            buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        System.out.println(buff.toString()); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 공백이 하나가 아니라 여러개인 경우 고려할게 좀 더 많아진다. 어쨌든 스페이스 한칸을 기준으로 단어를 쪼갠다. 이때 만약 공백이 여러개이면 아무것도 들어있지 않은 문자열이 생성된다. 이제 잘려진 문자열별로 처리를 해주면된다. 1. 들어온 문자가 아무것도 없는 경우 원래 입력이 공백이므로 공백을 버퍼에 넣은 뒤 넘어간다. 2. 문자열의 맨 앞이 영어가 아닌 경우(아스키 코드로 판단), 영문을 모두 소문자로 만든 뒤 버퍼에 붙여넣는다. 3. 만약 첫문자가 영문인 경우 첫번째만 대문자로 바꾸고 나머지는 소문자로 변환하여 붙인다. 4. 한 문자열 처리를 마칠 때 마다 공백을 붙인다.</p>
+<p>이 처리가 끝나면 한가지 예외 케이스가 생긴다 바로 문자열의 맨끝에 공백이 있을 경우와 없을 경우를 잡아내지 못하는 것이다. 따라서 조건을 하나 더 추가하여 원래 문자열보다 작은지 큰지를 비교하여 작다면 공백을 추가하고 크다면 공백을 한 칸 제거한다.</p>
+<p>최종 시간복잡도는 문자열 s의 길이를 n이라 할 때 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/jadencase.png" width="290" height="410">
+</center>
+<p><br></p>
+<p>공백 여러개를 처리하는 과정에서 약간 헤맸었는데, 다른 사람의 풀이를 보니 flag를 이용해서 코드를 더 간결하게 짠 것을 보고 감탄했다. 다음엔 나도 flag를 이용해 문제를 풀어야겠다.</p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level2</category>
+      </categories>
+  </entry>
+  <entry>
     <title>정수 삼각형</title>
     <url>/2021/02/25/Integer-Triangle/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -994,31 +1179,6 @@
         <category>Problem Solving</category>
         <category>Programmers</category>
         <category>Level3</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JadenCase 문자열 만들기</title>
-    <url>/2021/01/21/JadenCase-String/</url>
-    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
-<hr />
-<p>영어 문자열이 주어질 때 공백을 기준으로 첫문자만 대문자로 만드는 프로그램을 작성하는 문제이다. 만약 첫문자가 영어가 아니라면 이어지는 문자들은 모두 소문자로 한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JadenCase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 JadenCase 문자열 만들기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;   s  ab &quot;</span>;</span><br><span class="line">        String[] words = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.equals(<span class="string">&quot;&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;   </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(str.charAt(<span class="number">0</span>) &lt; <span class="number">65</span> || str.charAt(<span class="number">0</span>) &gt; <span class="number">123</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(str.toLowerCase());   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(str.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase());</span><br><span class="line">                buff.append(str.substring(<span class="number">1</span>).toLowerCase());</span><br><span class="line">            &#125;</span><br><span class="line">            buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt; buff.length())</span><br><span class="line">            buff.delete(buff.length()-<span class="number">1</span>, buff.length());</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s.length() &gt; buff.length())</span><br><span class="line">            buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        System.out.println(buff.toString()); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 공백이 하나가 아니라 여러개인 경우 고려할게 좀 더 많아진다. 어쨌든 스페이스 한칸을 기준으로 단어를 쪼갠다. 이때 만약 공백이 여러개이면 아무것도 들어있지 않은 문자열이 생성된다. 이제 잘려진 문자열별로 처리를 해주면된다. 1. 들어온 문자가 아무것도 없는 경우 원래 입력이 공백이므로 공백을 버퍼에 넣은 뒤 넘어간다. 2. 문자열의 맨 앞이 영어가 아닌 경우(아스키 코드로 판단), 영문을 모두 소문자로 만든 뒤 버퍼에 붙여넣는다. 3. 만약 첫문자가 영문인 경우 첫번째만 대문자로 바꾸고 나머지는 소문자로 변환하여 붙인다. 4. 한 문자열 처리를 마칠 때 마다 공백을 붙인다.</p>
-<p>이 처리가 끝나면 한가지 예외 케이스가 생긴다 바로 문자열의 맨끝에 공백이 있을 경우와 없을 경우를 잡아내지 못하는 것이다. 따라서 조건을 하나 더 추가하여 원래 문자열보다 작은지 큰지를 비교하여 작다면 공백을 추가하고 크다면 공백을 한 칸 제거한다.</p>
-<p>최종 시간복잡도는 문자열 s의 길이를 n이라 할 때 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/jadencase.png" width="290" height="410">
-</center>
-<p><br></p>
-<p>공백 여러개를 처리하는 과정에서 약간 헤맸었는데, 다른 사람의 풀이를 보니 flag를 이용해서 코드를 더 간결하게 짠 것을 보고 감탄했다. 다음엔 나도 flag를 이용해 문제를 풀어야겠다.</p>
-]]></content>
-      <categories>
-        <category>Problem Solving</category>
-        <category>Programmers</category>
-        <category>Level2</category>
       </categories>
   </entry>
   <entry>
@@ -1478,6 +1638,29 @@
       </categories>
   </entry>
   <entry>
+    <title>문자열 내 p와 y의 개수</title>
+    <url>/2020/12/28/P-Num-In-String/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>문자열 내에 p와 y의 개수를 세어 둘 다 동일하면 true를 그렇지 않다면 false를 반환한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CntpCnty</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;pPoooyY&quot;</span>;</span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">        s = s.toLowerCase();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == <span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">                p++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i) == <span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">                y++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(p!=y)</span><br><span class="line">            answer = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> toLowerCase를 이용해 문자열에 있는 모든 문자를 소문자로 바꾸었다. 그리고 하나씩 비교하여 p와 y의 개수를 센다. 만약 두 수가 같지 않다면 answer를 false로 바꾼다. 총 시간복잡도는 \(O(n)\)이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/pcnt_ycnt.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>p와 y의 변수를 따로 해서 계산하였는데, 다른 사람의 풀이를 보니 변수르 하나로 하여 증감을 이용해 푸는 것을 보았다. 변수 하나 차이긴 하지만 코드를 줄일 수 있는 방법 중에 하나로 기억해놔야겠다.</p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
     <title>오픈채팅방</title>
     <url>/2021/02/01/Open-Chat/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -1873,6 +2056,28 @@
       </categories>
   </entry>
   <entry>
+    <title>문자열을 정수로 바꾸기</title>
+    <url>/2020/12/29/String-To-Int/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>문자열을 정수로 변환하는 문제이다. 앞에는 부호(+,-)가 붙을 수 있다. 이 문제는 앞에 부호가 붙어있는지 확인한 다음, 그에 따라 달리 처리를 해주면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StrtoInt</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;1234&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">            answer = Integer.parseInt(s.substring(<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">            answer = Integer.parseInt(s.substring(<span class="number">1</span>)) * (-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            answer = Integer.parseInt(s);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> '+'가 붙은 경우, 부호를 뺀 나머지를 int로 바꿔준다. '-'가 붙은 경우 '+'와 마찬가지로 문자열을 잘라내지만 int로 바꾼뒤에 -1을 곱해준다. 만약 아무 부호도 없을 경우 자연수이므로 문자열 전체를 int로 바꿔준다. 총 시간복잡도는 <span class="math inline">\(O(1)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/str_to_int.png" width="400" height="300">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
+      </categories>
+  </entry>
+  <entry>
     <title>약수의 합</title>
     <url>/2020/12/29/Sum-dividor/</url>
     <content><![CDATA[<h2 id="문제정의">문제정의</h2>
@@ -2100,6 +2305,28 @@
         <category>Problem Solving</category>
         <category>Programmers</category>
         <category>Level2</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>수박수박수박수박수박수?</title>
+    <url>/2020/12/29/WaterMelon/</url>
+    <content><![CDATA[<h2 id="문제정의">문제정의</h2>
+<hr />
+<p>서로 마주보고 탕수육을 번갈아 말하는 게임을 해본적이 있을 것이다. 이 문제도 딱 그런 느낌이다. 수와 박을 번갈아가면서 n번 말했을 때 문자열을 출력하면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaterMelon</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line">        StringBuffer buff = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">                buff.append(<span class="string">&quot;수&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                buff.append(<span class="string">&quot;박&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String answer = buff.toString();</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 0이 첫번째 숫자이자 짝수이므로 0부터 n-1까지 짝수인지 홀수인지 판별하여 수와 박을 버퍼에 붙여준다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/watermelon.png" width="400" height="300">
+</center>
+<p><br></p>
+]]></content>
+      <categories>
+        <category>Problem Solving</category>
+        <category>Programmers</category>
+        <category>Level1</category>
       </categories>
   </entry>
   <entry>
