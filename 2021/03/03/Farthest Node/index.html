@@ -24,16 +24,16 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="문제정의  1번 노드로부터 가장 멀리 떨어진 노드가 총 몇 개인지 계산하는 문제이다. 문제풀이  전체 코드는 다음과 같다. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465import jav">
+<meta name="description" content="문제정의  가장 먼 노드 1번 노드로부터 가장 멀리 떨어진 노드가 총 몇 개인지 계산하는 문제이다. 문제풀이  전체 코드는 다음과 같다. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465im">
 <meta property="og:type" content="article">
-<meta property="og:title" content="가장 먼 노드">
+<meta property="og:title" content="Farthest Node">
 <meta property="og:url" content="http://yunpc.github.io/2021/03/03/Farthest%20Node/index.html">
 <meta property="og:site_name" content="Rabbit blog">
-<meta property="og:description" content="문제정의  1번 노드로부터 가장 멀리 떨어진 노드가 총 몇 개인지 계산하는 문제이다. 문제풀이  전체 코드는 다음과 같다. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465import jav">
+<meta property="og:description" content="문제정의  가장 먼 노드 1번 노드로부터 가장 멀리 떨어진 노드가 총 몇 개인지 계산하는 문제이다. 문제풀이  전체 코드는 다음과 같다. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465im">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yunpc.github.io/images/programmers/farthest_node.png">
 <meta property="article:published_time" content="2021-03-03T05:10:00.000Z">
-<meta property="article:modified_time" content="2021-03-31T02:09:20.531Z">
+<meta property="article:modified_time" content="2021-04-01T02:14:01.183Z">
 <meta property="article:author" content="YunPC">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yunpc.github.io/images/programmers/farthest_node.png">
@@ -51,7 +51,7 @@
     lang   : 'en'
   };
 </script>
-<title>가장 먼 노드 | Rabbit blog</title>
+<title>Farthest Node | Rabbit blog</title>
   
 
 
@@ -188,7 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98"><span class="nav-number">1.</span> <span class="nav-text">문제정의</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4"><span class="nav-number">2.</span> <span class="nav-text">문제풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="nav-number">3.</span> <span class="nav-text">테스트</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98"><span class="nav-number">1.</span> <span class="nav-text">문제정의</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EA%B0%80%EC%9E%A5-%EB%A8%BC-%EB%85%B8%EB%93%9C"><span class="nav-number">1.1.</span> <span class="nav-text">가장 먼 노드</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4"><span class="nav-number">2.</span> <span class="nav-text">문제풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="nav-number">3.</span> <span class="nav-text">테스트</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -269,7 +269,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          가장 먼 노드
+          Farthest Node
         </h1>
 
         <div class="post-meta-container">
@@ -287,7 +287,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-31 11:09:20" itemprop="dateModified" datetime="2021-03-31T11:09:20+09:00">2021-03-31</time>
+        <time title="Modified: 2021-04-01 11:14:01" itemprop="dateModified" datetime="2021-04-01T11:14:01+09:00">2021-04-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -319,6 +319,7 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="문제정의">문제정의</h2>
 <hr />
+<h3 id="가장-먼-노드">가장 먼 노드</h3>
 <p>1번 노드로부터 가장 멀리 떨어진 노드가 총 몇 개인지 계산하는 문제이다.</p>
 <h2 id="문제풀이">문제풀이</h2>
 <hr />
@@ -347,13 +348,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/02/Transform%20Word/" rel="prev" title="단어 변환">
-                  <i class="fa fa-chevron-left"></i> 단어 변환
+                <a href="/2021/03/02/Transform%20Word/" rel="prev" title="Word Transformation">
+                  <i class="fa fa-chevron-left"></i> Word Transformation
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/04/Disk%20Controller/" rel="next" title="디스크 컨트롤러">
-                  디스크 컨트롤러 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/03/04/Disk%20Controller/" rel="next" title="Disk Controller">
+                  Disk Controller <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
