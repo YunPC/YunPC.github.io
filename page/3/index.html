@@ -195,14 +195,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -239,6 +239,107 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/01/Open-Chat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/01/Open-Chat/" class="post-title-link" itemprop="url">오픈채팅방</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-01 15:12:00" itemprop="dateCreated datePublished" datetime="2021-02-01T15:12:00+09:00">2021-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:58:30" itemprop="dateModified" datetime="2021-04-01T17:58:30+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>오픈채팅방에 사람들이 들어왔다 나가는 관리자 창을 작성하는 프로그램을 만드는 문제이다. 닉네임간에 중복을 허용하며, 이름을 바꾸면 바꾼 시점부터가 아니라 모든 시점의 닉네임이 변경된다. 유저들은 uid로 구분한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OpenChatting</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 오픈채팅방</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String[] record = &#123;</span><br><span class="line">            <span class="string">&quot;Enter uid1234 Muzi&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Enter uid4567 Prodo&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Leave uid1234&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Enter uid1234 Prodo&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Change uid4567 Ryan&quot;</span>&#125;;</span><br><span class="line">        ArrayList&lt;String&gt; answer = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">     </span><br><span class="line">        <span class="keyword">for</span>(String s : record)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!arr[<span class="number">0</span>].equals(<span class="string">&quot;Leave&quot;</span>))</span><br><span class="line">                map.put(arr[<span class="number">1</span>], arr[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span>(String s : record)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            </span><br><span class="line">            StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">if</span>(!arr[<span class="number">0</span>].equals(<span class="string">&quot;Change&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(map.get(arr[<span class="number">1</span>]));</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">if</span>(arr[<span class="number">0</span>].equals(<span class="string">&quot;Enter&quot;</span>))</span><br><span class="line">                    buff.append(<span class="string">&quot;님이 들어왔습니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(arr[<span class="number">0</span>].equals(<span class="string">&quot;Leave&quot;</span>))</span><br><span class="line">                    buff.append(<span class="string">&quot;님이 나갔습니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">                answer.add(buff.toString());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 문제에서 원하는 것은 최종 단톡방의 관리창이기 때문에 중간에 몇 번을 바꾸었든 최종적으로 바꾼 닉네임만 가지고 있으면 된다. 필자는 map을 활용하여 문제를 풀고자 한다. map의 키는 uid이며, 값은 닉네임이다. 배열을 순회하며 Enter나 Change가 들어오면 맵에 값을 추가한다. 이미 있는 값이면 최근 값으로 업데이트한다.</p>
+<p>이 과정을 끝내면 각 uid마다 최종 닉네임이 무엇인지 알 수 있다. 이제 이를 활용하여 문제에서 원하는 형식으로 답을 내면 된다. 들어오고 나간다는 문자에 따라 적절한 형식을 버퍼에 삽입하고 이를 어레이리스트에 삽입한다.</p>
+<p>최종시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/open_chatting.png" width="290" height="500">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1208,112 +1309,6 @@
 </center>
 <p><br></p>
 <p>공백 여러개를 처리하는 과정에서 약간 헤맸었는데, 다른 사람의 풀이를 보니 flag를 이용해서 코드를 더 간결하게 짠 것을 보고 감탄했다. 다음엔 나도 flag를 이용해 문제를 풀어야겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/21/Maximize-Formula/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/21/Maximize-Formula/" class="post-title-link" itemprop="url">수식 최대화</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-21 11:45:00" itemprop="dateCreated datePublished" datetime="2021-01-21T11:45:00+09:00">2021-01-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>(+,-,*)로 이루어진 수식이 있다. 이 수식의 우선순위를 정하여 수식 결과의 최대 절대값을 구하는 문제이다. 단 세 연산자 간의 우선순위는 같을 수 없다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaximizeExpression</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 수식 최대화</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String expression = <span class="string">&quot;100-200*300-500+20&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span>[] price = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>];</span><br><span class="line">        Queue&lt;String&gt; q1 = ReturnPostfix(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, expression);</span><br><span class="line">        Queue&lt;String&gt; q2 = ReturnPostfix(<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, expression);</span><br><span class="line">        Queue&lt;String&gt; q3 = ReturnPostfix(<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, expression);</span><br><span class="line">        Queue&lt;String&gt; q4 = ReturnPostfix(<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, expression);</span><br><span class="line">        Queue&lt;String&gt; q5 = ReturnPostfix(<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, expression);</span><br><span class="line">        Queue&lt;String&gt; q6 = ReturnPostfix(<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, expression);</span><br><span class="line">        </span><br><span class="line">        price[<span class="number">0</span>] = ReturnPrice(q1);</span><br><span class="line">        price[<span class="number">1</span>] = ReturnPrice(q2);</span><br><span class="line">        price[<span class="number">2</span>] = ReturnPrice(q3);</span><br><span class="line">        price[<span class="number">3</span>] = ReturnPrice(q4);</span><br><span class="line">        price[<span class="number">4</span>] = ReturnPrice(q5);</span><br><span class="line">        price[<span class="number">5</span>] = ReturnPrice(q6);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> n : price)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer &lt; n)</span><br><span class="line">                answer = n;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnPriority</span><span class="params">(<span class="keyword">int</span> p_rank, <span class="keyword">int</span> s_rank, <span class="keyword">int</span> m_rank, <span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span>(c)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">                <span class="keyword">return</span> p_rank;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">                <span class="keyword">return</span> s_rank;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                <span class="keyword">return</span> m_rank;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Queue&lt;String&gt; <span class="title">ReturnPostfix</span><span class="params">(<span class="keyword">int</span> p_rank, <span class="keyword">int</span> s_rank, <span class="keyword">int</span> m_rank, String expression)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Queue&lt;String&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : expression.toCharArray())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c &gt;= <span class="number">48</span> &amp;&amp; c &lt;=<span class="number">57</span>)</span><br><span class="line">                buff.append(c);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                q.add(buff.toString());</span><br><span class="line">                buff.delete(<span class="number">0</span>, buff.length());</span><br><span class="line">                <span class="keyword">if</span>(stack.empty())</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> rank = ReturnPriority(p_rank, s_rank, m_rank, c);</span><br><span class="line">                    <span class="keyword">while</span>(!stack.empty() &amp;&amp; ReturnPriority(p_rank, s_rank, m_rank, stack.peek()) &lt;= rank)</span><br><span class="line">                    &#123;</span><br><span class="line">                        q.add(String.valueOf(stack.peek()));</span><br><span class="line">                        stack.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                    stack.push(c);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        q.add(buff.toString());</span><br><span class="line">        <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            q.add(String.valueOf(stack.peek()));</span><br><span class="line">            stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> q;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnPrice</span><span class="params">(Queue&lt;String&gt; q)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            String s = q.poll();</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="keyword">int</span> n = Integer.parseInt(s);</span><br><span class="line">                stack.push(n);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(NumberFormatException e)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> n2 = stack.peek();</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">int</span> n1 = stack.peek();</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">if</span>(s.equals(<span class="string">&quot;+&quot;</span>))</span><br><span class="line">                    stack.push(n1+n2);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(s.equals(<span class="string">&quot;-&quot;</span>))</span><br><span class="line">                    stack.push(n1-n2);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    stack.push(n1*n2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.abs(stack.peek());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 좀 긴 편인데 과정을 설명하자면 다음과 같다. 1. 중위표기식(infix)를 후위표기식(postfix)로 고친다. 2. 후위표기식을 계산하고 절대값을 반환한다. 3. 3가지 연산자로 만들 수 있는 모든 우선순위인 6가지에 대해서 1,2과정을 반복하고 가장 큰 값을 반환한다.</p>
-<p>main에 있는 것이 3번과정이다. 우리는 1번과 2번에 대한 상세한 내용을 보려고 한다. 일단 중위표기식을 후위표기식으로 변환하는 코드를 살펴보자.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Queue&lt;String&gt; <span class="title">ReturnPostfix</span><span class="params">(<span class="keyword">int</span> p_rank, <span class="keyword">int</span> s_rank, <span class="keyword">int</span> m_rank, String expression)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    Queue&lt;String&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> c : expression.toCharArray())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(c &gt;= <span class="number">48</span> &amp;&amp; c &lt;=<span class="number">57</span>)</span><br><span class="line">            buff.append(c);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            q.add(buff.toString());</span><br><span class="line">            buff.delete(<span class="number">0</span>, buff.length());</span><br><span class="line">            <span class="keyword">if</span>(stack.empty())</span><br><span class="line">                stack.push(c);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> rank = ReturnPriority(p_rank, s_rank, m_rank, c);</span><br><span class="line">                <span class="keyword">while</span>(!stack.empty() &amp;&amp; ReturnPriority(p_rank, s_rank, m_rank, stack.peek()) &lt;= rank)</span><br><span class="line">                &#123;</span><br><span class="line">                    q.add(String.valueOf(stack.peek()));</span><br><span class="line">                    stack.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                stack.push(c);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    q.add(buff.toString());</span><br><span class="line">    <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        q.add(String.valueOf(stack.peek()));</span><br><span class="line">        stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>받은 매개변수에 대해 간단히 살펴보면 p가 더하기 s가 빼기 m을 곱하기로 보면 된다. 이들에 대한 우선순위를 main에서 받아오는 것이며, 숫자가 작을 수록 우선순위가 높은 것으로 가정했다. expression은 중위표기식이다. 이제 중위표기식을 문자단위로 쪼갠다. 이 문자들을 살펴보면서 변환과정을 할 예정이다. for문의 첫번째 if문을 보면 c가 숫자인 경우 버퍼에다 문자를 담아준다. 주어진 식이 한자리 수만 주어진 것이 아니기 때문에 이렇게 한다. 만약 연산자가 주어진 경우 여태까지 버퍼에 담긴것이 한 숫자이므로 이를 스트링으로 바꿔 큐에 삽입한다. 삽입하고 난 뒤 버퍼에 있는 내용은 지운다. 이제 연산자에 대한 처리를 할 차례이다. 만약 스택이 비어있다면 연산자를 그대로 넣어준다. 그렇지 않다면 스택에 있는 연산자들과의 비교가 필요하다. 이들의 우선순위를 비교하여 우선순위가 자신보다 같거나 작다면 스택에서 꺼내서 큐에 넣는다. 이때, 우선순위가 같아도 꺼내는 이유는 같은 연산자일 때, 왼쪽에 있는 연산자가 더 우세하기 때문이다. 꺼내는 과정을 모두 마치면 해당 연산자를 넣는다(ReturnPriority에 대한 코드는 각자가 보길 바란다.). 모든 문자에 대해 이 과정을 마치면 버퍼에는 마지막 피연산자가 있으므로 이를 넣어주고 스택에 남은 모든 연산자를 꺼내어 큐에 넣어준다.</p>
-<p>스택에서 푸쉬와 팝이 이루어지지만 전체 중위표기식의 길이를 n이라 할 때, 이것보단 미미한 수이므로 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<p>이렇게 바꾼 후위표기식을 연산해보자. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnPrice</span><span class="params">(Queue&lt;String&gt; q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span>(!q.isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        String s = q.poll();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> n = Integer.parseInt(s);</span><br><span class="line">            stack.push(n);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(NumberFormatException e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n2 = stack.peek();</span><br><span class="line">            stack.pop();</span><br><span class="line">            <span class="keyword">int</span> n1 = stack.peek();</span><br><span class="line">            stack.pop();</span><br><span class="line">            <span class="keyword">if</span>(s.equals(<span class="string">&quot;+&quot;</span>))</span><br><span class="line">                stack.push(n1+n2);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s.equals(<span class="string">&quot;-&quot;</span>))</span><br><span class="line">                stack.push(n1-n2);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                stack.push(n1*n2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Math.abs(stack.peek());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 연산은 간단하다 큐에서 원소들을 하나씩 빼서 숫자인 경우 스택에 넣는다. 만약 연산자인 경우 스택에서 두 수를 꺼내어 연산을 해준 뒤 다시 스택에 넣어주면 된다. 큐가 비어있으면 스택에 남은 원소 하나가 결과값이다(이 코드를 작성할 때 첫번째로 꺼내는 수가 n1이 아니라 n2라는 것에 주의하자.).</p>
-<p>이 부분의 시간복잡도 역시 <span class="math inline">\(O(n)\)</span>이라 볼 수 있다. 최종 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/maximize_expression.png" width="290" height="530">
-</center>
-<p><br></p>
-<p>후위표기식으로 변환하는 방법과 연산을 다 까먹어서 다시 공부하는데 애를 먹었다. 대학교 2학년 때 과제만 치중해서 원리를 제대로 공부하지 못한 내 자신이 살짝 원망스럽다. 그래도 이번 기회에 제대로 공부했으니 앞으로는 잊지 말아야겠다.</p>
 
       
     </div>

@@ -195,14 +195,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -239,6 +239,108 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/24/Network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/24/Network/" class="post-title-link" itemprop="url">네트워크</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-24 17:58:00" itemprop="dateCreated datePublished" datetime="2021-02-24T17:58:00+09:00">2021-02-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:11:32" itemprop="dateModified" datetime="2021-04-01T17:11:32+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>네트워크의 개수가 몇 개인지 판별하는 문제이다. 기본적인 탐색문제이다.</p>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/43162">문제 링크</a></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Network</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 네트워크</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] computers = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            &#123;</span><br><span class="line">                answer++;</span><br><span class="line">                visited[i] = <span class="keyword">true</span>;</span><br><span class="line">                Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">                stack.push(i);</span><br><span class="line">                <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> t = stack.peek();</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(computers[t][j] == <span class="number">1</span> &amp;&amp; !visited[j])</span><br><span class="line">                        &#123;</span><br><span class="line">                            visited[j] = <span class="keyword">true</span>;</span><br><span class="line">                            stack.push(j);</span><br><span class="line">                        &#125; </span><br><span class="line">                            </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 전형적인 탐색문제라 어렵지 않다. 일단 각 컴퓨터를 한번이라도 체크했는지 확인하는 불리안 배열을 생성한다. 그리고 이 배열을 순회하며 만약 한 번도 체크하지 않은 컴퓨터라면 dfs를 실시 한다. 필자는 스택을 이용해서 dfs를 구현했다.</p>
+<p>반복 횟수를 계산해보자면 <span class="math inline">\((m+n-2)(m+n-2)m*m\)</span>이 된다. 따라서 최고차항을 따로 떼어내면 최종 시간복잡도는 <span class="math inline">\(O(m^2n^2)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/network.png" width="290" height="500">
+</center>
+<p><br></p>
+<p>예전만 해도 dfs가 왜 스택이고 bfs는 왜 큐인지 이해가 잘 안갔는데 어느 새, 혼자서 아무것도 참고하지 않고 dfs를 구현할 수 있게 되었다. 늦은 감이 없지 않아 있지만, 그래도 성장했음을 느낀다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1157,107 +1259,6 @@
 <p><br></p>
 <center>
 <img src="/images/programmers/candidate_key.png" width="290" height="530">
-</center>
-<p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/01/Open-Chat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/01/Open-Chat/" class="post-title-link" itemprop="url">오픈채팅방</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-01 15:12:00" itemprop="dateCreated datePublished" datetime="2021-02-01T15:12:00+09:00">2021-02-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:58:30" itemprop="dateModified" datetime="2021-04-01T17:58:30+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>오픈채팅방에 사람들이 들어왔다 나가는 관리자 창을 작성하는 프로그램을 만드는 문제이다. 닉네임간에 중복을 허용하며, 이름을 바꾸면 바꾼 시점부터가 아니라 모든 시점의 닉네임이 변경된다. 유저들은 uid로 구분한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OpenChatting</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 오픈채팅방</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String[] record = &#123;</span><br><span class="line">            <span class="string">&quot;Enter uid1234 Muzi&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Enter uid4567 Prodo&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Leave uid1234&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Enter uid1234 Prodo&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Change uid4567 Ryan&quot;</span>&#125;;</span><br><span class="line">        ArrayList&lt;String&gt; answer = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">     </span><br><span class="line">        <span class="keyword">for</span>(String s : record)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!arr[<span class="number">0</span>].equals(<span class="string">&quot;Leave&quot;</span>))</span><br><span class="line">                map.put(arr[<span class="number">1</span>], arr[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span>(String s : record)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            </span><br><span class="line">            StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">if</span>(!arr[<span class="number">0</span>].equals(<span class="string">&quot;Change&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(map.get(arr[<span class="number">1</span>]));</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">if</span>(arr[<span class="number">0</span>].equals(<span class="string">&quot;Enter&quot;</span>))</span><br><span class="line">                    buff.append(<span class="string">&quot;님이 들어왔습니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(arr[<span class="number">0</span>].equals(<span class="string">&quot;Leave&quot;</span>))</span><br><span class="line">                    buff.append(<span class="string">&quot;님이 나갔습니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">                answer.add(buff.toString());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 문제에서 원하는 것은 최종 단톡방의 관리창이기 때문에 중간에 몇 번을 바꾸었든 최종적으로 바꾼 닉네임만 가지고 있으면 된다. 필자는 map을 활용하여 문제를 풀고자 한다. map의 키는 uid이며, 값은 닉네임이다. 배열을 순회하며 Enter나 Change가 들어오면 맵에 값을 추가한다. 이미 있는 값이면 최근 값으로 업데이트한다.</p>
-<p>이 과정을 끝내면 각 uid마다 최종 닉네임이 무엇인지 알 수 있다. 이제 이를 활용하여 문제에서 원하는 형식으로 답을 내면 된다. 들어오고 나간다는 문자에 따라 적절한 형식을 버퍼에 삽입하고 이를 어레이리스트에 삽입한다.</p>
-<p>최종시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/open_chatting.png" width="290" height="500">
 </center>
 <p><br></p>
 

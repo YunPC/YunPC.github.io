@@ -195,14 +195,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -239,6 +239,108 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/02/Stepping-Stone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/02/Stepping-Stone/" class="post-title-link" itemprop="url">징검다리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-02 20:21:00 / Modified: 20:50:00" itemprop="dateCreated datePublished" datetime="2021-04-02T20:21:00+09:00">2021-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level4/" itemprop="url" rel="index"><span itemprop="name">Level4</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>징검다리에서 돌을 빼냈을 때 벌어지는 간격의 최솟값이 가장 큰 것을 구하는 것이다. 문제는 <a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/43238">여기</a>에서 볼 수 있다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>이진 탐색을 이용한 문제이다. 유형을 익히면 반가운 문제이지만, 처음에 보면 전혀 감이 안 잡힌다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">distance, rocks, n</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isFeasable</span>(<span class="params">distance, rocks, n, k</span>):</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        pos = <span class="number">0</span></span><br><span class="line">        total = <span class="built_in">len</span>(rocks)</span><br><span class="line">        <span class="keyword">for</span> rock <span class="keyword">in</span> rocks:</span><br><span class="line">            <span class="keyword">if</span> rock - pos &gt;= k:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                pos = rock</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> total-cnt &lt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    answer = <span class="number">0</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = distance</span><br><span class="line">    rocks.sort()</span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        mid = (l+r) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span>(isFeasable(distance, rocks, n, mid)):</span><br><span class="line">            answer = mid</span><br><span class="line">            l = mid+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r = mid</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> answer</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(solution(<span class="number">25</span>, [<span class="number">2</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">21</span>, <span class="number">17</span>], <span class="number">2</span>))</span><br></pre></td></tr></table></figure> 전체적인 코드의 흐름은 다음과 같다. 1. 간격에 대해서 이분 탐색을 해볼 것이다. 이를 <code>k</code>라고 두자. 2. <code>k</code>의 가장 작은 경우는 0이고 가장 큰 경우는 <code>distance</code>이므로 <code>l</code>과 <code>r</code>로 둔다. 3. 이분 탐색을 하면서 만약 <code>isFeasable</code>을 만족한다면, 돌을 더 빼도 된다는 의미이다. 따라서 mid 값을 늘린다. 4. 아니라면 mid 값을 줄인다. 5. 아니면 answer를 반환한다.</p>
+<p>여기서 왜 돌을 더 빼도 된다는 의미에 대해 알아보기 위해 <code>isFeasable</code>을 살펴보자</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isFeasable</span>(<span class="params">distance, rocks, n, k</span>):</span></span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    pos = <span class="number">0</span></span><br><span class="line">    total = <span class="built_in">len</span>(rocks)</span><br><span class="line">    <span class="keyword">for</span> rock <span class="keyword">in</span> rocks:</span><br><span class="line">        <span class="keyword">if</span> rock - pos &gt;= k:</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">            pos = rock</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> total-cnt &lt;= n:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>매개변수로 <code>distance</code>, <code>rocks</code>, <code>n</code>, <code>k</code>를 받는다. <code>cnt</code>는 돌의 개수를 의미하고 <code>pos</code>는 현재 선택한 돌의 위치를 본다. <code>total</code>은 총 돌의 개수를 의미한다.</p>
+<p>for 문의 의미는 최솟값 <code>k</code>만큼의 간격에 포함되는 돌들을 세겠다는 의미이다. 프로그래머스에서 나온 예제를 보면 돌이 [2, 11, 14, 17, 21]의 순서로 놓여있다. 가령 <code>k</code>가 6이라면 [11, 17]에 위치한 돌이 선택되고 <code>cnt</code>는 2가 된다. <code>total</code>에서 <code>cnt</code>를 빼면 몇 개의 돌이 빠졌는지 볼 수 있고 이 값이 <code>n</code>보다 같거나 작으면 <code>True</code>를 반환한다.</p>
+<p>이하에서 <code>True</code>를 반환하는 이유가 있다. 아래의 그림을 보자.</p>
+<figure>
+<img src="/images/programmers/stepping.jpeg" alt="k와 n의 관계" /><figcaption aria-hidden="true">k와 n의 관계</figcaption>
+</figure>
+<p><code>k</code>값이 증가하면 <code>n</code>값도 증가한다. 최솟값이 증가하니 돌 사이의 간격이 더 넓어져야 하기 때문이다. 여기서 우리는 <code>n</code>을 만족하는 최대를 구하려고 한다. 그러면 <code>l</code>이 증가해야 하는 경우를 살펴보아야 한다. 그림을 보면 <code>n</code>의 값이 요구하는 값보다 작을 때 <code>k</code>가 증가해야 함을 볼 수 있다. 이 이유로 인해 비교 연산자 <code>&lt;=</code>를 사용한 것이다.</p>
+<h2 id="테스트">테스트</h2>
+<figure>
+<img src="/images/programmers/stepping_stone.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>자바로 하다가 파이썬으로 넘어오니까 코드가 훨씬 간결해서 놀랐다. 이제부터라도 열심히 애용하겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1183,108 +1285,6 @@
 </center>
 <p><br></p>
 <p>처음으로 2시간 안에 level3문제를 스스로 풀어서 기쁘다. 멘탈만 흔들리지 않으면 성장할 수 있다고 생각하는 오늘이다. 요새 네카라쿠배 2차테스트를 하는데 알고보니 실수를 해서 점수를 다 날려 먹게 생겼다 하... 2일차까지 테스트 점수가 다 꽝인데 그래도 포기하지 않고 끝까지 해보기로 했다. 학원의 힘을 빌리지 않고도 성장할 수 있으니까! 가벼운 마음으로 테스트에 임하자.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/24/Network/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/24/Network/" class="post-title-link" itemprop="url">네트워크</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-24 17:58:00" itemprop="dateCreated datePublished" datetime="2021-02-24T17:58:00+09:00">2021-02-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:11:32" itemprop="dateModified" datetime="2021-04-01T17:11:32+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>네트워크의 개수가 몇 개인지 판별하는 문제이다. 기본적인 탐색문제이다.</p>
-<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/43162">문제 링크</a></p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Network</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 네트워크</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] computers = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            &#123;</span><br><span class="line">                answer++;</span><br><span class="line">                visited[i] = <span class="keyword">true</span>;</span><br><span class="line">                Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">                stack.push(i);</span><br><span class="line">                <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> t = stack.peek();</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(computers[t][j] == <span class="number">1</span> &amp;&amp; !visited[j])</span><br><span class="line">                        &#123;</span><br><span class="line">                            visited[j] = <span class="keyword">true</span>;</span><br><span class="line">                            stack.push(j);</span><br><span class="line">                        &#125; </span><br><span class="line">                            </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 전형적인 탐색문제라 어렵지 않다. 일단 각 컴퓨터를 한번이라도 체크했는지 확인하는 불리안 배열을 생성한다. 그리고 이 배열을 순회하며 만약 한 번도 체크하지 않은 컴퓨터라면 dfs를 실시 한다. 필자는 스택을 이용해서 dfs를 구현했다.</p>
-<p>반복 횟수를 계산해보자면 <span class="math inline">\((m+n-2)(m+n-2)m*m\)</span>이 된다. 따라서 최고차항을 따로 떼어내면 최종 시간복잡도는 <span class="math inline">\(O(m^2n^2)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/network.png" width="290" height="500">
-</center>
-<p><br></p>
-<p>예전만 해도 dfs가 왜 스택이고 bfs는 왜 큐인지 이해가 잘 안갔는데 어느 새, 혼자서 아무것도 참고하지 않고 dfs를 구현할 수 있게 되었다. 늦은 감이 없지 않아 있지만, 그래도 성장했음을 느낀다.</p>
 
       
     </div>

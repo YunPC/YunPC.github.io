@@ -195,14 +195,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -239,6 +239,119 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/23/Not-Finished-Runner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/23/Not-Finished-Runner/" class="post-title-link" itemprop="url">완주하지 못한 선수</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-23 10:18:00" itemprop="dateCreated datePublished" datetime="2020-12-23T10:18:00+09:00">2020-12-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>두 배열이 주어진다. 한 배열은 참가자 명단(동명이인이 존재할 수도 있다.) 한 배열은 완주한 사람의 명단이 주어진다. 물론 순서는 뒤죽박죽인 것 같고 이 두 배열을 비교하여 완주하지 못한 한 명의 선수를 출력하면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>문제 유형에는 해시라고 적혀있지만 해시가 익숙하지 않아 정렬을 이용하여 풀었다. 아래에 해시에 대한 얘기를 조금 써놓을 테니 이 풀이말고 해시를 이용해 풀고 싶은 분들은 참고하면 좋겠다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotCompletePlayer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String[] participant = &#123;<span class="string">&quot;leo&quot;</span>, <span class="string">&quot;kiki&quot;</span>, <span class="string">&quot;eden&quot;</span>&#125;;</span><br><span class="line">        String[] completion = &#123;<span class="string">&quot;eden&quot;</span>, <span class="string">&quot;kiki&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">        String answer = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        PriorityQueue&lt;String&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        PriorityQueue&lt;String&gt; comp = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; participant.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            pq.add(participant[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; completion.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            comp.add(completion[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; completion.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            String name1 = pq.poll();</span><br><span class="line">            String name2 = comp.poll();</span><br><span class="line">            <span class="keyword">if</span>(!name1.equals(name2))</span><br><span class="line">            &#123;</span><br><span class="line">                answer = name1;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(answer.equals(<span class="string">&quot;&quot;</span>))</span><br><span class="line">            answer = pq.poll();</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>부분부분 살펴보자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">PriorityQueue&lt;String&gt; comp = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>자바에서 기본적으로 정렬함수를 제시하지만 필자는 우선순위 큐를 활용하였다. 이건 각자의 취향인듯하니 넘기자. 이렇게 선언하면 알파벳이 낮은 순서(오름차순)로 정렬된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; participant.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    pq.add(participant[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; completion.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    comp.add(completion[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이제 참가자와 완주자명단을 우선순위 큐에 차례대로 집어넣는다. 우선순위큐에 넣는 것은 <span class="math inline">\(O(logn)\)</span>만큼 걸린다. 따라서 participant의 길이를 n이라고 하면 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; completion.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    String name1 = pq.poll();</span><br><span class="line">    String name2 = comp.poll();</span><br><span class="line">    <span class="keyword">if</span>(!name1.equals(name2))</span><br><span class="line">    &#123;</span><br><span class="line">        answer = name1;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(answer.equals(<span class="string">&quot;&quot;</span>))</span><br><span class="line">    answer = pq.poll();</span><br></pre></td></tr></table></figure>
+<p>둘 다 정렬되어 있는 상태라면 완주하지 못한 선수가 끼어있는 부분부터 이름이 다를 것이다는 것을 이용하였다. 큐에서 이름을 하나하나 빼면서 처음으로 이름이 안맞는 부분이 있으면 정답에 참가자 이름을 넣고 반복문을 탈출하도록 한다. 하지만 이러한 케이스는 어떨까?</p>
+<p>participation : [aaa, bbb, ccc]</p>
+<p>completion : [aaa, bbb]</p>
+<p>이 경우 반복을 마쳐도 answer에 아무것도 들어가지 않는다. completion의 길이만큼 반복이 진행됨을 눈여겨 보자. 이 경우를 고려하여 if문이 들어간다. 이렇게 되면 ccc도 완주하지 못한 선수로 골라낼 수 있다.</p>
+<p>시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이며, 최종 시간복잡도 역시 같다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/not_complete_player.png" width="400" height="300">
+</center>
+<p><br></p>
+<h2 id="해시">해시</h2>
+<p>문제의 유형이 해시로 나타나 있는데 hashmap를 이용할 경우 <span class="math inline">\(O(n)\)</span>으로 문제를 풀 수 있다. hashmap에 선수의 이름을 key값으로 하고 value를 1로 하여 넣는다. 만약에 동명이인이 있는 선수라면 getOrDefault를 이용하여 2,3,4...이런식으로 value를 업데이트한다. 참가자 명단에 대해 위 과정을 수행하면 다음엔 완주자 명단에 있는 사람들의 이름을 key값으로 (value-1)값을 다시 hashmap에 넣는다. 이렇게 되면 value가 1인 사람은 한명이 남는다. 완주하지 못한 선수를 찾기 위해 hashmap의 keySet을 이용하여 value가 1인 선수를 answer에 담으면 된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
