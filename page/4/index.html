@@ -196,14 +196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,108 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/21/JadenCase-String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/21/JadenCase-String/" class="post-title-link" itemprop="url">JadenCase 문자열 만들기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-21 13:06:00" itemprop="dateCreated datePublished" datetime="2021-01-21T13:06:00+09:00">2021-01-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:31:13" itemprop="dateModified" datetime="2021-04-01T18:31:13+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>영어 문자열이 주어질 때 공백을 기준으로 첫문자만 대문자로 만드는 프로그램을 작성하는 문제이다. 만약 첫문자가 영어가 아니라면 이어지는 문자들은 모두 소문자로 한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JadenCase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 JadenCase 문자열 만들기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;   s  ab &quot;</span>;</span><br><span class="line">        String[] words = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(String str : words)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(str.equals(<span class="string">&quot;&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;   </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(str.charAt(<span class="number">0</span>) &lt; <span class="number">65</span> || str.charAt(<span class="number">0</span>) &gt; <span class="number">123</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(str.toLowerCase());   </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(str.substring(<span class="number">0</span>,<span class="number">1</span>).toUpperCase());</span><br><span class="line">                buff.append(str.substring(<span class="number">1</span>).toLowerCase());</span><br><span class="line">            &#125;</span><br><span class="line">            buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt; buff.length())</span><br><span class="line">            buff.delete(buff.length()-<span class="number">1</span>, buff.length());</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s.length() &gt; buff.length())</span><br><span class="line">            buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        System.out.println(buff.toString()); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 공백이 하나가 아니라 여러개인 경우 고려할게 좀 더 많아진다. 어쨌든 스페이스 한칸을 기준으로 단어를 쪼갠다. 이때 만약 공백이 여러개이면 아무것도 들어있지 않은 문자열이 생성된다. 이제 잘려진 문자열별로 처리를 해주면된다. 1. 들어온 문자가 아무것도 없는 경우 원래 입력이 공백이므로 공백을 버퍼에 넣은 뒤 넘어간다. 2. 문자열의 맨 앞이 영어가 아닌 경우(아스키 코드로 판단), 영문을 모두 소문자로 만든 뒤 버퍼에 붙여넣는다. 3. 만약 첫문자가 영문인 경우 첫번째만 대문자로 바꾸고 나머지는 소문자로 변환하여 붙인다. 4. 한 문자열 처리를 마칠 때 마다 공백을 붙인다.</p>
+<p>이 처리가 끝나면 한가지 예외 케이스가 생긴다 바로 문자열의 맨끝에 공백이 있을 경우와 없을 경우를 잡아내지 못하는 것이다. 따라서 조건을 하나 더 추가하여 원래 문자열보다 작은지 큰지를 비교하여 작다면 공백을 추가하고 크다면 공백을 한 칸 제거한다.</p>
+<p>최종 시간복잡도는 문자열 s의 길이를 n이라 할 때 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/jadencase.png" width="290" height="410">
+</center>
+<p><br></p>
+<p>공백 여러개를 처리하는 과정에서 약간 헤맸었는데, 다른 사람의 풀이를 보니 flag를 이용해서 코드를 더 간결하게 짠 것을 보고 감탄했다. 다음엔 나도 flag를 이용해 문제를 풀어야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1127,106 +1229,6 @@
 </center>
 <p><br></p>
 <p>java에 bitCount로 1을 세주는 함수가 있었다. 자바에는 무궁무진한 메소드의 세계가 있는 것 같다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/19/Correct-Bracket/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/19/Correct-Bracket/" class="post-title-link" itemprop="url">올바른 괄호</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-19 11:37:00" itemprop="dateCreated datePublished" datetime="2021-01-19T11:37:00+09:00">2021-01-19</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:43:37" itemprop="dateModified" datetime="2021-04-01T18:43:37+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>열린괄호와 닫힌괄호로 이루어진 문자열이 올바른 괄호식인지 확인하는 문제이다. 올바른 괄호식이란 열린 괄호와 닫힌 괄호의 수가 동일해야 하며, 열렸으면 반드시 닫혀야한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorrectBracket</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 올바른 괄호</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;()()&quot;</span>;</span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> open = <span class="number">0</span>, close = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">                open++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                close++;</span><br><span class="line">            <span class="keyword">if</span>(open &lt; close)</span><br><span class="line">            &#123;</span><br><span class="line">                answer = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(open != close)</span><br><span class="line">            answer = <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 열린괄호의 개수를 저장할 변수 open과 닫힌 괄호의 개수를 저장할 변수 close를 선언한다. 이들의 수를 세나가며 만약 close가 open보다 많아지는 경우면 모든 열린괄호가 짝지어지는 것이 아니므로 false를 반환한다. 반복문을 탈출했어도 열린괄호가 닫힌 괄호보다 많은 경우가 있으므로 이를 체크하기 위해 둘의 수가 동일한지 확인한다.</p>
-<p>최종 시간복잡도는 문자열의 길이를 n이라 할 때, <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/correct_bracket.png" width="290" height="530">
-</center>
-<p><br></p>
 
       
     </div>
