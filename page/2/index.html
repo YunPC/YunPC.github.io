@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/25/Integer-Triangle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/25/Integer-Triangle/" class="post-title-link" itemprop="url">정수 삼각형</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-25 16:55:00" itemprop="dateCreated datePublished" datetime="2021-02-25T16:55:00+09:00">2021-02-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:10:48" itemprop="dateModified" datetime="2021-04-01T17:10:48+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>삼각형의 꼭대기부터 바닥까지 가는 경로 중에서 경로의 합이 가장 큰 것을 찾는 문제이다. 아래쪽으로 갈 때는 자신의 바로 왼쪽 아래나 오른쪽 아래로만 이동할 수 있다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerTriangle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 정수 삼각형</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] triangle = &#123;</span><br><span class="line">            &#123;<span class="number">7</span>&#125;,</span><br><span class="line">            &#123;<span class="number">3</span>,<span class="number">8</span>&#125;,</span><br><span class="line">            &#123;<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">2</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">4</span>&#125;,</span><br><span class="line">            &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] sum = <span class="keyword">new</span> <span class="keyword">int</span>[triangle.length][triangle.length];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">2</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(triangle.length == <span class="number">1</span>)</span><br><span class="line">            System.out.println(triangle[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">        </span><br><span class="line">        sum[<span class="number">0</span>][<span class="number">0</span>] = triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; triangle.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i][<span class="number">0</span>] = triangle[i][<span class="number">0</span>] + sum[i-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">            sum[i][len-<span class="number">1</span>] = triangle[i][len-<span class="number">1</span>] + sum[i-<span class="number">1</span>][len-<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; len-<span class="number">1</span>; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> max = Math.max(sum[i-<span class="number">1</span>][j-<span class="number">1</span>], sum[i-<span class="number">1</span>][j]);</span><br><span class="line">                sum[i][j] = max + triangle[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        len--;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            answer = Math.max(answer, sum[triangle.length-<span class="number">1</span>][i]);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 아이디어는 이렇다. 삼각형의 밑변을 길이로 하여 2차원 배열을 생성한다. 그리고 여기에 해당 위치에 오기까지의 합 중 가장 큰 것을 넣을 것이다. 필자는 이를 sum이라 하였다. sum[0][0]은 맨 꼭대기이므로 triangle[0][0]을 넣는다. 꼭대기에서 갈 수 있는 곳은 3과 8이다. 3의 위치에서 최대값은 3+7=10, 8위치에서 합의 최대는 7+8=15이다. 3번째 줄로 내려가보자. 8은 3의 위치에서 내려올 수 밖에 없으므로 최대값은 10+8=18이다. 1의 경우 2번째 줄의 3과 8에서 둘 다 내려올 수 있다. 이 문제는 최대를 찾는 문제이므로 10과 15중 15를 선택하여 15+1=16을 기록하면 된다.</p>
+<p>이런식으로 sum을 채워나가고 가장 아래층의 수 중 가장 큰 수를 찾으면 된다. 이를 코드로 그대로 구현하였다. sum을 정사각형으로 선언했기 때문에 각 층에 있는 숫자의 개수를 len으로 알려주었다. 가장 꼭대기를 채워넣고 그 아래부터는 for문의 영향을 받는다. 각 층에서 맨 왼쪽과 오른쪽 원소는 내려오는 경로가 하나밖에 없기 때문에 이는 따로 처리한다. 이를 제외한 원소는 위층의 왼쪽 대각선과 오른쪽 대각선의 sum값을 비교 한뒤 큰 값을 취한다. 각 층에서의 연산이 끝나면 len을 증가한다.</p>
+<p>반복이 끝나면 맨 아래층의 원소에서 최대값을 찾아 반환한다.</p>
+<p>연산 횟수는 삼각형의 밑변을 n이라 할 때, <span class="math inline">\(n^2 \over 2\)</span>이므로, 최종 시간복잡도는 <span class="math inline">\(O(n^2)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/integer_triangle.png" width="290" height="500">
+</center>
+<p><br></p>
+<p>다이나믹 프로그래밍에 약한 편이다. 이건 기초문제라 쉽게 해결했지만, 이 유형에 좀 더 익숙해져야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1154,116 +1257,6 @@
 </center>
 <p><br></p>
 <p>flag관련된 함수를 없앨 수 있는지 고민해봐야겠다. 깔끔하지 않다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/03/That-Song/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/03/That-Song/" class="post-title-link" itemprop="url">방금그곡</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-03 13:47:00" itemprop="dateCreated datePublished" datetime="2021-02-03T13:47:00+09:00">2021-02-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:58:42" itemprop="dateModified" datetime="2021-04-01T17:58:42+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>네오가 기억하는 계이름과 음악의 계이름 재생시간이 주어질 때, 네오가 들은 곡을 알아내는 문제이다. 음악의 길이보다 재생기간이 길면 반복하여 재생하는 것이고, 짧다면 중간에 끊어진 것이라고 봐야한다. 만약 네오가 기억하는 계이름을 가지고 있는 곡이 여러 개라면 재생 시간이 긴 것을 우선으로 하고, 재생 시간도 같은 경우 먼저 들어온 곡을 반환한다.</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvMTc2ODMjcW5h">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreviousSong</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 Level2 방금그곡</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String[] musicinfos = &#123;</span><br><span class="line">            <span class="string">&quot;12:00,12:05,HI,ABC#ABC&quot;</span>,</span><br><span class="line">            <span class="string">&quot;13:00,13:05,WORLD,ABCDEF&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">        String m = <span class="string">&quot;ABC&quot;</span>;</span><br><span class="line">        String answer = <span class="string">&quot;(None)&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> last_time = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(String info : musicinfos)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            String[] info_arr = info.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            String[] start_t = info_arr[<span class="number">0</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">            String[] end_t = info_arr[<span class="number">1</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> start_m = Integer.parseInt(start_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(start_t[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> end_m = Integer.parseInt(end_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(end_t[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> duration = end_m - start_m;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            String[] split_by_pound_arr = info_arr[<span class="number">3</span>].split(<span class="string">&quot;#&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> code_cnt = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(String pound_str : split_by_pound_arr)</span><br><span class="line">            &#123;</span><br><span class="line">                String[] codes = pound_str.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span>(String code : codes)</span><br><span class="line">                    code_cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            code_cnt--;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> repeat = duration/code_cnt;</span><br><span class="line">            <span class="keyword">int</span> song_end = duration%code_cnt;</span><br><span class="line">            String song = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; repeat; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                song += info_arr[<span class="number">3</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">char</span>[] song_arr = info_arr[<span class="number">3</span>].toCharArray();</span><br><span class="line">            <span class="keyword">int</span> song_idx = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; song_arr.length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(song_idx == song_end)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                buff.append(song_arr[i]);</span><br><span class="line">                <span class="keyword">if</span>((i &lt; song_arr.length-<span class="number">1</span>) &amp;&amp; (song_arr[i+<span class="number">1</span>] == <span class="string">&#x27;#&#x27;</span>))</span><br><span class="line">                    buff.append(song_arr[++i]);</span><br><span class="line">                song += buff.toString();</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                song_idx++;   </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> idx = song.indexOf(m);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>((last_time &lt; duration) &amp;&amp; (idx != -<span class="number">1</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span>(idx != -<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(song.length() &gt; idx+m.length())</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(song.charAt(idx+m.length()) == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            idx = song.indexOf(m, idx+m.length());</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; </span><br><span class="line">                    idx = song.indexOf(m, idx+m.length());</span><br><span class="line">                    answer = info_arr[<span class="number">2</span>];</span><br><span class="line">                    last_time = duration;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 곡을 찾아내기 위해 크게 3가지 과정을 거칠 것이다. 1. 재생 시간을 계산한다. 2. 곡을 재생 시간만큼 만든다. 3. 네오가 기억하는 음과 비교하여 그 곡이 맞는지 확인한다.</p>
-<p>우선 1번과정부터 살펴보자.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String[] info_arr = info.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">String[] start_t = info_arr[<span class="number">0</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">String[] end_t = info_arr[<span class="number">1</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> start_m = Integer.parseInt(start_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(start_t[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">int</span> end_m = Integer.parseInt(end_t[<span class="number">0</span>])*<span class="number">60</span> + Integer.parseInt(end_t[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">int</span> duration = end_m - start_m;</span><br></pre></td></tr></table></figure>
-<p>재생 시간을 계산하는 방법은 쉽다 모두 분 단위로 변환한 뒤, 종료시각에서 재생시각을 빼면 된다.</p>
-<p>2번과정으로 넘어가보자</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">String[] split_by_pound_arr = info_arr[<span class="number">3</span>].split(<span class="string">&quot;#&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> code_cnt = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(String pound_str : split_by_pound_arr)</span><br><span class="line">&#123;</span><br><span class="line">    String[] codes = pound_str.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(String code : codes)</span><br><span class="line">        code_cnt++;</span><br><span class="line">&#125;</span><br><span class="line">code_cnt--;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> repeat = duration/code_cnt;</span><br><span class="line"><span class="keyword">int</span> song_end = duration%code_cnt;</span><br><span class="line">String song = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; repeat; i++)</span><br><span class="line">&#123;</span><br><span class="line">    song += info_arr[<span class="number">3</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span>[] song_arr = info_arr[<span class="number">3</span>].toCharArray();</span><br><span class="line"><span class="keyword">int</span> song_idx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; song_arr.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(song_idx == song_end)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    buff.append(song_arr[i]);</span><br><span class="line">    <span class="keyword">if</span>((i &lt; song_arr.length-<span class="number">1</span>) &amp;&amp; (song_arr[i+<span class="number">1</span>] == <span class="string">&#x27;#&#x27;</span>))</span><br><span class="line">        buff.append(song_arr[++i]);</span><br><span class="line">    song += buff.toString();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    song_idx++;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>곡을 재생시간만큼 만들기 위해서 #에 대한 처리가 필요하다. 일단 #을 제외하면 전체 계이름 개수를 알 수 있다. #을 기준으로 문자열을 쪼갠 뒤, 전체 계이름 개수를 구한다. 그리고 repeat와 song_end를 구한다. repeat는 전체 노래가 몇 번 반복하는지 알려주는 변수이다. 나누기 연산을 통해 구할 수 있다. song_end는 중간에서 노래가 멈출 경우 몇번째 음에서 멈추는지 알려주는 변수이다. 이는 나머지 연산을 통해 구할 수 있다.</p>
-<p>repeat수 만큼 전체 문자열을 song에 더해주고 두번째 for문은 song_idx가 song_end에 도달할 때까지 #을 고려하여 song에 계이름을 더해준다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> idx = song.indexOf(m);</span><br><span class="line">            </span><br><span class="line"><span class="keyword">if</span>((last_time &lt; duration) &amp;&amp; (idx != -<span class="number">1</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(idx != -<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(song.length() &gt; idx+m.length())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(song.charAt(idx+m.length()) == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                idx = song.indexOf(m, idx+m.length());</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        idx = song.indexOf(m, idx+m.length());</span><br><span class="line">        answer = info_arr[<span class="number">2</span>];</span><br><span class="line">        last_time = duration;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>이제 만든 노래를 비교해보면 된다. 여태까지 제일 길었떤 재생 시간을 저장한 last_time이 duration보다 작고, 네오가 기억한 음이 포함되어 있다면 if문 안으로 들어간다. 이 때, 처리해주지 못하는 케이스가 있는데 맨 마지막에 #이 붙는 경우이다. 이 경우 indexOf로 찾은 값에 m의 길이를 더해 #이 있으면 불일치로 간주하면 된다. 네오의 음과 일치하는 구절이 여러 곳일 수 있기 때문에 idx는 루프를 돌 때 마다 업데이트한다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/previous_song.png" width="290" height="530">
-</center>
-<p><br> categories: [Problem Solving, Programmers, Level2]</p>
-<p>#을 처리하는 것에서 많이 헤맸는데, 다른 사람들의 풀이를 보니 C#같은 문자열을 c로 바꾸어 문제를 간단하게 풀었다. 나도 그런 아이디어가 나도록 훈련해야겠다.</p>
 
       
     </div>
