@@ -196,14 +196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,303 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/29/WaterMelon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/29/WaterMelon/" class="post-title-link" itemprop="url">수박수박수박수박수박수?</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-29 10:40:00" itemprop="dateCreated datePublished" datetime="2020-12-29T10:40:00+09:00">2020-12-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:06:35" itemprop="dateModified" datetime="2021-04-01T21:06:35+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>서로 마주보고 탕수육을 번갈아 말하는 게임을 해본적이 있을 것이다. 이 문제도 딱 그런 느낌이다. 수와 박을 번갈아가면서 n번 말했을 때 문자열을 출력하면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaterMelon</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line">        StringBuffer buff = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">                buff.append(<span class="string">&quot;수&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                buff.append(<span class="string">&quot;박&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String answer = buff.toString();</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 0이 첫번째 숫자이자 짝수이므로 0부터 n-1까지 짝수인지 홀수인지 판별하여 수와 박을 버퍼에 붙여준다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/watermelon.png" width="400" height="300">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/28/Find-Prim-Num/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/28/Find-Prim-Num/" class="post-title-link" itemprop="url">소수 찾기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-28 18:04:00" itemprop="dateCreated datePublished" datetime="2020-12-28T18:04:00+09:00">2020-12-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:06:35" itemprop="dateModified" datetime="2021-04-01T21:06:35+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>최대 자연수 값 n이 주어질 때 [1,n]에서 소수가 몇 개 있는지 출력하는 문제이다. 필자의 경우 첫번째 시도를 시간초과로 틀렸다. 그래서 질문하기를 보니 에라토테네스의 체(어떤 사람을 이걸 에라이체라고 하더라)를 활용하면 풀 수 있다고 했다. 이용했더니 한번에 풀림! 에라토테네스의 체는 큰 수가 소수가 맞는지 아닌지에 대한 판별을 할 때 유용하다고 한다. 간단히 설명을 하자면 25가 소수인지 알고 싶을 때, 2~24까지 전부 나눠보는 것이 아니라 그의 제곱근인 5를 2~5로 나눠보면 된다는 것이다. 왜 제곱근까지 나눠보면 되냐면 우리가 어떠한 수를 나눌 때 몫이 생긴다. 이 몫이 그 수의 제곱근이하이기 때문이라고 한다(더 자세히 알고 싶은 사람은 검색해보자.). 아무튼 이 원리를 이용하고 효율성 검사까지 모두 통과하였다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrimeNum</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> add = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            add = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= Math.sqrt(i); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i%j==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    add = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(add)</span><br><span class="line">                answer++;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 1은 소수가 아니므로 2부터 n까지 i가 소수인지 검토하는 프로그램을 짰다. 원래 두번째 for문에서 i-1까지 나눠보는 걸로 하였는데, 에라토테네스의 체로 제곱근까지 나눠본다. 이때 등호를 넣어준 이유는 제곱근이 자연수로 딱 떨어지는 경우가 있기 때문이다. 가령 4가 소수인지 판별하기 위해선 2까지 해당하는 약수가 있는지 봐야한다. 소수판별은 위와 같이 가능하다. 소수 판별을 한다는 것을 저장하기 위해 add라는 플래그를 세워두었다. 만약 약수가 하나라도 존재하면 add는 false가 되어 answer++문을 넘어간다. 총 시간복잡도는 <span class="math inline">\(O(n\sqrt{n})\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/find_prime_num.png" width="400" height="300">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/28/Find-Kim-In-Seoul/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/28/Find-Kim-In-Seoul/" class="post-title-link" itemprop="url">서울에서 김서방 찾기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-28 17:40:00" itemprop="dateCreated datePublished" datetime="2020-12-28T17:40:00+09:00">2020-12-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:06:35" itemprop="dateModified" datetime="2021-04-01T21:06:35+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>'김서방은 ?에 있다.'라는 형식으로 출력하면 된다. 여기서 ?는 배열에서 "Kim"이 있는 위치이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeoulKim</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String[] seoul = &#123;<span class="string">&quot;Jane&quot;</span>, <span class="string">&quot;Kim&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> idx = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; seoul.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(seoul[i].equals(<span class="string">&quot;Kim&quot;</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                idx = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        StringBuffer buff = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        buff.append(<span class="string">&quot;김서방은 &quot;</span>);</span><br><span class="line">        buff.append(Integer.toString(idx));</span><br><span class="line">        buff.append(<span class="string">&quot;에 있다&quot;</span>);</span><br><span class="line">        String answer = buff.toString();</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 배열을 순회하면서 "Kim"이 있는 위치를 찾는다. Kim을 찾는 순간 더 이상 배열을 탐색할 필요가 없으므로 break문을 통해 탈출하고 정답을 출력한다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/seoul_kim.png" width="400" height="300">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -931,315 +1228,6 @@
 </center>
 <p><br></p>
 <p>홀수 길이와 짝수 길이로 분기처리를 하지 않고도 문제를 풀 수 있는 방법이 있었다. substring을 반환하는 함수의 범위를 [(문자열의 길이-1)/2, (문자열의 길이)/2 +1)로 하면 된다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/28/Flip-3Digit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/28/Flip-3Digit/" class="post-title-link" itemprop="url">3진법 뒤집기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-28 10:51:00" itemprop="dateCreated datePublished" datetime="2020-12-28T10:51:00+09:00">2020-12-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>어떤 십진수 n이 들어올 때 이를 3진법으로 바꾼뒤 이를 뒤집는다. 뒤집은 3진법을 다시 10진수로 출력한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>10진법을 2진법을 바꾸는 방법을 떠올려보자. 계속 나누어가다가 몫이 0이 되면 나머지들을 최근것부터 합치면 된다. 이 문제에서는 3진법을 거꾸로 뒤집으라 했으므로 나오는 나머지들을 스택에 쌓으면 원래 3진법에서 뒤집어진다. 뒤집은 수를 10진법으로 바꾸는 방법은 3^(자릿수)에 해당 값을 곱하면된다. 이를 다 합산하면 우리가 바라던 정답이다.</p>
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Flip3Digit</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">45</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> q = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">        Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(q != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q = n/<span class="number">3</span>;</span><br><span class="line">            r = n%<span class="number">3</span>;</span><br><span class="line">            n /= <span class="number">3</span>;</span><br><span class="line">            s.push(r);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> digit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!s.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            answer += Math.pow(<span class="number">3</span>,digit) * Integer.parseInt(s.peek().toString());</span><br><span class="line">            digit++;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 부분부분 살펴보자 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">45</span>;</span><br><span class="line"><span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> q = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="keyword">while</span>(q != <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    q = n/<span class="number">3</span>;</span><br><span class="line">    r = n%<span class="number">3</span>;</span><br><span class="line">    n /= <span class="number">3</span>;</span><br><span class="line">    s.push(r);</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 10진법을 3진수로 바꾸는 과정이다. q는 몫이고 r은 나머지이다. 몫이 0이 될 때 까지 나머지를 구하고 이를 스택에 쌓는다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!s.empty())</span><br><span class="line">&#123;</span><br><span class="line">    answer += Math.pow(<span class="number">3</span>,digit) * Integer.parseInt(s.peek().toString());</span><br><span class="line">    digit++;</span><br><span class="line">    s.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 스택에 나머지값이 쌓이면 스택에 쌓인 값 순서대로 10진수로 변환하는 과정을 거친다. 이 때 자릿수를 나타내는 digit은 0으로 초기화한다. 그리고 3*(자릿수)를 각 나머지에 곱하고 digit을 늘려간다.</p>
-<p>총 시간복잡도는 3진수로 바꿨을 때 최대 자릿수를 n이라하면 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/flip3digit.png" width="400" height="300">
-</center>
-<p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/24/2016/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/24/2016/" class="post-title-link" itemprop="url">2016년</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-24 12:16:00" itemprop="dateCreated datePublished" datetime="2020-12-24T12:16:00+09:00">2020-12-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>2016년의 월과 일을 입력하면 요일을 출력해주는 프로그램을 짜는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>물론 제일 쉬운 방법은 스위치문이나 if-else문으로 모든 경우의 수를 짜는 것이겠지만(실제로 문제를 풀고 다른 사람 풀이 중에 그렇게 푼 사람이 있었다! 정말 존경한다.), 필자는 1월 1일부터 며칠이나 떨어져있는지 계산한 후 그 날을 요일로 바꾸는 연산을 하였다.</p>
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Year2016</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">3</span>;</span><br><span class="line">        String answer = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span>[] months = &#123;<span class="number">0</span>,<span class="number">31</span>, <span class="number">29</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>&#125;;</span><br><span class="line">        String[] days = &#123;<span class="string">&quot;MON&quot;</span>, <span class="string">&quot;TUE&quot;</span>, <span class="string">&quot;WED&quot;</span>, <span class="string">&quot;THU&quot;</span>, <span class="string">&quot;FRI&quot;</span>, <span class="string">&quot;SAT&quot;</span>, <span class="string">&quot;SUN&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> day = <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> month = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(month != a)</span><br><span class="line">        &#123;</span><br><span class="line">            day += months[month];</span><br><span class="line">            month++;</span><br><span class="line">        &#125;</span><br><span class="line">        day += b-<span class="number">1</span>;</span><br><span class="line">        day %= <span class="number">7</span>;</span><br><span class="line">        answer = days[day];</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 짧으므로 오늘은 부분적으로 코드를 끊어서 보지 않겠다. 일단 월마다 더하는 달을 배열로 저장해둔다. 예를 들어 1월 1일에서 2월 1일로 넘어가기 위해선 31일이 필요하다. 0월이란 수는 없으므로 months의 첫번째 수는 0으로 채운다. 그리고 days에는 요일을 저장해둔다. 문제에서 2016년 1월 1일은 금요일이라 했으므로 금요일의 배열 인덱스인 4를 기본값으로한다. 이제 a와 b에 따라 요일을 출력해보자. 초기 달은 1월인데 만약 원하는 달이 1월이 아닌 경우 months의 일수를 더해간다. 그리고 b일 -1을 더해준다(1일에서 넘어가기 시작하는거기 때문이다.). 총 일수를 구했으니 이를 7로 나머지 연산을 하면 요일을 구할 수 있다.</p>
-<p>총 시간복잡도는 a의 크기에 따라 달라지므로 a의 크기를 n이라하면 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/year2016.png" width="400" height="300">
-</center>
-<p><br></p>
-<p>다른 사람의 풀이를 보니 하나하나 스위치문과 if문을 통해 구현한 사람이 있었다. 정말 대단한 사람이라고 생각한다. 문제풀이를 처음 시작할 때 효율적인 방법을 몰라도 일단 풀고자 하는 마음이 중요하다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/23/Gym-Suit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/23/Gym-Suit/" class="post-title-link" itemprop="url">체육복</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-23 15:58:00" itemprop="dateCreated datePublished" datetime="2020-12-23T15:58:00+09:00">2020-12-23</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>체육복을 도둑맞아 빌려야 하는 상황. 체육복을 빌려야 체육 수업이 가능하다. 자신의 앞이나 뒤에 있는 번호의 체육복만 빌릴 수 있는 경우, 체육 수업을 들을 수 있는 최대 학생 수를 구하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>앞에서부터 부족한 학생이 있을 때 마다 자신보다 앞에 있는 학생의 체육복을 먼저 확인한 다음 빌릴 수 없다면 뒤에 있는 학생의 체육복을 빌려보는 식으로 한다. 앞에 있는 학생의 체육복을 먼저 확인하는 이유는 자신보다 앞에 있는 학생의 경우 자신보다 뒤에 있는 학생들에게 절대 체육복을 못 빌려주기 때문이다.</p>
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lost = &#123;<span class="number">2</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] reserve = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] cnt = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Arrays.fill(cnt, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> idx : lost)</span><br><span class="line">            cnt[idx-<span class="number">1</span>]--;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> idx : reserve)</span><br><span class="line">            cnt[idx-<span class="number">1</span>]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt[i] &gt; <span class="number">0</span>)</span><br><span class="line">                answer++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(cnt[<span class="number">1</span>] &gt; <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        answer++;</span><br><span class="line">                        cnt[<span class="number">1</span>]--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i == n-<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(cnt[n-<span class="number">2</span>] &gt; <span class="number">1</span>)</span><br><span class="line">                        answer++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(cnt[i-<span class="number">1</span>] &gt; <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        answer++;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(cnt[i+<span class="number">1</span>] &gt; <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        answer++;</span><br><span class="line">                        cnt[i+<span class="number">1</span>]--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       System.out.print(answer);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>부분부분 살펴보자</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span>[] lost = &#123;<span class="number">2</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] reserve = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span>[] cnt = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">Arrays.fill(cnt, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> idx : lost)</span><br><span class="line">    cnt[idx-<span class="number">1</span>]--;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> idx : reserve)</span><br><span class="line">    cnt[idx-<span class="number">1</span>]++;</span><br></pre></td></tr></table></figure>
-<p>학생마다 가지고 있는 체육복의 개수를 알아내기 위해 cnt 배열을 선언한다. 초기화는 모두 1로 한다. 그리고 체육복을 도둑맞은 학생의 개수는 줄이고 여분을 가지고 있는 학생의 개수는 1 증가한다. 이 부분에서 시간이 제일 오래 걸리는 부분은 fill이 <span class="math inline">\(O(n)\)</span>만큼 걸리기 때문에 이 부분에서 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(cnt[i] &gt; <span class="number">0</span>)</span><br><span class="line">        answer++;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt[<span class="number">1</span>] &gt; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                answer++;</span><br><span class="line">                cnt[<span class="number">1</span>]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(i == n-<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt[n-<span class="number">2</span>] &gt; <span class="number">1</span>)</span><br><span class="line">                answer++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt[i-<span class="number">1</span>] &gt; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                answer++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(cnt[i+<span class="number">1</span>] &gt; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                answer++;</span><br><span class="line">                cnt[i+<span class="number">1</span>]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>초기 answer를 0으로 한다. 그리고 모든 학생을 보며 만약 체육복을 가지고 있다면 answer를 증가하고 넘긴다. 만약 학생이 체육복을 가지고 있지 않다면 체육복을 빌린다. 맨 앞에 있는 학생의 경우 자신보다 앞이 없으므로 뒷번호의 학생에게 밖에 빌릴 수 없다(i == 0). 맨 뒤에 있는 학생의 경우 자신보다 뒷번호가 없으므로 앞에서 밖에 빌릴 수 없다(i == n-1). 사이에 있는 학생의 경우 둘 다 빌릴 수 있다. 따라서 자신보다 앞에 있는 학생한테 체육복을 빌릴 수 있는지 확인한 후, 빌릴 수 있는 경우에 answer를 증가한다. 만약 앞에 학생한테 체육복을 빌릴 수 없으면 뒤에 있는 학생한테 빌려본다. 전체 n만큼 반복하므로 최종 시간복잡도는 <span class="math inline">\(O(n)\)</span>이 된다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/gym_suit.png" width="400" height="300">
-</center>
-<p><br></p>
-<p>코드를 보면 알겠지만, 약간 지저분한 느낌이 든다. 맨 첫번째 학생과 맨 뒤에 학생을 따로 처리해줘서 그런데, 이 경우 배열의 크기를 n+2로 하면 이러한 연산을 없앨 수 있다. 앞으로 코드를 작성할 때 기억해야겠다.</p>
 
       
     </div>

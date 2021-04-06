@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/avatar.svg" color="#222">
+  <meta name="google-site-verification" content="LaurF1hE6lXAPb-Ag50EbNKDdb8PWRungqo2Y_cZLCI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="문제정의  0-1 knapsack 문제이다. 문제풀이  이번에는 내 코드와 강사님이 최적화를 거친 코드를 단계로 보며 DP에 대해 정리하려고 한다. 일단 필자의 코드는 아래와 같다. 12345678910111213141516171819202122232425262728293031N, K &#x3D; map(int, input().split(&quot; &quot;))">
+<meta property="og:type" content="article">
+<meta property="og:title" content="평범한 배낭">
+<meta property="og:url" content="http://yunpc.github.io/2021/04/06/Knapsack/index.html">
+<meta property="og:site_name" content="Rabbit blog">
+<meta property="og:description" content="문제정의  0-1 knapsack 문제이다. 문제풀이  이번에는 내 코드와 강사님이 최적화를 거친 코드를 단계로 보며 DP에 대해 정리하려고 한다. 일단 필자의 코드는 아래와 같다. 12345678910111213141516171819202122232425262728293031N, K &#x3D; map(int, input().split(&quot; &quot;))">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yunpc.github.io/images/baekjoon/12865.png">
+<meta property="og:image" content="http://yunpc.github.io/images/baekjoon/12865-1.png">
+<meta property="og:image" content="http://yunpc.github.io/images/baekjoon/12865-2.png">
+<meta property="article:published_time" content="2021-04-06T12:06:36.000Z">
+<meta property="article:modified_time" content="2021-04-06T15:02:04.572Z">
+<meta property="article:author" content="YunPC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yunpc.github.io/images/baekjoon/12865.png">
+
+
+<link rel="canonical" href="http://yunpc.github.io/2021/04/06/Knapsack/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>평범한 배낭 | Rabbit blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Rabbit blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+      <img class="custom-logo-image" src="/images/avatar.jpg" alt="Rabbit blog">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Rabbit blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98"><span class="nav-number">1.</span> <span class="nav-text">문제정의</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4"><span class="nav-number">2.</span> <span class="nav-text">문제풀이</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YunPC</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bnBj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yunpc"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIwMDA3QGdtYWlsLmNvbQ==" title="E-Mail → mailto:20007@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/06/Knapsack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          평범한 배낭
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-06 21:06:36" itemprop="dateCreated datePublished" datetime="2021-04-06T21:06:36+09:00">2021-04-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-07 00:02:04" itemprop="dateModified" datetime="2021-04-07T00:02:04+09:00">2021-04-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Beakjoon/" itemprop="url" rel="index"><span itemprop="name">Beakjoon</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Beakjoon/12000-12999/" itemprop="url" rel="index"><span itemprop="name">12000-12999</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>0-1 knapsack 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>이번에는 내 코드와 강사님이 최적화를 거친 코드를 단계로 보며 DP에 대해 정리하려고 한다. 일단 필자의 코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>))</span><br><span class="line"></span><br><span class="line">values = []</span><br><span class="line">weights = []</span><br><span class="line"></span><br><span class="line">max_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">    w, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>))</span><br><span class="line">    values.append(v)</span><br><span class="line">    weights.append(w)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">knapsack</span>(<span class="params">values, weights, n, W</span>):</span></span><br><span class="line">    <span class="keyword">if</span> W &lt;= <span class="number">0</span> <span class="keyword">or</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (n-<span class="number">1</span>, W) <span class="keyword">in</span> max_dict:</span><br><span class="line">        <span class="keyword">return</span> max_dict[(n-<span class="number">1</span>, W)]</span><br><span class="line"></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> W &gt;= weights[n-<span class="number">1</span>]:</span><br><span class="line">        res =  <span class="built_in">max</span>(knapsack(values, weights, n-<span class="number">1</span>, W), </span><br><span class="line">        knapsack(values, weights, n-<span class="number">1</span>, W-weights[n-<span class="number">1</span>]) + values[n-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res = knapsack(values, weights, n-<span class="number">1</span>, W)</span><br><span class="line"></span><br><span class="line">    max_dict[(n-<span class="number">1</span>, W)] = res</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(knapsack(values, weights, N, K))</span><br></pre></td></tr></table></figure>
+<p>재귀를 이용한 구현이다. 가용치를 <code>W</code>라하고, <code>n</code>을 넣을 물건의 고유번호라고 생각하면, 이 둘이 0일 때 반환하는 값은 0이다.</p>
+<p>계산했던 값을 저장하기 위해 <code>max_dict</code> 딕셔너리를 이용하였다. 여기에 들어가는 키 값은 물건의 고유번호와 가용치가 묶인 튜플이다. 값으로는 최대가치를 반환한다.</p>
+<p>이 값이 만약에 존재한다면 계산 해뒀던 값이므로 이 값을 반환한다. 그렇지 않은 경우 값을 새로 계산하여야 한다. 만약 가용치안에 현재 물건이 들어갈 수 있다면, 들어간 경우와 그렇지 않은 경우를 모두 고려하여 값을 계산한다.</p>
+<p>가용치안에 물건이 들어갈 수 없다면 없는 경우만 고려하면 된다. 이 때 계산한 값을 딕셔너리에 저장하는 것을 잊지말자!</p>
+<p>백준에 결과를 돌려보면 다음과 같다.</p>
+<figure>
+<img src="/images/baekjoon/12865.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>이제 여기서 최적화를 한 단계씩 해나갈 수 있다. 기존의 Top-down방식을 Bottom-up으로 구성하면 코드는 다음과 같이 변경할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>.split())</span><br><span class="line"></span><br><span class="line">W = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">V = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    W[i], V[i] = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>.split())</span><br><span class="line"></span><br><span class="line">dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(K+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N+<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, K+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            dp[i][w] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][w], dp[i-<span class="number">1</span>][w-W[i]] + V[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][w] = dp[i-<span class="number">1</span>][w]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[N][K]) </span><br></pre></td></tr></table></figure>
+<p><code>dp</code>라는 2차원 리스트를 만들어서 <code>i</code>번째 물건을 가중치 <code>W</code>에 따라 넣는 경우와 넣지 않는 경우, 넣지 못하는 경우를 전부 기록한다.</p>
+<figure>
+<img src="/images/baekjoon/12865-1.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>위와 비교하여 메모리도 늘고 시간도 늘었다. 실은 이건 재귀에 비하면 느릴 수 있는게 애초에 2차원 배열의 모든 요소를 사용하지 않기 때문에 메모리 낭비가 있기 때문이다. 그리고 표의 모든 요소를 채우기 때문에 시간도 그만큼 오래 걸린다. 하지만 재귀같은 경우 998번이 넘는 호출을 할수가 없기 떄문에 데이터 값이 큰 경우 재귀는 사용하기 어렵기 때문에 이걸 알아놔야 한다.</p>
+<p>여기서 보이는 개선 방안은 크게 두가지 이다.</p>
+<ol type="1">
+<li>공간의 낭비</li>
+<li>표의 모든 요소를 계산할 필요가 없는 것</li>
+</ol>
+<p>이 두가지를 최적화 시켜나가려고 한다. 일단 공간적인 면에서 최적화를 시켜보자. 코드를 자세히 보면 점화식을 사용하는 부분에서 <code>i-1</code>번째 줄만 사용하는 것을 볼 수 있다. 그럼 그 이전의 행은 더 이상 쓸 일이 없으므로 이 부분에 대해서 최적화를 하면 다음과 같은 코드로 변경할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">W = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">V = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    W[i], V[i] = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(K+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, K+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = <span class="built_in">max</span>(dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w], dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w-W[i]] + V[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[N%<span class="number">2</span>][K]) </span><br></pre></td></tr></table></figure>
+<p>i값에 따라 번갈아 가면서 값을 쓸 수 있도록 하였다.</p>
+<figure>
+<img src="/images/baekjoon/12865-2.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>연산 횟수는 다르지 않기 때문에 걸리는 시간은 그대로지만, 메모리 사용량이 크게 준 것을 확인하였다.</p>
+<p>여기서 이제 2번에 대한 최적화를 추가로 할 수 있다. 연산량을 줄이는 것인데, 재귀로 코드를 짰을 때 호출되는 <code>w</code> 값을 계산하여 이를 저장하고 for문에서 이 값들에 대한 계산만 하면 최적화를 할 수 있다.</p>
+<p>마지막 최적화에 대한 코드는 내일 올리도록 하겠다. DP는 너무 어렵다 😞</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/06/Stolen/" rel="prev" title="도둑질">
+                  <i class="fa fa-chevron-left"></i> 도둑질
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YunPC</span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

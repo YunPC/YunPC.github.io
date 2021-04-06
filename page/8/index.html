@@ -196,14 +196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,303 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/30/Rectangle-Star/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/30/Rectangle-Star/" class="post-title-link" itemprop="url">직사각형 별찍기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-30 13:53:00" itemprop="dateCreated datePublished" datetime="2020-12-30T13:53:00+09:00">2020-12-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 20:41:14" itemprop="dateModified" datetime="2021-04-01T20:41:14+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>a를 가로길이로 b를 세로길이로 하는 직사각형을 만드는 문제이다. 직사각형을 별문자를 통해 나타낸다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MakeRectangle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제 풀이 level1 직사각형 별찍기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> a = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span> b = sc.nextInt();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; a; j++)</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 열(a)만큼 별을 찍어준 다음에는 줄바꾸기를 해야하므로 위와 같이 코드를 작성하였다. 시간복잡도는 <span class="math inline">\(O(a*b)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/star_rectangle.png" width="350" height="500">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/30/X-Interval-Num/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/30/X-Interval-Num/" class="post-title-link" itemprop="url">x만큼 간격이 있는 n개의 수</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-30 13:44:00" itemprop="dateCreated datePublished" datetime="2020-12-30T13:44:00+09:00">2020-12-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 20:41:14" itemprop="dateModified" datetime="2021-04-01T20:41:14+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>x가 초항이자 공차인 등차수열을 n만큼 만드는 것이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NNumXSpace</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제 풀이 level1 x만큼 간격이 있는 n개의 숫자</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">2</span>, n = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">long</span>[] answer = <span class="keyword">new</span> <span class="keyword">long</span>[n];</span><br><span class="line">        answer[<span class="number">0</span>] = x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">            answer[i] = answer[i-<span class="number">1</span>]+x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 정답배열의 첫번째 항을 x로 초기화 한 뒤, 등차수열을 만들 듯 이전 항에 x만큼 더하면 된다. 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/x_space_n_num.png" width="350" height="500">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/30/Add-Matrix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/30/Add-Matrix/" class="post-title-link" itemprop="url">행렬의 덧셈</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-30 13:35:00" itemprop="dateCreated datePublished" datetime="2020-12-30T13:35:00+09:00">2020-12-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 20:41:14" itemprop="dateModified" datetime="2021-04-01T20:41:14+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>두 행렬간의 덧셈을 하여 결과 행렬을 만드는 문제이다. 같은열 같은행의 원소끼리 더하면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddMatrix</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 행렬의 덧셈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] arr1 = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">            &#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] arr2 = &#123;</span><br><span class="line">            &#123;<span class="number">3</span>, <span class="number">4</span>&#125;,</span><br><span class="line">            &#123;<span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[][] answer = <span class="keyword">new</span> <span class="keyword">int</span>[arr1.length][arr1[<span class="number">0</span>].length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr1.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; arr1[<span class="number">0</span>].length; j++)</span><br><span class="line">                answer[i][j] = arr1[i][j] + arr2[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 2중 for문으로 모든 원소를 돌아보며 합을 구하면 된다. 주어진 행렬의 행을 n, 열을 m이라고 할 때, 모든 원소를 순회하므로 시간복잡도는 <span class="math inline">\(O(n*m)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/add_matrix.png" width="350" height="500">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -925,305 +1222,6 @@
 </center>
 <p><br></p>
 <p>옛날에 멋모르고 인턴에 지원했다가 이 문제만 2-3시간 풀고 포기한 경험이 있다. 그래서 그 때의 안 좋은 감정이 차올랐는데, 이번에는 30분정도 걸렸다. 내가 성장하고 있는 걸 느껴서 기쁘다. 첨언을 하자면 키패드를 자세히 보면 3으로 나머지연산과 나누기 연산을 하면 키패드의 어느 위치에 있는지 쉽게 알 수 있다. 이걸 활용하면 코드를 더 간결하게 만들 수 있을거라 생각한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/29/Remove-Min/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/29/Remove-Min/" class="post-title-link" itemprop="url">제일 작은 수 제거하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-29 15:45:00" itemprop="dateCreated datePublished" datetime="2020-12-29T15:45:00+09:00">2020-12-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 20:53:24" itemprop="dateModified" datetime="2021-04-01T20:53:24+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>배열에서 제일 작은 수를 제거하여 출력한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveMin</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 제일 작은 수 제거하기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        ArrayList&lt;Integer&gt; sorted_list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> n : arr)</span><br><span class="line">            sorted_list.add(n);</span><br><span class="line">        ArrayList&lt;Integer&gt; unsorted_list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        unsorted_list = (ArrayList&lt;Integer&gt;)sorted_list.clone();</span><br><span class="line">        Collections.sort(sorted_list);</span><br><span class="line">        </span><br><span class="line">        Integer min = sorted_list.get(<span class="number">0</span>);</span><br><span class="line">        unsorted_list.remove(min);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[unsorted_list.size() == <span class="number">0</span> ? <span class="number">1</span> : unsorted_list.size()];</span><br><span class="line">        <span class="keyword">if</span>(answer.length == <span class="number">1</span>)</span><br><span class="line">            answer[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unsorted_list.size(); i++)</span><br><span class="line">                answer[i] = Integer.parseInt(unsorted_list.get(i).toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 부분부분 살펴보자 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        </span><br><span class="line">    ArrayList&lt;Integer&gt; sorted_list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : arr)</span><br><span class="line">        sorted_list.add(n);</span><br><span class="line">    ArrayList&lt;Integer&gt; unsorted_list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    unsorted_list = (ArrayList&lt;Integer&gt;)sorted_list.clone();</span><br><span class="line">    Collections.sort(sorted_list);</span><br></pre></td></tr></table></figure> 어레이리스트를 두개 선언하였다. 하나는 정렬을 하고 하나는 정렬하지 않은 것이다. 배열 내에서 제일 작은 수를 알기 위해 정렬을 하는 것인데, 결과 배열은 순서가 흐트러지면 안되므로 두개의 배열을 선언한것이다. 여기서의 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer min = sorted_list.get(<span class="number">0</span>);</span><br><span class="line">unsorted_list.remove(min);</span><br></pre></td></tr></table></figure> 정렬한 배열의 첫번째 값을 가져와서 정렬하지 않은 배열에서 그 값을 제거한다. 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[unsorted_list.size() == <span class="number">0</span> ? <span class="number">1</span> : unsorted_list.size()];</span><br><span class="line"><span class="keyword">if</span>(answer.length == <span class="number">1</span>)</span><br><span class="line">    answer[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unsorted_list.size(); i++)</span><br><span class="line">        answer[i] = Integer.parseInt(unsorted_list.get(i).toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 제거한 값을 배열로 만들기 위해 위 코드와 같이 처리한다. 값을 제거한 배열이 빈 배열일 경우 -1을 집어넣어야 하므로 사이즈를 1로 지정하고 그게 아니라면 결과 사이즈로 int배열을 선언한다. 정답 배열의 크기가 1일 경우 -1을 넣고 그게 아니라면 배열을 그대로 담는다. 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다. 따라서 전체 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/remove_min.png" width="400" height="300">
-</center>
-<p><br></p>
-<p>테스트케이스는 전부 통과하였지만 만약 테스트케이스가 [1,1,3]인 경우 내 알고리즘은 틀리게 된다. 그래도 통과가 된걸보니 그러한 케이스는 없었던 것 같다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/29/Integer-Sqrt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/29/Integer-Sqrt/" class="post-title-link" itemprop="url">정수 제곱근 판별</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-29 15:09:00" itemprop="dateCreated datePublished" datetime="2020-12-29T15:09:00+09:00">2020-12-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 20:53:24" itemprop="dateModified" datetime="2021-04-01T20:53:24+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>제곱근이 정수인지 판별하는 문제이다. 만약 제곱근이 정수라면 제곱근의+1의 제곱을 출력한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerRoot</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 정수 제곱근 판별</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> n = <span class="number">121</span>;</span><br><span class="line">        <span class="keyword">long</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> fp;</span><br><span class="line">        <span class="keyword">int</span> ip;</span><br><span class="line">        <span class="keyword">double</span> root = Math.sqrt(n);</span><br><span class="line">        ip = (<span class="keyword">int</span>)root;</span><br><span class="line">        fp = root - ip;</span><br><span class="line">        <span class="keyword">if</span>(fp &gt; <span class="number">0</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            answer = (<span class="keyword">long</span>)Math.pow(ip+<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 제곱근이 정수라는 것은 소수부분이 0이어야 한다는 것이다. 주어진 정수 n의 제곱근을 구해 정수부와 소수부로 나눈다. 만약 소수부가 0보다 크면 정수가 아니라는 의미이므로 -1을 반환한다. 만약 소수부가 0이라면 정수부분의 +1하여 제곱한 값을 넘겨준다. 총 시간복잡도는 <span class="math inline">\(O(1)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/integer_root.png" width="400" height="300">
-</center>
-<p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/29/Arrange-Integer-Descending/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/29/Arrange-Integer-Descending/" class="post-title-link" itemprop="url">정수 내림차순으로 배치하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-29 14:58:00" itemprop="dateCreated datePublished" datetime="2020-12-29T14:58:00+09:00">2020-12-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 20:53:24" itemprop="dateModified" datetime="2021-04-01T20:53:24+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>숫자를 입력받아 거꾸로 출력하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NumDesc</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제 풀이 level1 정수 내림차순으로 배치하기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> n = <span class="number">118372</span>;</span><br><span class="line">        <span class="keyword">long</span> answer = <span class="number">0</span>;</span><br><span class="line">        String s = Long.toString(n);</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        Arrays.sort(arr);</span><br><span class="line">        s = <span class="keyword">new</span> StringBuilder(<span class="keyword">new</span> String(arr)).reverse().toString();</span><br><span class="line">        answer = Long.parseLong(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 숫자-&gt;문자열-&gt;정렬-&gt;문자열-&gt;숫자로 진행하였다. 총 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/num_desc.png" width="400" height="300">
-</center>
-<p><br></p>
-<p>람다식을 이용하여 한줄로 끝낸 사람도 있었다. 나도 람다식에 대해 공부해 봐야겠다.</p>
 
       
     </div>
