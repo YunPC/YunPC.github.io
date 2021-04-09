@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/avatar.svg" color="#222">
+  <meta name="google-site-verification" content="LaurF1hE6lXAPb-Ag50EbNKDdb8PWRungqo2Y_cZLCI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="문제정의  가사에 사용된 모든 단어들이 담긴 배열 words에서 queries에 해당되는 단어가 몇 개가 있는지 반환하는 문제이다. queries에는 와일드 카드 ?가 하나 이상 존재하며, 이 와일드 카드는 문자의 앞부분을 차지하거나 뒷부분만을 차지한다(fr?do와 같은 형식이 없다.). 문제 링크 문제풀이  trie 자료구조를 이용하여 문제를 풀 수 있다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="가사 검색">
+<meta property="og:url" content="http://yunpc.github.io/2021/04/09/Song-Search/index.html">
+<meta property="og:site_name" content="Rabbit blog">
+<meta property="og:description" content="문제정의  가사에 사용된 모든 단어들이 담긴 배열 words에서 queries에 해당되는 단어가 몇 개가 있는지 반환하는 문제이다. queries에는 와일드 카드 ?가 하나 이상 존재하며, 이 와일드 카드는 문자의 앞부분을 차지하거나 뒷부분만을 차지한다(fr?do와 같은 형식이 없다.). 문제 링크 문제풀이  trie 자료구조를 이용하여 문제를 풀 수 있다">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yunpc.github.io/images/programmers/trie.jpeg">
+<meta property="og:image" content="http://yunpc.github.io/images/programmers/song_search.png">
+<meta property="article:published_time" content="2021-04-09T01:32:31.000Z">
+<meta property="article:modified_time" content="2021-04-09T02:16:06.571Z">
+<meta property="article:author" content="YunPC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yunpc.github.io/images/programmers/trie.jpeg">
+
+
+<link rel="canonical" href="http://yunpc.github.io/2021/04/09/Song-Search/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>가사 검색 | Rabbit blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Rabbit blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+      <img class="custom-logo-image" src="/images/avatar.jpg" alt="Rabbit blog">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Rabbit blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98"><span class="nav-number">1.</span> <span class="nav-text">문제정의</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4"><span class="nav-number">2.</span> <span class="nav-text">문제풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8"><span class="nav-number">3.</span> <span class="nav-text">테스트</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YunPC</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bnBj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yunpc"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIwMDA3QGdtYWlsLmNvbQ==" title="E-Mail → mailto:20007@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/09/Song-Search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          가사 검색
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-09 10:32:31 / Modified: 11:16:06" itemprop="dateCreated datePublished" datetime="2021-04-09T10:32:31+09:00">2021-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level4/" itemprop="url" rel="index"><span itemprop="name">Level4</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>가사에 사용된 모든 단어들이 담긴 배열 <code>words</code>에서 <code>queries</code>에 해당되는 단어가 몇 개가 있는지 반환하는 문제이다. <code>queries</code>에는 와일드 카드 <code>?</code>가 하나 이상 존재하며, 이 와일드 카드는 문자의 앞부분을 차지하거나 뒷부분만을 차지한다(<code>fr?do</code>와 같은 형식이 없다.).</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNjAwNjA=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>trie 자료구조를 이용하여 문제를 풀 수 있다. 이번에는 다른 분의 핵심 아이디어를 듣고 코드로 구현하였다. 코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">words, queries</span>):</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, value=<span class="literal">None</span></span>):</span></span><br><span class="line">            self.value = value</span><br><span class="line">            self.child = <span class="built_in">dict</span>()</span><br><span class="line">            self.len_dict = <span class="built_in">dict</span>()</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Trie</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">            self.root = Node()</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self, value:<span class="built_in">str</span></span>):</span></span><br><span class="line">            node = self.root</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> value:</span><br><span class="line">                <span class="comment"># add dictionary for wildcard</span></span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(value) <span class="keyword">not</span> <span class="keyword">in</span> node.len_dict:</span><br><span class="line">                    node.len_dict[<span class="built_in">len</span>(value)] = <span class="number">0</span></span><br><span class="line">                node.len_dict[<span class="built_in">len</span>(value)] += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> node.child: <span class="comment"># There is no child</span></span><br><span class="line">                    new_node = Node(c)</span><br><span class="line">                    node.child[c] = new_node</span><br><span class="line">                    node = new_node</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    node = node.child[c]</span><br><span class="line">            node.child[<span class="string">&#x27;*&#x27;</span>] = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">search</span>(<span class="params">self, queri</span>):</span></span><br><span class="line">            node = self.root</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> queri:</span><br><span class="line">                <span class="keyword">if</span> c == <span class="string">&#x27;?&#x27;</span>:</span><br><span class="line">                    <span class="keyword">return</span> node.len_dict[<span class="built_in">len</span>(queri)] <span class="keyword">if</span> <span class="built_in">len</span>(queri) <span class="keyword">in</span> node.len_dict <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">                <span class="keyword">if</span> c <span class="keyword">in</span> node.child:</span><br><span class="line">                    node = node.child[c]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># def print(self):</span></span><br><span class="line">        <span class="comment">#     node = self.root</span></span><br><span class="line">        <span class="comment">#     queue = []</span></span><br><span class="line">        <span class="comment">#     queue.append(node)</span></span><br><span class="line">        <span class="comment">#     while queue:</span></span><br><span class="line">        <span class="comment">#         root = queue[0]</span></span><br><span class="line">        <span class="comment">#         del queue[0]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#         if root.value is not None:</span></span><br><span class="line">        <span class="comment">#             print(root.value, end = &quot; &quot;)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#         if  &#x27;*&#x27; in root.child:</span></span><br><span class="line">        <span class="comment">#             print(&#x27;*&#x27;)</span></span><br><span class="line">        <span class="comment">#             continue</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#         for node in root.child.values():</span></span><br><span class="line">        <span class="comment">#             queue.append(node)</span></span><br><span class="line">    </span><br><span class="line">    reversed_words = [word[::-<span class="number">1</span>] <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line"></span><br><span class="line">    trie = Trie()</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">        trie.add(word)</span><br><span class="line"></span><br><span class="line">    reversed_trie = Trie()</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> reversed_words:</span><br><span class="line">        reversed_trie.add(word)</span><br><span class="line"></span><br><span class="line">    answer = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> queri <span class="keyword">in</span> queries:</span><br><span class="line">        <span class="keyword">if</span> queri[<span class="number">0</span>] == <span class="string">&#x27;?&#x27;</span>:</span><br><span class="line">            answer.append(reversed_trie.search(queri[::-<span class="number">1</span>]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            answer.append(trie.search(queri))</span><br><span class="line">    <span class="keyword">return</span> answer</span><br></pre></td></tr></table></figure>
+<p>일단 Trie에 대해서 알아야 하는데 이에 대한 <span class="exturl" data-url="aHR0cHM6Ly9ob29vbmdzLnRpc3RvcnkuY29tLzI4">링크<i class="fa fa-external-link-alt"></i></span>를 첨부해 두었으니 참고하면 좋을 것 같다. 이에 대해 안다고 가정하고 설명을 진행한다.</p>
+<p>이 문제에서 제한 시간내에 문제를 풀기 위한 핵심 요소는 와일드 카드의 사용이다. 문자 사이에 와일드 카드가 올 일은 없기 때문에 만약 접미사가 와일드 카드이면 더 이상 Trie를 탐색하지 않도록 해야 문제가 풀린다.</p>
+<p>이를 풀기 위해 <code>len_dict</code>를 생성하였다. <code>len_dict</code>는 해당 노드에서 뻗어나가는 단어들을 길이에 따라 몇 개의 단어가 있는지 알려주는 딕셔너리이다. 문제 테스트 케이스에 대해 len_dict를 그려보자면 다음과 같다.</p>
+<figure>
+<img src="/images/programmers/trie.jpeg" alt="Trie와 len_dict" /><figcaption aria-hidden="true">Trie와 len_dict</figcaption>
+</figure>
+<p>그림을 보면 root에 5글자를 가진 단어 5개 6글자를 가진 단어 1개를 표시해두고 아래로 뻗어 나가면서 각자의 위치에 자신의 하위 위치에 있는 단어들의 개수를 길이에 따라 저장해둔 것을 볼 수 있다. 이런식으로 했을때 만약 <code>fro??</code>와 같은 쿼리가 들어오면 o까지만 순회를 하고 5를 key값으로 하는 value 3을 리턴해주면 된다.</p>
+<p>이렇게 하면 해결하지 못하는 케이스가 여전히 있는데 바로 와일드 카드가 앞쪽에 붙는 경우다. 이렇게 하면 모든 단어를 순회해봐야 알 수 있게 되기 때문에 역시나 효율성에서 애를 먹는다. 이를 해결하는 방법은 간단한다. 단어를 거꾸로 하여 새로운 Trie를 만들고 쿼리도 역으로 하여 <code>search</code>를 진행하면 된다.</p>
+<p>시간복잡도를 계산하자면, words의 길이를 n, 개수를 m이라 하면 trie를 생성하는데에 <span class="math inline">\(O(nm)\)</span>이 든다. 이를 만들고 쿼리를 진행하므로 <code>queries</code>의 길이를 q라하고 개수를 p라하면, <span class="math inline">\(O(pq)\)</span>만큼 소요된다. 따라서 최종 시간복잡도는 <span class="math inline">\(O(nm) + O(pq)\)</span>이다.</p>
+<p>너무 시간복잡도가 어마어마하게 느껴질 수도 있지만, 와일드카드와 단어간의 중첩이 있어 실질적인 시간은 좀 더 짧다고 생각한다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<figure>
+<img src="/images/programmers/song_search.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p><br></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/06/Knapsack/" rel="prev" title="평범한 배낭">
+                  <i class="fa fa-chevron-left"></i> 평범한 배낭
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YunPC</span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

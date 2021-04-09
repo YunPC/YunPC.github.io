@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,111 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/04/Disk-Controller/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/04/Disk-Controller/" class="post-title-link" itemprop="url">디스크 컨트롤러</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-04 15:26:00" itemprop="dateCreated datePublished" datetime="2021-03-04T15:26:00+09:00">2021-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:08:26" itemprop="dateModified" datetime="2021-04-01T17:08:26+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>SJF(Shortest Job First)를 구현하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Job</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Job</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> request_time;</span><br><span class="line">    <span class="keyword">int</span> service_time;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Job</span><span class="params">(<span class="keyword">int</span> request_time, <span class="keyword">int</span> service_time)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.request_time = request_time;</span><br><span class="line">        <span class="keyword">this</span>.service_time = service_time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Job j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.service_time - j.service_time;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiskController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 디스크 컨트롤러</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] jobs = &#123;</span><br><span class="line">            &#123;<span class="number">0</span>, <span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">            &#123;<span class="number">500</span>, <span class="number">6</span>&#125;,</span><br><span class="line">            <span class="comment">// &#123;0, 7&#125;,</span></span><br><span class="line">            <span class="comment">// &#123;0, 3&#125;,</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(jobs, (a,b) -&gt; Integer.compare(a[<span class="number">0</span>], b[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">        Queue&lt;Job&gt; prepare_q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; jobs.length; i++)</span><br><span class="line">            prepare_q.add(<span class="keyword">new</span> Job(jobs[i][<span class="number">0</span>], jobs[i][<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">        PriorityQueue&lt;Job&gt; ready_q = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> time = jobs[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> total_t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> done = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(done != jobs.length)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(!prepare_q.isEmpty() &amp;&amp; prepare_q.peek().request_time &lt;= time)</span><br><span class="line">                ready_q.add(prepare_q.poll());</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(!ready_q.isEmpty())</span><br><span class="line">            &#123;</span><br><span class="line">                Job job = ready_q.poll();</span><br><span class="line">                time += job.service_time;</span><br><span class="line">                total_t += time - job.request_time;</span><br><span class="line">                done++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                time = prepare_q.peek().request_time;</span><br><span class="line">        &#125;        </span><br><span class="line"></span><br><span class="line">        System.out.println((<span class="keyword">int</span>)Math.floor(total_t/done));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 작업을 나타내기 위한 클래스를 먼저 정의한다. 문제에서 주어진 입력대로 클래스의 인스턴스 변수는 <code>request_time</code>과 <code>service_time</code>이다. 여기서 비교 클래스를 상속받아 메소드를 오버라이딩 해주는데 인스턴스들을 정렬할 경우 <code>service_time</code>이 오름차순이 되도록 한다.</p>
+<p>주어진 입력은 요청시간 순대로 들어오지 않으므로 이에 대해 람다식으로 정렬을 해주는 것이 우선이다. 람다식을 이용해 정렬한다.</p>
+<p>정렬한 배열을 <code>prepare_q</code>에 전부 넣는다. 실은 여기서 개인의 취향대로 여기서도 우선순위 큐를 활용해도 된다. 이 큐는 처리되길 기다리는 작업들을 모아둔 것이라고 보면 된다.</p>
+<p>이제 작업을 순차적으로 처리해야 한다. 초기 <code>time</code>을 첫번째 요청시간으로 초기화한다. <code>total_t</code>는 총 반환시간을 의미하며, <code>done</code>은 종료된 작업의 개수를 뜻한다.</p>
+<p>반복은 모든 작업이 완료될 때 까지로 한다. 준비 큐(<code>prepare_q</code>)가 비어있지 않을 때, time보다 작거나 같은 요청시간을 가진 작업들을 모두 빼와 대기 큐(<code>ready_q</code>)에 집어넣는다. 이 때 대기 큐에 하나라도 들어가 있다면, 들어온 것 중에서 가장 작은 서비스시간을 가진 것을 꺼낸다. 그리고 <code>time</code>에는 서비스 시간을 더하고 <code>total_t</code>에 <code>time-(요청 시간)</code>을 더해준다. 그리고 <code>done</code>을 1증가한다. 만약에 대기 큐가 비어있다면 준비큐의 맨 앞의 요청시간을 <code>time</code>으로 갱신한다.</p>
+<p>정렬을 사용하였기 때문에 작업의 개수를 n이라 하였을 때, 최종 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/disk_controller.png" width="290" height="130">
+</center>
+<p><br></p>
+<p>처음에는 우선순위큐를 이용하지 않고 dfs에서 방문기록을 남겼던 것 처럼, 배열을 정렬하고 방문기록을 활용하여 똑같은 논리로 짰었는데 계속 틀렸다. 어제 몇 시간을 고민하다. 결국 다 지우고 우선순위 큐로 구현하였더니 통과가 되었다. 그 전 코드의 문제점이 뭔지 알았으면 좋았을텐데, 앞으로 공부를 하면서 꼬인 논리를 지금 보다 더 능숙하게 풀어냈으면 좋겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1164,110 +1269,6 @@
 </center>
 <p><br></p>
 <p>동적계획법으로 푸는 방법을 몰라서 재귀를 사용하였는데, 이런 경우 대게 테스트 케이스가 커서 골치 아픈 경우가 많다. 하지만 이 문제는 8이라는 제한 횟수가 있어서 그런지 시간 초과가 나는 일은 없었다. 재귀함수를 짤 때 종료조건에 대해 꼼꼼히 생각해봐야겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/08/Thanks-Giving-Traffic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/08/Thanks-Giving-Traffic/" class="post-title-link" itemprop="url">추석 트래픽</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-08 15:57:00" itemprop="dateCreated datePublished" datetime="2021-02-08T15:57:00+09:00">2021-02-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:16:13" itemprop="dateModified" datetime="2021-04-01T17:16:13+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>1초 동안의 최대 트래픽이 몇개가 되는지 구하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> START = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> END = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Time</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ms;</span><br><span class="line">        <span class="keyword">int</span> state;</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Time</span><span class="params">(<span class="keyword">int</span> t, <span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.ms = t;</span><br><span class="line">            <span class="keyword">this</span>.state = s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] lines = &#123;<span class="string">&quot;2016-09-15 01:00:04.002 2.0s&quot;</span>, <span class="string">&quot;2016-09-15 01:00:07.000 2s&quot;</span>&#125;;</span><br><span class="line">        List&lt;Time&gt; times = <span class="keyword">new</span> ArrayList&lt;Time&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String line : lines)</span><br><span class="line">        &#123;</span><br><span class="line">            String[] line_info = line.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="comment">//종료시간을 0.001초 단위로 환산하자</span></span><br><span class="line">            String[] time_str = line_info[<span class="number">1</span>].split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> end_t = Integer.parseInt(time_str[<span class="number">0</span>])*<span class="number">3600000</span> + Integer.parseInt(time_str[<span class="number">1</span>])*<span class="number">60000</span> + Integer.parseInt(time_str[<span class="number">2</span>].split(<span class="string">&quot;\\.&quot;</span>)[<span class="number">0</span>])*<span class="number">1000</span> + Integer.parseInt(time_str[<span class="number">2</span>].split(<span class="string">&quot;\\.&quot;</span>)[<span class="number">1</span>]);</span><br><span class="line">            <span class="comment">//지속시간을 구해볼까</span></span><br><span class="line">            String last_time_str = line_info[<span class="number">2</span>].substring(<span class="number">0</span>, line_info[<span class="number">2</span>].length()-<span class="number">1</span>);</span><br><span class="line">            String[] last_time_arr = last_time_str.split(<span class="string">&quot;\\.&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> last_t = Integer.parseInt(last_time_arr[<span class="number">0</span>])*<span class="number">1000</span>;</span><br><span class="line">            <span class="keyword">if</span>(last_time_arr.length &gt; <span class="number">1</span>)</span><br><span class="line">                last_t += Integer.parseInt(last_time_arr[<span class="number">1</span>]);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//이제 시작 시간을 구하자(끝시간 - 지속시간 +1)</span></span><br><span class="line">            <span class="keyword">int</span> start_t = end_t - last_t + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            test obj = <span class="keyword">new</span> test();</span><br><span class="line">            test.Time t = obj.<span class="function">new <span class="title">Time</span><span class="params">(start_t, START)</span></span>;</span><br><span class="line">            times.add(t);</span><br><span class="line">            t = obj.<span class="function">new <span class="title">Time</span><span class="params">(end_t+<span class="number">999</span>, END)</span></span>;</span><br><span class="line">            times.add(t);</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Comparator&lt;Time&gt; t_comparator = <span class="keyword">new</span> Comparator&lt;Time&gt;()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Time o1, Time o2)</span></span></span><br><span class="line"><span class="function">            </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(o1.ms != o2.ms)</span><br><span class="line">                    <span class="keyword">return</span> Integer.compare(o1.ms, o2.ms);</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(o1.state, o2.state);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        Collections.sort(times, t_comparator);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> working = <span class="number">0</span>, max_cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; times.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(times.get(i).state == START)</span><br><span class="line">                ++working;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                --working;</span><br><span class="line"></span><br><span class="line">            max_cnt = Math.max(working, max_cnt);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(max_cnt);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 이 문제에서의 핵심 아이디어는 어떻게 1초 트래픽을 어디서 볼 것인가 이다. 밀리초마다 단위를 옯겨가면서 하면 연산량이 많아진다. 따라서 우리는 언제 트래픽의 개수가 변하는지 생각해봐야 한다. 생각해보면 구간의 양 끝에서 트래픽이 변할 수 있다는 것을 알 수 있다. 이 아이디어를 가지고 코드를 살펴보자.</p>
-<p>8~16번째 라인을 보면 <code>Time</code>에 대한 정의를 해놓은 것을 볼 수 있다. ms는 시간을 의미하고 <code>state</code>는 구간의 처음에 해당하는지 끝에 해당하는지 알려주는 변수이다. <code>state</code>에는 <code>START</code>또는 <code>END</code>가 들어가며, 이는 각각 0과 1이다.</p>
-<p>24~46번째는 로그에 있는 시간을 ms단위로 바꾼 뒤, 이를 리스트에 저장하는 과정이다. 첫구간과 끝구간을 저장하는데 잘 보면 <code>end_T+999</code>를 저장한 것을 볼 수 있다. 이는 뒤 구간을 포함해서 1초안에 해당하면 동시에 진행되는 작업물로 보기 때문이다(ex 4.001초에 완료한것과 5초에 시작하는 트래픽은 동시에 일어난 것으로 본다).</p>
-<p>48~57번째 줄에서는 정렬을 한다. 정렬을 할 땐 기본적으로 시작 시각을 기준으로 하고 시각 기준이 같을 시 시작 구간인 부분을 우선으로 한다. 왜냐하면 동시에 시작하고 끝난 트래픽도 두 작업을 같이 했다고 보기 때문이다.</p>
-<p>정렬이 끝나고 난 뒤 배열을 돌면서 구간이 <code>START</code> 이면 <code>working</code>에 1을 더해주고 그렇지 않으면 1을 뺀다. 구간에만 집중하여 문제를 풀면 <span class="math inline">\(O(nlogn)\)</span>만에 문제를 풀 수 있다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/thanks_giving_traffic.png" width="290" height="540">
-</center>
-<p><br></p>
-<p>아이디어는 다 생각이 났었는데 코드로 이 아이디어를 어떻게 풀어나가야 할지 몰라 난감했다. 거의 끝까지 왔는데 미처 못 풀어서 다른 사람의 풀이를 참고해서 짰는데 속상하다. 카카오 블라인드 테스트 중에서 가장 어려운 문제라고 하던데 그래도 아이디어는 생각해 낸 것까지 올라온 걸로 위안을 삼기로 했다. 포기하지 말자.</p>
 
       
     </div>

@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/07/Printer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/07/Printer/" class="post-title-link" itemprop="url">프린터</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-07 12:29:00" itemprop="dateCreated datePublished" datetime="2021-01-07T12:29:00+09:00">2021-01-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 20:22:35" itemprop="dateModified" datetime="2021-04-01T20:22:35+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>각 인쇄할 용지의 우선순위가 주어진다. 용지는 앞에서부터 인쇄하되, 만약 인쇄대기목록에 우선순위가 높은 것이 있다면 맨 뒤로 보내진다. 내가 인쇄를 처음에 요청한 문서의 인덱스가 주어질 때 언제 그 문서가 인쇄될 지 계산하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Printer</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 프린터</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] priorities = &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> location = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        ArrayList&lt;Integer&gt; papers = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> order = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span> isFirst;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; priorities.length; i++)</span><br><span class="line">            papers.add(i);</span><br><span class="line">        <span class="keyword">while</span>(papers.size() != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            isFirst = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">int</span> idx = papers.get(<span class="number">0</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; papers.size(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(priorities[papers.get(i)] &gt; priorities[idx])</span><br><span class="line">                &#123;</span><br><span class="line">                    papers.remove(<span class="number">0</span>);</span><br><span class="line">                    papers.add(idx);</span><br><span class="line">                    isFirst = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isFirst)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(idx == location)</span><br><span class="line">                &#123;</span><br><span class="line">                    answer = order;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    papers.remove(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                order++;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 필자는 어레이리스트로 문제를 풀었다. 시간을 줄이고 싶었지만, 잘 모르겠어서 문제가 시키는 그대로 했다. papers에 각 문서의 위치를 담고, 맨 앞부터 차례대로 보는 것이다. 22-31번째 줄을 보면, 우선순위를 탐색하는 코드가 있다. 만약 현재 맨 앞에 있는 것보다 우선순위가 큰 문서가 있으면, 현재 문서를 맨 뒤로 보내고, 대기문서의 첫번째에 있지 않기 때문에 isFisrt를 false로 한다. 만약에 인쇄될 문서보다 우선순위가 높은 것이 없으면 isFirst는 true가 될 것이다. 이때 이 문서가 내가 인쇄요청한 문서라면, 답을 반환하고 그렇지 않다면 order를 증가하고 해당 문서를 제거(출력)한다.</p>
+<p>이 문제의 시간복잡도는 내가 인쇄 요청한 문서가 오름차순 우선순위의 가장 마지막 문서일 경우이다. 이 경우 문서의 개수를 n이라 하면, <span class="math inline">\(O(n^2)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/printer.png" width="350" height="450">
+</center>
+<p><br> 다른 사람의 풀이를 보니 answer를 앞에서부터 볼 인덱스로 하고 l을 내가 요청한 문서가 현재 위치한 곳을 나타내는 것으로 하여 일일이 priority를 다 비교하지 않아도 문제를 풀었다. 정말 대단하다고 생각한다. 나도 멋진 아이디어가 생각날 때까지 갈고 닦아야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1158,106 +1258,6 @@
 </center>
 <p><br></p>
 <p>다른 사람은 단 3줄안에 이 문제를 푼 것을 보고 약간 자괴감이 들었다. 하지만 성장해 나가고 있는 필자의 모습에 위안을 얻기로 했다. 화이팅!!</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/30/Budget/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/30/Budget/" class="post-title-link" itemprop="url">예산</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-30 14:01:00" itemprop="dateCreated datePublished" datetime="2020-12-30T14:01:00+09:00">2020-12-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 20:41:14" itemprop="dateModified" datetime="2021-04-01T20:41:14+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>d는 지원을 바라는 부서들의 예산들이고 총 예산은 budget이다. 최대한 지원해 줄 수 있는 부서가 몇 개인지 반환하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Budget</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 예산</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] d = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> budget = <span class="number">9</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        Arrays.sort(d);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> money : d)</span><br><span class="line">        &#123;</span><br><span class="line">            budget -= money;</span><br><span class="line">            <span class="keyword">if</span>(budget &lt; <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            answer++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 최대한 많은 부서에게 예산을 지원해주기 위해선 예산 청구가 적은 부서부터 나누어주면 된다. 이를 위해 예산 목록을 오름차순으로 정렬하고 예산이 감당할 수 있는 만큼 돈을 뺀다. 이 문제에서 청구 예산의 일부를 주는 것은 아니었으므로 난이도가 쉬웠다.</p>
-<p>시간복잡도는 모든 부서에게 예산을 나눠줄 수 있을 때 d의 크기를 n이라 하면 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/budget.png" width="350" height="500">
-</center>
-<p><br></p>
 
       
     </div>

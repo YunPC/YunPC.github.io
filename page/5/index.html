@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/20/Max-Min/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/20/Max-Min/" class="post-title-link" itemprop="url">최댓값과 최솟값</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-20 13:18:00" itemprop="dateCreated datePublished" datetime="2021-01-20T13:18:00+09:00">2021-01-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:34:19" itemprop="dateModified" datetime="2021-04-01T18:34:19+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>공백으로 구분된 문자열에서 최댓값과 최솟값을 찾는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxMin</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 최댓값과 최솟값</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;1 2 3 4&quot;</span>;</span><br><span class="line">        String[] arr = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> max = -<span class="number">2000000000</span>;</span><br><span class="line">        <span class="keyword">int</span> min = <span class="number">2000000000</span>;</span><br><span class="line">        <span class="keyword">for</span>(String str : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> i = Integer.parseInt(str);</span><br><span class="line">            <span class="keyword">if</span>(i &gt; max)</span><br><span class="line">                max = i;</span><br><span class="line">            <span class="keyword">if</span>(min &gt; i)</span><br><span class="line">                min = i;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        buff.append(min);</span><br><span class="line">        buff.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        buff.append(max);</span><br><span class="line"></span><br><span class="line">        System.out.println(buff.toString());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 2단계라 테스트케이스가 int를 넘어가지 않을 것이라 생각했다. 그래서 max와 min에 int안에서 한계값에 가까운 큰 수를 할당한 뒤, 숫자들을 하나씩 보면서 max와 min값을 갱신하였다.</p>
+<p>최종적인 시간복잡도는 문자열 s의 길이를 n이라 할 때, <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/max_min.png" width="290" height="310">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1123,108 +1223,6 @@
 </center>
 <p><br></p>
 <p>처음에 40번째 줄에 else가 아니라 else if문을 썼는데 효율성 테스트를 하나 통과하지 못했다. 그래서 else로 바꾸니 통과가 되었다. size를 한번 더 호출하냐 마냐가 차이인 것 같은데, 효율성 테스트가 조금 빡빡하단 생각이 들었다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/15/Disguise/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/15/Disguise/" class="post-title-link" itemprop="url">위장</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-15 10:44:00" itemprop="dateCreated datePublished" datetime="2021-01-15T10:44:00+09:00">2021-01-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:43:35" itemprop="dateModified" datetime="2021-04-01T18:43:35+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>스파이가 위장을 하려고 한다. 옷이 종류별로 있을 때, 적어도 하나의 의상은 입고 있어야 한다. 하지만 같은 종류의 옷을 겹쳐입을 순 없다. 이 때, 스파이가 옷을 입을 수 있는 경우의 수를 구하라.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Disguise</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 위장</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        String[][] clothes =</span><br><span class="line">        &#123;</span><br><span class="line">            &#123;<span class="string">&quot;yellow_hat&quot;</span>, <span class="string">&quot;headgear&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;blue_sunglasses&quot;</span>, <span class="string">&quot;eyewear&quot;</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&quot;green_turban&quot;</span>, <span class="string">&quot;headgear&quot;</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; clothes.length; i++)</span><br><span class="line">            map.put(clothes[i][<span class="number">1</span>], map.getOrDefault(clothes[i][<span class="number">1</span>], <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> comb_max = map.size();</span><br><span class="line">        <span class="keyword">int</span>[] clothes_num = <span class="keyword">new</span> <span class="keyword">int</span>[comb_max];</span><br><span class="line">        </span><br><span class="line">        Iterator&lt;String&gt; keys = map.keySet().iterator();</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(keys.hasNext())</span><br><span class="line">        &#123;</span><br><span class="line">            String key = keys.next();</span><br><span class="line">            clothes_num[idx++] = map.get(key);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> comb_cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(comb_cnt &lt;= comb_max)</span><br><span class="line">        &#123;</span><br><span class="line">            answer += getCombNum(clothes_num, comb_cnt, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            comb_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getCombNum</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> k, <span class="keyword">int</span> n, <span class="keyword">int</span> idx)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> total = <span class="number">0</span>; </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = idx; i &lt;= arr.length-k; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                total += getCombNum(arr, k-<span class="number">1</span>, n*arr[i], i+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> total;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 좀 긴데 차근차근 보도록 하자. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; clothes.length; i++)</span><br><span class="line">    map.put(clothes[i][<span class="number">1</span>], map.getOrDefault(clothes[i][<span class="number">1</span>], <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> comb_max = map.size();</span><br><span class="line"><span class="keyword">int</span>[] clothes_num = <span class="keyword">new</span> <span class="keyword">int</span>[comb_max];</span><br><span class="line"></span><br><span class="line">Iterator&lt;String&gt; keys = map.keySet().iterator();</span><br><span class="line"><span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(keys.hasNext())</span><br><span class="line">&#123;</span><br><span class="line">    String key = keys.next();</span><br><span class="line">    clothes_num[idx++] = map.get(key);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> comb_cnt = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(comb_cnt &lt;= comb_max)</span><br><span class="line">&#123;</span><br><span class="line">    answer += getCombNum(clothes_num, comb_cnt, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    comb_cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 일단 옷의 종류를 key로 하여 종류별로 몇 벌의 옷이 있는지 map에 저장한다. 이 때 getOrDefault함수는 아주 유용하게 쓰인다 처음 들어가는 key이면 초기화를 해주고 아닐 경우 해당 값의 1증가한 값을 넣어준다. 필자의 아이디어는 k개의 조합의 수를 구해다주는 함수가 있을 때, 1부터 옷의 모든 종류 수로 k를 늘려가면서 조합의 수를 다 더해주면 된다고 생각했다. 이 함수에 대한 세부 설명은 뒤로 미루고, clothes_num을 선언해 종류별 옷의 개수를 담아준다. 그리고 comb_cnt를 1부터 comb_max로 늘려주면서 getCombNum까지 조합의 수를 다 더해준다.</p>
-<p>이제 함수를 보도록하자. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getCombNum</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> k, <span class="keyword">int</span> n, <span class="keyword">int</span> idx)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(k == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = idx; i &lt;= arr.length-k; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            total += getCombNum(arr, k-<span class="number">1</span>, n*arr[i], i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 조합의 수를 구해주는 함수이다 arr는 옷의 개수 k는 몇 개의 조합을 원하는지 알려주는 변수이다. n은 현재까지 계산된 조합의 수이며, idx는 arr에서 새로 시작해야하는 index이다. 종료 조건은 k가 0이 될 때이다. 종류개수를 전부 만족했으므로 여태까지 계산한 n을 반환하면 된다. 아닐 경우 조합을 만들어야 한다. total을 0으로 하고, idx부터 length-k까지 n에 arr[i]를 곱해 함수를 재호출한다. 이때 i의 범위가 이해가 잘 안 갈수도 있는데 만약 1,2,3,4,5가 들어간 배열이 있고 2개의 조합을 찾으려고 할 때, 앞에서부터 조합을 만들어간다고 가정하면 1,2,3,4가 가능하다. 여기서 3을 만약 선택했다면 그 다음 조합은 4,5중에 하나를 선택해야한다. 중복없는 모든 조합을 찾기 위한 방법이니 이 참에 잘 공부했으면 좋겠다.</p>
-<p>필자는 처음에 이렇게 코드를 짜고 싶지 않았는데 왜냐하면 이렇게 프로그램을 짜는 경우 시간복잡도가 어마무시하게 늘어나기 때문이다. 옷의 종류가 총 n개라고 하고 k개를 선택한다고 하면 함수는 조합 수 만큼 호출되기 때문에 <span class="math inline">\(O(n^k)\)</span>만큼 호출될 것이다. k의 최대값은 n이므로 결국 <span class="math inline">\(O(n^n)\)</span>이 된다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/disguise.png" width="290" height="530">
-</center>
-<p><br></p>
-<p>살인적인 시간복잡도를 보고 기겁을 할 수도 있는데, 다행히 통과는 했다. 일부러 1번 케이스를 보여줬는데, 통과는 되었다만 엄청난 시간복잡도를 자랑한다.. 다른 사람의 풀이를 보니 곱할 때 아무것도 선택하지 않은 것도 옵션으로 넣어 \(O(n)\)으로 끝내는 것을 보고 역시 수학을 잘해야 유리하다는 생각이 들었다. 아무튼 풀어냈지만, 수학 공부도 게을리 하지 말아야겠다.</p>
 
       
     </div>

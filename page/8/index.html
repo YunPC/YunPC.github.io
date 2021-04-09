@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/30/Budget/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/30/Budget/" class="post-title-link" itemprop="url">예산</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-30 14:01:00" itemprop="dateCreated datePublished" datetime="2020-12-30T14:01:00+09:00">2020-12-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 20:41:14" itemprop="dateModified" datetime="2021-04-01T20:41:14+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>d는 지원을 바라는 부서들의 예산들이고 총 예산은 budget이다. 최대한 지원해 줄 수 있는 부서가 몇 개인지 반환하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Budget</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 예산</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] d = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> budget = <span class="number">9</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        Arrays.sort(d);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> money : d)</span><br><span class="line">        &#123;</span><br><span class="line">            budget -= money;</span><br><span class="line">            <span class="keyword">if</span>(budget &lt; <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            answer++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 최대한 많은 부서에게 예산을 지원해주기 위해선 예산 청구가 적은 부서부터 나누어주면 된다. 이를 위해 예산 목록을 오름차순으로 정렬하고 예산이 감당할 수 있는 만큼 돈을 뺀다. 이 문제에서 청구 예산의 일부를 주는 것은 아니었으므로 난이도가 쉬웠다.</p>
+<p>시간복잡도는 모든 부서에게 예산을 나눠줄 수 있을 때 d의 크기를 n이라 하면 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/budget.png" width="350" height="500">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1116,112 +1216,6 @@
 <img src="/images/programmers/even_odd.png" width="400" height="300">
 </center>
 <p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/29/Press-Keypad/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/29/Press-Keypad/" class="post-title-link" itemprop="url">키패드 누르기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-29 16:25:00" itemprop="dateCreated datePublished" datetime="2020-12-29T16:25:00+09:00">2020-12-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 20:53:24" itemprop="dateModified" datetime="2021-04-01T20:53:24+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>키패드를 어느 쪽 손으로 눌러야 하는 가에 대한 문제이다. 초기 왼손의 위치는 *에 오른손의 위치는 #에 위치해있다. 1,4,7은 무조건 왼손으로 누르고 3,6,9는 오른손으로 누른다. 손가락은 상하좌우로만 움직일 수 있다. 2,5,8,0은 왼손과 오른손 중 더 가까이 있는 손가락으로 누르며, 만약 두 손가락이 움직이는 거리가 같은 경우 주로 쓰는 손으로 누른다. 눌러야할 번호들이 주어지면 어느쪽 손으로 누르는지 "L"과 "R"로 구성된 문자열로 나타내라.</p>
-<p><br></p>
-<center>
-<img src="/images/programmers/keypad.png" width="450" height="500">
-</center>
-<p><br></p>
-<h2 id="문제풀이">## 문제풀이</h2>
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeyPad</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] numbers = &#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">5</span>&#125;;</span><br><span class="line">        String hand = <span class="string">&quot;right&quot;</span>;</span><br><span class="line"></span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> left_pos = <span class="number">10</span>, right_pos = <span class="number">11</span>;</span><br><span class="line">        <span class="keyword">boolean</span> isleft = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] moves = &#123;</span><br><span class="line">            &#123;<span class="number">0</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//0</span></span><br><span class="line">            &#123;<span class="number">4</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>&#125;, <span class="comment">//1</span></span><br><span class="line">            &#123;<span class="number">3</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//2</span></span><br><span class="line">            &#123;<span class="number">4</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>&#125;, <span class="comment">//3</span></span><br><span class="line">            &#123;<span class="number">3</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//4</span></span><br><span class="line">            &#123;<span class="number">2</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//5</span></span><br><span class="line">            &#123;<span class="number">3</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//6</span></span><br><span class="line">            &#123;<span class="number">2</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//7</span></span><br><span class="line">            &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>&#125;, <span class="comment">//8</span></span><br><span class="line">            &#123;<span class="number">2</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//9</span></span><br><span class="line">            &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">4</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//10(*)</span></span><br><span class="line">            &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">4</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125; <span class="comment">//11(#)</span></span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : numbers)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num == <span class="number">1</span> || num == <span class="number">4</span> || num == <span class="number">7</span>)</span><br><span class="line">                isleft = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(num == <span class="number">3</span> || num == <span class="number">6</span> || num == <span class="number">9</span>)</span><br><span class="line">                isleft = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> left_dist = moves[left_pos][num];</span><br><span class="line">                <span class="keyword">int</span> right_dist = moves[right_pos][num];</span><br><span class="line">                <span class="keyword">if</span>(left_dist &lt; right_dist)</span><br><span class="line">                    isleft = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(right_dist &lt; left_dist)</span><br><span class="line">                    isleft = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(hand.equals(<span class="string">&quot;left&quot;</span>))</span><br><span class="line">                        isleft = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        isleft = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isleft)</span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(<span class="string">&quot;L&quot;</span>);</span><br><span class="line">                left_pos = num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                buff.append(<span class="string">&quot;R&quot;</span>);</span><br><span class="line">                right_pos = num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        String answer = buff.toString();</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 부분부분 보도록 하자 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="keyword">int</span> left_pos = <span class="number">10</span>, right_pos = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">boolean</span> isleft = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span>[][] moves = &#123;</span><br><span class="line">    &#123;<span class="number">0</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//0</span></span><br><span class="line">    &#123;<span class="number">4</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>&#125;, <span class="comment">//1</span></span><br><span class="line">    &#123;<span class="number">3</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//2</span></span><br><span class="line">    &#123;<span class="number">4</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>&#125;, <span class="comment">//3</span></span><br><span class="line">    &#123;<span class="number">3</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//4</span></span><br><span class="line">    &#123;<span class="number">2</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//5</span></span><br><span class="line">    &#123;<span class="number">3</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//6</span></span><br><span class="line">    &#123;<span class="number">2</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//7</span></span><br><span class="line">    &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>&#125;, <span class="comment">//8</span></span><br><span class="line">    &#123;<span class="number">2</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">1</span>, -<span class="number">1</span>&#125;, <span class="comment">//9</span></span><br><span class="line">    &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">4</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125;, <span class="comment">//10(*)</span></span><br><span class="line">    &#123;<span class="number">1</span>, -<span class="number">1</span>, <span class="number">4</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">3</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">2</span>, -<span class="number">1</span>&#125; <span class="comment">//11(#)</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure> 정답을 담을 StringBuilder buff를 선언한다. 초기 왼손은 *에 있고 오른손은 #에 있을때 이를 각각 10과 11로 지정한다. 그리고 moves를 작성한다. 번거로울 수 있지만, 마땅한 식이 떠오르지 않을 때 빠르게 문제를 풀 수 있다. 행이 시작점을 나타내고 열을 끝나는 점이라고 했을 때, 움직이는 횟수를 기록하였다. 예를들면 1에서 0으로 가기까지는 moves[1][0]에 해당하는 수이므로 4가 된 것을 볼 수 있다. 다음으로 boolean값에 해당하는 isleft를 선언한다. 이는 왼손으로 키패드를 눌러야하는지 나타내는 변수로 초기화는 아무렇게나 해도 상관없다. 필자는 false로 초기화하였다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> num : numbers)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(num == <span class="number">1</span> || num == <span class="number">4</span> || num == <span class="number">7</span>)</span><br><span class="line">        isleft = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(num == <span class="number">3</span> || num == <span class="number">6</span> || num == <span class="number">9</span>)</span><br><span class="line">        isleft = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> left_dist = moves[left_pos][num];</span><br><span class="line">        <span class="keyword">int</span> right_dist = moves[right_pos][num];</span><br><span class="line">        <span class="keyword">if</span>(left_dist &lt; right_dist)</span><br><span class="line">            isleft = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(right_dist &lt; left_dist)</span><br><span class="line">            isleft = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(hand.equals(<span class="string">&quot;left&quot;</span>))</span><br><span class="line">                isleft = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                isleft = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(isleft)</span><br><span class="line">    &#123;</span><br><span class="line">        buff.append(<span class="string">&quot;L&quot;</span>);</span><br><span class="line">        left_pos = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        buff.append(<span class="string">&quot;R&quot;</span>);</span><br><span class="line">        right_pos = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">String answer = buff.toString();</span><br></pre></td></tr></table></figure>
-<p>논리적으로 어려운 부분은 없다. 1,4,7인경우에는 왼손으로 누르므로 isleft를 true값으로 변경한다. 3,6,9인 경우 false로 바꾼다. 만약 중간에 있는 키패드인 경우 moves 값을 비교하여 판별한다. 만약 값이 같은 경우 어느 손잡이인지 보면 된다. 키패드를 누를 때마다 현재 있어야 하는 위치값을 업데이트 하는 것을 잊지 말자. numbers의 길이를 n이라고 하면 이 알고리즘의 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/keypad_result.png" width="350" height="500">
-</center>
-<p><br></p>
-<p>옛날에 멋모르고 인턴에 지원했다가 이 문제만 2-3시간 풀고 포기한 경험이 있다. 그래서 그 때의 안 좋은 감정이 차올랐는데, 이번에는 30분정도 걸렸다. 내가 성장하고 있는 걸 느껴서 기쁘다. 첨언을 하자면 키패드를 자세히 보면 3으로 나머지연산과 나누기 연산을 하면 키패드의 어느 위치에 있는지 쉽게 알 수 있다. 이걸 활용하면 코드를 더 간결하게 만들 수 있을거라 생각한다.</p>
 
       
     </div>

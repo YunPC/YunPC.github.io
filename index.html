@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -249,6 +249,111 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/09/Song-Search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/09/Song-Search/" class="post-title-link" itemprop="url">가사 검색</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-09 10:32:31 / Modified: 11:16:06" itemprop="dateCreated datePublished" datetime="2021-04-09T10:32:31+09:00">2021-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level4/" itemprop="url" rel="index"><span itemprop="name">Level4</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>가사에 사용된 모든 단어들이 담긴 배열 <code>words</code>에서 <code>queries</code>에 해당되는 단어가 몇 개가 있는지 반환하는 문제이다. <code>queries</code>에는 와일드 카드 <code>?</code>가 하나 이상 존재하며, 이 와일드 카드는 문자의 앞부분을 차지하거나 뒷부분만을 차지한다(<code>fr?do</code>와 같은 형식이 없다.).</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNjAwNjA=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>trie 자료구조를 이용하여 문제를 풀 수 있다. 이번에는 다른 분의 핵심 아이디어를 듣고 코드로 구현하였다. 코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">words, queries</span>):</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, value=<span class="literal">None</span></span>):</span></span><br><span class="line">            self.value = value</span><br><span class="line">            self.child = <span class="built_in">dict</span>()</span><br><span class="line">            self.len_dict = <span class="built_in">dict</span>()</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Trie</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">            self.root = Node()</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">self, value:<span class="built_in">str</span></span>):</span></span><br><span class="line">            node = self.root</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> value:</span><br><span class="line">                <span class="comment"># add dictionary for wildcard</span></span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(value) <span class="keyword">not</span> <span class="keyword">in</span> node.len_dict:</span><br><span class="line">                    node.len_dict[<span class="built_in">len</span>(value)] = <span class="number">0</span></span><br><span class="line">                node.len_dict[<span class="built_in">len</span>(value)] += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> node.child: <span class="comment"># There is no child</span></span><br><span class="line">                    new_node = Node(c)</span><br><span class="line">                    node.child[c] = new_node</span><br><span class="line">                    node = new_node</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    node = node.child[c]</span><br><span class="line">            node.child[<span class="string">&#x27;*&#x27;</span>] = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">search</span>(<span class="params">self, queri</span>):</span></span><br><span class="line">            node = self.root</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> queri:</span><br><span class="line">                <span class="keyword">if</span> c == <span class="string">&#x27;?&#x27;</span>:</span><br><span class="line">                    <span class="keyword">return</span> node.len_dict[<span class="built_in">len</span>(queri)] <span class="keyword">if</span> <span class="built_in">len</span>(queri) <span class="keyword">in</span> node.len_dict <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">                <span class="keyword">if</span> c <span class="keyword">in</span> node.child:</span><br><span class="line">                    node = node.child[c]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># def print(self):</span></span><br><span class="line">        <span class="comment">#     node = self.root</span></span><br><span class="line">        <span class="comment">#     queue = []</span></span><br><span class="line">        <span class="comment">#     queue.append(node)</span></span><br><span class="line">        <span class="comment">#     while queue:</span></span><br><span class="line">        <span class="comment">#         root = queue[0]</span></span><br><span class="line">        <span class="comment">#         del queue[0]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#         if root.value is not None:</span></span><br><span class="line">        <span class="comment">#             print(root.value, end = &quot; &quot;)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#         if  &#x27;*&#x27; in root.child:</span></span><br><span class="line">        <span class="comment">#             print(&#x27;*&#x27;)</span></span><br><span class="line">        <span class="comment">#             continue</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#         for node in root.child.values():</span></span><br><span class="line">        <span class="comment">#             queue.append(node)</span></span><br><span class="line">    </span><br><span class="line">    reversed_words = [word[::-<span class="number">1</span>] <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line"></span><br><span class="line">    trie = Trie()</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">        trie.add(word)</span><br><span class="line"></span><br><span class="line">    reversed_trie = Trie()</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> reversed_words:</span><br><span class="line">        reversed_trie.add(word)</span><br><span class="line"></span><br><span class="line">    answer = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> queri <span class="keyword">in</span> queries:</span><br><span class="line">        <span class="keyword">if</span> queri[<span class="number">0</span>] == <span class="string">&#x27;?&#x27;</span>:</span><br><span class="line">            answer.append(reversed_trie.search(queri[::-<span class="number">1</span>]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            answer.append(trie.search(queri))</span><br><span class="line">    <span class="keyword">return</span> answer</span><br></pre></td></tr></table></figure>
+<p>일단 Trie에 대해서 알아야 하는데 이에 대한 <span class="exturl" data-url="aHR0cHM6Ly9ob29vbmdzLnRpc3RvcnkuY29tLzI4">링크<i class="fa fa-external-link-alt"></i></span>를 첨부해 두었으니 참고하면 좋을 것 같다. 이에 대해 안다고 가정하고 설명을 진행한다.</p>
+<p>이 문제에서 제한 시간내에 문제를 풀기 위한 핵심 요소는 와일드 카드의 사용이다. 문자 사이에 와일드 카드가 올 일은 없기 때문에 만약 접미사가 와일드 카드이면 더 이상 Trie를 탐색하지 않도록 해야 문제가 풀린다.</p>
+<p>이를 풀기 위해 <code>len_dict</code>를 생성하였다. <code>len_dict</code>는 해당 노드에서 뻗어나가는 단어들을 길이에 따라 몇 개의 단어가 있는지 알려주는 딕셔너리이다. 문제 테스트 케이스에 대해 len_dict를 그려보자면 다음과 같다.</p>
+<figure>
+<img src="/images/programmers/trie.jpeg" alt="Trie와 len_dict" /><figcaption aria-hidden="true">Trie와 len_dict</figcaption>
+</figure>
+<p>그림을 보면 root에 5글자를 가진 단어 5개 6글자를 가진 단어 1개를 표시해두고 아래로 뻗어 나가면서 각자의 위치에 자신의 하위 위치에 있는 단어들의 개수를 길이에 따라 저장해둔 것을 볼 수 있다. 이런식으로 했을때 만약 <code>fro??</code>와 같은 쿼리가 들어오면 o까지만 순회를 하고 5를 key값으로 하는 value 3을 리턴해주면 된다.</p>
+<p>이렇게 하면 해결하지 못하는 케이스가 여전히 있는데 바로 와일드 카드가 앞쪽에 붙는 경우다. 이렇게 하면 모든 단어를 순회해봐야 알 수 있게 되기 때문에 역시나 효율성에서 애를 먹는다. 이를 해결하는 방법은 간단한다. 단어를 거꾸로 하여 새로운 Trie를 만들고 쿼리도 역으로 하여 <code>search</code>를 진행하면 된다.</p>
+<p>시간복잡도를 계산하자면, words의 길이를 n, 개수를 m이라 하면 trie를 생성하는데에 <span class="math inline">\(O(nm)\)</span>이 든다. 이를 만들고 쿼리를 진행하므로 <code>queries</code>의 길이를 q라하고 개수를 p라하면, <span class="math inline">\(O(pq)\)</span>만큼 소요된다. 따라서 최종 시간복잡도는 <span class="math inline">\(O(nm) + O(pq)\)</span>이다.</p>
+<p>너무 시간복잡도가 어마어마하게 느껴질 수도 있지만, 와일드카드와 단어간의 중첩이 있어 실질적인 시간은 좀 더 짧다고 생각한다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<figure>
+<img src="/images/programmers/song_search.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/06/Knapsack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +385,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-07 00:02:04" itemprop="dateModified" datetime="2021-04-07T00:02:04+09:00">2021-04-07</time>
+        <time title="Modified: 2021-04-09 11:19:50" itemprop="dateModified" datetime="2021-04-09T11:19:50+09:00">2021-04-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -345,7 +450,13 @@
 </figure>
 <p>연산 횟수는 다르지 않기 때문에 걸리는 시간은 그대로지만, 메모리 사용량이 크게 준 것을 확인하였다.</p>
 <p>여기서 이제 2번에 대한 최적화를 추가로 할 수 있다. 연산량을 줄이는 것인데, 재귀로 코드를 짰을 때 호출되는 <code>w</code> 값을 계산하여 이를 저장하고 for문에서 이 값들에 대한 계산만 하면 최적화를 할 수 있다.</p>
-<p>마지막 최적화에 대한 코드는 내일 올리도록 하겠다. DP는 너무 어렵다 😞</p>
+<p>코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">W = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">V = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    W[i], V[i] = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">need_calc = [<span class="built_in">set</span>() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N + <span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">need_calc[N].add(K)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> need_calc[i]:</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">or</span> w == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            need_calc[i-<span class="number">1</span>].add(w-W[i])</span><br><span class="line">        need_calc[i-<span class="number">1</span>].add(w)</span><br><span class="line"></span><br><span class="line">dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(K + <span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> need_calc[i]:</span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = <span class="built_in">max</span>(dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w], dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w-W[i]] + V[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[N%<span class="number">2</span>][K])</span><br></pre></td></tr></table></figure>
+<p>첫번째 for문을 주목하자. 우리는 이미 점화식을 통해 계산해야 하는 <code>w</code>값을 알 수 있다. 그래서 초기에 최종 가용치만을 넣어두고 여기에서 두 경우(선택하는 경우와 하지 않는 경우)로 나누어서 계산에 쓰이는 <code>w</code>값만 <code>need_calc</code>에 넣는다.</p>
+<figure>
+<img src="/images/baekjoon/12865-3.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>오버헤드가 없기 때문에 시간이 재귀보다 단축한 것을 볼 수 있다. 이렇게 최적화 과정에 대해 공부하였는데, 공부를 많이 해야겠다는 생각이 든다. 기죽지 말고 꾸준히 공부해야겠다. ✍️</p>
 
       
     </div>
@@ -1180,111 +1291,6 @@
 </center>
 <p><br></p>
 <p>학교 수업에서 해봤던 문제라 수월하게 풀 수 있었다. 앞으로 나만의 코테 데이터베이스를 더 쌓아나가야지.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/04/Disk-Controller/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/04/Disk-Controller/" class="post-title-link" itemprop="url">디스크 컨트롤러</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-04 15:26:00" itemprop="dateCreated datePublished" datetime="2021-03-04T15:26:00+09:00">2021-03-04</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:08:26" itemprop="dateModified" datetime="2021-04-01T17:08:26+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>SJF(Shortest Job First)를 구현하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Job</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Job</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> request_time;</span><br><span class="line">    <span class="keyword">int</span> service_time;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Job</span><span class="params">(<span class="keyword">int</span> request_time, <span class="keyword">int</span> service_time)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.request_time = request_time;</span><br><span class="line">        <span class="keyword">this</span>.service_time = service_time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Job j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.service_time - j.service_time;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiskController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 디스크 컨트롤러</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] jobs = &#123;</span><br><span class="line">            &#123;<span class="number">0</span>, <span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">            &#123;<span class="number">500</span>, <span class="number">6</span>&#125;,</span><br><span class="line">            <span class="comment">// &#123;0, 7&#125;,</span></span><br><span class="line">            <span class="comment">// &#123;0, 3&#125;,</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(jobs, (a,b) -&gt; Integer.compare(a[<span class="number">0</span>], b[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">        Queue&lt;Job&gt; prepare_q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; jobs.length; i++)</span><br><span class="line">            prepare_q.add(<span class="keyword">new</span> Job(jobs[i][<span class="number">0</span>], jobs[i][<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">        PriorityQueue&lt;Job&gt; ready_q = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> time = jobs[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> total_t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> done = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(done != jobs.length)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(!prepare_q.isEmpty() &amp;&amp; prepare_q.peek().request_time &lt;= time)</span><br><span class="line">                ready_q.add(prepare_q.poll());</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(!ready_q.isEmpty())</span><br><span class="line">            &#123;</span><br><span class="line">                Job job = ready_q.poll();</span><br><span class="line">                time += job.service_time;</span><br><span class="line">                total_t += time - job.request_time;</span><br><span class="line">                done++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                time = prepare_q.peek().request_time;</span><br><span class="line">        &#125;        </span><br><span class="line"></span><br><span class="line">        System.out.println((<span class="keyword">int</span>)Math.floor(total_t/done));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 작업을 나타내기 위한 클래스를 먼저 정의한다. 문제에서 주어진 입력대로 클래스의 인스턴스 변수는 <code>request_time</code>과 <code>service_time</code>이다. 여기서 비교 클래스를 상속받아 메소드를 오버라이딩 해주는데 인스턴스들을 정렬할 경우 <code>service_time</code>이 오름차순이 되도록 한다.</p>
-<p>주어진 입력은 요청시간 순대로 들어오지 않으므로 이에 대해 람다식으로 정렬을 해주는 것이 우선이다. 람다식을 이용해 정렬한다.</p>
-<p>정렬한 배열을 <code>prepare_q</code>에 전부 넣는다. 실은 여기서 개인의 취향대로 여기서도 우선순위 큐를 활용해도 된다. 이 큐는 처리되길 기다리는 작업들을 모아둔 것이라고 보면 된다.</p>
-<p>이제 작업을 순차적으로 처리해야 한다. 초기 <code>time</code>을 첫번째 요청시간으로 초기화한다. <code>total_t</code>는 총 반환시간을 의미하며, <code>done</code>은 종료된 작업의 개수를 뜻한다.</p>
-<p>반복은 모든 작업이 완료될 때 까지로 한다. 준비 큐(<code>prepare_q</code>)가 비어있지 않을 때, time보다 작거나 같은 요청시간을 가진 작업들을 모두 빼와 대기 큐(<code>ready_q</code>)에 집어넣는다. 이 때 대기 큐에 하나라도 들어가 있다면, 들어온 것 중에서 가장 작은 서비스시간을 가진 것을 꺼낸다. 그리고 <code>time</code>에는 서비스 시간을 더하고 <code>total_t</code>에 <code>time-(요청 시간)</code>을 더해준다. 그리고 <code>done</code>을 1증가한다. 만약에 대기 큐가 비어있다면 준비큐의 맨 앞의 요청시간을 <code>time</code>으로 갱신한다.</p>
-<p>정렬을 사용하였기 때문에 작업의 개수를 n이라 하였을 때, 최종 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/disk_controller.png" width="290" height="130">
-</center>
-<p><br></p>
-<p>처음에는 우선순위큐를 이용하지 않고 dfs에서 방문기록을 남겼던 것 처럼, 배열을 정렬하고 방문기록을 활용하여 똑같은 논리로 짰었는데 계속 틀렸다. 어제 몇 시간을 고민하다. 결국 다 지우고 우선순위 큐로 구현하였더니 통과가 되었다. 그 전 코드의 문제점이 뭔지 알았으면 좋았을텐데, 앞으로 공부를 하면서 꼬인 논리를 지금 보다 더 능숙하게 풀어냈으면 좋겠다.</p>
 
       
     </div>
