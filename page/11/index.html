@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/28/Array-Divided/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/28/Array-Divided/" class="post-title-link" itemprop="url">나누어 떨어지는 숫자 배열</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-28 14:14:00" itemprop="dateCreated datePublished" datetime="2020-12-28T14:14:00+09:00">2020-12-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>나누는 수를 주었을 때 배열 중 나누어 떨어지는 수를 오름차순으로 담아 반환하는 문제이다. 만약 나누어 떨어지는 수가 하나도 없으면 -1을 담아 반환한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>문제에서 요구하는 것을 그대로 따라가면 된다. 바로 코드를 보도록 하자.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mod0Arr</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">10</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> divisor = <span class="number">5</span>;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num%divisor == <span class="number">0</span>)</span><br><span class="line">                list.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(list.size() == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span>[] answer = &#123;-<span class="number">1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Collections.sort(list);</span><br><span class="line">            <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)</span><br><span class="line">                answer[i] = Integer.parseInt(list.get(i).toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 부분부분 살펴보자 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = &#123;<span class="number">5</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">10</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> divisor = <span class="number">5</span>;</span><br><span class="line">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> num : arr)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(num%divisor == <span class="number">0</span>)</span><br><span class="line">        list.add(num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 어레이리스트를 선언하고 배열을 순회하면서 만약 딱 나누어 떨어지는 수라면 리스트에 원소를 집어넣는다. 이 부분의 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(list.size() == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span>[] answer = &#123;-<span class="number">1</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    Collections.sort(list);</span><br><span class="line">    <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)</span><br><span class="line">        answer[i] = Integer.parseInt(list.get(i).toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>만약 아무 원소도 들어가있지 않다면 -1을 넣어 반환하고 그렇지 않다면 리스트를 정렬하여 정답배열에 답을 넣는다. 이 부분에서 시간복잡도는 정렬이 있기 때문에 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/mod_0_arr.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>화면이 작아 약간 잘렸는데 아무튼 다 맞았다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1187,121 +1290,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/22/Crain-Pick-Doll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/22/Crain-Pick-Doll/" class="post-title-link" itemprop="url">크레인 인형뽑기 게임</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-22 13:32:00" itemprop="dateCreated datePublished" datetime="2020-12-22T13:32:00+09:00">2020-12-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 21:25:27" itemprop="dateModified" datetime="2021-04-01T21:25:27+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>말그대로 인형뽑기 게임이다. 게임판은 2차원 배열(board)이 주어진다. 그리고 인형을 뽑는 순서로 1차원 배열(moves)이 주어진다. 뽑은 인형은 바구니에 쌓이고 만약 새로 뽑은 인형이 바구니의 가장 위에 있는 인형과 동일한 인형일 경우 인형은 터진다. 이때 터진 인형의 개수를 반환하면 된다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>이 문제를 해결하기 위해 가장 brute force적인 방법을 생각해보면 1. moves의 원소를 순회하면서 0이 아닌 지점까지 아래로 파고든다 2. 인형을 꺼낸 뒤, 해당 위치를 0으로 만든다. 3. 뽑은 인형은 스택에 저장한다. 만약 스택의 가장 위에 있는 인형과 똑같은 id를 공유한다면, 스택에서 pop한 뒤 answer에 2를 더해준다.</p>
-<p>이 경우 시간복잡도는 <span class="math inline">\(O(n^2)\)</span>이 된다.</p>
-<p>같은 <span class="math inline">\(O(n^2)\)</span>이긴 하지만, 필자는 시간을 더 줄이기 위해 top이란 1차원 배열을 추가로 생성한다. top의 원소는 각 열에서 인형이 놓여있는 가장 높은 위치를 말한다.</p>
-<figure>
-<img src="/images/programmers/crane_game_101.png" alt="crane_game_101" /><figcaption aria-hidden="true">crane_game_101</figcaption>
-</figure>
-<p>이 경우의 top은 각각 [3,2,1,3,1]이다(맨 윗줄이 0번째).</p>
-<p>이렇게 하면 앞서 말한 1번 과정에서 시간을 단축할 수 있다. 계속 아래로 파고드는 것이 아니라 해당 인덱스로 바로 접근하는 것이기 때문이다. 이제 코드와 함께 보도록 하자. 코드는 자바로 작성되었다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CrainDoll</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] board = &#123;</span><br><span class="line">            &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>&#125;,&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">4</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span>[] moves = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] top = <span class="keyword">new</span> <span class="keyword">int</span>[board.length];</span><br><span class="line">        Arrays.fill(top, <span class="number">40</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; board.length; c++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; board.length; r++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[r][c] != <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    top[c] = r;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; moves.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(top[moves[i]-<span class="number">1</span>] &lt; board.length)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> doll = board[top[moves[i]-<span class="number">1</span>]][moves[i]-<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span>(stack.empty())</span><br><span class="line">                    stack.push(doll);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(stack.peek() == doll)</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    answer += <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    stack.push(doll);</span><br><span class="line">                </span><br><span class="line">                top[moves[i]-<span class="number">1</span>]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>전체코드</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] board = &#123;</span><br><span class="line">    &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>&#125;,&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">4</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span>[] moves = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span>[] top = <span class="keyword">new</span> <span class="keyword">int</span>[board.length];</span><br><span class="line">Arrays.fill(top, <span class="number">40</span>);</span><br></pre></td></tr></table></figure>
-<p>문제 세팅을 위한 코드이다 board와 moves를 설정하고 터트려질 인형의 수를 answer라고 한다. 그리고 top의 길이는 board의 가로 또는 세로 사이즈로 설정한다. 이때 top을 0으로 초기화하면 안되는 이유는 유효한 값이기 때문이다. 문제에서 보드판은 30*30까지 될 수 있고 이말은, 0~29까지는 실제 인형이 있는 위치를 나타내는 숫자이다. 따라서 이 범위내에 있지 않은 숫자로 초기화한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; board.length; c++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; board.length; r++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(board[r][c] != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            top[c] = r;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>top을 초기화하는 코드이다 board를 순회하는데 순회는 위에서 아래로 한줄씩 본다. 만약 처음으로 0이 아닌 숫자가 나오면 그 위치를 저장하고 다음 줄로 넘어간다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; moves.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(top[moves[i]-<span class="number">1</span>] &lt; board.length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> doll = board[top[moves[i]-<span class="number">1</span>]][moves[i]-<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(stack.empty())</span><br><span class="line">            stack.push(doll);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(stack.peek() == doll)</span><br><span class="line">        &#123;</span><br><span class="line">            stack.pop();</span><br><span class="line">            answer += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            stack.push(doll);</span><br><span class="line">        </span><br><span class="line">        top[moves[i]-<span class="number">1</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(answer);</span><br></pre></td></tr></table></figure>
-<p>바구니를 나타낼 stack을 선언한다 밑에 있는 for문은 앞서말한 3번과정을 나타낸다. 뽑아야하는 열이 주어질 때 top이 유효범위 내에 있다면 인형의 id를 저장한다. 만약 바구니가 비어있다면 스택에 인형을 집어넣는다. 만약 바구니의 맨 위에 있는 인형과 뽑은 인형이 같다면(else if문) 스택에서 인형을 꺼내고, 답을 2증가한다. 맨 위에있는 인형과 뽑은 인형이 같지 않다면 바구니에 넣어준다. 인형을 뽑고나면 top의 해당원소를 1증가하여 인형이 뽑혔다는 것을 저장한다.</p>
-<h2 id="테스트">테스트</h2>
-<figure>
-<img src="/images/programmers/crane_game_result.png" alt="crane_game_result" /><figcaption aria-hidden="true">crane_game_result</figcaption>
-</figure>
-<p>코딩테스트를 너무 늦게 준비해서 조급한 마음도 있지만 1레벨부터 찬찬히 풀어가야겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

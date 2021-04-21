@@ -9,8 +9,37 @@
     <atom:link href="http://yunpc.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 21 Apr 2021 12:49:20 GMT</pubDate>
+    <pubDate>Wed, 21 Apr 2021 14:10:33 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>noreferrer</title>
+      <link>http://yunpc.github.io/2021/04/21/noreferrer/</link>
+      <guid>http://yunpc.github.io/2021/04/21/noreferrer/</guid>
+      <pubDate>Wed, 21 Apr 2021 13:53:37 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;링크-타입-noreferrer&quot;&gt;링크 타입 : noreferrer&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;noreferrer&lt;/code&gt;는 &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;area&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;f</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1 id="링크-타입-noreferrer">링크 타입 : noreferrer</h1><p><code>noreferrer</code>는 <code>&lt;a&gt;</code>, <code>&lt;area&gt;</code>, <code>&lt;form&gt;</code>의 <code>rel</code> 속성에 쓰는 속성 값이다. 타겟 브라우저로 이동할 때 원 브라우저에 대한 정보(Referer)를 제공하지 않는다. 레퍼러를 제공하지 않기 때문에 새 탭으로 인한 보안 문제가 해결된다. 이런 면에서는 <code>noopener</code>가 쓰인 것과 같은 효과를 볼 수 있다.</p>]]></content:encoded>
+      
+      
+      <category domain="http://yunpc.github.io/categories/HTML-CSS/">HTML/CSS</category>
+      
+      <category domain="http://yunpc.github.io/categories/HTML-CSS/Docs/">Docs</category>
+      
+      <category domain="http://yunpc.github.io/categories/HTML-CSS/Docs/MDN/">MDN</category>
+      
+      
+      
+      <comments>http://yunpc.github.io/2021/04/21/noreferrer/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>nooopener</title>
@@ -600,38 +629,6 @@
       
       
       <comments>http://yunpc.github.io/2021/02/22/Pop-Ballon/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>2xn 타일링</title>
-      <link>http://yunpc.github.io/2021/02/09/2xn-Tiling/</link>
-      <guid>http://yunpc.github.io/2021/02/09/2xn-Tiling/</guid>
-      <pubDate>Tue, 09 Feb 2021 08:29:00 GMT</pubDate>
-      
-        
-        
-      <description>&lt;h2 id=&quot;문제정의&quot;&gt;문제정의&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;가로 길이가 2이고 세로의 길이가 1인 직사각형 모양의 타일이 있다. 이 타일로 2*n바닥을 덮을 수 있는 경우의 수를 구하는 문제이다.&lt;/p&gt;
-&lt;h2 id=&quot;문제풀이&quot;&gt;문제풀이&lt;/h2&gt;
-&lt;</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h2 id="문제정의">문제정의</h2><hr /><p>가로 길이가 2이고 세로의 길이가 1인 직사각형 모양의 타일이 있다. 이 타일로 2*n바닥을 덮을 수 있는 경우의 수를 구하는 문제이다.</p><h2 id="문제풀이">문제풀이</h2><hr /><p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tiling2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 Level3 2xn 타일링</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] cache;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">4</span>;</span><br><span class="line">        cache = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span> answer = ReturnAnswer(n, <span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnAnswer</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(w == n)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(w &gt; n)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(cache[w] != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> cache[w];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">            res = ReturnAnswer(n,w+<span class="number">1</span>) % <span class="number">1000_000_007</span>;</span><br><span class="line">            res += ReturnAnswer(n, w+<span class="number">2</span>) % <span class="number">1000_000_007</span>;</span><br><span class="line">            cache[w] = res%<span class="number">1000_000_007</span>;</span><br><span class="line">            <span class="keyword">return</span> cache[w];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 생각해보면 세로길이2를 채울 수 있는 경우의 수는 2가지 밖에 없다. 하나는 세로로 하나의 타일이 쌓인 경우이고, 나머지 하나는 가로로 두개의 타일이 쌓인 경우이다. 첫번째 경우에는 가로로 1증가하고, 두번째 경우는 가로가 2증가한다. 이 두가지 경우를 계속 시도해보는 코드를 짜면 된다.</p><p><code>ReturnAnswer</code>함수를 살펴보자. <code>n</code>은 주어진 가로 길이이고 <code>w</code>는 현재 가로 길이다. 만약 이 가로 길이에 도달하면 1을 반환하고 그렇지 않으면 0을 반환한다. 여기서 연산의 반복을 줄이기 위해 캐시도 사용한다. 만약 해당 길이에 이미 구해놓은 값이 있으면 그 값을 사용한다.</p><p>새로 계산해야 하는 경우 길이를 1늘린 것과 2늘린 값을 가져와서 나머지 연산을 한다. 이 둘은 더하는 과정에서도 값이 1,000,000,007을 넘는 경우가 있으므로 캐시에 값을 넣을 때도 나머지 연산을 한 뒤 값을 반환한다.</p><p>시간 복잡도는 <span class="math inline">\(O(log2^n)\)</span>이다.</p><h2 id="테스트">테스트</h2><p><br></p><center><img src="/images/programmers/tiling.png" width="345" height="560"></center><p><br></p>]]></content:encoded>
-      
-      
-      <category domain="http://yunpc.github.io/categories/Problem-Solving/">Problem Solving</category>
-      
-      <category domain="http://yunpc.github.io/categories/Problem-Solving/Programmers/">Programmers</category>
-      
-      <category domain="http://yunpc.github.io/categories/Problem-Solving/Programmers/Level3/">Level3</category>
-      
-      
-      
-      <comments>http://yunpc.github.io/2021/02/09/2xn-Tiling/#disqus_thread</comments>
       
     </item>
     
