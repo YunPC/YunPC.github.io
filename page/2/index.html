@@ -196,14 +196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,116 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/04/Control-Camera/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/04/Control-Camera/" class="post-title-link" itemprop="url">단속 카메라</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-04 16:44:00" itemprop="dateCreated datePublished" datetime="2021-03-04T16:44:00+09:00">2021-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:09:01" itemprop="dateModified" datetime="2021-04-01T17:09:01+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>최대한 많은 overlap을 하나로 묶을 때, 나오는 집합의 크기를 구하는 문제이다. 상세한 설명은 아래에 계속하겠다. <span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNDI4ODQ=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Section</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Section</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s;</span><br><span class="line">    <span class="keyword">int</span> e;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Section</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> e)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.s = s;</span><br><span class="line">        <span class="keyword">this</span>.e = e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Section sec)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.s - sec.s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpeedTrap</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 level3 단속카메라</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] routes = &#123;</span><br><span class="line">            &#123;-<span class="number">20</span>, <span class="number">15</span>&#125;,</span><br><span class="line">            &#123;-<span class="number">14</span>, -<span class="number">5</span>&#125;,</span><br><span class="line">            &#123;-<span class="number">18</span>, -<span class="number">13</span>&#125;,</span><br><span class="line">            &#123;-<span class="number">5</span>, -<span class="number">3</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        PriorityQueue&lt;Section&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; routes.length; i++)</span><br><span class="line">            pq.add(<span class="keyword">new</span> Section(routes[i][<span class="number">0</span>], routes[i][<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cam_cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!pq.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> end = pq.peek().e;</span><br><span class="line">            <span class="keyword">while</span>(!pq.isEmpty() &amp;&amp; pq.peek().s &lt;= end)</span><br><span class="line">            &#123;</span><br><span class="line">                end = pq.peek().e &lt; end ? pq.peek().e : end;</span><br><span class="line">                pq.poll();</span><br><span class="line">            &#125;</span><br><span class="line">            cam_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(cam_cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 알고리즘의 이해를 돕기 위해 아래의 그림을 보자</p>
+<p><br></p>
+<center>
+<img src="/images/programmers/cam.jpeg" width="1184" height="431">
+</center>
+<p><br></p>
+<p>프로그래머스에서 주어진 구간을 수평선 상에 표시하였다. 최소한의 카메라를 설치해야한다는 것은 최대한 차가 많이 다닐 것 같은 길목에 카메라를 놓아야 한다는 것이다. 그 말은 구간이 최대한 많이 겹치는 쪽에 카메라를 놓으면 된다는 것이다.</p>
+<p>이를 구현하기 위해서 <code>Section</code>클래스를 선언하였다. 구간의 처음과 끝을 저장해두며, 정렬을 할 때 구간의 시작점을 기준으로 정렬한다.</p>
+<p>우선순위 큐를 선언하여 Section을 집어넣는다. 이 큐에서 하나씩 빼면서 최대한 겹칠 수 있는 구간들을 묶을 것이다. 일단 <code>end</code>를 큐의 첫원소의 도착구간으로 설정한다. 그리고 <code>end</code>보다 출발점이 작은 구간은 무조건 겹치므로 이들을 팝한다. 이 때, 팝한 것들 중에 기존 <code>end</code>보다 작은 종료구간이 있다면 그 값으로 대체한다.</p>
+<p>이 반복이 마치면 더 이상 겹치는 구간이 없다는 의미이므로 하나로 묶는 작업이 끝난 것이다. 카메라를 설치한다는 의미로 <code>cam_cnt</code>를 1가한다.</p>
+<p>우선순위 큐를 사용하였기 때문에 구간의 개수를 n이라 하였을 때, 최종 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/camera.png" width="290" height="130">
+</center>
+<p><br></p>
+<p>학교 수업에서 해봤던 문제라 수월하게 풀 수 있었다. 앞으로 나만의 코테 데이터베이스를 더 쌓아나가야지.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1166,109 +1276,6 @@
 <img src="/images/programmers/tiling.png" width="345" height="560">
 </center>
 <p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/09/Express-N/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/09/Express-N/" class="post-title-link" itemprop="url">N으로 표현</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-09 16:42:00" itemprop="dateCreated datePublished" datetime="2021-02-09T16:42:00+09:00">2021-02-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:52:06" itemprop="dateModified" datetime="2021-04-01T17:52:06+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<h3 id="n으로-표현하기">N으로 표현하기</h3>
-<p>자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수 중에 가장 작은 사용횟수를 출력해야 한다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NExpress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 n으로 표현</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> answer = -<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>, number = <span class="number">17</span>;</span><br><span class="line"></span><br><span class="line">        ReturnMin(<span class="number">0</span>, <span class="number">0</span>, number, N);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnMin</span><span class="params">(<span class="keyword">int</span> res, <span class="keyword">int</span> cnt, <span class="keyword">int</span> number, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = N;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">8</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(res == number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer == -<span class="number">1</span> || answer &gt; cnt)</span><br><span class="line">                answer = cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnMin(res+temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res-temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res*temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res/temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line"></span><br><span class="line">                temp = temp*<span class="number">10</span>+N;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다른 사람의 코드를 찾아서 쓴 코드이다. 필자도 dfs로 풀 생각을 하였는데 <code>temp</code>부분에서 실수를 했다. 가령 1111+1111는 2222가 나와야 하는데 필자는 1111+1111을 계산하지 않고 끝내버리는 오류가 있었기 때문이다. 문제점을 알았으니 다행이다. 일단 코드 설명을 해보면 <code>res</code>는 현재까지 계산한 값을 의미하고 <code>cnt</code>는 사용횟수이다. <code>number</code>는 만들고자 하는 값이다.</p>
-<p>재귀의 종료 조건은 사용횟수가 8을 넘어가면 답이 없는 것이므로 <code>answer</code>에 -1을 한다. 다른 경우는 8번안에 숫자가 만들어진다면 <code>answer</code>가 -1이거나 <code>cnt</code>보다 <code>answer</code>가 큰 경우 답을 <code>cnt</code>로 한다. 그것도 아니라면 사칙연산을 추가로 진행해야 한다. 사용할 수 있는 횟수만큼 <code>N</code>을 뒤에 붙여가며 더해간다. 예를들면 5를 4번쓸 수 있으면 [5,55,555,5555]로 사칙연산을 하는 것이다.</p>
-<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 <span class="math inline">\(O(4^8)\)</span>이므로 <span class="math inline">\(O(1)\)</span>로 나타낼 수 있다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/N_express.png" width="290" height="320">
-</center>
-<p><br></p>
-<p>동적계획법으로 푸는 방법을 몰라서 재귀를 사용하였는데, 이런 경우 대게 테스트 케이스가 커서 골치 아픈 경우가 많다. 하지만 이 문제는 8이라는 제한 횟수가 있어서 그런지 시간 초과가 나는 일은 없었다. 재귀함수를 짤 때 종료조건에 대해 꼼꼼히 생각해봐야겠다.</p>
 
       
     </div>

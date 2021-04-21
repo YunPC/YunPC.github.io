@@ -196,14 +196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/09/Express-N/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/09/Express-N/" class="post-title-link" itemprop="url">N으로 표현</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-09 16:42:00" itemprop="dateCreated datePublished" datetime="2021-02-09T16:42:00+09:00">2021-02-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:52:06" itemprop="dateModified" datetime="2021-04-01T17:52:06+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<h3 id="n으로-표현하기">N으로 표현하기</h3>
+<p>자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수 중에 가장 작은 사용횟수를 출력해야 한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NExpress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 n으로 표현</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> answer = -<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>, number = <span class="number">17</span>;</span><br><span class="line"></span><br><span class="line">        ReturnMin(<span class="number">0</span>, <span class="number">0</span>, number, N);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnMin</span><span class="params">(<span class="keyword">int</span> res, <span class="keyword">int</span> cnt, <span class="keyword">int</span> number, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = N;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">8</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(res == number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer == -<span class="number">1</span> || answer &gt; cnt)</span><br><span class="line">                answer = cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnMin(res+temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res-temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res*temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res/temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line"></span><br><span class="line">                temp = temp*<span class="number">10</span>+N;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다른 사람의 코드를 찾아서 쓴 코드이다. 필자도 dfs로 풀 생각을 하였는데 <code>temp</code>부분에서 실수를 했다. 가령 1111+1111는 2222가 나와야 하는데 필자는 1111+1111을 계산하지 않고 끝내버리는 오류가 있었기 때문이다. 문제점을 알았으니 다행이다. 일단 코드 설명을 해보면 <code>res</code>는 현재까지 계산한 값을 의미하고 <code>cnt</code>는 사용횟수이다. <code>number</code>는 만들고자 하는 값이다.</p>
+<p>재귀의 종료 조건은 사용횟수가 8을 넘어가면 답이 없는 것이므로 <code>answer</code>에 -1을 한다. 다른 경우는 8번안에 숫자가 만들어진다면 <code>answer</code>가 -1이거나 <code>cnt</code>보다 <code>answer</code>가 큰 경우 답을 <code>cnt</code>로 한다. 그것도 아니라면 사칙연산을 추가로 진행해야 한다. 사용할 수 있는 횟수만큼 <code>N</code>을 뒤에 붙여가며 더해간다. 예를들면 5를 4번쓸 수 있으면 [5,55,555,5555]로 사칙연산을 하는 것이다.</p>
+<p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 <span class="math inline">\(O(4^8)\)</span>이므로 <span class="math inline">\(O(1)\)</span>로 나타낼 수 있다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/N_express.png" width="290" height="320">
+</center>
+<p><br></p>
+<p>동적계획법으로 푸는 방법을 몰라서 재귀를 사용하였는데, 이런 경우 대게 테스트 케이스가 커서 골치 아픈 경우가 많다. 하지만 이 문제는 8이라는 제한 횟수가 있어서 그런지 시간 초과가 나는 일은 없었다. 재귀함수를 짤 때 종료조건에 대해 꼼꼼히 생각해봐야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1173,108 +1276,6 @@
 <img src="/images/programmers/expect_tournament.png" width="290" height="540">
 </center>
 <p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/22/Expect-Tournament/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/22/Expect-Tournament/" class="post-title-link" itemprop="url">예상 대진표</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-22 15:58:00" itemprop="dateCreated datePublished" datetime="2021-01-22T15:58:00+09:00">2021-01-22</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:02:57" itemprop="dateModified" datetime="2021-04-01T18:02:57+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>부전승이 없고 n명의 선수가 토너먼트를 진행할 때, 두 선수가 만날 라운드 수를 반환하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExpectTournament</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 Level2 예상 대진표</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">8</span>, a = <span class="number">4</span>, b = <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> total_round = Integer.toBinaryString(n).length()-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> l = Math.min(a,b);</span><br><span class="line">        <span class="keyword">int</span> r = Math.max(a,b);</span><br><span class="line">        <span class="keyword">int</span> answer = total_round;</span><br><span class="line">        <span class="keyword">int</span> size = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= total_round; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j+=size)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(j &lt;= l &amp;&amp; r &lt;= j+(size-<span class="number">1</span>))</span><br><span class="line">                &#123;</span><br><span class="line">                    answer = i;</span><br><span class="line">                    flag = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            size *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 원래 재귀로 풀었었는데, 런타임 에러가 자꾸 떠서 결국 방법을 바꾸었다. 비주얼 스튜디오 코드에서는 동작했던 걸 보아하니 채점 사이트에서 막은 건가 싶었다. 어쨌든 새로 한 두번째 방법은 2명씩 4명씩 8명씩.. 이런식으로 계속 묶어나가며 a,b가 동시에 속한 경우를 발견하면 그 라운드를 i에 받고 반복문을 마친다.</p>
-<p>코드를 좀 더 자세히 설명하자면, total_round는 이진법으로 바꾼 문자열에서 -1하면 된다. 그리고 l은 두 선수 중 숫자가 작은 쪽, r은 숫자가 큰 쪽이다. 1라운드부터 최종라운드까지 선수들을 묶어가면서 범위에 두 선수가 속해있는지 확인한다. 이때 초기 size는 선수가 2명씩 묶이므로 2로하고 라운드를 진행할 수록 팀 당 선수는 2배씩 늘어나므로 size도 2를 곱해준다.</p>
-<p>최종 시간복잡도는 공비가 \(1\)인 등비수열의 합이므로, 2진법을 계산하는 과정이 있기 때문에 \(O(n*{1}^n)\)이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/expect_tournament.png" width="290" height="540">
-</center>
-<p><br></p>
-<p>비트 연산을 통해서 문제를 푼 것을 보고 감탄을 느꼈다. 2로 나누거나 곱하는 연산은 비트 연산을 통해 풀어볼 수 없는지 공부해 봐야겠다.</p>
 
       
     </div>

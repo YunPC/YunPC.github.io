@@ -196,14 +196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/20/Make-Min/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/20/Make-Min/" class="post-title-link" itemprop="url">최솟값 만들기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-20 14:08:00" itemprop="dateCreated datePublished" datetime="2021-01-20T14:08:00+09:00">2021-01-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>두 배열에서 한 숫자씩 뽑아 둘의 곱을 더해나갈 때 최솟값을 구하는 문제이다. 단 중복으로 숫자를 뽑는 것은 허용하지 않는다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MakeMin</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 최솟값 만들기</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] A = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] B = &#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        Arrays.sort(A);</span><br><span class="line">        Arrays.sort(B);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++)</span><br><span class="line">            answer += A[i] * B[A.length-i-<span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 최솟값을 만들기 위해선 각각의 배열에서 가장작은수와 가장큰수가 곱해져 나가야한다. 이를 생각해내면 코드는 단순하다. 두 배열을 정렬하고 하나는 앞에서부터 하나는 뒤에서부터 뽑아 곱해서 더하면 된다.</p>
+<p>최종적인 시간복잡도는 배열의 길이를 n이라고 할 때, 정렬을 사용하였으므로 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/make_min.png" width="290" height="530">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1122,107 +1222,6 @@
 <img src="/images/programmers/carpet.png" width="290" height="350">
 </center>
 <p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/15/Life-Boat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/15/Life-Boat/" class="post-title-link" itemprop="url">구명보트</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-15 13:54:00" itemprop="dateCreated datePublished" datetime="2021-01-15T13:54:00+09:00">2021-01-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:56:02" itemprop="dateModified" datetime="2021-04-01T18:56:02+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>최대 2명까지 탈 수 있고 무게 제한이 limit인 구명보트를 최대한 적게 사용해서 사람들을 보트에 태우는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifeBoat</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 구명보트</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] people = &#123;<span class="number">70</span>, <span class="number">50</span>, <span class="number">80</span>, <span class="number">50</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> limit = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; small = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        PriorityQueue&lt;Integer&gt; big = <span class="keyword">new</span> PriorityQueue&lt;&gt;(Collections.reverseOrder());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> w : people)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(w &lt;= limit/<span class="number">2</span>)</span><br><span class="line">                small.add(w);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                big.add(w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>((!small.isEmpty()) &amp;&amp; (!big.isEmpty()))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> s = small.peek();</span><br><span class="line">            <span class="keyword">int</span> b = big.peek();</span><br><span class="line">            <span class="keyword">if</span>(s+b &gt; limit)</span><br><span class="line">            &#123;</span><br><span class="line">                big.remove();</span><br><span class="line">                answer++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                small.remove();</span><br><span class="line">                big.remove();</span><br><span class="line">                answer++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!small.isEmpty())</span><br><span class="line">            answer += small.size() % <span class="number">2</span> == <span class="number">0</span> ? small.size()/<span class="number">2</span> : small.size()/<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            answer += big.size();</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 정렬을 사용할 수 있고 우선순위큐를 활용할 수도 있지만, 필자는 우선순위 큐를 활용하였다. 15-21번째 줄은 limit/2를 기준으로 작은것과 큰 것으로 무게를 나눠담는 과정이다. small은 오름차순으로 정렬하고 big은 내림차순으로 정렬한다. 22-37번째 줄은 두 큐에서 사람을 하나씩 뽑아 보트에 태울 수 있는지 보는것이다. 만약 태우지 못한다면 큰 사람 하나를 보트에 태워보내고, 다음으로 무거운 사람을 같이 태울 수 있는지 비교한다. 만약 같이 탈 수 있으면 둘 다 큐에서 제거하고 answer를 1증가한다. 반복문을 탈출하는 경우는 두 큐 모두 비었거나, 둘 중 하나만 빈 것이므로 이에 대한 나머지 처리도 해야한다. 만약 small이 남은 경우 무조건 둘씩 태워 보낼 수 있으므로 (small 총 개수)/2를 한다. 이때 홀수명이 남는다면 1을 추가하는 것을 잊지말자. big에 속한 사람들은 한 사람씩 밖에 못 타므로 사람수만큼 추가해주면 된다.</p>
-<p>우선 순위 큐를 활용했으므로 총 시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이 된다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/lifeboat.png" width="290" height="530">
-</center>
-<p><br></p>
-<p>처음에 40번째 줄에 else가 아니라 else if문을 썼는데 효율성 테스트를 하나 통과하지 못했다. 그래서 else로 바꾸니 통과가 되었다. size를 한번 더 호출하냐 마냐가 차이인 것 같은데, 효율성 테스트가 조금 빡빡하단 생각이 들었다.</p>
 
       
     </div>

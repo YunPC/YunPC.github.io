@@ -9,8 +9,37 @@
     <atom:link href="http://yunpc.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 09 Apr 2021 02:16:06 GMT</pubDate>
+    <pubDate>Wed, 21 Apr 2021 12:49:20 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>nooopener</title>
+      <link>http://yunpc.github.io/2021/04/21/noopener/</link>
+      <guid>http://yunpc.github.io/2021/04/21/noopener/</guid>
+      <pubDate>Wed, 21 Apr 2021 12:14:22 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;링크-타입-noopener&quot;&gt;링크 타입: noopener&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;noopener&lt;/code&gt;란 &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;area&lt;/code&gt;, &lt;code&gt;form&lt;/code&gt;태그의 &lt;code&gt;rel&lt;/co</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1 id="링크-타입-noopener">링크 타입: noopener</h1><p><code>noopener</code>란 <code>a</code>, <code>area</code>, <code>form</code>태그의 <code>rel</code>속성에 들어가는 속성 값이다. 이 값은 새로운 창이 열려있을 때, 기존에 브라우징 되어있는 요소에 접근할 수 없도록 한다.</p><blockquote><p>A브라우저에서 링크를 타고 B브라우저를 새탭에서 열었을 경우 <code>Window.opener</code>라는 객체가 생기는데, 이걸 통해 B브라우저가 A브라우저를 악의적으로 동작하게 만들 수 있기 때문에 <code>noopener</code>는 이 객체를 생성하지 않고 널값을 반환한다.</p></blockquote><p>이 값은 특히 신뢰할 수 없는 사이트에 들어갈 때 유용하다. 이 값을 사용하면 <code>Window.opener</code>를 통해서 현재 브라우저에 접근할 수 있는 통로를 차단한다. (이 값을 사용한다는 기본 전제는 <code>Referer</code>HTTP 헤더를 사용한다는 것이다. 리퍼러는 사용자가 어디에서 새 브라우저로 왔는지 url에 보여준다. 이 정보가 명확히 있기 때문에 <code>Window.opener</code>에서 조작할 수 있는건데, <code>noreferrer</code>를 사용한다면 애초에 어디서부터 왔는지 보이지 않기 때문에 <code>noopener</code>를 사용할 이유가 없어진다.)</p><p><code>noopener</code>를 사용할 경우 <code>_top</code>, <code>_self</code>, <code>_parent</code>가 모두 <code>_blank</code>처럼 사용된다.(새탭으로 무조건 여는 것은 아니고 새로운 탭으로 열지 말지를 물어본다. 이 부분은 예제를 해봐야겠다.)</p><blockquote><p>현재 <code>target="_blank"</code>를 <code>&lt;a&gt;</code>태그에 사용하면 이 값이 암묵적으로 적용된다.</p></blockquote>]]></content:encoded>
+      
+      
+      <category domain="http://yunpc.github.io/categories/HTML-CSS/">HTML/CSS</category>
+      
+      <category domain="http://yunpc.github.io/categories/HTML-CSS/Docs/">Docs</category>
+      
+      <category domain="http://yunpc.github.io/categories/HTML-CSS/Docs/MDN/">MDN</category>
+      
+      
+      
+      <comments>http://yunpc.github.io/2021/04/21/noopener/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>가사 검색</title>
@@ -603,37 +632,6 @@
       
       
       <comments>http://yunpc.github.io/2021/02/09/2xn-Tiling/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>N으로 표현</title>
-      <link>http://yunpc.github.io/2021/02/09/Express-N/</link>
-      <guid>http://yunpc.github.io/2021/02/09/Express-N/</guid>
-      <pubDate>Tue, 09 Feb 2021 07:42:00 GMT</pubDate>
-      
-        
-        
-      <description>&lt;h2 id=&quot;문제정의&quot;&gt;문제정의&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;n으로-표현하기&quot;&gt;N으로 표현하기&lt;/h3&gt;
-&lt;p&gt;자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<h2 id="문제정의">문제정의</h2><hr /><h3 id="n으로-표현하기">N으로 표현하기</h3><p>자연수 N을 최대 8개까지 써서 사칙연산으로 주어진 수를 표현할 수 있는지 보는 문제이다. 만약 표현할 수 있다면 표현할 수 있는 수 중에 가장 작은 사용횟수를 출력해야 한다.</p><h2 id="문제풀이">문제풀이</h2><hr /><p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NExpress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 n으로 표현</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> answer = -<span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = <span class="number">4</span>, number = <span class="number">17</span>;</span><br><span class="line"></span><br><span class="line">        ReturnMin(<span class="number">0</span>, <span class="number">0</span>, number, N);</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ReturnMin</span><span class="params">(<span class="keyword">int</span> res, <span class="keyword">int</span> cnt, <span class="keyword">int</span> number, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = N;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt; <span class="number">8</span>)</span><br><span class="line">            answer = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(res == number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(answer == -<span class="number">1</span> || answer &gt; cnt)</span><br><span class="line">                answer = cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                ReturnMin(res+temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res-temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res*temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line">                ReturnMin(res/temp, cnt+i+<span class="number">1</span>, number, N);</span><br><span class="line"></span><br><span class="line">                temp = temp*<span class="number">10</span>+N;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다른 사람의 코드를 찾아서 쓴 코드이다. 필자도 dfs로 풀 생각을 하였는데 <code>temp</code>부분에서 실수를 했다. 가령 1111+1111는 2222가 나와야 하는데 필자는 1111+1111을 계산하지 않고 끝내버리는 오류가 있었기 때문이다. 문제점을 알았으니 다행이다. 일단 코드 설명을 해보면 <code>res</code>는 현재까지 계산한 값을 의미하고 <code>cnt</code>는 사용횟수이다. <code>number</code>는 만들고자 하는 값이다.</p><p>재귀의 종료 조건은 사용횟수가 8을 넘어가면 답이 없는 것이므로 <code>answer</code>에 -1을 한다. 다른 경우는 8번안에 숫자가 만들어진다면 <code>answer</code>가 -1이거나 <code>cnt</code>보다 <code>answer</code>가 큰 경우 답을 <code>cnt</code>로 한다. 그것도 아니라면 사칙연산을 추가로 진행해야 한다. 사용할 수 있는 횟수만큼 <code>N</code>을 뒤에 붙여가며 더해간다. 예를들면 5를 4번쓸 수 있으면 [5,55,555,5555]로 사칙연산을 하는 것이다.</p><p>시간 복잡도는 최대 8번이라는 조건이 있기 때문에 <span class="math inline">\(O(4^8)\)</span>이므로 <span class="math inline">\(O(1)\)</span>로 나타낼 수 있다.</p><h2 id="테스트">테스트</h2><p><br></p><center><img src="/images/programmers/N_express.png" width="290" height="320"></center><p><br></p><p>동적계획법으로 푸는 방법을 몰라서 재귀를 사용하였는데, 이런 경우 대게 테스트 케이스가 커서 골치 아픈 경우가 많다. 하지만 이 문제는 8이라는 제한 횟수가 있어서 그런지 시간 초과가 나는 일은 없었다. 재귀함수를 짤 때 종료조건에 대해 꼼꼼히 생각해봐야겠다.</p>]]></content:encoded>
-      
-      
-      <category domain="http://yunpc.github.io/categories/Problem-Solving/">Problem Solving</category>
-      
-      <category domain="http://yunpc.github.io/categories/Problem-Solving/Programmers/">Programmers</category>
-      
-      <category domain="http://yunpc.github.io/categories/Problem-Solving/Programmers/Level3/">Level3</category>
-      
-      
-      
-      <comments>http://yunpc.github.io/2021/02/09/Express-N/#disqus_thread</comments>
       
     </item>
     
