@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,114 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/01/Cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/01/Cache/" class="post-title-link" itemprop="url">캐시</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-01 14:00:00" itemprop="dateCreated datePublished" datetime="2021-02-01T14:00:00+09:00">2021-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:58:54" itemprop="dateModified" datetime="2021-04-01T17:58:54+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>캐시의 용량과 도시이름이 주어질 때, LRU 캐시 알고리즘을 사용할 때, 총 반응 시간을 계산하는 코드이다. 도시 이름은 대소문자를 가리지 않는다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cache</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 Level2 캐시</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cacheSize = <span class="number">3</span>;</span><br><span class="line">        String[] cities = &#123;<span class="string">&quot;Jeju&quot;</span>, <span class="string">&quot;Pangyo&quot;</span>, <span class="string">&quot;Seoul&quot;</span>, <span class="string">&quot;NewYork&quot;</span>, <span class="string">&quot;LA&quot;</span>, <span class="string">&quot;Jeju&quot;</span>, <span class="string">&quot;Pangyo&quot;</span>, <span class="string">&quot;Seoul&quot;</span>, <span class="string">&quot;NewYork&quot;</span>, <span class="string">&quot;LA&quot;</span>&#125;;</span><br><span class="line">        Map&lt;String, Integer&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(cacheSize, <span class="number">0.75f</span>, <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">if</span>(cacheSize == <span class="number">0</span>)</span><br><span class="line">            answer = cities.length*<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(String s : cities)</span><br><span class="line">            &#123;</span><br><span class="line">                s = s.toLowerCase();</span><br><span class="line">                <span class="comment">//맵에 없는 경우</span></span><br><span class="line">                <span class="keyword">if</span>(map.getOrDefault(s, <span class="number">0</span>) == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(map.size() == cacheSize)</span><br><span class="line">                    &#123;</span><br><span class="line">                        Map.Entry leastUsedEntry = map.entrySet().iterator().next();</span><br><span class="line">                        String key = (String)leastUsedEntry.getKey();</span><br><span class="line">                        map.remove(key);</span><br><span class="line">                    &#125;</span><br><span class="line">                    map.put(s, <span class="number">1</span>);</span><br><span class="line">                    answer += <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    answer++;   </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 자바는 정말 놀라운 언어이다. 호출 빈도에 따라서 정렬해주는 맵이 이미 존재했다! LinkedHashMap에서 호출 빈도에 따른 정렬을 제공하는데, 평소에는 false로 되어있다. 이를 true로 바꿔주면 LRU를 구현하기 한 층 쉬워진다.</p>
+<p>일단 캐시 사이즈가 0인 경우를 따로 처리한다. 0인 경우 맵의 크기가 0이 되어 예외가 발생하기 때문이다. 0인 경우에는 모든 도시에서 cache miss가 발생하므로 전체 크기에 5를 곱한 값을 반환한다. 그렇지 않은 경우 캐시를 활용한다. 만약 들어온 도시 이름이 맵에 없는 경우 두 가지 경우로 나뉜다.</p>
+<ol type="1">
+<li>캐시가 이미 다 차서 오래된 것을 제거해야 하는 경우</li>
+<li>캐시에 아직 여유 공간이 있는 경우</li>
+</ol>
+<p>1번의 경우 맵에서 호출된지 가장 오래된 원소를 지워야한다. 이는 map에서 첫번째 원소를 제거하면 되므로 iterator의 첫번째 키값을 받아 제거한다. 이 뒤에 원소를 추가한다. 이 과정을 거치고 정답에 5를 더해준다.</p>
+<p>만약 캐시에 도시 이름이 있을 경우 반응시간을 1늘려주면 된다.</p>
+<p>호출 시간에 따른 정렬은 시간복잡도가 정확히 나타나있지 않다. 다만 <span class="math inline">\(logn\)</span>으로 추측이 간다(이진 탐색을 활용할 가능성이 높다). 따라서 최종시간복잡도는 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/cache.png" width="290" height="500">
+</center>
+<p><br></p>
+<p>자바 기본라이브러리를 잘 익혀야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1207,106 +1315,6 @@
 </center>
 <p><br></p>
 <p>후위표기식으로 변환하는 방법과 연산을 다 까먹어서 다시 공부하는데 애를 먹었다. 대학교 2학년 때 과제만 치중해서 원리를 제대로 공부하지 못한 내 자신이 살짝 원망스럽다. 그래도 이번 기회에 제대로 공부했으니 앞으로는 잊지 말아야겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/20/Multiply-Matrix/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/20/Multiply-Matrix/" class="post-title-link" itemprop="url">행렬의 곱셈</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-20 15:32:00" itemprop="dateCreated datePublished" datetime="2021-01-20T15:32:00+09:00">2021-01-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>두 행렬 arr1, arr2가 주어질 때 arr1에 arr2가 곱해진 결과를 반환하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MatrixMultiply</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 행렬의 곱셈</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] arr1 = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">4</span>&#125;,</span><br><span class="line">            &#123;<span class="number">3</span>, <span class="number">2</span>&#125;,</span><br><span class="line">            &#123;<span class="number">4</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] arr2 = &#123;</span><br><span class="line">            &#123;<span class="number">3</span>, <span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="number">3</span>, <span class="number">3</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] answer = <span class="keyword">new</span> <span class="keyword">int</span>[arr1.length][arr2[<span class="number">0</span>].length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; arr1.length; r++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; arr2[<span class="number">0</span>].length; c++)</span><br><span class="line">            &#123;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; arr1[<span class="number">0</span>].length; idx++)</span><br><span class="line">                    temp += arr1[r][idx] * arr2[idx][c]; </span><br><span class="line">                </span><br><span class="line">                answer[r][c] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 행렬의 곱셈을 안다면 그대로 코드에 옮기면 된다.</p>
-<p>시간복잡도는 arr1의 크기를 nxc라 하고 arr2의 크기를 cxm이라 할 때 <span class="math inline">\(O(cnm)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/matrix_multiple.png" width="290" height="410">
-</center>
-<p><br></p>
 
       
     </div>

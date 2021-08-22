@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/11/String-Compress/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/11/String-Compress/" class="post-title-link" itemprop="url">문자열 압축</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-11 16:22:00" itemprop="dateCreated datePublished" datetime="2021-01-11T16:22:00+09:00">2021-01-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 20:22:35" itemprop="dateModified" datetime="2021-04-01T20:22:35+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>문자열을 일정 단위로 끊어서 압축하려고 한다(ex. abab -&gt; 2ab). 몇 개 단위로 끊어서 압축이 가장 많이 된 문자열의 길이를 계산하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringCompress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 문자열 압축</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;aabbcc&quot;</span>;</span><br><span class="line">        StringBuffer buff = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">2000</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">1</span>)</span><br><span class="line">            answer = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> cut = <span class="number">1</span>; cut &lt;= s.length()/<span class="number">2</span>; cut++)</span><br><span class="line">        &#123;</span><br><span class="line">            String key = s.substring(<span class="number">0</span>, cut);</span><br><span class="line">            buff.delete(<span class="number">0</span>, buff.length());</span><br><span class="line">            cnt = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = cut; i &lt; s.length(); i += cut)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i + cut &gt; s.length())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(cnt &gt; <span class="number">1</span>)</span><br><span class="line">                        buff.append(cnt);</span><br><span class="line">                    buff.append(key);</span><br><span class="line">                    buff.append(s.substring(i, s.length()));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(key.equals(s.substring(i, i+cut)))</span><br><span class="line">                &#123;</span><br><span class="line">                    cnt++;</span><br><span class="line">                    <span class="keyword">if</span>(i == s.length()-<span class="number">1</span> || i+cut == s.length())</span><br><span class="line">                    &#123;</span><br><span class="line">                        buff.append(String.valueOf(cnt));</span><br><span class="line">                        buff.append(key);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(cnt &gt; <span class="number">1</span>)</span><br><span class="line">                        buff.append(String.valueOf(cnt));</span><br><span class="line">                    buff.append(key);</span><br><span class="line">                    <span class="keyword">if</span>(i + cut &gt;= s.length())</span><br><span class="line">                    &#123;</span><br><span class="line">                        buff.append(s.substring(i, s.length()));</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    key = s.substring(i, i+cut);</span><br><span class="line">                    cnt = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            String str = buff.toString();</span><br><span class="line">            answer = Math.min(answer, str.length());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 필자는 이 코드가 굉장히 마음에 안드는데 일단 많이 조잡하다. 핵심 아이디어는 간단하다. 앞에서부터 문자열을 끊어서 key으로 만든 뒤, 압축이 가능하다면 cnt를 계산하여, 넣어주고 아니면 문자열 그대로를 넣어준다. 만약 문자열이 남아버리면 한꺼번에 넣어준다. 필자는 세부적인 구현에서 if문을 덕지덕지 붙여서 통과했다. 질문하기에서 봤던 테스트 케이스를 참고해서 통과했으니, 세부적인 구현 능력을 좀 더 길러야겠다.</p>
+<p>시간복잡도는 문자열의 길이를 n이라 할 때, 최대 <span class="math inline">\(n^2/2\)</span> 만큼 반복하므로 <span class="math inline">\(O(n^2)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/string_compress.png" width="320" height="480">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1142,110 +1242,6 @@
 </center>
 <p><br></p>
 <p>60줄을 넘었는데 다른 풀이는 고작 10줄안에 끝나서 절망했다. 하지만 할 수 있는건 계속 문제를 풀어나가는 수 밖에 없다. n에 나머지 연산을 해주고 나눌 때 3의 배수이면 -1을 해줬는데, 자릿수를 올리지 않기 위해서 그랬다고 하지만, 경험적으로 풀어봐야 이해할듯 말듯하고, 원리에 대해 명쾌하게 설명해주는 블로그가 없어서 아쉬웠다. 이 부분은 좀 더 고민해보고 이 포스트에 보충해서 쓰도록 하겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/31/DartGame/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/31/DartGame/" class="post-title-link" itemprop="url">다트게임</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-31 11:16:00" itemprop="dateCreated datePublished" datetime="2020-12-31T11:16:00+09:00">2020-12-31</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 20:22:35" itemprop="dateModified" datetime="2021-04-01T20:22:35+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>다트게임을 해서 총 몇점을 득점했는지 계산하는 문제이다. 점수는 0~10점이며 옵션에 따라 점수가 바뀔 수 있다. S는 해당 점수의 1제곱, D는 제곱, T는 세제곱을 하는 것이며, <em>은 이전 점수와 해당 점수의 2배(만약에 이전 점수가 없으면 해당 점수만 2배 한다.)이다. #은 해당 점수를 빼는 것이다. </em>과 #은 중첩될 수 있다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DartGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level1 다트 게임</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String dartResult = <span class="string">&quot;1S2D*3T&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = dartResult.toCharArray();</span><br><span class="line">        Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span>(Character.isDigit(arr[i]))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> n = Integer.parseInt(String.valueOf(arr[i]));</span><br><span class="line">                <span class="keyword">if</span>(Character.isDigit(arr[i+<span class="number">1</span>]))</span><br><span class="line">                &#123;</span><br><span class="line">                    n = <span class="number">10</span>;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(arr[i+<span class="number">1</span>] == <span class="string">&#x27;S&#x27;</span>)</span><br><span class="line">                    s.push(Integer.parseInt(String.valueOf(n)));</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(arr[i+<span class="number">1</span>] == <span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">                    s.push((<span class="keyword">int</span>)Math.pow(n, <span class="number">2</span>));</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    s.push((<span class="keyword">int</span>)Math.pow(n, <span class="number">3</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s.size() == <span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> n = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">                    s.pop();</span><br><span class="line">                    s.push(n*<span class="number">2</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> n1 = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">                    s.pop();</span><br><span class="line">                    <span class="keyword">int</span> n2 = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">                    s.pop();</span><br><span class="line">                    s.push(n2*<span class="number">2</span>);</span><br><span class="line">                    s.push(n1*<span class="number">2</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> n = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">                s.pop();</span><br><span class="line">                s.push(n*(-<span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!s.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            answer += s.peek();</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 부분부분 살펴보자. 일단 스트링을 문자배열로 쪼갠다음 이 문자를 하나씩 보면서 계산할 것이다. *옵션을 계산하기 위해 스택도 함께 선언하였다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Character.isDigit(arr[i]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> n = Integer.parseInt(String.valueOf(arr[i]));</span><br><span class="line">    <span class="keyword">if</span>(Character.isDigit(arr[i+<span class="number">1</span>]))</span><br><span class="line">    &#123;</span><br><span class="line">        n = <span class="number">10</span>;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arr[i+<span class="number">1</span>] == <span class="string">&#x27;S&#x27;</span>)</span><br><span class="line">        s.push(Integer.parseInt(String.valueOf(n)));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(arr[i+<span class="number">1</span>] == <span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">        s.push((<span class="keyword">int</span>)Math.pow(n, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        s.push((<span class="keyword">int</span>)Math.pow(n, <span class="number">3</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 에 대해서 처리해주는 부분이다. 일단 들어온 문자가 숫자인지 확인한다. 이때 10에 대한 처리를 따로 한다. 똑같은 1이 들어와도 1일 수도 있고, 10일 수도 있기 때문이다. 이를 알기 위해 다음 문자도 숫자인지 확인하고 숫자라면 n에 10을 대입한다. 그리고 S,D,T에 따른 제곱처리를 하고 스택에 쌓는다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(s.size() == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">        s.pop();</span><br><span class="line">        s.push(n*<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">        s.pop();</span><br><span class="line">        <span class="keyword">int</span> n2 = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">        s.pop();</span><br><span class="line">        s.push(n2*<span class="number">2</span>);</span><br><span class="line">        s.push(n1*<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>숫자와 S,D,T에 대한 처리를 모두 했으니, 다음은 <em>에 대해서 처리하자. </em>은 이전 점수와 현재 점수를 2배 처리하는 것이다. 이전 점수가 없을 수도 있으니 스택의 사이즈에 따라 달리한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(arr[i] == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> n = Integer.parseInt(String.valueOf(s.peek()));</span><br><span class="line">    s.pop();</span><br><span class="line">    s.push(n*(-<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#인경우 스택의 top원소를 빼내어 -1을 곱한 뒤, 다시 집어넣는다. 이 과정을 dartResult가 끝날 때 까지 하므로 여기서의 시간복잡도는 dartResult의 길이를 n이라 할 때, \(O(n)\)이다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!s.empty())</span><br><span class="line">&#123;</span><br><span class="line">    answer += s.peek();</span><br><span class="line">    s.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 다트 게임의 점수를 모두 합산하면 정답이다. 이 부분도 <span class="math inline">\(O(n)\)</span>이다. 따라서 최종 시간복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/dart_game.png" width="350" height="500">
-</center>
-<p><br></p>
-<p>프로그래머스 마지막 level1을 풀었다. 그래도 올해가 끝나기 전에 풀어서 기쁘다. 앞으로는 더 어려운 문제들이 있겠지만 포기하지말고 끝까지 풀어보자. 물러서지 말자!</p>
 
       
     </div>

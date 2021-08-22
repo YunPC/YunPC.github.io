@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -240,6 +240,84 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/08/23/stories/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/23/stories/" class="post-title-link" itemprop="url">스토리북 작성 방법</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-08-23 00:28:21 / Modified: 00:41:42" itemprop="dateCreated datePublished" datetime="2021-08-23T00:28:21+09:00">2021-08-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="스토리북-작성-방법">스토리북 작성 방법</h1>
+<p>리액트와 함께 스토리북을 작성해보자. 스토리북을 작성하면 코드 작성에 따라 문서가 자동으로 생성되기 때문에 협업을 하기 편리하다.</p>
+<p>일단 컴포넌트를 아래와 같이 작성하였다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; string, oneOf &#125; <span class="keyword">from</span> <span class="string">&#x27;prop-types&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> HomeLink = <span class="function">(<span class="params">&#123;<span class="keyword">as</span>:Comp, lang, className, children, ...restProps&#125;</span>) =&gt;</span>&#123;</span><br><span class="line"><span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;&gt;</span> </span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">Comp</span> <span class="attr">lang</span> = <span class="string">&#123;lang&#125;</span> <span class="attr">className</span> = <span class="string">&#123;className&#125;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">&quot;www.google.co.kr&quot;</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">Comp</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/&gt;</span></span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">HomeLink.defaultProps = &#123;</span><br><span class="line">    <span class="keyword">as</span> : <span class="string">&#x27;h1&#x27;</span>,</span><br><span class="line">    lang: <span class="string">&#x27;en&#x27;</span>,</span><br><span class="line">    className: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HomeLink.propTypes = &#123;</span><br><span class="line">    <span class="comment">/** 제목 요소를 설정합니다. */</span></span><br><span class="line">    <span class="keyword">as</span>: oneOf([<span class="string">&#x27;h1&#x27;</span>,<span class="string">&#x27;h2&#x27;</span>,<span class="string">&#x27;h3&#x27;</span>,<span class="string">&#x27;h4&#x27;</span>,<span class="string">&#x27;h5&#x27;</span>,<span class="string">&#x27;h6&#x27;</span>]),</span><br><span class="line">    <span class="comment">/** 언어를 지정할 수 있습니다. (스크린 리더 음성 변경 됨) */</span></span><br><span class="line">    lang: oneOf([<span class="string">&#x27;en&#x27;</span>, <span class="string">&#x27;ko&#x27;</span>]),</span><br><span class="line">    <span class="comment">/** 클래스 이름을 추가할 수 있습니다. */</span></span><br><span class="line">    className: string,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> HomeLink;</span><br></pre></td></tr></table></figure>
+<p>여기서 기본값인 <code>defaultProps</code>를 작성하고 props에 대한 타입을 지정하기 위해 <code>propTypes</code>를 설정한다. 타입스크립트의 경우 이부분은 생략할 수 있다. 만든 컴포넌트는 다시 내보낸다.</p>
+<p>이제 만든 파일에 대한 스토리를 작성한다. 스토리 파일은 아래와 같이 작성할 수 있다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> HomeLink <span class="keyword">from</span> <span class="string">&quot;./HomeLink&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Logo &#125; <span class="keyword">from</span> <span class="string">&quot;components&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    title: <span class="string">&#x27;Components/UI/HomeLink&#x27;</span>,</span><br><span class="line">    component: HomeLink,</span><br><span class="line">    parameters:&#123;</span><br><span class="line">        docs: &#123;</span><br><span class="line">            description:&#123;</span><br><span class="line">                component: <span class="string">&#x27;홈 링크 입니다.&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">    &#125;,</span><br><span class="line">    argTypes: &#123;</span><br><span class="line">        children:&#123;</span><br><span class="line">            table: &#123;<span class="attr">disable</span>: <span class="literal">true</span>&#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Template = <span class="function">(<span class="params">args</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">HomeLink</span> &#123;<span class="attr">...args</span>&#125;/&gt;</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Img = Template.bind(&#123;&#125;);</span><br><span class="line">Img.args = &#123;<span class="attr">as</span>: <span class="string">&#x27;h1&#x27;</span>, <span class="attr">children</span>:<span class="xml"><span class="tag">&lt;<span class="name">Logo</span>&gt;</span><span class="tag">&lt;/<span class="name">Logo</span>&gt;</span></span>&#125;;</span><br><span class="line">Img.storyName = <span class="string">&#x27;홈 링크 (이미지)&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Text = Template.bind(&#123;&#125;);</span><br><span class="line">Text.args = &#123;<span class="attr">as</span>: <span class="string">&#x27;h1&#x27;</span>, <span class="attr">children</span>:<span class="string">&#x27;111&#x27;</span>&#125;;</span><br><span class="line">Text.storyName = <span class="string">&#x27;홈 링크 (텍스트)&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>같은 경로에 <code>HomeLink.stories.js</code>를 생성하고 스토리 파일을 작성한다. <code>export default</code>안에 있는 블럭은 각각 다음과 같다.</p>
+<ul>
+<li><code>title</code> : 스토리 파일 내에서 경로 설정</li>
+<li><code>componenet</code> : 해당 컴포넌트에 대한 설명</li>
+<li><code>table</code> : 스토리북 내에서 props의 표시 유무를 설정하는 값. 기본적으론 <code>false</code>이며 이 값이 <code>true</code>로 변경하는 경우 스토리북 내에서 해당 props가 보이지 않게 된다.</li>
+</ul>
+<p>props값에 따라 컴포넌트가 어떻게 변화하는지 보고 싶은 경우에는 템플릿을 작성하여 이를 보여줄 수 있다. <code>Template</code>를 선언하고 여기에 객체를 바인딩하여 내가 전달하고자 하는 props를 매개변수로 전달한다. 이 때 <code>storyName</code>을 통해 스토리북 내에서 표시될 이름을 설정할 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1142,112 +1220,6 @@
 <img src="/images/programmers/stepping_stone.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
 </figure>
 <p>자바로 하다가 파이썬으로 넘어오니까 코드가 훨씬 간결해서 놀랐다. 이제부터라도 열심히 애용하겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/09/Immigration/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/09/Immigration/" class="post-title-link" itemprop="url">입국심사</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-09 17:19:00" itemprop="dateCreated datePublished" datetime="2021-03-09T17:19:00+09:00">2021-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 21:24:02" itemprop="dateModified" datetime="2021-04-01T21:24:02+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>입국 심사관들이 승객들을 심사하는데 걸리는 가장 최소 시간을 구하는 문제이다. <span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNDMyMzg=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Immigration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 입국심사</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">int</span>[] times = &#123;<span class="number">7</span>, <span class="number">10</span>&#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(times);</span><br><span class="line">        System.out.println(BinarySearch(times, n, times[times.length-<span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">int</span>[] times, <span class="keyword">int</span> n, <span class="keyword">long</span> max)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> l = <span class="number">1</span>, r = max * n;</span><br><span class="line">        <span class="keyword">long</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> ans = Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(isPassed(times, n, mid))</span><br><span class="line">            &#123;</span><br><span class="line">                ans = Math.min(ans, mid);</span><br><span class="line">                r = mid-<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                l = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPassed</span><span class="params">(<span class="keyword">int</span>[] times, <span class="keyword">int</span> n, <span class="keyword">long</span> mid)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> amount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; times.length; i++)</span><br><span class="line">            amount +=  mid / times[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(amount &gt;= n)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>전체 코드는 다음과 같다.</p>
-<p>일단 심사하는데 걸리는 시간을 정렬한다. 이 문제를 해결하기 위한 큰 그림은 이분탐색을 활용하는 것이다. 이분탐색의 mid를 걸리는 최대 시간으로 가정한다. 그리고 이 최대시간을 적용했을 때 모든 승객들을 심사할 수 있는지 검사한다. 만약 모든 승객을 검사할 수 있다면 midr값을 줄이고, 아니라면 mid값을 늘린다.</p>
-<p>이분 탐색에서 초기 <code>l</code>값은 1로 <code>r</code>값은 가장 오래 걸리는 심사기간에 n을 곱한다. 그 뒤로는 <code>isPassed</code>함수를 통해 모든 승객을 심할 수 있는지 검사하고 만약 검사할 수 있다면, 정답을 더 작은 쪽으로 업데이트하고 <code>r</code>값을 <code>mid+1</code>로 업데이트한다.</p>
-<p>그렇지 않다면 <code>mid</code>값이 더 커져야 한다는 의미이므로 <code>l</code>을 <code>mid+1</code>로 업데이트한다.</p>
-<p><code>isPassed</code>를 검사하는 방법은 들어온 <code>mid</code>값에 대해 심사위원의 시간을 나눠서 검사를 할 수 있는 사람의 수를 전부 더해본다. 만약 이 값이 <code>n</code>을 넘는다면, <code>true</code>를 반환하고, 그렇지 않으면 <code>false</code>를 반환한다.</p>
-<p><code>times</code>의 길이를 <code>m</code>이라 하고, <code>times</code>에서 가장 큰 값을 <code>x</code>라 한다면, 최종 시간복잡도는 <span class="math display">\[O(mlognx)\]</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/immigration.png" width="290" height="230">
-</center>
-<p><br></p>
-<p>처음 풀이를 틀려서 다른 사람의 풀이를 참고했는데, 이게 전형적인 이분탐색 문제라고 해서 알아보지 못한 내 자신이 원망스러웠다. 학교 수업 때 이러한 유형을 풀어본 적이 있기 때문이다. 보통 엄청 큰 수가 나오고 최소 또는 최대를 구하라는 문제가 이분탐색의 유형에 해당된다고 한다. 앞으로는 잘 기억해두어야 겠다.</p>
 
       
     </div>
