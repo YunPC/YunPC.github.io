@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -205,6 +205,10 @@
           
         <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -240,6 +244,207 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/19/Correct-Bracket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/19/Correct-Bracket/" class="post-title-link" itemprop="url">올바른 괄호</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-19 11:37:00" itemprop="dateCreated datePublished" datetime="2021-01-19T11:37:00+09:00">2021-01-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:43:37" itemprop="dateModified" datetime="2021-04-01T18:43:37+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>열린괄호와 닫힌괄호로 이루어진 문자열이 올바른 괄호식인지 확인하는 문제이다. 올바른 괄호식이란 열린 괄호와 닫힌 괄호의 수가 동일해야 하며, 열렸으면 반드시 닫혀야한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorrectBracket</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 올바른 괄호</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;()()&quot;</span>;</span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> open = <span class="number">0</span>, close = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">                open++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                close++;</span><br><span class="line">            <span class="keyword">if</span>(open &lt; close)</span><br><span class="line">            &#123;</span><br><span class="line">                answer = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(open != close)</span><br><span class="line">            answer = <span class="keyword">false</span>;</span><br><span class="line">            </span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 열린괄호의 개수를 저장할 변수 open과 닫힌 괄호의 개수를 저장할 변수 close를 선언한다. 이들의 수를 세나가며 만약 close가 open보다 많아지는 경우면 모든 열린괄호가 짝지어지는 것이 아니므로 false를 반환한다. 반복문을 탈출했어도 열린괄호가 닫힌 괄호보다 많은 경우가 있으므로 이를 체크하기 위해 둘의 수가 동일한지 확인한다.</p>
+<p>최종 시간복잡도는 문자열의 길이를 n이라 할 때, <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/correct_bracket.png" width="290" height="530">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/15/QuadCompress-Count-Num/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/15/QuadCompress-Count-Num/" class="post-title-link" itemprop="url">쿼드압축 후 개수 세기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-15 17:02:00" itemprop="dateCreated datePublished" datetime="2021-01-15T17:02:00+09:00">2021-01-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:43:37" itemprop="dateModified" datetime="2021-04-01T18:43:37+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>정사각형의 0,1로 이루어진 2차원 배열을 압축하는 문제이다. 정사각형 영역 S가 한숫자로만 이루어져 있으면 그 숫자로 압축할 수 있다. 만약 그렇지 않으면 4개의 정사각형으로 나누어 압축할 수 있는지 확인한다. 이 과정을 반복했을 때 0의 개수와 1의 개수를 배열로 담아 반환하면 된다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuadCompress</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 쿼드압축 후 개수 세기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] arr = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        answer[<span class="number">0</span>] = ReturnCnt(<span class="number">0</span>, arr.length-<span class="number">1</span>, <span class="number">0</span>, arr.length-<span class="number">1</span>, arr, <span class="number">0</span>);</span><br><span class="line">        answer[<span class="number">1</span>] = ReturnCnt(<span class="number">0</span>, arr.length-<span class="number">1</span>, <span class="number">0</span>, arr.length-<span class="number">1</span>, arr, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnCnt</span><span class="params">(<span class="keyword">int</span> start_r, <span class="keyword">int</span> end_r, <span class="keyword">int</span> start_c, <span class="keyword">int</span> end_c, <span class="keyword">int</span>[][] arr, <span class="keyword">int</span> comp_num)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start_r == end_r)</span><br><span class="line">            <span class="keyword">return</span> arr[start_r][start_c] == comp_num ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">boolean</span> canCompress = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> r = start_r; r &lt;= end_r; r++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> c = start_c; c &lt;= end_c; c++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(arr[r][c] != comp_num)</span><br><span class="line">                        canCompress = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(canCompress)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> middle_r = (end_r-start_r)/<span class="number">2</span> + start_r;</span><br><span class="line">            <span class="keyword">int</span> middle_c = (end_c-start_c)/<span class="number">2</span> + start_c;</span><br><span class="line">            <span class="keyword">int</span> first = <span class="number">0</span>, sec = <span class="number">0</span>, third = <span class="number">0</span>, fourth = <span class="number">0</span>;</span><br><span class="line">            first += ReturnCnt(start_r, middle_r, start_c, middle_c, arr, comp_num);</span><br><span class="line">            sec += ReturnCnt(start_r, middle_r, middle_c+<span class="number">1</span>, end_c, arr, comp_num);</span><br><span class="line">            third += ReturnCnt(middle_r+<span class="number">1</span>, end_r, start_c, middle_c, arr, comp_num);</span><br><span class="line">            fourth += ReturnCnt(middle_r+<span class="number">1</span>, end_r, middle_c+<span class="number">1</span>, end_c, arr, comp_num);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> first+sec+third+fourth;</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">        &#125;    </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 전형적인 리컬시브를 활요하는 문제이다. 필자는 0이나 1이 몇개인지 알려주는 함수 ReturnCnt를 만든 뒤, 0의 개수와 1의 개수를 각각 구하였다. 함수의 매개변수로는 사각형의 시작행과 열, 끝행과 열을 알기 위해 start_r, end_r, start_c, end_c로 선언했다. comp_num은 0 또는 1이 들어간다. 압축하는 숫자가 무엇인지 알려주는 역할이다. 리컬시브 함수가 종료되는 순간은 가로 세로가 1인 정사각형이 들어왔을 때이다. 첫행과 끝행이 같을 때가 이 경우 이므로, 이때 비교하는 수가 comp_num과 같으면 1을 그렇지 않으면 0을 반환한다. 다른 종료조건으로는 영역 전체가 comp_num으로 이루어진 경우이다. 이 조건은 2중 루프를 통해 파악한다. 이 모두가 아니라면 영역을 4개로 쪼개어 확인해야한다. 영역을 쪼개기 위해 정사각형을 쪼개는 가운데 점을 찾아야하는데 그건 35-36번째 줄을 참고하길 바란다. 이렇게 만들어진 중간열과 행을 middle_r과 middle_c로 선언한다. 다음에 자른 영역으로 함수를 재호출하여 4개의 영역값을 모두 더하여 반환한다.</p>
+<p>시간복잡도에 대해 고민을 해보았는데, 최악의 경우는 단 하나도 압축이 안되는 경우이다. 일단 함수가 쪼개지는 횟수는 정사각형의 한 변의 길이를 <span class="math inline">\(n(n \ge 2)\)</span>일 때, 등비수열의 합 공식에 의해 <span class="math inline">\(4*(4^n-1)\over(4-1)\)</span>번이다. 쪼개진 영역들을 검사하는 횟수를 다 합하면 한번에 <span class="math inline">\(n^2\)</span>이다. 따라서 총 시간복잡도는 <span class="math inline">\(O(n^2*4^n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/quad_compress.png" width="290" height="410">
+</center>
+<p><br></p>
+<p>이번 문제는 시간복잡도를 계산하는 것이 까다로웠다. 이제 재귀에 익숙해져 가는 것 같아 뿌듯하다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1040,209 +1245,6 @@
 </center>
 <p><br></p>
 <p>카카오를 지원했을 때 2-3시간이 지나도 잘 못 풀었던 문제들을 풀어나가서 기쁘다. 비록 이것도 1시간이나 걸렸지만 앞으로 시간을 더 줄여나가야겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/12/Biggest-Num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/12/Biggest-Num/" class="post-title-link" itemprop="url">가장 큰 수</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-12 10:59:00" itemprop="dateCreated datePublished" datetime="2021-01-12T10:59:00+09:00">2021-01-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:56:51" itemprop="dateModified" datetime="2021-04-01T18:56:51+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>숫자 카드들이 주어지고 이들을 조합하여 가장 큰 수를 만들어 반환하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BiggestNum</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 가장 큰 수</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] numbers = &#123;<span class="number">3</span>, <span class="number">30</span>, <span class="number">34</span>, <span class="number">5</span>, <span class="number">9</span>&#125;;</span><br><span class="line">        String[] arr = <span class="keyword">new</span> String[numbers.length];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> n : numbers)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i++] = String.valueOf(n);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Arrays.sort(arr, <span class="keyword">new</span> Comparator&lt;String&gt;()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span></span></span><br><span class="line"><span class="function">            </span>&#123;</span><br><span class="line">                String s1 = o1 + o2;</span><br><span class="line">                String s2 = o2 + o1;</span><br><span class="line">                Integer i1 = Integer.parseInt(s1);</span><br><span class="line">                Integer i2 = Integer.parseInt(s2);</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">return</span> i2.compareTo(i1);</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">boolean</span> isZero = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(String s : arr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(Integer.parseInt(s) != <span class="number">0</span>)</span><br><span class="line">                isZero = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(!isZero)</span><br><span class="line">                buff.append(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(buff.length() == <span class="number">0</span>)</span><br><span class="line">            buff.append(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            </span><br><span class="line">        System.out.println(buff.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드는 어렵지 않다. 10-13줄은 int를 문자열로 바꾸어준다. 그리고 이를 정렬하면 되는데, 가장 큰 수를 만들기 위한 정렬은 두 문자를 합쳐보고 더 큰 쪽이 앞에 가도록 하면 된다. 정말 간단하다. 그 부분이 15-26번째 줄이다. 정렬한 문자열을 이제 합쳐주면 되는데 문제 조건을 보면 0이 들어갈 수 있다고 한다. 입력으로 들어온 모든 숫자가 0일 경우를 대비해 isZero를 선언하여 첫 숫자가 0인 것은 들어가지 않도록 했다.</p>
-<p>최종 시간복잡도는 numbers의 길이를 n이라 할 때 <span class="math inline">\(O(nlogn)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/biggest_num.png" width="290" height="340">
-</center>
-<p><br></p>
-<p>질문하기를 보고나서야 푼 문제라서 아쉬움이 남는다. 그래도 하나 배웠는데 compare안에 정렬을 새로 정의할 경우 다중 조건문을 쓰면 혼돈의 정렬이 된다는 것이다(이유는 더 공부가 필요하다.). 질문하기에서 나온 해결방법을 그대로 옮긴거라 필자의 아이디어는 아니지만, compare을 작성할 때 주의해야 할 점을 알았으니 만족한다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/11/Find-Prime-Num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/11/Find-Prime-Num/" class="post-title-link" itemprop="url">소수 찾기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-11 18:14:00" itemprop="dateCreated datePublished" datetime="2021-01-11T18:14:00+09:00">2021-01-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:56:51" itemprop="dateModified" datetime="2021-04-01T18:56:51+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>숫자 카드가 주어지고, 각 숫자 카드를 조합하여 나온 숫자 중 소수가 몇 개 있는지 계산하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FindPrimeNum</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 소수 찾기</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String numbers = <span class="string">&quot;17&quot;</span>;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        StringBuilder buff = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        buff.append(numbers);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= numbers.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            findKDigitPrimeNum(<span class="string">&quot;&quot;</span>, <span class="number">0</span>, set, i, buff);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(set.size());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">findKDigitPrimeNum</span><span class="params">(String s, <span class="keyword">int</span> size, Set&lt;Integer&gt; set, <span class="keyword">int</span> k, StringBuilder buff)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(size == k)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n = Integer.parseInt(s);</span><br><span class="line">            <span class="keyword">if</span>(n &lt;= <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= Math.sqrt(n); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(n%i == <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            set.add(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; buff.length(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                StringBuilder str = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                <span class="keyword">char</span> c = buff.charAt(i);</span><br><span class="line">                str.append(s);</span><br><span class="line">                str.append(c);</span><br><span class="line">                findKDigitPrimeNum(str.toString(), size+<span class="number">1</span>, set, k, buff.delete(i, i+<span class="number">1</span>));</span><br><span class="line">                str.delete(str.length()-<span class="number">1</span>, str.length());</span><br><span class="line">                buff.insert(i, c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 카드 숫자로 만들 수 있는 모든 경우의 수를 조합하는 것이 이 문제의 핵심이다. 이 조합을 찾아내기 위해 다음과 같은 과정을 생각했다. 1. k개의 자릿수를 가지는 모든 숫자 조합을 만드는 함수를 만든다. 2. 조합을 완성할 때마다 소수인지 판별하여 소수라면 set에 삽입한다. 3. k값을 1부터 numbers의 크기만큼 반복한다. 4. set의 크기를 반환한다.</p>
-<p>위 과정을 코드로 담은 것이 위에 코드다 여기서 1번 함수에 대한 세부설명을 하겠다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">findKDigitPrimeNum</span><span class="params">(String s, <span class="keyword">int</span> size, Set&lt;Integer&gt; set, <span class="keyword">int</span> k, StringBuilder buff)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size == k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(s);</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= Math.sqrt(n); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n%i == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        set.add(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; buff.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            StringBuilder str = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">char</span> c = buff.charAt(i);</span><br><span class="line">            str.append(s);</span><br><span class="line">            str.append(c);</span><br><span class="line">            findKDigitPrimeNum(str.toString(), size+<span class="number">1</span>, set, k, buff.delete(i, i+<span class="number">1</span>));</span><br><span class="line">            str.delete(str.length()-<span class="number">1</span>, str.length());</span><br><span class="line">            buff.insert(i, c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">            </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> s는 현재 만들어진 숫자를 의미한다. size는 s의 크기를 나타내고, k는 보고자하는 자릿수이다. buff는 현재 쓸 수 있는 숫자 카드를 담아둔 변수이다. 첫번째 if문은 크기가 k를 만족할 경우 소수인지 판별하고 소수라면 set에 해당 수를 넣는 부분이다. set을 사용한 이유는 중복을 방지하기 위함이다. 만약에 size가 k에 도달하지 못했다면, 문자를 추가해야한다. 이 경우 else문으로 빠진다. buff에 들어있는 문자들을 하나씩 넣었다 빼면서, 함수를 재호출한다.</p>
-<p>시간복잡도는 문자열의 길이를 n이라 할 때, <span class="math inline">\(O(n^{n+1})\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/find_prime.png" width="290" height="340">
-</center>
-<p><br></p>
-<p>완전 탐색이라 시간복잡도차 최악을 도는 것을 볼 수 있다. 이러한 문제는 보통 테스트 케이스의 수가 상대적으로 작다. 이런 문제가 나올 땐 효율성에 겁내지 말고 일단 해보는 것이 중요하다.</p>
 
       
     </div>

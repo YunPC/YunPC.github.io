@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -205,6 +205,10 @@
           
         <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -240,6 +244,202 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/05/Find-Num/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/05/Find-Num/" class="post-title-link" itemprop="url">1920번 수 찾기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-05 13:25:15 / Modified: 13:34:14" itemprop="dateCreated datePublished" datetime="2021-04-05T13:25:15+09:00">2021-04-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Beakjoon/" itemprop="url" rel="index"><span itemprop="name">Beakjoon</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Beakjoon/1000-1999/" itemprop="url" rel="index"><span itemprop="name">1000-1999</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>이분 탐색을 이용한 수 탐색 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">A, key</span>):</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = <span class="built_in">len</span>(A)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        mid = (l+r) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> A[mid] == key:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> A[mid] &gt; key:</span><br><span class="line">            r = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l = mid+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">N = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">A = <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, _ <span class="keyword">in</span> <span class="built_in">enumerate</span>(A):</span><br><span class="line">    A[i] = <span class="built_in">int</span>(A[i])</span><br><span class="line"></span><br><span class="line">A.sort()</span><br><span class="line"></span><br><span class="line">M = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">X = <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, _ <span class="keyword">in</span> <span class="built_in">enumerate</span>(X):</span><br><span class="line">    <span class="built_in">print</span>(binary_search(A, <span class="built_in">int</span>(X[i])))</span><br></pre></td></tr></table></figure></p>
+<p>이분 탐색을 구현하는 문제이다. 입력을 받는 부분을 건너 뛰고 <code>binary_search</code>함수를 보면 된다. 인덱스를 기준으로 이분탐색을 진행한다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<figure>
+<img src="/images/baekjoon/1920.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/02/Stepping-Stone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/02/Stepping-Stone/" class="post-title-link" itemprop="url">징검다리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-02 20:21:00 / Modified: 20:50:00" itemprop="dateCreated datePublished" datetime="2021-04-02T20:21:00+09:00">2021-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level4/" itemprop="url" rel="index"><span itemprop="name">Level4</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>징검다리에서 돌을 빼냈을 때 벌어지는 간격의 최솟값이 가장 큰 것을 구하는 것이다. 문제는 <span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNDMyMzg=">여기<i class="fa fa-external-link-alt"></i></span>에서 볼 수 있다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>이진 탐색을 이용한 문제이다. 유형을 익히면 반가운 문제이지만, 처음에 보면 전혀 감이 안 잡힌다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">distance, rocks, n</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isFeasable</span>(<span class="params">distance, rocks, n, k</span>):</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        pos = <span class="number">0</span></span><br><span class="line">        total = <span class="built_in">len</span>(rocks)</span><br><span class="line">        <span class="keyword">for</span> rock <span class="keyword">in</span> rocks:</span><br><span class="line">            <span class="keyword">if</span> rock - pos &gt;= k:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                pos = rock</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> total-cnt &lt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    answer = <span class="number">0</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = distance</span><br><span class="line">    rocks.sort()</span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        mid = (l+r) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span>(isFeasable(distance, rocks, n, mid)):</span><br><span class="line">            answer = mid</span><br><span class="line">            l = mid+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r = mid</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> answer</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(solution(<span class="number">25</span>, [<span class="number">2</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">21</span>, <span class="number">17</span>], <span class="number">2</span>))</span><br></pre></td></tr></table></figure> 전체적인 코드의 흐름은 다음과 같다. 1. 간격에 대해서 이분 탐색을 해볼 것이다. 이를 <code>k</code>라고 두자. 2. <code>k</code>의 가장 작은 경우는 0이고 가장 큰 경우는 <code>distance</code>이므로 <code>l</code>과 <code>r</code>로 둔다. 3. 이분 탐색을 하면서 만약 <code>isFeasable</code>을 만족한다면, 돌을 더 빼도 된다는 의미이다. 따라서 mid 값을 늘린다. 4. 아니라면 mid 값을 줄인다. 5. 아니면 answer를 반환한다.</p>
+<p>여기서 왜 돌을 더 빼도 된다는 의미에 대해 알아보기 위해 <code>isFeasable</code>을 살펴보자</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isFeasable</span>(<span class="params">distance, rocks, n, k</span>):</span></span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    pos = <span class="number">0</span></span><br><span class="line">    total = <span class="built_in">len</span>(rocks)</span><br><span class="line">    <span class="keyword">for</span> rock <span class="keyword">in</span> rocks:</span><br><span class="line">        <span class="keyword">if</span> rock - pos &gt;= k:</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">            pos = rock</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> total-cnt &lt;= n:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>매개변수로 <code>distance</code>, <code>rocks</code>, <code>n</code>, <code>k</code>를 받는다. <code>cnt</code>는 돌의 개수를 의미하고 <code>pos</code>는 현재 선택한 돌의 위치를 본다. <code>total</code>은 총 돌의 개수를 의미한다.</p>
+<p>for 문의 의미는 최솟값 <code>k</code>만큼의 간격에 포함되는 돌들을 세겠다는 의미이다. 프로그래머스에서 나온 예제를 보면 돌이 [2, 11, 14, 17, 21]의 순서로 놓여있다. 가령 <code>k</code>가 6이라면 [11, 17]에 위치한 돌이 선택되고 <code>cnt</code>는 2가 된다. <code>total</code>에서 <code>cnt</code>를 빼면 몇 개의 돌이 빠졌는지 볼 수 있고 이 값이 <code>n</code>보다 같거나 작으면 <code>True</code>를 반환한다.</p>
+<p>이하에서 <code>True</code>를 반환하는 이유가 있다. 아래의 그림을 보자.</p>
+<figure>
+<img src="/images/programmers/stepping.jpeg" alt="k와 n의 관계" /><figcaption aria-hidden="true">k와 n의 관계</figcaption>
+</figure>
+<p><code>k</code>값이 증가하면 <code>n</code>값도 증가한다. 최솟값이 증가하니 돌 사이의 간격이 더 넓어져야 하기 때문이다. 여기서 우리는 <code>n</code>을 만족하는 최대를 구하려고 한다. 그러면 <code>l</code>이 증가해야 하는 경우를 살펴보아야 한다. 그림을 보면 <code>n</code>의 값이 요구하는 값보다 작을 때 <code>k</code>가 증가해야 함을 볼 수 있다. 이 이유로 인해 비교 연산자 <code>&lt;=</code>를 사용한 것이다.</p>
+<h2 id="테스트">테스트</h2>
+<figure>
+<img src="/images/programmers/stepping_stone.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>자바로 하다가 파이썬으로 넘어오니까 코드가 훨씬 간결해서 놀랐다. 이제부터라도 열심히 애용하겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1074,218 +1274,6 @@
 </center>
 <p><br></p>
 <p>다이나믹 프로그래밍에 약한 편이다. 이건 기초문제라 쉽게 해결했지만, 이 유형에 좀 더 익숙해져야겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/24/Key-and-Lock/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/24/Key-and-Lock/" class="post-title-link" itemprop="url">자물쇠와 열쇠</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-24 18:58:00" itemprop="dateCreated datePublished" datetime="2021-02-24T18:58:00+09:00">2021-02-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:11:07" itemprop="dateModified" datetime="2021-04-01T17:11:07+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>열쇠의 돌기부분이 자물쇠의 홈에 맞는지 판별하는 문제이다. 열쇠를 자물쇠에 맞출 때, 열쇠가 자물쇠 바깥으로 삐져나올 수 있다. 하지만 자물쇠와 열쇠의 돌기부분이 서로 맞물리면 안된다. 자세한 사항은 아래 링크에서 확인하길 바란다.</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNjAwNTk=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LockandKey</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 자물쇠와 열쇠</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] key = &#123;</span><br><span class="line">            &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] lock = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> answer = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//get rotation</span></span><br><span class="line">        <span class="keyword">int</span>[][][] keys = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>][key.length][key.length];</span><br><span class="line">        <span class="comment">//make keys</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; key.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; key.length; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                keys[<span class="number">0</span>][i][j] = key[i][j];</span><br><span class="line">                keys[<span class="number">1</span>][i][j] = key[key.length-<span class="number">1</span>-j][i];</span><br><span class="line">                keys[<span class="number">2</span>][i][j] = key[key.length-<span class="number">1</span>-i][key.length-<span class="number">1</span>-j];</span><br><span class="line">                keys[<span class="number">3</span>][i][j] = key[j][key.length-<span class="number">1</span>-i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//count zero</span></span><br><span class="line">        <span class="keyword">int</span> zero = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lock.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; lock.length; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(lock[i][j] == <span class="number">0</span>)</span><br><span class="line">                    zero++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//find match key</span></span><br><span class="line">        <span class="keyword">int</span> m = key.length;</span><br><span class="line">        <span class="keyword">int</span> n = lock.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) <span class="comment">//4keys</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; m+n-<span class="number">1</span>; c++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; m+n-<span class="number">1</span>; r++)<span class="comment">//right corner position</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//check if key is matched</span></span><br><span class="line">                    <span class="keyword">boolean</span> match = <span class="keyword">true</span>;</span><br><span class="line">                    <span class="keyword">int</span> zero_cnt = zero;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> y = c-m+<span class="number">1</span>; y &lt;= c; y++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> x = r-m+<span class="number">1</span>; x &lt;= r; x++)</span><br><span class="line">                        &#123;</span><br><span class="line">                            <span class="keyword">if</span>(y &lt; <span class="number">0</span> || x &lt; <span class="number">0</span> || y &gt;= lock.length || x &gt;= lock.length)</span><br><span class="line">                                <span class="keyword">continue</span>;</span><br><span class="line">                            <span class="keyword">int</span> v = keys[i][y-(c-m+<span class="number">1</span>)][x-(r-m+<span class="number">1</span>)];</span><br><span class="line">                            <span class="keyword">if</span>(v == <span class="number">1</span> &amp;&amp; lock[y][x] == <span class="number">1</span>)</span><br><span class="line">                            &#123;</span><br><span class="line">                                match = <span class="keyword">false</span>;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">else</span> <span class="keyword">if</span>(v == <span class="number">1</span> &amp;&amp; lock[y][x] == <span class="number">0</span>)</span><br><span class="line">                                zero_cnt--;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(!match)</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//if answer found</span></span><br><span class="line">                    <span class="keyword">if</span>(zero_cnt == <span class="number">0</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        answer = <span class="keyword">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                        </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(answer)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(answer)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 긴편이다. 전체적인 과정을 생각해보면 다음과 같다. 1. 열쇠는 회전이 가능하다 90도씩 회전한 4개 열쇠를 만든다. 2. 자물쇠에서 홈이 몇 개 있는지 센다. 3. 자물쇠에 각 열쇠를 끼워본다. 4. 자물쇠에 열쇠가 맞고 모든 홈을 채웠다면 답을 true로 한다. 5. 그렇지 않다면 다음 자리로 열쇠를 이동해본다.</p>
-<p>1번 과정 코드부터 살펴보자 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get rotation</span></span><br><span class="line"><span class="keyword">int</span>[][][] keys = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>][key.length][key.length];</span><br><span class="line"><span class="comment">//make keys</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; key.length; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; key.length; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        keys[<span class="number">0</span>][i][j] = key[i][j];</span><br><span class="line">        keys[<span class="number">1</span>][i][j] = key[key.length-<span class="number">1</span>-j][i]; <span class="comment">//90</span></span><br><span class="line">        keys[<span class="number">2</span>][i][j] = key[key.length-<span class="number">1</span>-i][key.length-<span class="number">1</span>-j]; <span class="comment">//180</span></span><br><span class="line">        keys[<span class="number">3</span>][i][j] = key[j][key.length-<span class="number">1</span>-i]; <span class="comment">//270</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 회전 각에 따라 총 4개의 열쇠가 나올 수 있다. 회전을 구현하는 방법은 읽는 순서를 달리하면 된다. 이는 코드에 나와있으니 코드를 스스로 공부하고 그림을 그려가면서 알아보길 바란다. 이렇게 하면 4개의 열쇠꾸러미를 손에 쥘 수 있다.</p>
-<p>2번 과정은 2차원 배열을 순회하면서 0인 부분을 세면 된다. 이 부분은 간단하므로 넘어가자.</p>
-<p>3,4,5과정은 한 코드로 나타나 있다. 범위 설정에 주의하면서 코드를 보자. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//find match key</span></span><br><span class="line"><span class="keyword">int</span> m = key.length;</span><br><span class="line"><span class="keyword">int</span> n = lock.length;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) <span class="comment">//4keys</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; m+n-<span class="number">1</span>; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; m+n-<span class="number">1</span>; r++)<span class="comment">//right corner position</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//check if key is matched</span></span><br><span class="line">            <span class="keyword">boolean</span> match = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">int</span> zero_cnt = zero;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y = c-m+<span class="number">1</span>; y &lt;= c; y++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> x = r-m+<span class="number">1</span>; x &lt;= r; x++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(y &lt; <span class="number">0</span> || x &lt; <span class="number">0</span> || y &gt;= lock.length || x &gt;= lock.length)</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">int</span> v = keys[i][y-(c-m+<span class="number">1</span>)][x-(r-m+<span class="number">1</span>)];</span><br><span class="line">                    <span class="keyword">if</span>(v == <span class="number">1</span> &amp;&amp; lock[y][x] == <span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        match = <span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(v == <span class="number">1</span> &amp;&amp; lock[y][x] == <span class="number">0</span>)</span><br><span class="line">                        zero_cnt--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!match)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//if answer found</span></span><br><span class="line">            <span class="keyword">if</span>(zero_cnt == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                answer = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(answer)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(answer)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 첫번째 반복은 열쇠 꾸러미에서 몇 번째 열쇠를 쓸 것인지 나타낸다. 열쇠는 총 4개이므로 4개의 열쇠에 대해 각각 수행해본다.</p>
-<p>c와 r의 반복은 열쇠를 이동해보는 반복이다. c와 r은 열쇠의 오른쪽 아래 모서리가 위치하는 점을 기준으로 하였다. 모든 경우의 수를 해보려면 오른쪽 아래 모서리가 (0,0)에서 (m+n-2, m+n-2)까지 움직여야 한다(m은 열쇠의 가로, n은 자물쇠의 가로이다).</p>
-<p>열쇠를 이동했다면 이제 홈에 들어맞는지 확인해야 한다. 이는 y와 x에 대한 반복문으로 나타냈다. 오른쪽 아래 모서리를 기준으로 움직였기 때문에, 열쇠가 들어맞는지 검사하기 위해선 위쪽 모서리 값을 알아야 한다. 이는 (c-m+1, r-m+1)이다. 그럼 여기부터 열쇠와 자물쇠가 들어맞는지 확인하면 된다.</p>
-<p>일단 x나 y가 자물쇠 범위 밖을 벗어났다면 비교할 필요가 없으므로 continue를 한다. 만약 범위 이내라면 둘을 비교한다. 이때 열쇠는 [0][0]부터 비교하는 것이기 때문에, 현재 y와 x에서 왼쪽 모서리 값을 빼준다.</p>
-<p>만약 비교하는 열쇠와 자물쇠가 모두 돌기부분이라면 들어맞지 않으므로 break를 통해 탈출한다. 이 때 match를 이용해 한 번더 반복을 탈출하여 열쇠가 바로 이동할 수 있도록 한다.</p>
-<p>만약 열쇠는 돌기이고 자물쇠가 홈부분이면, zero_cnt를 하나씩 줄인다. 모든 검사를 마칠 때 이 값이 0이라면 열쇠가 자물쇠에 들어맞다는 뜻이므로, 모든 반복을 탈출하고 답을 출력한다.</p>
-<p>반복 횟수를 계산해보자면 <span class="math inline">\((m+n-2)(m+n-2)m*m\)</span>이 된다. 따라서 최고차항을 따로 떼어내면 최종 시간복잡도는 <span class="math inline">\(O(m^2n^2)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/lockandkey.png" width="290" height="500">
-</center>
-<p><br></p>
-<p>처음으로 2시간 안에 level3문제를 스스로 풀어서 기쁘다. 멘탈만 흔들리지 않으면 성장할 수 있다고 생각하는 오늘이다. 요새 네카라쿠배 2차테스트를 하는데 알고보니 실수를 해서 점수를 다 날려 먹게 생겼다 하... 2일차까지 테스트 점수가 다 꽝인데 그래도 포기하지 않고 끝까지 해보기로 했다. 학원의 힘을 빌리지 않고도 성장할 수 있으니까! 가벼운 마음으로 테스트에 임하자.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/24/Network/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/24/Network/" class="post-title-link" itemprop="url">네트워크</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-24 17:58:00" itemprop="dateCreated datePublished" datetime="2021-02-24T17:58:00+09:00">2021-02-24</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:11:32" itemprop="dateModified" datetime="2021-04-01T17:11:32+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>네트워크의 개수가 몇 개인지 판별하는 문제이다. 기본적인 탐색문제이다.</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNDMxNjI=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Network</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level3 네트워크</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] computers = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[i])</span><br><span class="line">            &#123;</span><br><span class="line">                answer++;</span><br><span class="line">                visited[i] = <span class="keyword">true</span>;</span><br><span class="line">                Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">                stack.push(i);</span><br><span class="line">                <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> t = stack.peek();</span><br><span class="line">                    stack.pop();</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(computers[t][j] == <span class="number">1</span> &amp;&amp; !visited[j])</span><br><span class="line">                        &#123;</span><br><span class="line">                            visited[j] = <span class="keyword">true</span>;</span><br><span class="line">                            stack.push(j);</span><br><span class="line">                        &#125; </span><br><span class="line">                            </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 전형적인 탐색문제라 어렵지 않다. 일단 각 컴퓨터를 한번이라도 체크했는지 확인하는 불리안 배열을 생성한다. 그리고 이 배열을 순회하며 만약 한 번도 체크하지 않은 컴퓨터라면 dfs를 실시 한다. 필자는 스택을 이용해서 dfs를 구현했다.</p>
-<p>반복 횟수를 계산해보자면 <span class="math inline">\((m+n-2)(m+n-2)m*m\)</span>이 된다. 따라서 최고차항을 따로 떼어내면 최종 시간복잡도는 <span class="math inline">\(O(m^2n^2)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/network.png" width="290" height="500">
-</center>
-<p><br></p>
-<p>예전만 해도 dfs가 왜 스택이고 bfs는 왜 큐인지 이해가 잘 안갔는데 어느 새, 혼자서 아무것도 참고하지 않고 dfs를 구현할 수 있게 되었다. 늦은 감이 없지 않아 있지만, 그래도 성장했음을 느낀다.</p>
 
       
     </div>

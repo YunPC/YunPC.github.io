@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -205,6 +205,10 @@
           
         <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -240,6 +244,222 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/08/29/css-math-functions2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/29/css-math-functions2/" class="post-title-link" itemprop="url">CSS Math 함수들 'min, max'</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-29 23:09:29" itemprop="dateCreated datePublished" datetime="2021-08-29T23:09:29+09:00">2021-08-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-30 00:08:47" itemprop="dateModified" datetime="2021-08-30T00:08:47+09:00">2021-08-30</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>이 글의 <span class="exturl" data-url="aHR0cHM6Ly9tb2Rlcm5jc3MuZGV2L3ByYWN0aWNhbC11c2VzLW9mLWNzcy1tYXRoLWZ1bmN0aW9ucy1jYWxjLWNsYW1wLW1pbi1tYXgv">원문<i class="fa fa-external-link-alt"></i></span>을 바탕으로 재해석한 글입니다.</p>
+<p><strong>건너 뛰기</strong>: - <a href="#min()">min()</a> - <a href="#max()">max()</a></p>
+<h2 id="min">min()</h2>
+<blockquote>
+<p>min() 사용 목적: 최댓값의 한계를 설정할 수 있다.</p>
+</blockquote>
+<p><code>width(80ch, 100vw)</code>의 경우 80인치와 뷰포트의 너비를 비교하여 더 작은 값을 선택한다.</p>
+<h3 id="container클래스를-활용한-예제">.container클래스를 활용한 예제</h3>
+<p><code>min()</code>함수 이내에는 계산식을 포함할 수 있다. 따라서 아래와 같이 코드를 작성할 경우, 적절한 좌우 여백을 줄 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">min</span>(<span class="number">80ch</span>, <span class="number">100vw</span> - <span class="number">2rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 코드의 경우 <code>.container</code>클래스를 가진 요소는 80인치까지 너비를 가질 수 있으며, 뷰포트가 줄어들 경우 양쪽 너비 <code>1rem</code>의 요소를 만들 수 있다.</p>
+<p>다른 예시로는 아래 css 코드를 들 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">min</span>(<span class="number">40ch</span>, <span class="number">100%</span> - <span class="number">2rem</span>);</span><br><span class="line">  <span class="attribute">margin-right</span>: auto;</span><br><span class="line">  <span class="attribute">margin-left</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>여기서 <code>ch</code> 단위는 글꼴과 관련된 스타일이 모두 적용된 <code>0</code>의 너비를 이야기한다. 이를 활용하면 한 줄에 들어가는 문자의 수를 가늠할 수 있다. 따라서 어떠한 문서를 읽을 때, 좀 더 나은 경험을 제공할 수 있다.</p>
+</blockquote>
+<p><strong>장점</strong> 미디어 쿼리 없이도 반응형을 제작할 수 있다.</p>
+<h3 id="min을-통한-반응형-요소">min()을 통한 반응형 요소</h3>
+<p>댓글이나 피드옆에 사용자 프로필이 있는 경우를 생각해보자. 만약 이들의 크기가 화면의 크기에 따라 유동적으로 바뀌어야 할 때 <code>min</code>을 활용할 수 있다. <code>min(64px, 15%, 10vw)</code>를 사용하면 이 요소는 <code>min</code>안에 적힌 3개의 값 모두를 넘어서지 못한다.</p>
+<p>이 min함수가 사용된 요소는 <code>64px</code>를 절대 넘어서지 못함과 동시에 최소 <code>15%</code>또는 <code>10vw</code>의 사이즈를 가진다.</p>
+<h3 id="min을-사용한-다른-특성">min()을 사용한 다른 특성</h3>
+<p><code>min()</code>은 <code>background-size</code>에도 활용될 수 있다. 어떠한 배경 이미지가 유동적으로 확장되고자 할 때 이에 대한 경계를 <code>min()</code>이 지정할 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.background-image</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#1F1B1C</span> <span class="built_in">url</span>(<span class="string">https://source.unsplash.com/RapCPd_mJTU/800x800</span>) no-repeat center;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="built_in">min</span>(<span class="number">600px</span>, <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 예시를 보면 이미지가 <code>600px</code>을 넘지 않을 것을 보증한다. 그리고 <code>600px</code>보다 작은 경우에는 알아서 크기를 줄인다.</p>
+<h2 id="max">max()</h2>
+<blockquote>
+<p>max는 반응형 요소에서 최소값의 경계를 지정한다.</p>
+</blockquote>
+<p><code>max()</code>의 경우 <code>min()</code>의 반대다.</p>
+<h2 id="max로-문맥상-여백-주기">max()로 문맥상 여백 주기</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1dBSS9XQ0FHMjIvVW5kZXJzdGFuZGluZy9yZWZsb3cuaHRtbA==">Web Content Accessibility Guidelines (WCAG) Success Criterion 1.4.10<i class="fa fa-external-link-alt"></i></span>에 따르면 사이트를 최대 400%까지 확대할 수 있어야한다. 이때 <code>px</code>과 <code>rem</code>은 표준에 맞지 않는 단위이다.</p>
+<p>만약에 <code>1280px</code>사이즈의 데스크톱에 400% 줌을 준다면 뷰포트 너비가 <code>320px</code>로 줄어든다. 이때 모바일에서 이를 한다면, 방향은 가로로 계속 유지된다. 이러한 뷰포트의 축소는 읽기와 상호작용 영역이 감소했음을 의미한다. 더하여 휴대폰에서는 적합한 크기가 확대된 창에서는 훨씬 커보일 수 있다.</p>
+<p>이때 쓸 수 있는 것이 <code>max()</code>이다. 원문의 저자는 작은 여백에는 <code>rem</code>단위를 선호한다. 하지만 영역 간의 큰 여백을 줘야하는 경우에는 아래와 같은 코드를 사용한다. 이렇게 하면 뷰포트에 따라 조정이 된다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> + <span class="selector-class">.element</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="built_in">max</span>(<span class="number">8vh</span>, <span class="number">2rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>뷰포트의 너비가 큰 경우 <code>8vh</code>가 쓰이고 그것보다 작거나 확대된 창에서는 <code>2rem</code>이 적용된다.</p>
+<h3 id="max를-활용한-ios-브라우저-자동-줌인-방지">max를 활용한 iOS 브라우저 자동 줌인 방지</h3>
+<p>iOS에선 <code>16px</code>보다 작은 입력창을 가지고 있으면 자동으로 줌인이 된다. 이 떄 아래와 같은 코드를 사용하면 이 문제를 해결 할 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">max</span>(<span class="number">16px</span>, <span class="number">1rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>max()</code>를 통해 어느 값이던 수용할 수 있고, 최소 <code>16px</code>을 유지할 수 있게 된다.</p>
+<h3 id="max를-활용한-포커싱-아웃라인">max()를 활용한 포커싱 아웃라인</h3>
+<p><code>max</code>를 활용하면 포커싱 아웃라인에 대한 상대적인 크기를 설정할 수 있다. 아래 코드를 통해 아웃라인의 최소 너비를 <code>2px</code>로 설정하고, <code>em</code>값에 따라 너비가 상대적으로 조절될 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  --<span class="attribute">outline</span>-size: <span class="built_in">max</span>(<span class="number">2px</span>, <span class="number">0.08em</span>);</span><br><span class="line">  --<span class="attribute">outline-style</span>: solid;</span><br><span class="line">  --<span class="attribute">outline-color</span>: currentColor;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="built_in">var</span>(--outline-size) <span class="built_in">var</span>(--outline-style) <span class="built_in">var</span>(--outline-color);</span><br><span class="line">  <span class="attribute">outline-offset</span>: <span class="built_in">var</span>(--outline-size);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="max와-타겟-사이즈">max()와 타겟 사이즈</h3>
+<p>타겟 사이즈란 말은 <span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1dBSS9XQ0FHMjIvVW5kZXJzdGFuZGluZy90YXJnZXQtc2l6ZS1lbmhhbmNlZC5odG1s">WCAG Success Criterion (SC) 2.5.5<i class="fa fa-external-link-alt"></i></span>에 나오며 타겟은 포인터 이벤트를 받을 수 있는 것을 말한다. 곧 나올 WCAG 2.2버전에서는 이런 타겟 사이즈를 최소 <code>44px</code>로 설정할 것을 권고한다.</p>
+<p>이 때도 <code>max()</code>를 활용할 수 있다. 만약 프로필을 눌러 프로필 페이지로 이동해야하는 경우 프로필 버튼에 다음과 같은 스타일링을 줄 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon-button</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">max</span>(<span class="number">44px</span>, <span class="number">2em</span>);</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">max</span>(<span class="number">44px</span>, <span class="number">2em</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="aspect-ratio의-보완책-max">aspect-ratio의 보완책 max()</h3>
+<p><code>aspect-ratio</code>를 지원하지 않는 브라우저에서 <code>max()</code>에 높이를 지정하는 방식으로 비슷하게 흉내낼 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="comment">/* Fallback for `aspect-ratio` of defining a height */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">max</span>(<span class="number">18vh</span>, <span class="number">12rem</span>);</span><br><span class="line">  <span class="attribute">object-fit</span>: cover;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* When supported, use `aspect-ratio` */</span></span><br><span class="line"><span class="keyword">@supports</span> (<span class="attribute">aspect-ratio</span>: <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="selector-tag">img</span> &#123;</span><br><span class="line">    aspect-ratio: <span class="built_in">var</span>(--img-ratio);</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/08/25/css-math-functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/25/css-math-functions/" class="post-title-link" itemprop="url">CSS Math 함수들 'calc, clamp'</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-25 14:19:16" itemprop="dateCreated datePublished" datetime="2021-08-25T14:19:16+09:00">2021-08-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-29 23:09:44" itemprop="dateModified" datetime="2021-08-29T23:09:44+09:00">2021-08-29</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>이 글의 <span class="exturl" data-url="aHR0cHM6Ly9tb2Rlcm5jc3MuZGV2L3ByYWN0aWNhbC11c2VzLW9mLWNzcy1tYXRoLWZ1bmN0aW9ucy1jYWxjLWNsYW1wLW1pbi1tYXgv">원문<i class="fa fa-external-link-alt"></i></span>을 바탕으로 재해석한 글입니다.</p>
+<p>CSS에는 수학적으로 수치를 계산할 수 있는 4가지 함수를 제공한다(<span class="exturl" data-url="aHR0cHM6Ly9jYW5pdXNlLmNvbS9jc3MtbWF0aC1mdW5jdGlvbnM=">IE에선 지원하지 않는다<i class="fa fa-external-link-alt"></i></span>). 자주 쓰이지 않을 순 있지만, 그레이디언트와 색깔에 관함 함수 또는 CSS의 커스텀 프로퍼티들과 조합할 때 유용하다. 그래서 아래 4가지 함수와 예시를 함께 들어보려 한다.</p>
+<p><strong>건너 뛰기</strong>: - <a href="#calc()">calc()</a> - <a href="#clamp()">clamp()</a></p>
+<h2 id="calc">calc()</h2>
+<blockquote>
+<p>calc() 사용 목적 : 단위를 가진 값들의 사칙연산을 가능하도록 하는 것이다. 그리고 단위를 혼합해서도 사용할 수 있다.</p>
+</blockquote>
+<p>예를 들어 뷰포트에서 상단의 네비게이션 영역을 뺀 값을 높이로 설정하고 싶다면 다음과 같이 쓸 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">calc</span>(<span class="number">100vh</span> - <span class="number">60px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>사용하는 디바이스에 따라 <code>100vh</code>가 동적으로 결정되므로, 디바이스에 따라 높이가 달라진다.</p>
+<blockquote>
+<p>calc의 장점은 하드 코딩을 피하고, 인라인 스타일을 추가하는 자바스크립트 로직이 줄어드는 것이다.</p>
+</blockquote>
+<h3 id="calc를-사용한-컬러팔레트-생성">calc()를 사용한 컬러팔레트 생성</h3>
+<p><code>hsl()</code>과 같이 사용하면 hue, saturation, lightness에 css varaible을 넣음으로써 더 응집도 있는 컬러 팔레트를 완성시킬 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.colors</span> &#123;</span><br><span class="line">  --base-hue: <span class="number">140</span>;</span><br><span class="line">  --saturation: <span class="number">95%</span>;</span><br><span class="line">  --lightness: <span class="number">80%</span>;</span><br><span class="line">  --rotation: <span class="number">60</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#222</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.color</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.25rem</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">hsl</span>(<span class="built_in">var</span>(--hue), <span class="built_in">var</span>(--saturation), <span class="built_in">var</span>(--lightness));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.color1</span>&#123;</span><br><span class="line">  --hue: <span class="built_in">calc</span>(<span class="built_in">var</span>(--base-hue));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.color2</span> &#123;</span><br><span class="line">  --hue: <span class="built_in">calc</span>(<span class="built_in">var</span>(--base-hue) + <span class="built_in">var</span>(--rotation));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.color3</span> &#123;</span><br><span class="line">  --hue: <span class="built_in">calc</span>(<span class="built_in">var</span>(--base-hue) + <span class="built_in">var</span>(--rotation) * <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="clamp">clamp()</h2>
+<blockquote>
+<p>clamp()의 사용 목적 : 가능한 값의 범주를 지정한다.</p>
+</blockquote>
+<p><code>clamp()</code>는 3가지 매개변수(최소값, 이상적인 값, 최고값)를 받는다. 이 함수는 <code>fluid typography</code>에서 유용하다. <code>fluid typography</code>란 스크린 크기에 비례하여 폰트사이즈가 유동적으로 변하는 것이다.</p>
+<p>따라서 <code>font-size</code>값에 <code>clamp()</code>를 적용하면 이를 만들 수 있다. 이 함수를 사용하면 폰트 사이즈 크기가 너무 커져 제목이 2줄이 되지 않도록 하고 뷰포트의 사이즈를 과도하게 차지하지 않게 할 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">clamp</span>(<span class="number">1.75rem</span>, <span class="number">4vw</span> + <span class="number">1rem</span>, <span class="number">3rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="clamp를-이용한-반응형-패딩">clamp()를 이용한 반응형 패딩</h3>
+<p>또 다른 예제로는 반응형 패딩이 있다. 패딩을 퍼센티지로 사용할 경우에는 요소의 너비를 가지고 계산한다. 이와 비슷하게 vw의 개념도 생각해 볼 수 있다. 아래의 코드를 보면 <code>.element</code>를 가진 요소들은 1rem보다 작은 패딩값을 가지지 않게 된다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span>&#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1.5rem</span> <span class="built_in">clamp</span>(<span class="number">1rem</span>, <span class="number">5%</span>, <span class="number">3rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이를 활용하면 미디어 쿼리를 사용하지 않고도 반응형 패딩을 만들 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1024,202 +1244,6 @@
 </figure>
 <p><br></p>
 <p>통과는 하였지만 파이써닉하게 푸는 것은 아직 더 공부가 필요할 것 같다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/05/Find-Num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/05/Find-Num/" class="post-title-link" itemprop="url">1920번 수 찾기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-05 13:25:15 / Modified: 13:34:14" itemprop="dateCreated datePublished" datetime="2021-04-05T13:25:15+09:00">2021-04-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Beakjoon/" itemprop="url" rel="index"><span itemprop="name">Beakjoon</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Beakjoon/1000-1999/" itemprop="url" rel="index"><span itemprop="name">1000-1999</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>이분 탐색을 이용한 수 탐색 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span>(<span class="params">A, key</span>):</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = <span class="built_in">len</span>(A)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        mid = (l+r) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> A[mid] == key:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> A[mid] &gt; key:</span><br><span class="line">            r = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l = mid+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">N = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">A = <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, _ <span class="keyword">in</span> <span class="built_in">enumerate</span>(A):</span><br><span class="line">    A[i] = <span class="built_in">int</span>(A[i])</span><br><span class="line"></span><br><span class="line">A.sort()</span><br><span class="line"></span><br><span class="line">M = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">X = <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, _ <span class="keyword">in</span> <span class="built_in">enumerate</span>(X):</span><br><span class="line">    <span class="built_in">print</span>(binary_search(A, <span class="built_in">int</span>(X[i])))</span><br></pre></td></tr></table></figure></p>
-<p>이분 탐색을 구현하는 문제이다. 입력을 받는 부분을 건너 뛰고 <code>binary_search</code>함수를 보면 된다. 인덱스를 기준으로 이분탐색을 진행한다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<figure>
-<img src="/images/baekjoon/1920.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
-</figure>
-<p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/02/Stepping-Stone/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/02/Stepping-Stone/" class="post-title-link" itemprop="url">징검다리</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-02 20:21:00 / Modified: 20:50:00" itemprop="dateCreated datePublished" datetime="2021-04-02T20:21:00+09:00">2021-04-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level4/" itemprop="url" rel="index"><span itemprop="name">Level4</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>징검다리에서 돌을 빼냈을 때 벌어지는 간격의 최솟값이 가장 큰 것을 구하는 것이다. 문제는 <span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNDMyMzg=">여기<i class="fa fa-external-link-alt"></i></span>에서 볼 수 있다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>이진 탐색을 이용한 문제이다. 유형을 익히면 반가운 문제이지만, 처음에 보면 전혀 감이 안 잡힌다.</p>
-<p>전체 코드는 다음과 같다. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">distance, rocks, n</span>):</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isFeasable</span>(<span class="params">distance, rocks, n, k</span>):</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        pos = <span class="number">0</span></span><br><span class="line">        total = <span class="built_in">len</span>(rocks)</span><br><span class="line">        <span class="keyword">for</span> rock <span class="keyword">in</span> rocks:</span><br><span class="line">            <span class="keyword">if</span> rock - pos &gt;= k:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                pos = rock</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> total-cnt &lt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    answer = <span class="number">0</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = distance</span><br><span class="line">    rocks.sort()</span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        mid = (l+r) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span>(isFeasable(distance, rocks, n, mid)):</span><br><span class="line">            answer = mid</span><br><span class="line">            l = mid+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r = mid</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> answer</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(solution(<span class="number">25</span>, [<span class="number">2</span>, <span class="number">14</span>, <span class="number">11</span>, <span class="number">21</span>, <span class="number">17</span>], <span class="number">2</span>))</span><br></pre></td></tr></table></figure> 전체적인 코드의 흐름은 다음과 같다. 1. 간격에 대해서 이분 탐색을 해볼 것이다. 이를 <code>k</code>라고 두자. 2. <code>k</code>의 가장 작은 경우는 0이고 가장 큰 경우는 <code>distance</code>이므로 <code>l</code>과 <code>r</code>로 둔다. 3. 이분 탐색을 하면서 만약 <code>isFeasable</code>을 만족한다면, 돌을 더 빼도 된다는 의미이다. 따라서 mid 값을 늘린다. 4. 아니라면 mid 값을 줄인다. 5. 아니면 answer를 반환한다.</p>
-<p>여기서 왜 돌을 더 빼도 된다는 의미에 대해 알아보기 위해 <code>isFeasable</code>을 살펴보자</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isFeasable</span>(<span class="params">distance, rocks, n, k</span>):</span></span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    pos = <span class="number">0</span></span><br><span class="line">    total = <span class="built_in">len</span>(rocks)</span><br><span class="line">    <span class="keyword">for</span> rock <span class="keyword">in</span> rocks:</span><br><span class="line">        <span class="keyword">if</span> rock - pos &gt;= k:</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">            pos = rock</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> total-cnt &lt;= n:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-<p>매개변수로 <code>distance</code>, <code>rocks</code>, <code>n</code>, <code>k</code>를 받는다. <code>cnt</code>는 돌의 개수를 의미하고 <code>pos</code>는 현재 선택한 돌의 위치를 본다. <code>total</code>은 총 돌의 개수를 의미한다.</p>
-<p>for 문의 의미는 최솟값 <code>k</code>만큼의 간격에 포함되는 돌들을 세겠다는 의미이다. 프로그래머스에서 나온 예제를 보면 돌이 [2, 11, 14, 17, 21]의 순서로 놓여있다. 가령 <code>k</code>가 6이라면 [11, 17]에 위치한 돌이 선택되고 <code>cnt</code>는 2가 된다. <code>total</code>에서 <code>cnt</code>를 빼면 몇 개의 돌이 빠졌는지 볼 수 있고 이 값이 <code>n</code>보다 같거나 작으면 <code>True</code>를 반환한다.</p>
-<p>이하에서 <code>True</code>를 반환하는 이유가 있다. 아래의 그림을 보자.</p>
-<figure>
-<img src="/images/programmers/stepping.jpeg" alt="k와 n의 관계" /><figcaption aria-hidden="true">k와 n의 관계</figcaption>
-</figure>
-<p><code>k</code>값이 증가하면 <code>n</code>값도 증가한다. 최솟값이 증가하니 돌 사이의 간격이 더 넓어져야 하기 때문이다. 여기서 우리는 <code>n</code>을 만족하는 최대를 구하려고 한다. 그러면 <code>l</code>이 증가해야 하는 경우를 살펴보아야 한다. 그림을 보면 <code>n</code>의 값이 요구하는 값보다 작을 때 <code>k</code>가 증가해야 함을 볼 수 있다. 이 이유로 인해 비교 연산자 <code>&lt;=</code>를 사용한 것이다.</p>
-<h2 id="테스트">테스트</h2>
-<figure>
-<img src="/images/programmers/stepping_stone.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
-</figure>
-<p>자바로 하다가 파이썬으로 넘어오니까 코드가 훨씬 간결해서 놀랐다. 이제부터라도 열심히 애용하겠다.</p>
 
       
     </div>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/avatar.svg" color="#222">
+  <meta name="google-site-verification" content="LaurF1hE6lXAPb-Ag50EbNKDdb8PWRungqo2Y_cZLCI">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yunpc.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="이 글의 원문을 바탕으로 재해석한 글입니다. 건너 뛰기: - min() - max() min()  min() 사용 목적: 최댓값의 한계를 설정할 수 있다.  width(80ch, 100vw)의 경우 80인치와 뷰포트의 너비를 비교하여 더 작은 값을 선택한다. .container클래스를 활용한 예제 min()함수 이내에는 계산식을 포함할 수 있다. 따라서 아">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Math 함수들 &#39;min, max&#39;">
+<meta property="og:url" content="http://yunpc.github.io/2021/08/29/css-math-functions2/index.html">
+<meta property="og:site_name" content="Rabbit blog">
+<meta property="og:description" content="이 글의 원문을 바탕으로 재해석한 글입니다. 건너 뛰기: - min() - max() min()  min() 사용 목적: 최댓값의 한계를 설정할 수 있다.  width(80ch, 100vw)의 경우 80인치와 뷰포트의 너비를 비교하여 더 작은 값을 선택한다. .container클래스를 활용한 예제 min()함수 이내에는 계산식을 포함할 수 있다. 따라서 아">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-29T14:09:29.000Z">
+<meta property="article:modified_time" content="2021-08-29T15:08:47.111Z">
+<meta property="article:author" content="YunPC">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yunpc.github.io/2021/08/29/css-math-functions2/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>CSS Math 함수들 'min, max' | Rabbit blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Rabbit blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+      <img class="custom-logo-image" src="/images/avatar.jpg" alt="Rabbit blog">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Rabbit blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#min"><span class="nav-number">1.</span> <span class="nav-text">min()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#container%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%98%88%EC%A0%9C"><span class="nav-number">1.1.</span> <span class="nav-text">.container클래스를 활용한 예제</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9A%94%EC%86%8C"><span class="nav-number">1.2.</span> <span class="nav-text">min()을 통한 반응형 요소</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EB%8B%A4%EB%A5%B8-%ED%8A%B9%EC%84%B1"><span class="nav-number">1.3.</span> <span class="nav-text">min()을 사용한 다른 특성</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#max"><span class="nav-number">2.</span> <span class="nav-text">max()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#max%EB%A1%9C-%EB%AC%B8%EB%A7%A5%EC%83%81-%EC%97%AC%EB%B0%B1-%EC%A3%BC%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text">max()로 문맥상 여백 주기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-ios-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%9E%90%EB%8F%99-%EC%A4%8C%EC%9D%B8-%EB%B0%A9%EC%A7%80"><span class="nav-number">3.1.</span> <span class="nav-text">max를 활용한 iOS 브라우저 자동 줌인 방지</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%ED%8F%AC%EC%BB%A4%EC%8B%B1-%EC%95%84%EC%9B%83%EB%9D%BC%EC%9D%B8"><span class="nav-number">3.2.</span> <span class="nav-text">max()를 활용한 포커싱 아웃라인</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max%EC%99%80-%ED%83%80%EA%B2%9F-%EC%82%AC%EC%9D%B4%EC%A6%88"><span class="nav-number">3.3.</span> <span class="nav-text">max()와 타겟 사이즈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#aspect-ratio%EC%9D%98-%EB%B3%B4%EC%99%84%EC%B1%85-max"><span class="nav-number">3.4.</span> <span class="nav-text">aspect-ratio의 보완책 max()</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YunPC</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3l1bnBj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yunpc"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjIwMDA3QGdtYWlsLmNvbQ==" title="E-Mail → mailto:20007@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/08/29/css-math-functions2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS Math 함수들 'min, max'
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-29 23:09:29" itemprop="dateCreated datePublished" datetime="2021-08-29T23:09:29+09:00">2021-08-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-30 00:08:47" itemprop="dateModified" datetime="2021-08-30T00:08:47+09:00">2021-08-30</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>이 글의 <span class="exturl" data-url="aHR0cHM6Ly9tb2Rlcm5jc3MuZGV2L3ByYWN0aWNhbC11c2VzLW9mLWNzcy1tYXRoLWZ1bmN0aW9ucy1jYWxjLWNsYW1wLW1pbi1tYXgv">원문<i class="fa fa-external-link-alt"></i></span>을 바탕으로 재해석한 글입니다.</p>
+<p><strong>건너 뛰기</strong>: - <a href="#min()">min()</a> - <a href="#max()">max()</a></p>
+<h2 id="min">min()</h2>
+<blockquote>
+<p>min() 사용 목적: 최댓값의 한계를 설정할 수 있다.</p>
+</blockquote>
+<p><code>width(80ch, 100vw)</code>의 경우 80인치와 뷰포트의 너비를 비교하여 더 작은 값을 선택한다.</p>
+<h3 id="container클래스를-활용한-예제">.container클래스를 활용한 예제</h3>
+<p><code>min()</code>함수 이내에는 계산식을 포함할 수 있다. 따라서 아래와 같이 코드를 작성할 경우, 적절한 좌우 여백을 줄 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">min</span>(<span class="number">80ch</span>, <span class="number">100vw</span> - <span class="number">2rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 코드의 경우 <code>.container</code>클래스를 가진 요소는 80인치까지 너비를 가질 수 있으며, 뷰포트가 줄어들 경우 양쪽 너비 <code>1rem</code>의 요소를 만들 수 있다.</p>
+<p>다른 예시로는 아래 css 코드를 들 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">min</span>(<span class="number">40ch</span>, <span class="number">100%</span> - <span class="number">2rem</span>);</span><br><span class="line">  <span class="attribute">margin-right</span>: auto;</span><br><span class="line">  <span class="attribute">margin-left</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>여기서 <code>ch</code> 단위는 글꼴과 관련된 스타일이 모두 적용된 <code>0</code>의 너비를 이야기한다. 이를 활용하면 한 줄에 들어가는 문자의 수를 가늠할 수 있다. 따라서 어떠한 문서를 읽을 때, 좀 더 나은 경험을 제공할 수 있다.</p>
+</blockquote>
+<p><strong>장점</strong> 미디어 쿼리 없이도 반응형을 제작할 수 있다.</p>
+<h3 id="min을-통한-반응형-요소">min()을 통한 반응형 요소</h3>
+<p>댓글이나 피드옆에 사용자 프로필이 있는 경우를 생각해보자. 만약 이들의 크기가 화면의 크기에 따라 유동적으로 바뀌어야 할 때 <code>min</code>을 활용할 수 있다. <code>min(64px, 15%, 10vw)</code>를 사용하면 이 요소는 <code>min</code>안에 적힌 3개의 값 모두를 넘어서지 못한다.</p>
+<p>이 min함수가 사용된 요소는 <code>64px</code>를 절대 넘어서지 못함과 동시에 최소 <code>15%</code>또는 <code>10vw</code>의 사이즈를 가진다.</p>
+<h3 id="min을-사용한-다른-특성">min()을 사용한 다른 특성</h3>
+<p><code>min()</code>은 <code>background-size</code>에도 활용될 수 있다. 어떠한 배경 이미지가 유동적으로 확장되고자 할 때 이에 대한 경계를 <code>min()</code>이 지정할 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.background-image</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#1F1B1C</span> <span class="built_in">url</span>(<span class="string">https://source.unsplash.com/RapCPd_mJTU/800x800</span>) no-repeat center;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="built_in">min</span>(<span class="number">600px</span>, <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 예시를 보면 이미지가 <code>600px</code>을 넘지 않을 것을 보증한다. 그리고 <code>600px</code>보다 작은 경우에는 알아서 크기를 줄인다.</p>
+<h2 id="max">max()</h2>
+<blockquote>
+<p>max는 반응형 요소에서 최소값의 경계를 지정한다.</p>
+</blockquote>
+<p><code>max()</code>의 경우 <code>min()</code>의 반대다.</p>
+<h2 id="max로-문맥상-여백-주기">max()로 문맥상 여백 주기</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1dBSS9XQ0FHMjIvVW5kZXJzdGFuZGluZy9yZWZsb3cuaHRtbA==">Web Content Accessibility Guidelines (WCAG) Success Criterion 1.4.10<i class="fa fa-external-link-alt"></i></span>에 따르면 사이트를 최대 400%까지 확대할 수 있어야한다. 이때 <code>px</code>과 <code>rem</code>은 표준에 맞지 않는 단위이다.</p>
+<p>만약에 <code>1280px</code>사이즈의 데스크톱에 400% 줌을 준다면 뷰포트 너비가 <code>320px</code>로 줄어든다. 이때 모바일에서 이를 한다면, 방향은 가로로 계속 유지된다. 이러한 뷰포트의 축소는 읽기와 상호작용 영역이 감소했음을 의미한다. 더하여 휴대폰에서는 적합한 크기가 확대된 창에서는 훨씬 커보일 수 있다.</p>
+<p>이때 쓸 수 있는 것이 <code>max()</code>이다. 원문의 저자는 작은 여백에는 <code>rem</code>단위를 선호한다. 하지만 영역 간의 큰 여백을 줘야하는 경우에는 아래와 같은 코드를 사용한다. 이렇게 하면 뷰포트에 따라 조정이 된다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> + <span class="selector-class">.element</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="built_in">max</span>(<span class="number">8vh</span>, <span class="number">2rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>뷰포트의 너비가 큰 경우 <code>8vh</code>가 쓰이고 그것보다 작거나 확대된 창에서는 <code>2rem</code>이 적용된다.</p>
+<h3 id="max를-활용한-ios-브라우저-자동-줌인-방지">max를 활용한 iOS 브라우저 자동 줌인 방지</h3>
+<p>iOS에선 <code>16px</code>보다 작은 입력창을 가지고 있으면 자동으로 줌인이 된다. 이 떄 아래와 같은 코드를 사용하면 이 문제를 해결 할 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">max</span>(<span class="number">16px</span>, <span class="number">1rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>max()</code>를 통해 어느 값이던 수용할 수 있고, 최소 <code>16px</code>을 유지할 수 있게 된다.</p>
+<h3 id="max를-활용한-포커싱-아웃라인">max()를 활용한 포커싱 아웃라인</h3>
+<p><code>max</code>를 활용하면 포커싱 아웃라인에 대한 상대적인 크기를 설정할 수 있다. 아래 코드를 통해 아웃라인의 최소 너비를 <code>2px</code>로 설정하고, <code>em</code>값에 따라 너비가 상대적으로 조절될 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  --<span class="attribute">outline</span>-size: <span class="built_in">max</span>(<span class="number">2px</span>, <span class="number">0.08em</span>);</span><br><span class="line">  --<span class="attribute">outline-style</span>: solid;</span><br><span class="line">  --<span class="attribute">outline-color</span>: currentColor;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="built_in">var</span>(--outline-size) <span class="built_in">var</span>(--outline-style) <span class="built_in">var</span>(--outline-color);</span><br><span class="line">  <span class="attribute">outline-offset</span>: <span class="built_in">var</span>(--outline-size);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="max와-타겟-사이즈">max()와 타겟 사이즈</h3>
+<p>타겟 사이즈란 말은 <span class="exturl" data-url="aHR0cHM6Ly93d3cudzMub3JnL1dBSS9XQ0FHMjIvVW5kZXJzdGFuZGluZy90YXJnZXQtc2l6ZS1lbmhhbmNlZC5odG1s">WCAG Success Criterion (SC) 2.5.5<i class="fa fa-external-link-alt"></i></span>에 나오며 타겟은 포인터 이벤트를 받을 수 있는 것을 말한다. 곧 나올 WCAG 2.2버전에서는 이런 타겟 사이즈를 최소 <code>44px</code>로 설정할 것을 권고한다.</p>
+<p>이 때도 <code>max()</code>를 활용할 수 있다. 만약 프로필을 눌러 프로필 페이지로 이동해야하는 경우 프로필 버튼에 다음과 같은 스타일링을 줄 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon-button</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">max</span>(<span class="number">44px</span>, <span class="number">2em</span>);</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">max</span>(<span class="number">44px</span>, <span class="number">2em</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="aspect-ratio의-보완책-max">aspect-ratio의 보완책 max()</h3>
+<p><code>aspect-ratio</code>를 지원하지 않는 브라우저에서 <code>max()</code>에 높이를 지정하는 방식으로 비슷하게 흉내낼 수 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="comment">/* Fallback for `aspect-ratio` of defining a height */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">max</span>(<span class="number">18vh</span>, <span class="number">12rem</span>);</span><br><span class="line">  <span class="attribute">object-fit</span>: cover;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* When supported, use `aspect-ratio` */</span></span><br><span class="line"><span class="keyword">@supports</span> (<span class="attribute">aspect-ratio</span>: <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="selector-tag">img</span> &#123;</span><br><span class="line">    aspect-ratio: <span class="built_in">var</span>(--img-ratio);</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/25/css-math-functions/" rel="prev" title="CSS Math 함수들 'calc, clamp'">
+                  <i class="fa fa-chevron-left"></i> CSS Math 함수들 'calc, clamp'
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YunPC</span>
+</div>
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>
