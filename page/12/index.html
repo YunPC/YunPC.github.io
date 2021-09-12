@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -207,7 +207,7 @@
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -244,6 +244,209 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/28/Flip-3Digit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/28/Flip-3Digit/" class="post-title-link" itemprop="url">3진법 뒤집기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-28 10:51:00" itemprop="dateCreated datePublished" datetime="2020-12-28T10:51:00+09:00">2020-12-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>어떤 십진수 n이 들어올 때 이를 3진법으로 바꾼뒤 이를 뒤집는다. 뒤집은 3진법을 다시 10진수로 출력한다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>10진법을 2진법을 바꾸는 방법을 떠올려보자. 계속 나누어가다가 몫이 0이 되면 나머지들을 최근것부터 합치면 된다. 이 문제에서는 3진법을 거꾸로 뒤집으라 했으므로 나오는 나머지들을 스택에 쌓으면 원래 3진법에서 뒤집어진다. 뒤집은 수를 10진법으로 바꾸는 방법은 3^(자릿수)에 해당 값을 곱하면된다. 이를 다 합산하면 우리가 바라던 정답이다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Flip3Digit</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">45</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> q = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">        Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(q != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q = n/<span class="number">3</span>;</span><br><span class="line">            r = n%<span class="number">3</span>;</span><br><span class="line">            n /= <span class="number">3</span>;</span><br><span class="line">            s.push(r);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> digit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!s.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            answer += Math.pow(<span class="number">3</span>,digit) * Integer.parseInt(s.peek().toString());</span><br><span class="line">            digit++;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 부분부분 살펴보자 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">45</span>;</span><br><span class="line"><span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> q = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="keyword">while</span>(q != <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    q = n/<span class="number">3</span>;</span><br><span class="line">    r = n%<span class="number">3</span>;</span><br><span class="line">    n /= <span class="number">3</span>;</span><br><span class="line">    s.push(r);</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 10진법을 3진수로 바꾸는 과정이다. q는 몫이고 r은 나머지이다. 몫이 0이 될 때 까지 나머지를 구하고 이를 스택에 쌓는다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!s.empty())</span><br><span class="line">&#123;</span><br><span class="line">    answer += Math.pow(<span class="number">3</span>,digit) * Integer.parseInt(s.peek().toString());</span><br><span class="line">    digit++;</span><br><span class="line">    s.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 스택에 나머지값이 쌓이면 스택에 쌓인 값 순서대로 10진수로 변환하는 과정을 거친다. 이 때 자릿수를 나타내는 digit은 0으로 초기화한다. 그리고 3*(자릿수)를 각 나머지에 곱하고 digit을 늘려간다.</p>
+<p>총 시간복잡도는 3진수로 바꿨을 때 최대 자릿수를 n이라하면 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/flip3digit.png" width="400" height="300">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2020/12/24/2016/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/12/24/2016/" class="post-title-link" itemprop="url">2016년</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-12-24 12:16:00" itemprop="dateCreated datePublished" datetime="2020-12-24T12:16:00+09:00">2020-12-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 21:23:57" itemprop="dateModified" datetime="2021-04-01T21:23:57+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level1/" itemprop="url" rel="index"><span itemprop="name">Level1</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>2016년의 월과 일을 입력하면 요일을 출력해주는 프로그램을 짜는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>물론 제일 쉬운 방법은 스위치문이나 if-else문으로 모든 경우의 수를 짜는 것이겠지만(실제로 문제를 풀고 다른 사람 풀이 중에 그렇게 푼 사람이 있었다! 정말 존경한다.), 필자는 1월 1일부터 며칠이나 떨어져있는지 계산한 후 그 날을 요일로 바꾸는 연산을 하였다.</p>
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Year2016</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">3</span>;</span><br><span class="line">        String answer = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span>[] months = &#123;<span class="number">0</span>,<span class="number">31</span>, <span class="number">29</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>&#125;;</span><br><span class="line">        String[] days = &#123;<span class="string">&quot;MON&quot;</span>, <span class="string">&quot;TUE&quot;</span>, <span class="string">&quot;WED&quot;</span>, <span class="string">&quot;THU&quot;</span>, <span class="string">&quot;FRI&quot;</span>, <span class="string">&quot;SAT&quot;</span>, <span class="string">&quot;SUN&quot;</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> day = <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">int</span> month = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(month != a)</span><br><span class="line">        &#123;</span><br><span class="line">            day += months[month];</span><br><span class="line">            month++;</span><br><span class="line">        &#125;</span><br><span class="line">        day += b-<span class="number">1</span>;</span><br><span class="line">        day %= <span class="number">7</span>;</span><br><span class="line">        answer = days[day];</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 짧으므로 오늘은 부분적으로 코드를 끊어서 보지 않겠다. 일단 월마다 더하는 달을 배열로 저장해둔다. 예를 들어 1월 1일에서 2월 1일로 넘어가기 위해선 31일이 필요하다. 0월이란 수는 없으므로 months의 첫번째 수는 0으로 채운다. 그리고 days에는 요일을 저장해둔다. 문제에서 2016년 1월 1일은 금요일이라 했으므로 금요일의 배열 인덱스인 4를 기본값으로한다. 이제 a와 b에 따라 요일을 출력해보자. 초기 달은 1월인데 만약 원하는 달이 1월이 아닌 경우 months의 일수를 더해간다. 그리고 b일 -1을 더해준다(1일에서 넘어가기 시작하는거기 때문이다.). 총 일수를 구했으니 이를 7로 나머지 연산을 하면 요일을 구할 수 있다.</p>
+<p>총 시간복잡도는 a의 크기에 따라 달라지므로 a의 크기를 n이라하면 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/year2016.png" width="400" height="300">
+</center>
+<p><br></p>
+<p>다른 사람의 풀이를 보니 하나하나 스위치문과 if문을 통해 구현한 사람이 있었다. 정말 대단한 사람이라고 생각한다. 문제풀이를 처음 시작할 때 효율적인 방법을 몰라도 일단 풀고자 하는 마음이 중요하다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

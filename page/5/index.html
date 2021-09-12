@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -207,7 +207,7 @@
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -244,6 +244,261 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/21/AndroidStudio-Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/21/AndroidStudio-Git/" class="post-title-link" itemprop="url">안드로이드 스튜디오 깃 연동하는 법</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-21 21:55:00" itemprop="dateCreated datePublished" datetime="2021-01-21T21:55:00+09:00">2021-01-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/App/" itemprop="url" rel="index"><span itemprop="name">App</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/App/Android-Studio/" itemprop="url" rel="index"><span itemprop="name">Android Studio</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="안드로이드와-깃-연동하기mac">안드로이드와 깃 연동하기(Mac)</h2>
+<hr />
+<p>여러 포스트를 보고 안드로이드와 깃은 연동하려 했으나 안드로이드 스튜디오에서 깃 계정이 등록이 안되는 오류에 부딪히고 말았다. 그런 경우 토큰을 받아 하면 된다는데, 귀찮아서 이것저것 만지다 보니 됐다. 내 포스팅을 보고 다른 사람들도 도움을 받았으면 좋겠다.</p>
+<ul>
+<li>새 안드로이드 프로젝트 만들기</li>
+</ul>
+<p>일단 프로젝트를 만들자.</p>
+<figure>
+<img src="/images/android_git/1.png" alt="1" /><figcaption aria-hidden="true">1</figcaption>
+</figure>
+<p>여기서 Create New Project를 클릭한다.</p>
+<ul>
+<li>프로젝트 탬플릿 선택하기</li>
+</ul>
+<figure>
+<img src="/images/android_git/2.png" alt="2" /><figcaption aria-hidden="true">2</figcaption>
+</figure>
+<p>어떤 것을 하던 상관은 없지만 일단 빈 액티비티로 만든다.</p>
+<ul>
+<li>프로젝트 명 생성하기</li>
+</ul>
+<figure>
+<img src="/images/android_git/3.png" alt="3" /><figcaption aria-hidden="true">3</figcaption>
+</figure>
+<p>프로젝트명을 생성해줍니다.</p>
+<figure>
+<img src="/images/android_git/4.png" alt="4" /><figcaption aria-hidden="true">4</figcaption>
+</figure>
+<p>이제 프로젝트로 만든 폴더와 같은 위치에 gitignore을 생성한다. 프로젝트 폴더의 상위에서 터미널을 열어 위와 같이 touch .gitignore을 입력한다. 필자의 경우 SayHello위에 AndroidStudioProject가 있으므로 거기서 커맨드를 입력했다.</p>
+<figure>
+<img src="/images/android_git/5.png" alt="5" /><figcaption aria-hidden="true">5</figcaption>
+</figure>
+<p>만들어진 파일은 <code>커맨드</code>+<code>쉬프트</code>+<code>.</code>으로 볼 수 있다. 이제 이걸 열고 ignore파일을 작성한다. ignore파일을 아래의 링크에서 만들 수 있다. 필자는 코틀린과 안드로이드 스튜디오를 넣었다.</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cudG9wdGFsLmNvbS9kZXZlbG9wZXJzL2dpdGlnbm9yZQ==">https://www.toptal.com/developers/gitignore<i class="fa fa-external-link-alt"></i></span></p>
+<p>이제 다시 안드로이드 스튜디오로 돌아간다.</p>
+<figure>
+<img src="/images/android_git/6.png" alt="6" /><figcaption aria-hidden="true">6</figcaption>
+</figure>
+<p>프로젝트에서 VCS로 들어가 깃 레파지토리 생성으로 넘어갑니다.</p>
+<figure>
+<img src="/images/android_git/7.png" alt="7" /><figcaption aria-hidden="true">7</figcaption>
+</figure>
+<p>Create Git Repository를 선택해 어떤 폴더를 깃과 연동할지 선택합니다. 필자는 AndroidStudioProject로 하였습니다. 만약 이 때 .ignore 파일이 보이지 않는다면 <code>커맨드</code>+<code>쉬프트</code>+<code>.</code>를 입력하면 볼 수 있다. .git이 보이지 않아도 괜찮다. 필자는 이미 연결한 상태라 그렇다. 여기서 Open을 누르면 빨갛게 파일명들이 바뀐것을 볼 수 있다.</p>
+<figure>
+<img src="/images/android_git/8.png" alt="8" /><figcaption aria-hidden="true">8</figcaption>
+</figure>
+<p>파일명이 빨갛게 변한 상태에서 우측 상단의 초록 체크마크를 클릭한다.</p>
+<figure>
+<img src="/images/android_git/9.png" alt="9" /><figcaption aria-hidden="true">9</figcaption>
+</figure>
+<p>그럼 왼쪽에 어떤 창이 나타나는데 커밋할 파일을 고르는 창이다. 이제보니 .gitignore가 여러개 생성이 되었는데, 앞에 것이 꼭 필요한 걸지 잘 모르겠다. 나중에 좀 더 뜯어봐야겠다.</p>
+<figure>
+<img src="/images/android_git/10.png" alt="10" /><figcaption aria-hidden="true">10</figcaption>
+</figure>
+<p>모든 파일을 체크하고 커밋옆의 아래 화살표를 클릭하면 커밋 앤 푸쉬가 나타는데 이걸 클릭한다. 커밋 메시지도 함께 입력하는 것을 잊지말자!</p>
+<figure>
+<img src="/images/android_git/11.png" alt="11" /><figcaption aria-hidden="true">11</figcaption>
+</figure>
+<p>뭐라뭐라 경고하는데 그냥 푸쉬한다고 한다.</p>
+<figure>
+<img src="/images/android_git/12.png" alt="12" /><figcaption aria-hidden="true">12</figcaption>
+</figure>
+<p>그럼 어떤 창이 뜨는데 define remote를 클릭하면 url을 달라는 창이 이렇게 뜬다. 이때 레파지토리를 생성하여 URL을 입력한다.</p>
+<figure>
+<img src="/images/android_git/13.png" alt="13" /><figcaption aria-hidden="true">13</figcaption>
+</figure>
+<p>그럼 이렇게 올릴 파일들의 목록이 나온다. 이제 푸쉬를 해준다.</p>
+<figure>
+<img src="/images/android_git/14.png" alt="14" /><figcaption aria-hidden="true">14</figcaption>
+</figure>
+<p>깃으로 돌아가면 다음과 같이 성공적으로 연결된 것을 볼 수 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/21/Make-Prime-Num/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/21/Make-Prime-Num/" class="post-title-link" itemprop="url">소수 만들기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-21 18:03:00" itemprop="dateCreated datePublished" datetime="2021-01-21T18:03:00+09:00">2021-01-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>nums에 있는 수 중 3가지를 뽑아 그 합이 소수인 경우의 수를 출력하는 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MakePrime</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 소수 만들기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> answer = ReturnPrimeCnt(nums, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnPrimeCnt</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> idx, <span class="keyword">int</span> sum, <span class="keyword">int</span> cnt)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= Math.sqrt(sum); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(sum % i == <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = idx; i &lt;= nums.length-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                res += ReturnPrimeCnt(nums, i+<span class="number">1</span>, sum+nums[i], cnt-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 숫자 3개를 뽑는 재귀를 이용해 문제를 풀었다. ReturnPrimeCnt는 다음과 같이 동작한다. 1. 만약 cnt가 0이면 3개를 다 뽑았다는 의미이므로 소수인지 판별한다. 필자는 에라토테네스의 체를 활용해 시간을 단축했다. 소수면 1, 아니면 0을 반환한다. 2. 아직 숫자를 더 뽑을 수 있다면 idx부터 nums길이 - cnt까지 숫자를 모두 뽑아본다. 경우의수에서 가지를 쳐나가는 것과 비슷하다고 생각하면 된다. for문의 범위는 중복없이 수를 뽑을 수 있게 한것이므로 앞으로의 코딩에도 참고하면 많은 도움이 될 것이다.</p>
+<p>이 함수는 3개만 아니라 4개, 5개로 영역을 뻗어나갈 수 있다. 하지만 속도가 좀 느릴 수 있다. 이 문제에선 오히려 3중 루프가 더 빠르다.</p>
+<p>최종 시간복잡도는 3개 수를 뽑는 모든 수를 탐색하므로 <span class="math inline">\(O(n^3)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/make_prime.png" width="290" height="540">
+</center>
+<p><br></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1040,207 +1295,6 @@
 <p><br></p>
 <center>
 <img src="/images/programmers/max_min.png" width="290" height="310">
-</center>
-<p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/20/Repeat-Binary-Transform/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/20/Repeat-Binary-Transform/" class="post-title-link" itemprop="url">이진 변환 반복하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-20 11:41:00" itemprop="dateCreated datePublished" datetime="2021-01-20T11:41:00+09:00">2021-01-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:42:56" itemprop="dateModified" datetime="2021-04-01T18:42:56+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>문자열 x에 대한 이진변환을 1이 될 때까지 시행한다. 이진 변환은 아래와 같이 정의한다. 1. x의 모든 0을 제거한다. 2. x의 길이를 c라 하면, x를 c를 2진법으로 표현한 문자열로 바꾼다.</p>
-<p>시행 뒤에 시행 횟수와 제거된 0의 개수를 반환하면 된다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RepeatBinary</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 이진 변환 반복하기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">&quot;110010101001&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>, l, zero = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!s.equals(<span class="string">&quot;1&quot;</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            cnt++;</span><br><span class="line">            l = s.length();</span><br><span class="line">            s = s.replace(<span class="string">&quot;0&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">            zero += l - s.length();</span><br><span class="line">            s = Integer.toBinaryString(s.length());</span><br><span class="line">        &#125;</span><br><span class="line">        answer[<span class="number">0</span>] = cnt;</span><br><span class="line">        answer[<span class="number">1</span>] = zero;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> cnt는 반복횟수이고, zero는 제거된 0의 개수이다. 문자열이 1이 될 때까지 cnt를 1씩 늘려가며 2진변환을 반복한다. 0의 개수를 세기 위해 문자열에서 0을 제거하고, 그전 문자열의 길이에서 1번과정을 거친 문자열의 길이를 제거한 값을 더한다. 그리고 2번과정을 시행한다.</p>
-<p>시간복잡도를 정하기엔 애매한 부분이 있다. 0이 몇개나 생길지 모르기 때문에 절대적으로 얼마나 n이 커질지 단정짓기가 힘들다. 더 공부가 필요하다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/binary_repeat.png" width="290" height="310">
-</center>
-<p><br></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/20/Express-Num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/20/Express-Num/" class="post-title-link" itemprop="url">숫자의 표현</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-20 11:00:00" itemprop="dateCreated datePublished" datetime="2021-01-20T11:00:00+09:00">2021-01-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:43:37" itemprop="dateModified" datetime="2021-04-01T18:43:37+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>한 자연수에 대해 연속한 자연수의 합으로 나타낼 수 있는 경우의 수를 구하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExpressNum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 숫자의 표현</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">15</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> add = <span class="number">1</span>, sub = <span class="number">1</span>, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(add &lt;= n)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += add++;</span><br><span class="line">            <span class="keyword">while</span>(sum &gt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= sub;</span><br><span class="line">                sub++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sum == n)</span><br><span class="line">                answer++;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 자칫 경우의 수가 많아 보일 수 있지만 생각해보면 연속한 숫자라는 것이 도움이 된다. 1부터 차례대로 더해가며 n에 딱 맞을 경우 answer를 늘려주면 되고, 만약 n을 초과했다면 뒤에서부터 작아지거나 같아질 때까지 빼주면 된다.</p>
-<p>최종 시간복잡도는 숫자를 빼고 더하는 최대 횟수가 2n이므로 <span class="math inline">\(O(n)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/express_num.png" width="290" height="530">
 </center>
 <p><br></p>
 

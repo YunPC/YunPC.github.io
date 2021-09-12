@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -207,7 +207,7 @@
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -244,6 +244,213 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/03/N-Digit-Game/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/03/N-Digit-Game/" class="post-title-link" itemprop="url">N진수 게임</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-03 18:13:00" itemprop="dateCreated datePublished" datetime="2021-02-03T18:13:00+09:00">2021-02-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:13:18" itemprop="dateModified" datetime="2021-04-01T17:13:18+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>0부터 1씩 증가하는 수를 n진수로 표현하고 이를 돌아가면서 한명씩 말하는게 n진수 게임이다. 이 게임에서 주어진 순서의 플레이어가 앞으로 말해야 할 숫자를 계산해주는 프로그램을 짜는 문제이다. 게임 참여 인원과 내가 보고자하는 플레이어의 순서가 주어진다. <span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvMTc2ODY=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NthGame</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 n진수 게임</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=<span class="number">2</span>, t=<span class="number">4</span>, m=<span class="number">2</span>, p=<span class="number">1</span>; </span><br><span class="line">        String answer = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        String answer = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(cnt &lt; t)</span><br><span class="line">        &#123;</span><br><span class="line">            Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">            <span class="keyword">int</span> t_num = num;</span><br><span class="line">            <span class="keyword">do</span></span><br><span class="line">            &#123;</span><br><span class="line">                stack.push(t_num%n);</span><br><span class="line">                t_num /= n;</span><br><span class="line">                </span><br><span class="line">            &#125;<span class="keyword">while</span>(t_num &gt; <span class="number">0</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(p == idx)</span><br><span class="line">                &#123;</span><br><span class="line">                    String add_num = String.valueOf(stack.peek());</span><br><span class="line">                    <span class="keyword">if</span>(add_num.equals(<span class="string">&quot;10&quot;</span>))</span><br><span class="line">                        add_num = <span class="string">&quot;A&quot;</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(add_num.equals(<span class="string">&quot;11&quot;</span>))</span><br><span class="line">                        add_num = <span class="string">&quot;B&quot;</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(add_num.equals(<span class="string">&quot;12&quot;</span>))</span><br><span class="line">                        add_num = <span class="string">&quot;C&quot;</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(add_num.equals(<span class="string">&quot;13&quot;</span>))</span><br><span class="line">                        add_num = <span class="string">&quot;D&quot;</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(add_num.equals(<span class="string">&quot;14&quot;</span>))</span><br><span class="line">                        add_num = <span class="string">&quot;E&quot;</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(add_num.equals(<span class="string">&quot;15&quot;</span>))</span><br><span class="line">                        add_num = <span class="string">&quot;F&quot;</span>;</span><br><span class="line">                    </span><br><span class="line">                    answer += add_num;</span><br><span class="line">                    p += m;</span><br><span class="line">                    cnt++;</span><br><span class="line">                    <span class="keyword">if</span>(cnt == t)</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                idx++;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            num++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> cnt는 알려준 숫자이며 이것이 t가 될 때까지 숫자를 n진수로 바꿔볼 것이다. num은 0부터 시작한다. num은 1씩 계속 증가해야 하므로, 실제 연산을 할 땐 t_num에 복사한 값을 쓴다. 0도 진수로 바꾸어야 하기 때문에 do-while문을 사용하였다. n진수로 바꾼 숫자들은 스택에 쌓는다. idx는 현재 몇번째 숫자인지 알려주는 지표이다. 이 idx값이 p값과 일치한다면 그 값을 문자열에 추가하고 p에 m을 더해 다음 차례를 알려준다. idx는 pop을 할 때마다 1씩 증가하도록 한다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/nth_game.png" width="290" height="510">
+</center>
+<p><br></p>
+<p>카카오톡 인턴 시험을 봤는데, 역시 정말 어려웠다. 공부한지 얼마 되지도 않았는데 벌써 기죽지말고 차근차근 해나가자. 발전하고 있다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/02/03/Sort-FileName/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/03/Sort-FileName/" class="post-title-link" itemprop="url">파일명 정렬</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-03 16:44:00" itemprop="dateCreated datePublished" datetime="2021-02-03T16:44:00+09:00">2021-02-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-01 17:16:49" itemprop="dateModified" datetime="2021-04-01T17:16:49+09:00">2021-04-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>파일명 정렬 알고리즘을 짜는 문제이다 자세한 문제 설명은 아래 링크를 참고하도록 하자.</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvMTc2ODY=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortFileName</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 level2 파일명 정렬</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] files = &#123;</span><br><span class="line">            <span class="string">&quot;img12.png&quot;</span>, <span class="string">&quot;img10.png&quot;</span>, <span class="string">&quot;img02.png&quot;</span>, <span class="string">&quot;img1.png&quot;</span>, <span class="string">&quot;IMG01.GIF&quot;</span>, <span class="string">&quot;img2.JPG&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">        HashMap&lt;String, Integer&gt; order_map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        HashMap&lt;String, Integer&gt; head_map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; num_map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        String[] head_arr = <span class="keyword">new</span> String[files.length];</span><br><span class="line">        <span class="keyword">int</span>[] num_arr = <span class="keyword">new</span> <span class="keyword">int</span>[files.length];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(String file : files)</span><br><span class="line">        &#123;</span><br><span class="line">            order_map.put(file, i);</span><br><span class="line"></span><br><span class="line">            String[] arr = ReturnHeadNumber(file);</span><br><span class="line">            head_arr[i] = arr[<span class="number">0</span>].toLowerCase();</span><br><span class="line">            <span class="keyword">int</span> number = Integer.parseInt(arr[<span class="number">1</span>]);</span><br><span class="line">            num_arr[i++] = number;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(head_arr);</span><br><span class="line">        <span class="keyword">for</span>(String s : head_arr)</span><br><span class="line">            head_map.put(s, head_map.getOrDefault(s, head_map.size()));</span><br><span class="line">        </span><br><span class="line">        Arrays.sort(num_arr);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> s: num_arr)</span><br><span class="line">            num_map.put(s, num_map.getOrDefault(s, num_map.size()));</span><br><span class="line">        </span><br><span class="line">        Arrays.sort(files, <span class="keyword">new</span> Comparator&lt;String&gt;()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span></span></span><br><span class="line"><span class="function">            </span>&#123;</span><br><span class="line">                String[] o1_arr = ReturnHeadNumber(o1);</span><br><span class="line">                String[] o2_arr = ReturnHeadNumber(o2);</span><br><span class="line">                <span class="keyword">if</span>(head_map.get(o1_arr[<span class="number">0</span>]) &lt; head_map.get(o2_arr[<span class="number">0</span>]))</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(head_map.get(o1_arr[<span class="number">0</span>]) &gt; head_map.get(o2_arr[<span class="number">0</span>]))</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(num_map.get(Integer.parseInt(o1_arr[<span class="number">1</span>])) </span><br><span class="line">                       &lt; num_map.get(Integer.parseInt(o2_arr[<span class="number">1</span>])))</span><br><span class="line">                        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(num_map.get(Integer.parseInt(o1_arr[<span class="number">1</span>])) </span><br><span class="line">                       &gt; num_map.get(Integer.parseInt(o2_arr[<span class="number">1</span>])))</span><br><span class="line">                        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">return</span> order_map.get(o1) - order_map.get(o2);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] ReturnHeadNumber(String s)</span><br><span class="line">    &#123;</span><br><span class="line">        String[] res = <span class="keyword">new</span> String[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> head_idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> tail_idx = s.length();</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> isnum = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : s.toCharArray())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>((c &gt;= <span class="string">&#x27;0&#x27;</span>) &amp;&amp; (c &lt;= <span class="string">&#x27;9&#x27;</span>) &amp;&amp; (!isnum))</span><br><span class="line">            &#123;</span><br><span class="line">                isnum = <span class="keyword">true</span>;</span><br><span class="line">                head_idx = idx;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(isnum)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>((c &lt; <span class="string">&#x27;0&#x27;</span>) || (c &gt; <span class="string">&#x27;9&#x27;</span>))</span><br><span class="line">                &#123;</span><br><span class="line">                    tail_idx = idx;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            idx++;</span><br><span class="line">        &#125;</span><br><span class="line">        String head = s.substring(<span class="number">0</span>, head_idx).toLowerCase();</span><br><span class="line">        String number = s.substring(head_idx, tail_idx);</span><br><span class="line">    </span><br><span class="line">        res[<span class="number">0</span>] = head;</span><br><span class="line">        res[<span class="number">1</span>] = number;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 코드가 긴데 핵심 아이디어는 간단하다. head별로 정리하여 사전을 만들어놓고 number별로 사전을 만들어놓고 들어온 순서대로 사전을 만들어 3개의 사전을 준비한다. 이제 두 대상을 비교할 때, head로 된 사전을 찾아보고 만약 두 값이 같으면 number사전을 찾아본다 number사전에서의 값도 같다면 순서를 기록해둔 사전을 참고하여 순서를 알아내면 된다. main은 이 세가지 사전을 만드는 과정이다.</p>
+<p>22번째 줄에서 순서 사전을 만드는 것을 볼 수 있다 들어온 파일명대로 순서대로 i를 증가하며 저장한다. 이와 동시에 head사전과 number사전을 만들기 위한 준비를 한다. 정렬은 하지 않은 채 배열에 넣는다. 이때 head는 모두 소문자로 바꾸어 넣고 number는 모두 int로 변환하여 넣는다.</p>
+<p>이제 head를 정렬한다. 정렬하고 이를 사전에 넣어야하는데, 만약 사전에 이미 있는 경우라면 값을 바꾸면 안되기 때문에 getOrDefault함수를 활용하였다. 사전에 없는 경우라면 사전의 크기를 값으로 지정한다. number또한 똑같은 원리로 한다. 이제 모든 사전이 완성되었다.</p>
+<p>파일들을 정렬하기 위해 비교자를 새로 정의하였다. 비교자 선언은 어렵지 않다. 아까 말한 우선순위를 그대로 코드에 적었으니 찬찬히 보면 이해가 갈 것이다. ReturnHeadNumber에서 head와 number값을 받아올 수 있다.</p>
+<p>ReturnHeadNumber를 보자. head_idx와 tail_idx가 있다. head_idx에는 head가 끝나는 인덱스를 너흘 것이고 tail_idx는 tail이 시작되는 지점을 넣을 것이다. isnum은 flag인데 코드를 살펴보면서 설명하겠다. 일단 문자열에서 문자를 하나씩 떼와서 처음으로 숫자가 나올 경우 이곳부터 number가 시작되므로 head_idx에 해당 인덱스 값을 넣고 isnum을 true로 해준다. isnum이 없다면 숫자가 여러자리 일 때도 head_idx가 계속 증가하기 때문이다.</p>
+<p>isnum이 true로 바뀌면 이제 tail값을 찾아야한다. 처음으로 숫자가 아닌 구간이 나온다면 그곳부터는 tail이므로 tail_idx에 해당 idx를 넣고 반복문을 탈출한다. 이제 두 값으로 문자열을 잘라주면 우리가 원하는 head와 number를 가져올 수 있다.</p>
+<p>최종 시간복잡도는 파일들의 개수를 n개라 할 때, <span class="math inline">\(O(nlogn)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<center>
+<img src="/images/programmers/filename_sort.png" width="290" height="510">
+</center>
+<p><br></p>
+<p>비교자를 새로하는 부분에서 테스트케이스가 많으면 간혹 논리가 맞아도 정렬이 꼬이는 경우가 있어서 불안했었는데, 무사히 통과해서 다행이다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1070,261 +1277,6 @@
 </center>
 <p><br></p>
 <p>원래는 <span class="math inline">\(O(n)\)</span>까지 복잡도를 줄여봐도 효율성이 개선이 안되었다. 10억이나 되기 때문이다. 남자친구랑 점심먹으면서 이 얘기를 하다가 남자친구의 힌트로 허무하게 문제를 풀었다. 역시 수학은 중요하다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/21/AndroidStudio-Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/21/AndroidStudio-Git/" class="post-title-link" itemprop="url">안드로이드 스튜디오 깃 연동하는 법</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-21 21:55:00" itemprop="dateCreated datePublished" datetime="2021-01-21T21:55:00+09:00">2021-01-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/App/" itemprop="url" rel="index"><span itemprop="name">App</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/App/Android-Studio/" itemprop="url" rel="index"><span itemprop="name">Android Studio</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="안드로이드와-깃-연동하기mac">안드로이드와 깃 연동하기(Mac)</h2>
-<hr />
-<p>여러 포스트를 보고 안드로이드와 깃은 연동하려 했으나 안드로이드 스튜디오에서 깃 계정이 등록이 안되는 오류에 부딪히고 말았다. 그런 경우 토큰을 받아 하면 된다는데, 귀찮아서 이것저것 만지다 보니 됐다. 내 포스팅을 보고 다른 사람들도 도움을 받았으면 좋겠다.</p>
-<ul>
-<li>새 안드로이드 프로젝트 만들기</li>
-</ul>
-<p>일단 프로젝트를 만들자.</p>
-<figure>
-<img src="/images/android_git/1.png" alt="1" /><figcaption aria-hidden="true">1</figcaption>
-</figure>
-<p>여기서 Create New Project를 클릭한다.</p>
-<ul>
-<li>프로젝트 탬플릿 선택하기</li>
-</ul>
-<figure>
-<img src="/images/android_git/2.png" alt="2" /><figcaption aria-hidden="true">2</figcaption>
-</figure>
-<p>어떤 것을 하던 상관은 없지만 일단 빈 액티비티로 만든다.</p>
-<ul>
-<li>프로젝트 명 생성하기</li>
-</ul>
-<figure>
-<img src="/images/android_git/3.png" alt="3" /><figcaption aria-hidden="true">3</figcaption>
-</figure>
-<p>프로젝트명을 생성해줍니다.</p>
-<figure>
-<img src="/images/android_git/4.png" alt="4" /><figcaption aria-hidden="true">4</figcaption>
-</figure>
-<p>이제 프로젝트로 만든 폴더와 같은 위치에 gitignore을 생성한다. 프로젝트 폴더의 상위에서 터미널을 열어 위와 같이 touch .gitignore을 입력한다. 필자의 경우 SayHello위에 AndroidStudioProject가 있으므로 거기서 커맨드를 입력했다.</p>
-<figure>
-<img src="/images/android_git/5.png" alt="5" /><figcaption aria-hidden="true">5</figcaption>
-</figure>
-<p>만들어진 파일은 <code>커맨드</code>+<code>쉬프트</code>+<code>.</code>으로 볼 수 있다. 이제 이걸 열고 ignore파일을 작성한다. ignore파일을 아래의 링크에서 만들 수 있다. 필자는 코틀린과 안드로이드 스튜디오를 넣었다.</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly93d3cudG9wdGFsLmNvbS9kZXZlbG9wZXJzL2dpdGlnbm9yZQ==">https://www.toptal.com/developers/gitignore<i class="fa fa-external-link-alt"></i></span></p>
-<p>이제 다시 안드로이드 스튜디오로 돌아간다.</p>
-<figure>
-<img src="/images/android_git/6.png" alt="6" /><figcaption aria-hidden="true">6</figcaption>
-</figure>
-<p>프로젝트에서 VCS로 들어가 깃 레파지토리 생성으로 넘어갑니다.</p>
-<figure>
-<img src="/images/android_git/7.png" alt="7" /><figcaption aria-hidden="true">7</figcaption>
-</figure>
-<p>Create Git Repository를 선택해 어떤 폴더를 깃과 연동할지 선택합니다. 필자는 AndroidStudioProject로 하였습니다. 만약 이 때 .ignore 파일이 보이지 않는다면 <code>커맨드</code>+<code>쉬프트</code>+<code>.</code>를 입력하면 볼 수 있다. .git이 보이지 않아도 괜찮다. 필자는 이미 연결한 상태라 그렇다. 여기서 Open을 누르면 빨갛게 파일명들이 바뀐것을 볼 수 있다.</p>
-<figure>
-<img src="/images/android_git/8.png" alt="8" /><figcaption aria-hidden="true">8</figcaption>
-</figure>
-<p>파일명이 빨갛게 변한 상태에서 우측 상단의 초록 체크마크를 클릭한다.</p>
-<figure>
-<img src="/images/android_git/9.png" alt="9" /><figcaption aria-hidden="true">9</figcaption>
-</figure>
-<p>그럼 왼쪽에 어떤 창이 나타나는데 커밋할 파일을 고르는 창이다. 이제보니 .gitignore가 여러개 생성이 되었는데, 앞에 것이 꼭 필요한 걸지 잘 모르겠다. 나중에 좀 더 뜯어봐야겠다.</p>
-<figure>
-<img src="/images/android_git/10.png" alt="10" /><figcaption aria-hidden="true">10</figcaption>
-</figure>
-<p>모든 파일을 체크하고 커밋옆의 아래 화살표를 클릭하면 커밋 앤 푸쉬가 나타는데 이걸 클릭한다. 커밋 메시지도 함께 입력하는 것을 잊지말자!</p>
-<figure>
-<img src="/images/android_git/11.png" alt="11" /><figcaption aria-hidden="true">11</figcaption>
-</figure>
-<p>뭐라뭐라 경고하는데 그냥 푸쉬한다고 한다.</p>
-<figure>
-<img src="/images/android_git/12.png" alt="12" /><figcaption aria-hidden="true">12</figcaption>
-</figure>
-<p>그럼 어떤 창이 뜨는데 define remote를 클릭하면 url을 달라는 창이 이렇게 뜬다. 이때 레파지토리를 생성하여 URL을 입력한다.</p>
-<figure>
-<img src="/images/android_git/13.png" alt="13" /><figcaption aria-hidden="true">13</figcaption>
-</figure>
-<p>그럼 이렇게 올릴 파일들의 목록이 나온다. 이제 푸쉬를 해준다.</p>
-<figure>
-<img src="/images/android_git/14.png" alt="14" /><figcaption aria-hidden="true">14</figcaption>
-</figure>
-<p>깃으로 돌아가면 다음과 같이 성공적으로 연결된 것을 볼 수 있다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/01/21/Make-Prime-Num/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/21/Make-Prime-Num/" class="post-title-link" itemprop="url">소수 만들기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-01-21 18:03:00" itemprop="dateCreated datePublished" datetime="2021-01-21T18:03:00+09:00">2021-01-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 18:32:06" itemprop="dateModified" datetime="2021-04-01T18:32:06+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level2/" itemprop="url" rel="index"><span itemprop="name">Level2</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>nums에 있는 수 중 3가지를 뽑아 그 합이 소수인 경우의 수를 출력하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> level2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MakePrime</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 문제풀이 level2 소수 만들기</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] nums = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> answer = ReturnPrimeCnt(nums, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ReturnPrimeCnt</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> idx, <span class="keyword">int</span> sum, <span class="keyword">int</span> cnt)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= Math.sqrt(sum); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(sum % i == <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = idx; i &lt;= nums.length-cnt; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                res += ReturnPrimeCnt(nums, i+<span class="number">1</span>, sum+nums[i], cnt-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 숫자 3개를 뽑는 재귀를 이용해 문제를 풀었다. ReturnPrimeCnt는 다음과 같이 동작한다. 1. 만약 cnt가 0이면 3개를 다 뽑았다는 의미이므로 소수인지 판별한다. 필자는 에라토테네스의 체를 활용해 시간을 단축했다. 소수면 1, 아니면 0을 반환한다. 2. 아직 숫자를 더 뽑을 수 있다면 idx부터 nums길이 - cnt까지 숫자를 모두 뽑아본다. 경우의수에서 가지를 쳐나가는 것과 비슷하다고 생각하면 된다. for문의 범위는 중복없이 수를 뽑을 수 있게 한것이므로 앞으로의 코딩에도 참고하면 많은 도움이 될 것이다.</p>
-<p>이 함수는 3개만 아니라 4개, 5개로 영역을 뻗어나갈 수 있다. 하지만 속도가 좀 느릴 수 있다. 이 문제에선 오히려 3중 루프가 더 빠르다.</p>
-<p>최종 시간복잡도는 3개 수를 뽑는 모든 수를 탐색하므로 <span class="math inline">\(O(n^3)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/make_prime.png" width="290" height="540">
-</center>
-<p><br></p>
 
       
     </div>

@@ -196,7 +196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -207,7 +207,7 @@
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -244,6 +244,237 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/06/Knapsack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/06/Knapsack/" class="post-title-link" itemprop="url">평범한 배낭</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-06 21:06:36" itemprop="dateCreated datePublished" datetime="2021-04-06T21:06:36+09:00">2021-04-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-09 11:19:50" itemprop="dateModified" datetime="2021-04-09T11:19:50+09:00">2021-04-09</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Beakjoon/" itemprop="url" rel="index"><span itemprop="name">Beakjoon</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Beakjoon/12000-12999/" itemprop="url" rel="index"><span itemprop="name">12000-12999</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>0-1 knapsack 문제이다.</p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>이번에는 내 코드와 강사님이 최적화를 거친 코드를 단계로 보며 DP에 대해 정리하려고 한다. 일단 필자의 코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>))</span><br><span class="line"></span><br><span class="line">values = []</span><br><span class="line">weights = []</span><br><span class="line"></span><br><span class="line">max_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">    w, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>))</span><br><span class="line">    values.append(v)</span><br><span class="line">    weights.append(w)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">knapsack</span>(<span class="params">values, weights, n, W</span>):</span></span><br><span class="line">    <span class="keyword">if</span> W &lt;= <span class="number">0</span> <span class="keyword">or</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (n-<span class="number">1</span>, W) <span class="keyword">in</span> max_dict:</span><br><span class="line">        <span class="keyword">return</span> max_dict[(n-<span class="number">1</span>, W)]</span><br><span class="line"></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> W &gt;= weights[n-<span class="number">1</span>]:</span><br><span class="line">        res =  <span class="built_in">max</span>(knapsack(values, weights, n-<span class="number">1</span>, W), </span><br><span class="line">        knapsack(values, weights, n-<span class="number">1</span>, W-weights[n-<span class="number">1</span>]) + values[n-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res = knapsack(values, weights, n-<span class="number">1</span>, W)</span><br><span class="line"></span><br><span class="line">    max_dict[(n-<span class="number">1</span>, W)] = res</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(knapsack(values, weights, N, K))</span><br></pre></td></tr></table></figure>
+<p>재귀를 이용한 구현이다. 가용치를 <code>W</code>라하고, <code>n</code>을 넣을 물건의 고유번호라고 생각하면, 이 둘이 0일 때 반환하는 값은 0이다.</p>
+<p>계산했던 값을 저장하기 위해 <code>max_dict</code> 딕셔너리를 이용하였다. 여기에 들어가는 키 값은 물건의 고유번호와 가용치가 묶인 튜플이다. 값으로는 최대가치를 반환한다.</p>
+<p>이 값이 만약에 존재한다면 계산 해뒀던 값이므로 이 값을 반환한다. 그렇지 않은 경우 값을 새로 계산하여야 한다. 만약 가용치안에 현재 물건이 들어갈 수 있다면, 들어간 경우와 그렇지 않은 경우를 모두 고려하여 값을 계산한다.</p>
+<p>가용치안에 물건이 들어갈 수 없다면 없는 경우만 고려하면 된다. 이 때 계산한 값을 딕셔너리에 저장하는 것을 잊지말자!</p>
+<p>백준에 결과를 돌려보면 다음과 같다.</p>
+<figure>
+<img src="/images/baekjoon/12865.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>이제 여기서 최적화를 한 단계씩 해나갈 수 있다. 기존의 Top-down방식을 Bottom-up으로 구성하면 코드는 다음과 같이 변경할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>.split())</span><br><span class="line"></span><br><span class="line">W = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">V = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    W[i], V[i] = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>.split())</span><br><span class="line"></span><br><span class="line">dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(K+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N+<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, K+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            dp[i][w] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][w], dp[i-<span class="number">1</span>][w-W[i]] + V[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i][w] = dp[i-<span class="number">1</span>][w]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[N][K]) </span><br></pre></td></tr></table></figure>
+<p><code>dp</code>라는 2차원 리스트를 만들어서 <code>i</code>번째 물건을 가중치 <code>W</code>에 따라 넣는 경우와 넣지 않는 경우, 넣지 못하는 경우를 전부 기록한다.</p>
+<figure>
+<img src="/images/baekjoon/12865-1.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>위와 비교하여 메모리도 늘고 시간도 늘었다. 실은 이건 재귀에 비하면 느릴 수 있는게 애초에 2차원 배열의 모든 요소를 사용하지 않기 때문에 메모리 낭비가 있기 때문이다. 그리고 표의 모든 요소를 채우기 때문에 시간도 그만큼 오래 걸린다. 하지만 재귀같은 경우 998번이 넘는 호출을 할수가 없기 떄문에 데이터 값이 큰 경우 재귀는 사용하기 어렵기 때문에 이걸 알아놔야 한다.</p>
+<p>여기서 보이는 개선 방안은 크게 두가지 이다.</p>
+<ol type="1">
+<li>공간의 낭비</li>
+<li>표의 모든 요소를 계산할 필요가 없는 것</li>
+</ol>
+<p>이 두가지를 최적화 시켜나가려고 한다. 일단 공간적인 면에서 최적화를 시켜보자. 코드를 자세히 보면 점화식을 사용하는 부분에서 <code>i-1</code>번째 줄만 사용하는 것을 볼 수 있다. 그럼 그 이전의 행은 더 이상 쓸 일이 없으므로 이 부분에 대해서 최적화를 하면 다음과 같은 코드로 변경할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">W = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">V = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    W[i], V[i] = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(K+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, K+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = <span class="built_in">max</span>(dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w], dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w-W[i]] + V[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[N%<span class="number">2</span>][K]) </span><br></pre></td></tr></table></figure>
+<p>i값에 따라 번갈아 가면서 값을 쓸 수 있도록 하였다.</p>
+<figure>
+<img src="/images/baekjoon/12865-2.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>연산 횟수는 다르지 않기 때문에 걸리는 시간은 그대로지만, 메모리 사용량이 크게 준 것을 확인하였다.</p>
+<p>여기서 이제 2번에 대한 최적화를 추가로 할 수 있다. 연산량을 줄이는 것인데, 재귀로 코드를 짰을 때 호출되는 <code>w</code> 값을 계산하여 이를 저장하고 for문에서 이 값들에 대한 계산만 하면 최적화를 할 수 있다.</p>
+<p>코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">N, K = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">W = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">V = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    W[i], V[i] = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">need_calc = [<span class="built_in">set</span>() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N + <span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">need_calc[N].add(K)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> need_calc[i]:</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">or</span> w == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            need_calc[i-<span class="number">1</span>].add(w-W[i])</span><br><span class="line">        need_calc[i-<span class="number">1</span>].add(w)</span><br><span class="line"></span><br><span class="line">dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(K + <span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> need_calc[i]:</span><br><span class="line">        <span class="keyword">if</span> w &gt;= W[i]:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = <span class="built_in">max</span>(dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w], dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w-W[i]] + V[i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dp[i%<span class="number">2</span>][w] = dp[(i-<span class="number">1</span>)%<span class="number">2</span>][w]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dp[N%<span class="number">2</span>][K])</span><br></pre></td></tr></table></figure>
+<p>첫번째 for문을 주목하자. 우리는 이미 점화식을 통해 계산해야 하는 <code>w</code>값을 알 수 있다. 그래서 초기에 최종 가용치만을 넣어두고 여기에서 두 경우(선택하는 경우와 하지 않는 경우)로 나누어서 계산에 쓰이는 <code>w</code>값만 <code>need_calc</code>에 넣는다.</p>
+<figure>
+<img src="/images/baekjoon/12865-3.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p>오버헤드가 없기 때문에 시간이 재귀보다 단축한 것을 볼 수 있다. 이렇게 최적화 과정에 대해 공부하였는데, 공부를 많이 해야겠다는 생각이 든다. 기죽지 말고 꾸준히 공부해야겠다. ✍️</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/04/06/Stolen/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YunPC">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbit blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/06/Stolen/" class="post-title-link" itemprop="url">도둑질</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-06 21:05:29 / Modified: 21:24:05" itemprop="dateCreated datePublished" datetime="2021-04-06T21:05:29+09:00">2021-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Problem-Solving/Programmers/Level4/" itemprop="url" rel="index"><span itemprop="name">Level4</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="문제정의">문제정의</h2>
+<hr />
+<p>인접한 집을 털지 않으면서 최대한 많은 돈을 도둑질하는 문제이다. 이 때 집은 원형으로 이어져 있다고 가정하기 때문에 첫번째 인덱스와 마지막 인덱스가 이어져있다. <span class="exturl" data-url="aHR0cHM6Ly9wcm9ncmFtbWVycy5jby5rci9sZWFybi9jb3Vyc2VzLzMwL2xlc3NvbnMvNDI4OTc=">문제 링크<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="문제풀이">문제풀이</h2>
+<hr />
+<p>전체 코드는 다음과 같다. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">money</span>):</span></span><br><span class="line">    dp1 = [<span class="number">0</span>] * (<span class="built_in">len</span>(money)-<span class="number">1</span>)</span><br><span class="line">    dp1[<span class="number">0</span>] = money[<span class="number">0</span>]</span><br><span class="line">    dp1[<span class="number">1</span>] = <span class="built_in">max</span>(money[<span class="number">0</span>], money[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(money)-<span class="number">1</span>):</span><br><span class="line">        dp1[i] = <span class="built_in">max</span>(dp1[i-<span class="number">1</span>], money[i]+dp1[i-<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line">    dp2 = [<span class="number">0</span>] * <span class="built_in">len</span>(money)</span><br><span class="line">    dp2[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">    dp2[<span class="number">1</span>] = money[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="built_in">len</span>(money)):</span><br><span class="line">        dp2[i] = <span class="built_in">max</span>(dp2[i-<span class="number">1</span>], money[i]+dp2[i-<span class="number">2</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(dp1[-<span class="number">1</span>], dp2[-<span class="number">1</span>])</span><br></pre></td></tr></table></figure></p>
+<p>집이 원형으로 이어져있을 때의 조건을 생각하지 못해서 결국 풀이를 봤다. 결론적으로 말하면 첫번째집과 마지막집은 동시에 선택하지 못한다! 그래서 이 경우를 둘로 나눠서 생각한다.</p>
+<ol type="1">
+<li>마지막 집을 제외하고 도둑질 할 수 있는 최대 금액을 찾는다.</li>
+<li>첫번째 집을 제외하고 도둑질 할 수 있는 최대 금액을 찾는다.</li>
+<li>위의 두 값 중에서 큰 값을 반환한다.</li>
+</ol>
+<p>이렇게 하면 겹치는 케이스가 존재할 수 있지만 적어도 피하려고 하는 케이스만을 제외하고 나머지 경우의 수를 다 구할 수 있다.</p>
+<p>시간 복잡도는 <span class="math inline">\(O(n)\)</span>이다.</p>
+<h2 id="테스트">테스트</h2>
+<p><br></p>
+<figure>
+<img src="/images/programmers/stolen.png" alt="테스트 화면" /><figcaption aria-hidden="true">테스트 화면</figcaption>
+</figure>
+<p><br></p>
+<p>DP는 너무 어렵다.. 유형중에 제일 해보지 않아서 어색하다. 백준에서 DP문제만 골라 풀어봐야겠다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1064,217 +1295,6 @@
 </center>
 <p><br></p>
 <p>처음에는 우선순위큐를 이용하지 않고 dfs에서 방문기록을 남겼던 것 처럼, 배열을 정렬하고 방문기록을 활용하여 똑같은 논리로 짰었는데 계속 틀렸다. 어제 몇 시간을 고민하다. 결국 다 지우고 우선순위 큐로 구현하였더니 통과가 되었다. 그 전 코드의 문제점이 뭔지 알았으면 좋았을텐데, 앞으로 공부를 하면서 꼬인 논리를 지금 보다 더 능숙하게 풀어냈으면 좋겠다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/03/Farthest-Node/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/03/Farthest-Node/" class="post-title-link" itemprop="url">가장 먼 노드</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-03 14:10:00" itemprop="dateCreated datePublished" datetime="2021-03-03T14:10:00+09:00">2021-03-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:10:25" itemprop="dateModified" datetime="2021-04-01T17:10:25+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>1번 노드로부터 가장 멀리 떨어진 노드가 총 몇 개인지 계산하는 문제이다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FarthestNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//프로그래머스 level3 가장 먼 노드</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">6</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] edge = &#123;</span><br><span class="line">            &#123;<span class="number">3</span>, <span class="number">6</span>&#125;,</span><br><span class="line">            &#123;<span class="number">4</span>, <span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="number">3</span>, <span class="number">2</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">            &#123;<span class="number">2</span>, <span class="number">4</span>&#125;,</span><br><span class="line">            &#123;<span class="number">5</span>, <span class="number">2</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//adjacency list</span></span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; adj_list = <span class="keyword">new</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt;(n+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">            adj_list.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; edge.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            adj_list.get(edge[i][<span class="number">0</span>]).add(edge[i][<span class="number">1</span>]);</span><br><span class="line">            adj_list.get(edge[i][<span class="number">1</span>]).add(edge[i][<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//bfs</span></span><br><span class="line">        <span class="keyword">int</span>[] distance = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[n+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.add(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> root = q.poll();</span><br><span class="line">            visited[root] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">int</span> depth = distance[root]+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i : adj_list.get(root))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(!visited[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    distance[i] = depth;</span><br><span class="line">                    visited[i] = <span class="keyword">true</span>;</span><br><span class="line">                    q.add(i);</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; distance.length; i++)</span><br><span class="line">            max = Math.max(max, distance[i]);</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; distance.length; i++)</span><br><span class="line">            answer = distance[i] == max ? answer+<span class="number">1</span> : answer;</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> bfs를 이용해서 문제를 풀면 된다. 각 노드의 <code>depth</code>(깊이)를 계산하여 제일 큰 값을 가지는 노드가 총 몇 개인지 세어본다. 이번 문제에서는 간선이 많기 때문에 행렬형태로 연결을 포함할 수 없다. 그래서 adjacency list를 통해 구현하였다.</p>
-<p>그래프를 모두 표시하고 난 뒤, bfs를 한다. 큐를 선언하고 각 노드의 깊이를 저장할 <code>distance</code>를 선언한다. 1번노드부터 bfs를 시작할 것이므로, 1을 큐에 삽입한다.</p>
-<p>이제 큐에서 1을 꺼내 루트로 생각하고 방문여부를 나타내는 <code>visited</code>를 true로 한다. <code>root</code>와 인접한 노드들은 <code>root</code>+1의 깊이를 가지므로 이 값을 <code>depth</code>로 둔다. 이제 인접 리스트를 돌면서 방문하지 않았던 노드들의 깊이를 기록하고 방문기록을 true로 한다.</p>
-<p>이 과정을 모두 마치면 <code>distance</code>값 중에 가장 큰 것을 <code>max</code>값으로 한다. 그리고 <code>distance</code>중에 <code>max</code>값이 몇 개가 있는지 세면 정답이다.</p>
-<p>adjacency list를 사용하기 때문에, 노드 개수를 V, 간선의 개수를 E라고 한다면 최종 시간복잡도는 <span class="math inline">\(O(V+E)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/farthest_node.png" width="290" height="130">
-</center>
-<p><br></p>
-<p>필자는 처음에 다익스트라로 풀었는데 구현이 잘못되었는지 계속 틀려서 결국 노트북을 닫았다. 약한 멘탈이 미울 지경이다. 문제점을 못찾겠어서 고민하다가 bfs로도 될 것 같은데라는 생각이 들었다. 하지만 어제는 기력이 다해서 집에서 뻗었다. 결국 다른 사람의 풀이를 찾아보니 다 bfs로 풀었다. 다익스트라로 푼 사람은 못 봤다. bfs로 풀어서 정답을 맞았지만 다익스트라로 풀었을 때 왜 틀렸는지는 아직 의문이다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yunpc.github.io/2021/03/02/Transfrom-Word/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YunPC">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rabbit blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/02/Transfrom-Word/" class="post-title-link" itemprop="url">단어변환</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-02 15:39:00" itemprop="dateCreated datePublished" datetime="2021-03-02T15:39:00+09:00">2021-03-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-01 17:16:25" itemprop="dateModified" datetime="2021-04-01T17:16:25+09:00">2021-04-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/" itemprop="url" rel="index"><span itemprop="name">Programmers</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Problem-Solving/Programmers/Level3/" itemprop="url" rel="index"><span itemprop="name">Level3</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="문제정의">문제정의</h2>
-<hr />
-<p>시작단어에서 끝단어로 변환하는 최소 횟수를 알아내려고 한다. 만약 변환할 수 없다면 0을 반환한다. 변환을 거칠 땐 알파벳 한 글자만 바꿀 수 있다.</p>
-<h2 id="문제풀이">문제풀이</h2>
-<hr />
-<p>전체 코드는 다음과 같다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransformWord</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//프로그래머스 level3 단어 변환</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] matrix;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String begin = <span class="string">&quot;hit&quot;</span>;</span><br><span class="line">        String target = <span class="string">&quot;cog&quot;</span>;</span><br><span class="line">        String[] words = &#123;<span class="string">&quot;cog&quot;</span>, <span class="string">&quot;log&quot;</span>, <span class="string">&quot;lot&quot;</span>, <span class="string">&quot;dog&quot;</span>, <span class="string">&quot;dot&quot;</span>, <span class="string">&quot;hot&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        list.add(begin);</span><br><span class="line">        <span class="keyword">for</span>(String s : words)</span><br><span class="line">            list.add(s);</span><br><span class="line"></span><br><span class="line">        matrix = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()][list.size()];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; list.size(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(canConnect(list.get(i), list.get(j)))</span><br><span class="line">                &#123;</span><br><span class="line">                    matrix[i][j] = <span class="number">1</span>;</span><br><span class="line">                    matrix[j][i] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> inf = <span class="number">1250</span>;</span><br><span class="line">        <span class="keyword">int</span>[] distance  = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()];</span><br><span class="line">        <span class="keyword">boolean</span>[] visited  = <span class="keyword">new</span> <span class="keyword">boolean</span>[list.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; list.size(); i++)</span><br><span class="line">            distance[i] = inf;</span><br><span class="line"></span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        stack.push(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">while</span>(!stack.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> root = stack.pop();</span><br><span class="line">            visited[root] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[root][i] == <span class="number">1</span> &amp;&amp; !visited[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    stack.push(i);</span><br><span class="line">                    <span class="keyword">if</span>(distance[i] &gt; distance[root]+<span class="number">1</span>)</span><br><span class="line">                        distance[i] = distance[root]+<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index = list.indexOf(target);</span><br><span class="line">        <span class="keyword">if</span>(index == -<span class="number">1</span> || distance[index] == inf)</span><br><span class="line">            System.out.println(<span class="string">&quot;false&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(distance[index]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">canConnect</span><span class="params">(String s1, String s2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] arr1 = s1.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] arr2 = s2.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> wrong = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr1.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr1[i] != arr2[i])</span><br><span class="line">                ++wrong;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wrong == <span class="number">1</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 단어간의 변환 관계를 따지면 그래프를 만들 수 있다. 만든 그래프에서 begin에서 각 단어까지 변환하는데 걸리는 최소 변환 횟수를 구한다. 마지막으로 타겟 단어의 index에 해당하는 횟수를 반환하면 된다. 만약 타겟 단어가 없다면 0을 반환한다.</p>
-<p>일단 그래프를 만들기 위해 두 단어가 변환이 되는 지 확인하는 함수 <code>canConnect</code>를 정의하였다. 모든 단어의 길이는 같다고 했으므로, 한쪽의 길이를 기준으로 하여 문자를 비교한다. 만약 다른 글자수(<code>wrong</code>)가 하나라면 <code>true</code>를 반환하고, 아니라면 <code>false</code>를 반환한다.</p>
-<p>리스트 <code>list</code>를 만들어 첫시간과 words를 합친다. 반복문을 통해 모든 쌍을 <code>canConnect</code>를 통해 변환할 수 있는 관계인지 파악하고, 만약 변환할 수 있다면 <code>matrix</code>에 1이라 표시한다(18-30줄).</p>
-<p>그래프를 <code>matrix</code>에 표시했으므로, dfs를 활용하여 최소 변환 횟수를 구할 차례이다. 이번 문제는 가능한 가 가능한지 않은가가 아니라, 최소를 찾아야 하므로 <code>distance</code>를 추가로 선언한다. 시작단어인 <code>distance[0]</code>은 0으로 하고 나머지는 큰 상수로 초기화한다.</p>
-<p>이제 본격적인 dfs로 들어가보자. 스택에 0번을 넣고 <code>vistied</code>(방문했는지 여부)를 true로 한다. 그리고 변환할 수 있는 단어 중에 아직 방문하지 않은 단어들의 인덱스를 담는다. 이 때, 변환 횟수를 비교하는데 만약 현재 단어가 가지고 있는 <code>distance</code>값보다 현재 단어에서 1을 더한 값이 더 작다면 그 값으로 업데이트한다.</p>
-<p>dfs를 모두 마치면 <code>distance</code>에는 시작단어에서 각각의 모든 단어로 변환할 수 있는 최소 횟수가 담기게 된다. 이제 <code>indexOf()</code>메소드를 이용하여 끝 단어의 인덱스를 구해 그 값을 반환하면 된다. 만약 끝단어의 <code>distance</code>값이 무한이거나 없을 경우에는 <code>false</code>를 출력하면 된다.</p>
-<p>adjacency matrix를 사용하기 때문에, 최종 시간복잡도는 <span class="math inline">\(O(n^2)\)</span>이다.</p>
-<h2 id="테스트">테스트</h2>
-<p><br></p>
-<center>
-<img src="/images/programmers/word_transform.png" width="290" height="130">
-</center>
-<p><br></p>
-<p>다른 사람의 풀이를 보니 그냥 dfs를 이용해서 풀었는데도 통과가 되었다. 그런데 그렇게 하면 최소값이 아니게 도달해도 정답이 되버릴텐데,, 이 부분에서 프로그래머스가 테스트 케이스를 추가해줬으면 좋겠다는 생각이 들었다.</p>
-<p>이 문제를 풀면서 다익스트라를 참고도 안하고 혼자서 해보려고 했는데 나중에 다 풀고보니 다익스트라는 인접한 것 중에 가장 짧은 경로를 기준으로 가는 거라고 했다. 필자는 그냥 가장 나중에 확인한 것을 다음 노드로 지정하였는데 이렇게 해도 최단 거리를 찾을 수 있을지 궁금하다. 다음에 또 이런 문제를 만난다면 그 땐 다익스트라를 좀 더 세심하게 구현해야겠다. 덕분에 모자란 개념을 보충할 수 있었다.</p>
 
       
     </div>
